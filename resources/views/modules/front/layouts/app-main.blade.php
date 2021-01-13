@@ -12,10 +12,10 @@
 <x-front.front-header/>
 
 
-{{--<div class="content">--}}
-{{--    @yield('content')--}}
-{{--</div>--}}
-{{--<x-front.front-footer/>--}}
+<div class="content">
+    @yield('content')
+</div>
+<x-front.front-footer/>
 @include('modules.front.parts.scripts')
 @yield('scripts')
 </body>
