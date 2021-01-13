@@ -1,4 +1,4 @@
-describe('Core.scale', function() {
+describe('Front.scale', function() {
 	describe('auto', jasmine.specsFromFixtures('core.scale'));
 
 	it('should provide default scale label options', function() {

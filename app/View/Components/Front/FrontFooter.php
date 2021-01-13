@@ -25,7 +25,7 @@ class FrontFooter extends BaseComponent
      */
     public function render()
     {
-        $about_project = AboutProject::first();
+//        $about_project = AboutProject::first();
         return $this->coreFrontView('parts.front-footer', compact('about_project'));
     }
 }

@@ -1,4 +1,4 @@
-describe('Core helper tests', function() {
+describe('Front helper tests', function() {
 
 	var helpers;
 

@@ -1,5 +1,5 @@
 // Test the core element functionality
-describe('Core element tests', function() {
+describe('Front element tests', function() {
 	it ('should transition model properties', function() {
 		var element = new Chart.Element({
 			_model: {

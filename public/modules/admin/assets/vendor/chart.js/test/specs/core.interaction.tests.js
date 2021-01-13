@@ -1,7 +1,7 @@
-// Tests of the interaction handlers in Core.Interaction
+// Tests of the interaction handlers in Front.Interaction
 
 // Test the rectangle element
-describe('Core.Interaction', function() {
+describe('Front.Interaction', function() {
 	describe('point mode', function() {
 		beforeEach(function() {
 			this.chart = window.acquireChart({

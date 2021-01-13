@@ -38,7 +38,7 @@ class FrontHeader extends BaseComponent
                 'href' => $_SERVER['REQUEST_URI'] . '#event'
             ]
         ];
-        $about_project = AboutProject::first();
+//        $about_project = AboutProject::first();
         return $this->coreFrontView('parts.front-header', compact('navItems', 'about_project'));
     }
 }
