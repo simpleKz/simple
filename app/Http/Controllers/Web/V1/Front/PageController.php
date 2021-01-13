@@ -6,7 +6,7 @@
  * Time: 19:30
  */
 
-namespace App\Http\Controllers\Web\V1\Core;
+namespace App\Http\Controllers\Web\V1\Front;
 
 
 use App\Http\Controllers\Web\WebBaseController;
@@ -16,12 +16,12 @@ class PageController extends WebBaseController
 {
     public function welcome()
     {
-        return $this->adminView('pages.welcome');
+        return $this->frontView('pages.index');
     }
 
     public function home()
     {
-        return $this->adminView('pages.home');
+        return $this->frontView('pages.index');
     }
 
 //    public function files($relative_path)

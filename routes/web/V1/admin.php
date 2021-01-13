@@ -31,10 +31,7 @@ Route::group(['namespace' => 'Admin\Auth', 'verify' => true], function () {
     });
 });
 
-Route::group(['namespace' => 'Core', 'middleware' => 'auth'], function () {
-    Route::get('/home', ['uses' => 'PageController@home', 'as' => 'home']);
-    Route::get('/', ['uses' => 'PageController@home']);
-});
+
 Route::group(['namespace' => 'Admin\System\Example', 'verify' => true], function () {
 Route::group(['middleware' => 'auth'], function () {
     //Categories

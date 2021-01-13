@@ -89,6 +89,7 @@ class Handler extends ExceptionHandler
 
     protected function unauthenticated($request, AuthenticationException $exception)
     {
+
         if ($request->wantsJson() || \Illuminate\Support\Facades\Request::is('api/*')) {
             return RespUtil::resp([
                 'errors' => [

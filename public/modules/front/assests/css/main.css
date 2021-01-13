@@ -1,0 +1,61 @@
+@import url("components/index.css");
+
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+
+html {
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    height: 100%;
+}
+
+* {
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+table, td, tr {
+    font-family: 'Didact Gothic', sans-serif !important;
+}
+
+li {
+    list-style-type: none;
+}
+
+.fa {
+    font-family: Times sans-serif;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.bs-4 {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.bg-sj-gray {
+    background: #F2F4F8;
+}
+
+.text-gold {
+    color: #F8A555;
+}
+
+.min__content {
+    min-height: 60vh;
+}
+
+.btn-login {
+    background: #F8A555;
+    border-radius: 3px;
+    padding: 5px 20px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    min-height: 80vh;
+}
