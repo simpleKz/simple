@@ -1,5 +1,5 @@
 <header>
-    <div class="navigation-wrap  start-header start-style">
+    <div class="  start-header start-style">
         <div class="container">
             <div class="row">
                 <div class="col-12">

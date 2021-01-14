@@ -7,8 +7,6 @@
     @yield('styles')
 </head>
 <body>
-
-
 <x-front.front-header/>
 
 

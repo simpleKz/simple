@@ -56,6 +56,16 @@ li {
     align-items: center;
 }
 
+.btn-orange {
+    background: #F76321;
+    /*padding: 5px 20px !important;*/
+    /*display: block;*/
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    color: #fffff5;
+}
+
 .content {
     min-height: 80vh;
 }
