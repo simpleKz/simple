@@ -144,12 +144,21 @@
                             </div>
                         </div>
                     </div>
-
+                </div>
+            <div class="all-directions">
+                <div class="all-directions-text pt-4">
+                    <a href="#">Все направления</a>
+                    <p class="text-center"><span class="dots fas  fa-circle"></span>&nbsp&nbsp
+                        <span class="dots fas  fa-circle"></span>&nbsp&nbsp
+                        <span class="dots fas  fa-circle"></span>
+                    </p>
 
                 </div>
+
+
             </div>
 
-{{--        </div>--}}
+            </div>
     </section>
 
 @endsection

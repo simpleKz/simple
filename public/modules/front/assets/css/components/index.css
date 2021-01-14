@@ -179,6 +179,10 @@
     font-size: 11px;
 }
 /* Part3 Directions */
+/*.directions{*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/
 .directions h1{
     font-size: 45px;
     line-height: 55px;
@@ -250,6 +254,25 @@
 .directions__card__content:hover  .read-more-circle-around  {
     color: #F76321;
     background: #ffffff;
+}
+.all-directions{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.all-directions-text{
+    align-items: center;
+    justify-content: center;
+}
+.all-directions a{
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 22px;
+    color: #000;
+
+}
+.dots{
+    color: #F76321;
 }
 
 /* FOOTER */
