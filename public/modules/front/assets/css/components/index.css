@@ -275,7 +275,168 @@
     color: #F76321;
 }
 
-/* FOOTER */
+/* Part4 Talents */
+.talents h1{
+    font-size: 45px;
+    line-height: 55px;
+    font-weight:bold;
+}
+.talents p{
+    font-size: 20px;
+    line-height: 24px;
+    font-weight:normal;
+}
+.talents span{
+    color: #F76321;
+}
+.talents a{
+    padding: 1.25rem 3.2rem 1.25rem 3.2rem;
+}
+.talents a:hover{
+    color: #FFFFFF;
+}
+/* Part4 Strengths */
+.strengths h1{
+    font-size: 45px;
+    line-height: 55px;
+    font-weight:bold;
+}
+.strengths p{
+    font-size: 20px;
+    line-height: 24px;
+    font-weight:normal;
+}
+.strengths span{
+    color: #F76321;
+}
+.strengths a{
+    padding: 1.25rem 3.2rem 1.25rem 3.2rem;
+}
+.strengths a:hover{
+    color: #FFFFFF;
+}
+.girl_img{
+    background-image:url('../../img/girl2.png') ;
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, center;
+    background-size:cover;
+
+}
+/* Part5 Earn Money */
+.earn_money{
+    background: #F76321;
+    color: #ffffff;
+}
+
+.earn_money h1{
+    font-size: 45px;
+    line-height: 55px;
+    font-weight:bold;
+}
+.earn_money p{
+    font-size: 20px;
+    line-height: 24px;
+    font-weight:normal;
+}
+.earn_money span{
+    color: #ffffff;
+}
+.earn_money a{
+    padding: 1.25rem 3.2rem 1.25rem 3.2rem;
+    background: #FFFFFF;
+    color: #F76321;
+
+}
+.earn_money a:hover{
+    color: #F76321;
+}
+
+/* Part6 Authors */
+.authors h1{
+    font-size: 45px;
+    line-height: 55px;
+    font-weight:bold;
+}
+.authors p{
+    font-size: 20px;
+    line-height: 24px;
+    font-weight:normal;
+}
+.authors span{
+    color: #F76321;
+}
+.authors a{
+    padding: 1.25rem 3.2rem 1.25rem 3.2rem;
+}
+.authors a:hover{
+    color: #FFFFFF;
+}
+.authors_info h1{
+    font-size: 18px;
+    line-height: 22px;
+    font-weight:normal;
+}
+.authors_info h2{
+    font-size: 14px;
+    line-height: 17px;
+    font-weight:normal;
+    color: #F76321;
+}
+.authors_info img {
+    width: 150px;
+    height: 200px;
+}
+.authors_info:hover .authors_img {
+    background-color: black;
+}
+.authors_info:hover img {
+    opacity: 0.9;
+}
+.its_simple {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.its_simple img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}
+/* Part7 Subscribe */
+.subscribe h1{
+    font-size: 45px;
+    line-height: 55px;
+    font-weight:bold;
+}
+.subscribe p{
+    font-size: 20px;
+    line-height: 24px;
+    font-weight:normal;
+}
+.subscribe span{
+    color: #F76321;
+}
+.subscription_form a{
+    /*padding: 1.25rem 3.2rem 1.25rem 3.2rem;*/
+}
+.subscription_form a:hover{
+    color: #FFFFFF;
+}
+.subscription_form .email_text{
+    font-size: 20px;
+    line-height: 24px;
+    font-weight:normal;
+    color:#DEDEDE;
+    border: 1px solid #DEDEDE;
+    border-radius: 0;
+}
+.subscription_form .email_text::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color:#DEDEDE;
+    opacity: 1; /* Firefox */
+}
+
+    /* FOOTER */
 
 .footer {
     background: #F76321;
