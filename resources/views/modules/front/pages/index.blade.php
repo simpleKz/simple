@@ -247,10 +247,11 @@
                     </p>
                 </div>
                 <div class="col-12 col-md-3 col-lg-3 d-flex align-items-center">
-
-{{--                        <img--}}
-{{--                            src="{{asset('modules/front/assets/img/notebook.png')}}"--}}
-{{--                            alt="" width="200" height="200">--}}
+                        <div class="earn_money_img">
+                        <img
+                            src="{{asset('modules/front/assets/img/notebook.png')}}"
+                            alt="" >
+                        </div>
                 </div>
             </div>
             <div class="pt-5">
@@ -271,10 +272,9 @@
             <div class="authors__content pt-5 pb-5 row">
                 <div class="authors__card  col-md-2 mb-2">
                     <div class="authors__card__content col-md-12 row">
-                        <div class="authors_info">
+                        <div class="authors_info justify-content-center">
                                 <div class="authors_img">
-                                    <img
-                                        src="{{asset('modules/front/assets/img/author.png')}}"
+                                    <img src="{{asset('modules/front/assets/img/author.png')}}"
                                         alt="" >
                                 </div>
                             <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>
@@ -382,7 +382,10 @@
                 <div class="col-12 col-md-4 col-lg-4 d-flex align-items-center">
                     <div class="subscription_form">
                     <input type="text" class=" form-control email_text  pr-5 pl-3 pt-3 pb-3 mb-4" name="title" id="" placeholder="Твой e-mail" required>
-                    <a class="btn-orange pr-5 pl-5 pt-3 pb-3" href="#">Подписаться на рассылку</a>
+                    <div>
+
+                    <a class="btn-orange pr-5 pl-4 pt-3 pb-3" href="#">Подписаться на рассылку</a>
+                    </div>
                     </div>
 
                 </div>

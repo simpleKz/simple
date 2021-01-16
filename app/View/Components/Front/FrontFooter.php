@@ -2,7 +2,6 @@
 
 namespace App\View\Components\Front;
 
-use App\Models\Entities\Jastar\AboutProject;
 use App\View\BaseComponent;
 use Illuminate\View\Component;
 
@@ -26,6 +25,6 @@ class FrontFooter extends BaseComponent
     public function render()
     {
 //        $about_project = AboutProject::first();
-        return $this->coreFrontView('parts.front-footer', compact('about_project'));
+        return $this->coreFrontView('parts.front-footer');
     }
 }

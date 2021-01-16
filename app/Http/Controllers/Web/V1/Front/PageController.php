@@ -24,6 +24,12 @@ class PageController extends WebBaseController
         return $this->frontView('pages.index');
     }
 
+    public function courses()
+    {
+        return $this->frontView('pages.courses');
+    }
+
+
 //    public function files($relative_path)
 //    {
 //        if (Storage::cloud()->exists($relative_path)) {

@@ -39,6 +39,6 @@ class FrontHeader extends BaseComponent
             ]
         ];
 //        $about_project = AboutProject::first();
-        return $this->coreFrontView('parts.front-header', compact('navItems', 'about_project'));
+        return $this->coreFrontView('parts.front-header', compact('navItems'));
     }
 }
