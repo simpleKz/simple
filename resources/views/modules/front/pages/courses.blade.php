@@ -84,7 +84,7 @@
             </div>
             </div>
             <div class="courses__content row pt-5 ">
-                <div class="course_categories col-md-3 col-lg-3">
+                <div class="course_categories col-12 col-md-3 col-lg-3">
                     <div class="course_category  p-3">
                         <h1>Все категории</h1>
                     </div>
@@ -110,9 +110,9 @@
                         <h1>Дизайн</h1>
                     </div>
                 </div>
-                <div class="col-md-9 col-lg-9  ">
+                <div class="col-12 col-md-9 col-lg-9  ">
                     <div class="banner row ">
-                        <div class="col-md-5 d-flex align-items-center">
+                        <div class="col-12 col-md-5 d-flex align-items-center">
                             <div>
                                 <h1>Все курсы по маркетингу
                                     за единую подписку</h1>
@@ -121,65 +121,64 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-4 d-flex align-items-center">
+                        <div class="col-12 col-md-4 d-flex align-items-center">
                             <div>
                                 <a class="btn-orange pr-4 pl-4 pt-3 pb-3" href="#">Купить подписку прямо сейчас</a>
                             </div>
                         </div>
-                        <div class="col-md-3 d-flex align-items-center">
-                            <div class="pl-4">
+                        <div class="col-12 col-md-3  d-flex align-items-center">
+                            <div class=" pt-4 pl-4">
                                 <h2>20 000 T</h2>
                                 <p>
                                     <strike>Вместо 145 000 Т</strike>
                                 </p>
                             </div>
-
                         </div>
                     </div>
                     <div class="courses_cards row mt-4">
-                    <div class="courses__card col-md-12 mb-4">
-                        <div class="courses__card_inner row ">
-                            <div class="course__card__video col-md-4">
-                                <div class="earn_money_img">
-                                    <img
-                                        src="{{asset('modules/front/assets/img/video.png')}}"
-                                        alt="" >
-                                </div>
-                            </div>
-                            <div class="course__card__content col-md-8 p-3 row">
-                                <div class="col-md-12 row">
-                                    <div class="col-md-7 col-lg-7">
-                                        <h1>Основы маркетинга</h1>
-                                        <p>Аскаров Кайрат &nbsp&nbsp&nbsp&nbsp 20 уроков |  15 часов</p>
+                        <div class="courses__card col-md-12 mb-4">
+                            <div class="courses__card_inner row ">
+                                <div class="course__card__video col-md-4">
+                                    <div class="earn_money_img">
+                                        <img
+                                            src="{{asset('modules/front/assets/img/video.png')}}"
+                                            alt="" >
                                     </div>
-                                    <div class="col-md-5 col-lg-5 text-right">
-                                        <h1>20 000 T</h1>
-                                        <div class="stars mb-4">
-                                            <i class="star fa fa-sm fa-star"></i>
-                                            <i class="star fa fa-sm fa-star"></i>
-                                            <i class="star fa fa-sm fa-star"></i>
-                                            <i class="star fa fa-sm fa-star"></i>
-                                            <i class="star fa fa-sm fa-star"></i>
+                                </div>
+                                <div class="course__card__content col-md-8 p-3 row">
+                                    <div class="col-md-12 row">
+                                        <div class="col-md-7 col-lg-7">
+                                            <h1>Основы маркетинга</h1>
+                                            <p>Аскаров Кайрат &nbsp&nbsp&nbsp&nbsp 20 уроков |  15 часов</p>
+                                        </div>
+                                        <div class="col-md-5 col-lg-5 text-right">
+                                            <h1>20 000 T</h1>
+                                            <div class="stars mb-4">
+                                                <i class="star fa fa-sm fa-star"></i>
+                                                <i class="star fa fa-sm fa-star"></i>
+                                                <i class="star fa fa-sm fa-star"></i>
+                                                <i class="star fa fa-sm fa-star"></i>
+                                                <i class="star fa fa-sm fa-star"></i>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="description col-md-12">
-                                    <p>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать
-                                        несколько абзацев более менее осмысленного текста рыбы на русском языке,
-                                        а начинающему оратору отточить навык публичных выступлений
-                                        в домашних условиях.</p>
-                                </div>
-                                <div class="col-md-12 row">
-                                    <div class="  button-more-info col-md-3">
-                                        <a class="btn-orange pt-2 pb-2 pr-3 pl-3 " href="#">Подробнее</a>
+                                    <div class="description col-md-12">
+                                        <p>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать
+                                            несколько абзацев более менее осмысленного текста рыбы на русском языке,
+                                            а начинающему оратору отточить навык публичных выступлений
+                                            в домашних условиях.</p>
                                     </div>
-                                    <div class="button-buy col-md-5">
-                                        <a class="btn-orange pt-2 pb-2 pr-3 pl-3 " href="#">Купить курс</a>
+                                    <div class="col-md-12 row">
+                                        <div class="  button-more-info col-md-3">
+                                            <a class="btn-orange pt-2 pb-2 pr-3 pl-3 " href="#">Подробнее</a>
+                                        </div>
+                                        <div class="button-buy col-md-5">
+                                            <a class="btn-orange pt-2 pb-2 pr-3 pl-3 " href="#">Купить курс</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                         <div class="courses__card col-md-12 mb-4">
                             <div class="courses__card_inner row ">
                                 <div class="course__card__video col-md-4">
@@ -231,7 +230,8 @@
             </div>
         </div>
     </section>
-    <section class="subscribe pb-5">
+
+    <section class="subscribe pb-5 pt-5">
         <div class="container p-4">
             <div class="row">
                 <div class="col-12 col-md-8 col-lg-8">
@@ -255,7 +255,6 @@
                     <div class="subscription_form">
                         <input type="text" class=" form-control email_text  pr-5 pl-3 pt-3 pb-3 mb-4" name="title" id="" placeholder="Твой e-mail" required>
                         <div>
-
                             <a class="btn-orange pr-5 pl-4 pt-3 pb-3" href="#">Подписаться на рассылку</a>
                         </div>
                     </div>
@@ -264,7 +263,6 @@
             </div>
         </div>
     </section>
-
 @endsection
 
 @section('scripts')

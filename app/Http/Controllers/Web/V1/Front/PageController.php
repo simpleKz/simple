@@ -28,6 +28,10 @@ class PageController extends WebBaseController
     {
         return $this->frontView('pages.courses');
     }
+    public function course()
+    {
+        return $this->frontView('pages.course');
+    }
 
 
 //    public function files($relative_path)
