@@ -5,4 +5,5 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/', ['uses' => 'PageController@home']);
     Route::get('/courses', ['uses' => 'PageController@courses']);
     Route::get('/course', ['uses' => 'PageController@course']);
+    Route::get('/my-course', ['uses' => 'PageController@myCourse']);
 });

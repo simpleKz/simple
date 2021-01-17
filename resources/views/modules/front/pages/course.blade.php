@@ -25,7 +25,6 @@
                 <span class="dots fas  fa-circle"></span>&nbsp&nbsp
                 <span class="dots fas  fa-circle"></span>
             </p>
-
             <div class="auditory__content row">
                 <div class="auditory__card  col-md-6 mb-4">
                     <div class="auditory__card__content col-md-12">

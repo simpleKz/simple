@@ -1,6 +1,7 @@
 @import url("components/index.css");
 @import url("components/courses.css");
 @import url("components/course.css");
+@import url("components/my-course.css");
 
 
 
@@ -68,6 +69,9 @@ li {
     line-height: 24px;
     justify-content: center;
     align-items: center;
+    color: #fffff5;
+}
+.btn-orange:hover {
     color: #fffff5;
 }
 
