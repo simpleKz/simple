@@ -22,6 +22,21 @@
                 <div class="lesson_video_card col-md-8 col-lg-8">
                     <iframe class="lesson_video"  src="https://www.youtube.com/embed/tgbNymZ7vqY">
                     </iframe>
+{{--                    <div class="finish_course  d-flex align-items-center justify-content-center">--}}
+{{--                        <div class="text-center">--}}
+{{--                            <h1>Поздравляем!</h1>--}}
+{{--                            <h2 class="mb-5">Вы завершили курс «Основы маркетинга»</h2>--}}
+{{--                            <p>Оцените, пожалуйста, пройденный курс:</p>--}}
+{{--                            <div class="rating mb-4">--}}
+{{--                                <span><i class="far fa-star"></i></span>--}}
+{{--                                <span><i class="far fa-star"></i></span>--}}
+{{--                                <span><i class="far fa-star"></i></span>--}}
+{{--                                <span><i class="far fa-star"></i></span>--}}
+{{--                                <span><i class="far fa-star"></i></span>--}}
+{{--                            </div>--}}
+
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
                 <div class="lessons_content col-md-4 col-lg-4">
                     <h1>Следующие занятия</h1>
@@ -107,10 +122,8 @@
                 </div>
                 <div class="pt-5">
                     <a class="btn-orange col-md-5 pt-3 pb-3 pl-5 pr-5 d-flex justify-content-between" href="#">
-
                             <label>Следующее занятие </label>
                             <i class="fa fa-arrow-right"></i>
-
                     </a>
                 </div>
             </div>
