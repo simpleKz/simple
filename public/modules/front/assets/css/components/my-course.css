@@ -103,6 +103,9 @@
 .lesson_info{
     padding-left: 0 !important;
 }
+.lesson a{
+    border-radius:3px;
+}
 .lesson_info h1{
     font-size: 30px;
     line-height: 36px;
@@ -133,6 +136,19 @@
 .material:hover{
     color: #050606;
 }
+.course_finish p{
+    font-size: 16px;
+    line-height: 21px;
+}
+.icons a{
+    color:#F76321;
+    font-size: 30px;
+}
+.icons a:hover{
+    color:#F76321;
+
+}
+
 .finish_course{
     width: 100%;
     height: 100%;
@@ -164,7 +180,6 @@
 }
 .rating > span:hover:before,
 .rating > span:hover ~ span:before {
-
     content: "\2605";
     position: absolute;
 }

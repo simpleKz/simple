@@ -121,11 +121,26 @@
                     </div>
                 </div>
                 <div class="pt-5">
-                    <a class="btn-orange col-md-5 pt-3 pb-3 pl-5 pr-5 d-flex justify-content-between" href="#">
-                            <label>Следующее занятие </label>
-                            <i class="fa fa-arrow-right"></i>
+                    <a class="btn-orange col-md-5 pt-3 pb-3 pl-5 pr-5 d-flex align-items-center justify-content-between" href="#">
+                        <label>Следующее занятие </label>
+                        <i class="fa fa-arrow-right"></i>
                     </a>
                 </div>
+{{--                <div class="course_finish col-12 col-md-8 col-lg-8">--}}
+{{--                    <p><i class="far fa-share"></i> Поделитесь своим достижением</p>--}}
+{{--                    <div class="icons d-flex mt-2">--}}
+{{--                        <a class="material mr-2 "><i class="fab fa-instagram"></i></a>--}}
+{{--                        <a class="material  mr-2"><i class="fab fa-vk"></i></a>--}}
+{{--                        <a class="material  mr-2"><i class="fab fa-facebook"></i></a>--}}
+{{--                        <a class="material  mr-2"><i class="fab fa-vk"></i></a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="pt-5">--}}
+{{--                    <a class="btn-orange col-md-5 pt-3 pb-3 pl-5 pr-5 d-flex align-items-center justify-content-between" href="#">--}}
+{{--                        <label>Завершить курс</label>--}}
+{{--                        <i class="fa fa-arrow-right"></i>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
             </div>
         </div>
     </section>
