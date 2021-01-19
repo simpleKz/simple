@@ -88,7 +88,7 @@
                         <span class="check-circle-around" >
                                         <i class="far fa-check"></i>
                         </span>
-                        <div class="d-flex align-items-cetner ml-3">
+                        <div class="d-flex align-items-center ml-3">
                             <div>
                                 <h1 class="text-muted">14.12.2020 | 10:23</h1>
                                 <h2>kairataskarov@gmail.com купил курс «Основы маркетинга»</h2>
@@ -102,7 +102,7 @@
                         <span class="check-circle-around" >
                                         <i class="far fa-check"></i>
                         </span>
-                        <div class="d-flex align-items-cetner ml-3">
+                        <div class="d-flex align-items-center ml-3">
                             <div>
                                 <h1 class="text-muted">14.12.2020 | 10:23</h1>
                                 <h2>kairataskarov@gmail.com купил курс «Основы маркетинга»</h2>
@@ -260,8 +260,6 @@
                 copyText.select();
                 copyText.setSelectionRange(0, 99999); /* For mobile devices */
                 document.execCommand("copy");
-
-                alert("Copied the text: " + copyText.value);
             },
             activate: function () {
                 this.activated = true;

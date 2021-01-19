@@ -3,9 +3,14 @@
     line-height: 55px;
     font-weight: bold;
 }
-.profile-header p{
+.profile-header label{
     font-size: 20px;
     line-height: 24px;
+    font-weight: normal;
+}
+.profile-header p{
+    font-size: 12px;
+    line-height: 14px;
     font-weight: normal;
 }
 .avatar{
@@ -18,6 +23,12 @@
 .avatar img{
     flex-shrink: 0;
     object-fit: cover;
+}
+.profile-list{
+    border:1px solid #E8E8E8;
+    border-radius: 5px;
+    padding-left: 0!important;
+    padding-right: 0!important;
 }
 .list-group{
     border-radius: 5px;
@@ -72,3 +83,4 @@
 .card{
     border: none !important;
 }
+
