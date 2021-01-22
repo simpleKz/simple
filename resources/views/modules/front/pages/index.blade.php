@@ -66,88 +66,25 @@
             <h1>Изучай актуальные направления</h1>
             <h3 class="mb-5">То, что сейчас в тренде и имеет большой спрос на рынке.</h3>
                 <div class="directions__content row">
-                    <div class="directions__card  col-md-6 mb-2">
-                        <div class="directions__card__content col-md-12">
-                            <div class="dir_text p-3 col-10">
-                                <h1>Маркетинг</h1>
-                                <p>Доступно 2 курса</p>
-                            </div>
-                            <div class="dir_circle pt-4 float-right">
+                    @foreach($course_types as $course_type)
+                        <a class="directions__card  col-md-6 mb-2" href="{{route('courses',['slug' => $course_type->slug])}}">
+                            <div class="directions__card__content col-md-12">
+                                <div class="dir_text p-3 col-10">
+                                    <h1>{{$course_type->name}}</h1>
+                                    <p>Доступно {{$course_type->courses->count()}} курс(а)</p>
+                                </div>
+                                <div class="dir_circle pt-4 float-right">
                                <span class="read-more-circle-around">
                                         <i class="fa fa-arrow-right"></i>
                                </span>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="directions__card  col-md-6 mb-2">
-                        <div class="directions__card__content col-md-12">
-                            <div class="dir_text p-3 col-10">
-                                <h1>Видеография</h1>
-                                <p>Доступно 2 курса</p>
-                            </div>
-                            <div class="dir_circle pt-4 float-right">
-                               <span class="read-more-circle-around">
-                                        <i class="fa fa-arrow-right"></i>
-                               </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="directions__card  col-md-6 mb-2">
-                        <div class="directions__card__content col-md-12">
-                            <div class="dir_text p-3 col-10">
-                                <h1>Кулинария</h1>
-                                <p>Доступно 2 курса</p>
-                            </div>
-                            <div class="dir_circle pt-4 float-right">
-                               <span class="read-more-circle-around">
-                                        <i class="fa fa-arrow-right"></i>
-                               </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="directions__card  col-md-6 mb-2">
-                        <div class="directions__card__content col-md-12">
-                            <div class="dir_text p-3 col-10">
-                                <h1>Мобилография</h1>
-                                <p>Доступно 2 курса</p>
-                            </div>
-                            <div class="dir_circle pt-4 float-right">
-                               <span class="read-more-circle-around">
-                                        <i class="fa fa-arrow-right"></i>
-                               </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="directions__card  col-md-6 mb-2">
-                        <div class="directions__card__content col-md-12">
-                            <div class="dir_text p-3 col-10">
-                                <h1>Финансы</h1>
-                                <p>Доступно 2 курса</p>
-                            </div>
-                            <div class="dir_circle pt-4 float-right">
-                               <span class="read-more-circle-around">
-                                        <i class="fa fa-arrow-right"></i>
-                               </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="directions__card  col-md-6 mb-2">
-                        <div class="directions__card__content col-md-12">
-                            <div class="dir_text p-3 col-10">
-                                <h1>Дизайн</h1>
-                                <p>Доступно 2 курса</p>
-                            </div>
-                            <div class="dir_circle pt-4 float-right">
-                               <span class="read-more-circle-around">
-                                        <i class="fa fa-arrow-right"></i>
-                               </span>
-                            </div>
-                        </div>
-                    </div>
+                        </a>
+                        @endforeach
                 </div>
             <div class="all-directions">
                 <div class="all-directions-text pt-4">
-                    <a href="#">Все направления</a>
+                    <a href="{{route('courses')}}">Все направления</a>
                     <p class="text-center"><span class="dots fas  fa-circle"></span>&nbsp&nbsp
                         <span class="dots fas  fa-circle"></span>&nbsp&nbsp
                         <span class="dots fas  fa-circle"></span>
@@ -228,7 +165,7 @@
     <section class="earn_money mt-5 pt-5 pb-5">
         <div class="container p-4">
             <div class="row">
-                <div class="col-12 col-md-9 col-lg-9">
+                <div class="col-12 col-md-8 col-lg-8 pr-0">
                     <h1 class="pb-2">Зарабатывай на своем обучении</h1>
                     <p>Учишься ты, а платим тебе мы! За что?</p>
                     <p class="pt-2 pb-4"><span class="dots fas  fa-circle"></span>&nbsp&nbsp
@@ -246,11 +183,11 @@
                         за твое благородное дело!
                     </p>
                 </div>
-                <div class="col-12 col-md-3 col-lg-3 d-flex align-items-center">
+                <div class="col-12 col-md-4 col-lg-4 d-flex align-items-center pr-0 pl-0">
                         <div class="earn_money_img">
                         <img
-                            src="{{asset('modules/front/assets/img/notebook.png')}}"
-                            alt="" >
+                            src="{{asset('modules/front/assets/img/notebook1.png')}}"
+                            alt=""  >
                         </div>
                 </div>
             </div>

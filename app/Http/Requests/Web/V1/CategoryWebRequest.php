@@ -11,7 +11,7 @@ class CategoryWebRequest extends WebBaseRequest
     {
         return [
             'name' => ['string',!$this->isDelete() ? 'required' : ''],
-            'id' => ['numeric', 'exists:categories,id', !$this->isStore() ? 'required' : '']
+            'id' => ['numeric', 'exists:course_categories,id', !$this->isStore() ? 'required' : '']
         ];
     }
 

@@ -32,13 +32,44 @@ Route::group(['namespace' => 'Admin\Auth', 'verify' => true], function () {
 });
 
 
-Route::group(['namespace' => 'Admin\System\Example', 'verify' => true], function () {
+Route::group(['namespace' => 'Admin\System\Course', 'verify' => true], function () {
 Route::group(['middleware' => 'auth'], function () {
-    //Categories
-    Route::get('/category', ['uses' => 'ExampleController@index', 'as' => 'category.index']);
-    Route::post('/category/store', ['uses' => 'ExampleController@store', 'as' => 'category.store']);
-    Route::post('/category/update', ['uses' => 'ExampleController@update', 'as' => 'category.update']);
-    Route::post('/category/delete', ['uses' => 'ExampleController@delete', 'as' => 'category.delete']);
+
+    //Course Categories
+    Route::get('/categories', ['uses' => 'CourseCategoryController@index', 'as' => 'category.index']);
+    Route::post('/category/store', ['uses' => 'CourseCategoryController@store', 'as' => 'category.store']);
+    Route::post('/category/update', ['uses' => 'CourseCategoryController@update', 'as' => 'category.update']);
+    Route::post('/category/delete', ['uses' => 'CourseCategoryController@delete', 'as' => 'category.delete']);
+
+    //Course Authors
+    Route::get('/authors', ['uses' => 'CourseAuthorController@index', 'as' => 'author.index']);
+    Route::post('/author/store', ['uses' => 'CourseAuthorController@store', 'as' => 'author.store']);
+    Route::post('/author/update', ['uses' => 'CourseAuthorController@update', 'as' => 'author.update']);
+    Route::post('/author/delete', ['uses' => 'CourseAuthorController@delete', 'as' => 'author.delete']);
+
+    //Courses
+    Route::get('/courses', ['uses' => 'CourseController@index', 'as' => 'course.index']);
+    Route::get('/course/create', ['uses' => 'CourseController@create', 'as' => 'course.create']);
+    Route::get('/course/edit', ['uses' => 'CourseController@edit', 'as' => 'course.edit']);
+    Route::post('/course/store', ['uses' => 'CourseController@store', 'as' => 'course.store']);
+    Route::post('/course/update', ['uses' => 'CourseController@update', 'as' => 'course.update']);
+    Route::post('/course/delete', ['uses' => 'CourseController@delete', 'as' => 'course.delete']);
+
+
+    Route::get('/course/lessons', ['uses' => 'CourseLessonController@index', 'as' => 'lesson.index']);
+    Route::get('/course/lessons/create', ['uses' => 'CourseLessonController@create', 'as' => 'lesson.create']);
+    Route::post('/course/lessons/store', ['uses' => 'CourseLessonController@store', 'as' => 'lesson.store']);
+    Route::get('/course/lessons/edit', ['uses' => 'CourseLessonController@edit', 'as' => 'lesson.edit']);
+    Route::post('/course/lessons/update', ['uses' => 'CourseLessonController@update', 'as' => 'lesson.update']);
+    Route::post('/course/lessons/delete', ['uses' => 'CourseLessonController@delete', 'as' => 'lesson.delete']);
+    Route::post('/course/lesson/material/delete', ['uses' => 'CourseLessonController@deleteMaterial', 'as' => 'lesson.material.delete']);
+
 
 });
+});
+Route::group(['namespace' => 'Front', 'verify' => true], function () {
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/home', ['uses' => 'PageController@home', 'as' => 'home']);
+
+    });
 });

@@ -36,7 +36,7 @@
                                 @foreach($navItem['items'] as $innerItem)
                                     <li class='u-sidebar-nav-menu__item'>
                                         <a class='u-sidebar-nav-menu__link' href='{{$innerItem['url']}}'>
-                                            <span class='{{$navItem['icon']}} u-sidebar-nav-menu__item-icon'></span>
+                                            <span class='{{$innerItem['icon']}} u-sidebar-nav-menu__item-icon'></span>
                                             <span class='u-sidebar-nav-menu__item-title'>{{$innerItem['title']}}</span>
                                         </a>
                                     </li>

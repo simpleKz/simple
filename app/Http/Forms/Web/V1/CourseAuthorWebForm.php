@@ -7,7 +7,7 @@ namespace App\Http\Forms\Web\V1;
 use App\Core\Interfaces\WithForm;
 use App\Http\Forms\Web\FormUtil;
 
-class CategoryWebForm implements WithForm
+class CourseAuthorWebForm implements WithForm
 {
     public static function inputGroups($value = null): array
     {
@@ -19,7 +19,10 @@ class CategoryWebForm implements WithForm
         }
         return array_merge(
             $array,
-            FormUtil::input('name', 'Маркетинг', 'Название',
-                'text', true, $value ? $value->name : ''));
+            FormUtil::input('first_name', 'Кайрат', 'Имя',
+                'text', true, $value ? $value->first_name : ''),
+            FormUtil::input('last_name', 'Аскаров', 'Фамилия',
+                'text', true, $value ? $value->last_name : '')
+        );
     }
 }

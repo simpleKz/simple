@@ -1,9 +1,8 @@
 <?php
 use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Front'], function () {
-    Route::get('/home', ['uses' => 'PageController@home', 'as' => 'home']);
-    Route::get('/', ['uses' => 'PageController@home']);
-    Route::get('/courses', ['uses' => 'PageController@courses']);
+    Route::get('/', ['uses' => 'PageController@welcome', 'as' => 'index']);
+    Route::get('/courses/{slug?}', ['uses' => 'PageController@courses', 'as' => 'courses']);
     Route::get('/course', ['uses' => 'PageController@course']);
     Route::get('/my-course', ['uses' => 'PageController@myCourse']);
     Route::get('/personal-account', ['uses' => 'PageController@profile']);

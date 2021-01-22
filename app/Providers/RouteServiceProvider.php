@@ -41,7 +41,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const ADMIN_HOME = '/admin/home';
     public const WELCOME = '';
     public const PROFILE = '/profile';
     /**
@@ -74,7 +74,8 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapAdminWebVersionedRoutes($version)
     {
-        Route::middleware('web')
+        Route::prefix("admin/")
+            ->middleware('web')
             ->namespace($this->getWebNamespace($version))
             ->group(base_path("routes/web/V$version/admin.php"));
     }

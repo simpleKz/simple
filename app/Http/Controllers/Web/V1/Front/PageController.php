@@ -10,23 +10,58 @@ namespace App\Http\Controllers\Web\V1\Front;
 
 
 use App\Http\Controllers\Web\WebBaseController;
+use App\Models\Entities\Course\Course;
+use App\Models\Entities\Course\CourseAuthor;
+use App\Models\Entities\Course\CourseCategory;
 use Illuminate\Support\Facades\Storage;
 
 class PageController extends WebBaseController
 {
     public function welcome()
     {
-        return $this->frontView('pages.index');
+        $course_types = CourseCategory::all();
+        $authors = CourseAuthor::take(6);
+        return $this->frontView('pages.index',compact('course_types'));
     }
 
     public function home()
     {
-        return $this->frontView('pages.index');
+        return $this->adminView('pages.home');
     }
 
-    public function courses()
+    public function courses($slug = null, $sort = null)
     {
-        return $this->frontView('pages.courses');
+        $courses = Course::orderBy('rating','desc')->paginate(2);
+        if($slug){
+            $course_type = CourseCategory::where('slug',$slug)->firstOrFail();
+            $courses = Course::where('category_id',$course_type->id)->paginate(2);
+            if($sort){
+                if($sort == 'price'){
+                    $courses = Course::orderBy('price','desc')->paginate(2);
+                }
+                else if($sort == 'created_at'){
+                    $courses = Course::orderBy('created_at','desc')->paginate(2);
+                }
+                else{
+                    $courses = Course::where('category_id',$course_type->id)->paginate(2);
+                }
+            }
+        }
+        if($sort){
+            if($sort == 'price'){
+                $courses = Course::orderBy('price','desc')->paginate(2);
+            }
+            else if($sort == 'created_at'){
+                $courses = Course::orderBy('created_at','desc')->paginate(2);
+            }
+            else{
+                $courses = Course::where('category_id',$course_type->id)->paginate(2);
+            }
+        }
+        $course_types = CourseCategory::all();
+
+
+        return $this->frontView('pages.courses',compact('course_types','courses'));
     }
     public function course()
     {

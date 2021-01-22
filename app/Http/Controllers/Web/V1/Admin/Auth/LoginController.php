@@ -9,6 +9,7 @@ use App\Http\Forms\Web\V1\Auth\LoginWebForm;
 use App\Providers\RouteServiceProvider;
 use App\Rules\IsAdmin;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class LoginController extends WebBaseController
@@ -31,7 +32,7 @@ class LoginController extends WebBaseController
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::ADMIN_HOME;
 
     /**
      * Create a new controller instance.
@@ -58,4 +59,23 @@ class LoginController extends WebBaseController
         $loginInputs = LoginWebForm::inputGroups(null);
         return $this->adminView('core.auth.login', compact('loginInputs'));
     }
+
+
+
+//    public function logout(Request $request)
+//    {
+//        $this->guard()->logout();
+//
+//        $request->session()->invalidate();
+//
+//        $request->session()->regenerateToken();
+//
+//        if ($response = $this->loggedOut($request)) {
+//            return $response;
+//        }
+//
+//        return $request->wantsJson()
+//            ? new JsonResponse([], 204)
+//            : redirect()->route('course.index');
+//    }
 }

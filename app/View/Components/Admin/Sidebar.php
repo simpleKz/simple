@@ -24,14 +24,12 @@ class Sidebar extends BaseComponent
         if ($this->user->isAdmin()) {
             return [
                 $this->navItem(route('home'), 'ti-arrow-left', 'Главная'),
-                $this->navItem(route('category.index'), 'ti-arrow-left', 'Категории'),
-//                $this->navItem(route('jastar.home'), 'ti-home', 'Главная', [
-////                    $this->navItem(route('jastar.about_us.index'), 'ti-info-alt', 'Про нас'),
-////                    $this->navItem(route('jastar.slider.index'), 'ti-layout-media-right-alt', 'Слайдер'),
-//                    $this->navItem(route('jastar.event.index'), 'ti-calendar', 'Мероприятия'),
-//                    $this->navItem(route('jastar.about_project.index'), 'ti-clipboard', 'О проекте'),
-//                    $this->navItem(route('jastar.map.region.index'), 'ti-map', 'Регионы карты'),
-//                ])
+                $this->navItem(route('course.index'), 'ti-arrow-left', 'Курсы'),
+                $this->navItem(route('home'), 'ti-settings', 'Настройки', [
+                    $this->navItem(route('category.index'), 'ti-layers-alt', 'Категории'),
+                    $this->navItem(route('author.index'), 'ti-user', 'Авторы'),
+
+                ])
             ];
         } else {
             return [

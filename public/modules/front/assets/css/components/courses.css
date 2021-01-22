@@ -2,6 +2,9 @@
     font-size: 12px;
     line-height: 14px;
 }
+.course-header a{
+    color:black;
+}
 .course-header h1{
     font-size: 45px;
     line-height: 55px;
@@ -17,7 +20,13 @@
     font-size: 16px;
     line-height: 19px;
     font-weight: normal;
-    cursor: pointer;
+
+}
+.cc{
+    color: rgba(5,6,6,0.93);
+}
+.cc:hover{
+    text-decoration: none !important;
 }
 .course_category{
     cursor: pointer;
@@ -30,12 +39,29 @@
     font-weight:normal;
 }
 
-.course_category:hover  {
+.course_category:hover {
     background:#F76321 ;
 }
 .course_category:hover h1{
     color: #ffffff;
 }
+
+.course_category_active{
+    cursor: pointer;
+    border: 1px solid #F2F2F2;
+    border-radius: 0;
+    background:#F76321 ;
+    color: #ffffff;
+
+
+}
+.course_category_active h1{
+    font-size: 18px;
+    line-height: 22px;
+    font-weight:normal;
+}
+
+
 .banner{
     background-color: #FAFAFA;
     border: 1px solid transparent;
@@ -86,7 +112,7 @@
     border: 1px solid #C9C9C9;
     border-radius: 5px 5px 5px 5px;
     height: 178px;
-    cursor: pointer;
+
 }
 .course__card__video{
     cursor: pointer;
@@ -94,16 +120,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden
+    overflow: hidden;
+
 }
 .course__card__video img{
     flex-shrink: 0;
 
     object-fit: cover;
 }
+.course__card__video iframe{
+    flex-shrink: 0;
+
+    object-fit: cover;
+}
 .course__card__content{
     height: 149px;
-    cursor: pointer;
+
 }
 .course__card__content h1{
     font-size: 22px;
@@ -132,6 +164,9 @@
     border-radius: 2px;
     color: #F76321;
 }
+.button-buy a:hover{
+    color: #F76321;
+}
 .load_more a{
     font-size: 12px;
     line-height: 14px;
@@ -140,16 +175,21 @@
     border: 1px solid #F76321;
     border-radius: 62px;
     color: #F76321;
+    cursor:pointer;
 }
 .course__card__content .description p{
     font-size: 14px;
     line-height: 16px;
     font-weight:normal;
+    min-height: 65px;
+    max-height: 65px;
 }
 .course__card__content .star{
     color:#FFC107;
     font-size: 10px;
 }
 
-
+.load_more a:hover{
+    color: #F76321;
+}
 
