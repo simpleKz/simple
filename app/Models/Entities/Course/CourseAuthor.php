@@ -13,4 +13,13 @@ class CourseAuthor extends Model
     public $timestamps = true;
     protected $fillable = ['first_name','last_name'];
 
+    public function course_categories()
+    {
+        $courses = $this->hasMany(Course::class,'author_id','id')
+            ->with('category')->get();
+        $courses = $courses->unique('category')->pluck('category');
+//        $courses = array_unique($courses);
+
+        return $courses;
+    }
 }

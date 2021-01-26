@@ -19,7 +19,7 @@
                                     <a class="nav-link" href="#">О Simple</a>
                                 </li>
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="#">Направления</a>
+                                    <a class="nav-link" href="{{route('courses')}}">Направления</a>
                                 </li>
 
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">

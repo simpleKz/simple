@@ -207,84 +207,101 @@
                 на развитие своих навыков.
             </p>
             <div class="authors__content pt-5 pb-5 row">
+                @foreach($authors as $author)
                 <div class="authors__card  col-md-2 mb-2">
                     <div class="authors__card__content col-md-12 row">
                         <div class="authors_info justify-content-center">
-                                <div class="authors_img">
-                                    <img src="{{asset('modules/front/assets/img/author.png')}}"
-                                        alt="" >
-                                </div>
-                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>
-                            <h2>#UX/UIDesign</h2>
-                            <h2>#Branding</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="authors__card  col-md-2 mb-2">
-                    <div class="authors__card__content col-md-12 row">
-                        <div class="authors_info">
                             <div class="authors_img">
-                                <img
-                                    src="{{asset('modules/front/assets/img/author.png')}}"
-                                    alt="" >
+                                <img src="{{asset('modules/front/assets/img/author.png')}}"
+                                     alt="" >
                             </div>
-                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>
-                            <h2>#Маркетинг</h2>
+                            <h1 class="pt-3 pb-2">{{$author->first_name." ".$author->last_name}}</h1>
+                            @foreach($author->course_categories() as $type)
+                                <h2>#{{$type->name}}</h2>
+{{--                                <h2>#Branding</h2>--}}
+                            @endforeach
                         </div>
                     </div>
                 </div>
-                <div class="authors__card  col-md-2 mb-2">
-                    <div class="authors__card__content col-md-12 row">
-                        <div class="authors_info">
-                            <div class="authors_img">
-                                <img
-                                    src="{{asset('modules/front/assets/img/author.png')}}"
-                                    alt="" >
-                            </div>
-                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>
-                            <h2>#Видеография</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="authors__card  col-md-2 mb-2">
-                    <div class="authors__card__content col-md-12 row">
-                        <div class="authors_info">
-                            <div class="authors_img">
-                                <img
-                                    src="{{asset('modules/front/assets/img/author.png')}}"
-                                    alt="" >
-                            </div>
-                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>
-                            <h2>#Финансы</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="authors__card  col-md-2 mb-2">
-                    <div class="authors__card__content col-md-12 row">
-                        <div class="authors_info">
-                            <div class="authors_img">
-                                <img
-                                    src="{{asset('modules/front/assets/img/author.png')}}"
-                                    alt="" >
-                            </div>
-                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>
-                            <h2>#PR</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="authors__card  col-md-2 mb-2">
-                    <div class="authors__card__content col-md-12 row">
-                        <div class="authors_info">
-                            <div class="authors_img">
-                                <img
-                                    src="{{asset('modules/front/assets/img/author.png')}}"
-                                    alt="" >
-                            </div>
-                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>
-                            <h2>#Программирование</h2>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+{{--                <div class="authors__card  col-md-2 mb-2">--}}
+{{--                    <div class="authors__card__content col-md-12 row">--}}
+{{--                        <div class="authors_info justify-content-center">--}}
+{{--                                <div class="authors_img">--}}
+{{--                                    <img src="{{asset('modules/front/assets/img/author.png')}}"--}}
+{{--                                        alt="" >--}}
+{{--                                </div>--}}
+{{--                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>--}}
+{{--                            <h2>#UX/UIDesign</h2>--}}
+{{--                            <h2>#Branding</h2>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="authors__card  col-md-2 mb-2">--}}
+{{--                    <div class="authors__card__content col-md-12 row">--}}
+{{--                        <div class="authors_info">--}}
+{{--                            <div class="authors_img">--}}
+{{--                                <img--}}
+{{--                                    src="{{asset('modules/front/assets/img/author.png')}}"--}}
+{{--                                    alt="" >--}}
+{{--                            </div>--}}
+{{--                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>--}}
+{{--                            <h2>#Маркетинг</h2>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="authors__card  col-md-2 mb-2">--}}
+{{--                    <div class="authors__card__content col-md-12 row">--}}
+{{--                        <div class="authors_info">--}}
+{{--                            <div class="authors_img">--}}
+{{--                                <img--}}
+{{--                                    src="{{asset('modules/front/assets/img/author.png')}}"--}}
+{{--                                    alt="" >--}}
+{{--                            </div>--}}
+{{--                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>--}}
+{{--                            <h2>#Видеография</h2>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="authors__card  col-md-2 mb-2">--}}
+{{--                    <div class="authors__card__content col-md-12 row">--}}
+{{--                        <div class="authors_info">--}}
+{{--                            <div class="authors_img">--}}
+{{--                                <img--}}
+{{--                                    src="{{asset('modules/front/assets/img/author.png')}}"--}}
+{{--                                    alt="" >--}}
+{{--                            </div>--}}
+{{--                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>--}}
+{{--                            <h2>#Финансы</h2>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="authors__card  col-md-2 mb-2">--}}
+{{--                    <div class="authors__card__content col-md-12 row">--}}
+{{--                        <div class="authors_info">--}}
+{{--                            <div class="authors_img">--}}
+{{--                                <img--}}
+{{--                                    src="{{asset('modules/front/assets/img/author.png')}}"--}}
+{{--                                    alt="" >--}}
+{{--                            </div>--}}
+{{--                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>--}}
+{{--                            <h2>#PR</h2>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="authors__card  col-md-2 mb-2">--}}
+{{--                    <div class="authors__card__content col-md-12 row">--}}
+{{--                        <div class="authors_info">--}}
+{{--                            <div class="authors_img">--}}
+{{--                                <img--}}
+{{--                                    src="{{asset('modules/front/assets/img/author.png')}}"--}}
+{{--                                    alt="" >--}}
+{{--                            </div>--}}
+{{--                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>--}}
+{{--                            <h2>#Программирование</h2>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
             <p>Все еще думаешь?
             </p>

@@ -72,11 +72,28 @@
                         <h2>Выберите направление в котором хотите развиваться</h2>
                     </div>
                     <div class="col-md-6 col-lg-6 text-right">
-                        <h3>Сортировать по: <div class="list"><span class="placeholder">популярности</span>
-                                <ul class="list__ul">
-                                    <li><a href="">популярности</a></li>
-                                    <li><a href="">цене</a></li>
-                                    <li><a href="">новизне</a></li>
+                        <h3>Сортировать по:<div class="list">
+                                @if(request()->has('sort'))
+                                    @if(request('sort')== 'price')
+                                        <span class="placeholder">цене</span>
+                                        @else
+                                        <span class="placeholder">новизне</span>
+                                    @endif()
+                                    @else
+                                    <span class="placeholder">популярности</span>
+                                @endif()
+
+
+                                    <ul class="list__ul">
+                                    @if(!request()->route('slug'))
+                                        <li><a href="{{route('courses')}}">популярности</a></li>
+                                        <li><a href="{{route('courses')."?sort=price"}}">цене</a></li>
+                                        <li><a href="{{route('courses')."?sort=created_at"}}">новизне</a></li>
+                                    @else
+                                        <li><a href="{{route('courses',['slug' => $slug])}}">популярности</a></li>
+                                        <li><a href="{{route('courses',['slug' => $slug])."?sort=price"}}">цене</a></li>
+                                        <li><a href="{{route('courses',['slug' => $slug])."?sort=created_at"}}">новизне</a></li>
+                                    @endif
 
                                 </ul>
                             </div></h3>
@@ -290,9 +307,9 @@
 {{--                        </div>--}}
                     </div>
 
-                        @if($courses->count() != $courses->total())
+                        @if($courses->count() < $courses->total())
                             <div class="load_more text-center mt-3">
-                                <a class="see-more btn-orange pt-2 pb-2 pr-5 pl-5" data-div="#courses_cards" data-page="2" data-link="?page=" id="see-more">Загрузить еще</a>
+                                <a class="see-more btn-orange pt-2 pb-2 pr-5 pl-5" data-div="#courses_cards" data-page="2" data-link="page=" id="see-more">Загрузить еще</a>
                             </div>
                         @else
 
@@ -354,23 +371,29 @@
         $(".placeholder").on("click", function (ev) {
             $(".placeholder").css("opacity", "0");
             $(".list__ul").toggle();
+
         });
 
         $(".list__ul a").on("click", function (ev) {
             ev.preventDefault();
             var index = $(this).parent().index();
-
+            console.log($(this)[0]);
             $(".placeholder").text($(this).text()).css("opacity", "1");
 
             console.log($(".list__ul").find("li").eq(index).html());
-
+            // var a = $(".list__ul").find("li").eq(index).html();
+            // var b = a.attr("href");
             $(".list__ul").find("li").eq(index).prependTo(".list__ul");
             $(".list__ul").toggle();
+            // location.replace(window.location.href+'?sort=price');
+            location.replace($(this)[0]);
+
         });
 
         $("select").on("change", function (e) {
             // Set text on placeholder hidden element
             $(".placeholder").text(this.value);
+            location.replace(window.location.href+'?sort=price');
 
             // Animate select width as placeholder
             $(this).animate({ width: $(".placeholder").width() + "px" });
@@ -385,9 +408,8 @@
             if(count >= total){
                 see_more.remove();
             }
-            console.log(count);
-            // console.log($('div.courses__card').length);
-            // console.log($('div[id^=cc]').length);
+            // console.log(count);
+            // console.log(total);
 
 
 
@@ -397,12 +419,11 @@
 
     <script type="text/javascript">
         var count = {{$courses->count()}}
-        var  total = {{$courses->total()}}
+        var total = {{$courses->total()}}
         $(function () {
-
             var $ul = $("ul.pagination");
             $ul.hide(); // Prevent the default Laravel paginator from showing, but we need the links...
-
+                checkCourses();
             $pages = {{$courses->lastPage()}}
             $(".see-more").click(function () {
                 count = count+2;
@@ -410,10 +431,17 @@
                 if ($pages >= $(this).data('page')) {
                     $div = $($(this).data('div')); //div to append
 
-                    $link = $(this).data('link'); //current URL
+                    if (window.location.href.indexOf("sort") > -1) {
+                        $link = "&"+$(this).data('link'); //current URL
+                    }else {
+                        $link = "?"+$(this).data('link'); //current URL
+                    }
+
 
                     $page = $(this).data('page'); //get the next page #
-                    $href = $link + $page; //complete URL
+
+                    $href = window.location.href + $link + $page; //complete URL
+                    console.log($href);
                     $.get($href, function (response) { //append data
                         $html = $(response).find("#courses_cards").html();
                         $div.append($html);
