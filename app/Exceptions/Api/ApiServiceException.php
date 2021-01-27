@@ -10,25 +10,30 @@ namespace App\Exceptions\Api;
 
 use App\Core\Utils\RespUtil;
 use App\Exceptions\BaseException;
+use App\Http\Utils\ResponseUtil;
 
 class ApiServiceException extends BaseException
 {
-    protected $errors;
     protected $code;
+    protected $errors;
+    protected $success;
 
     /**
-     * ApiServiceException constructor.
-     * @param $errors
+     * ServiceException constructor.
      * @param $code
+     * @param $success
+     * @param $errors
      */
-    public function __construct($errors, $code)
+    public function __construct($code, $success, Array $errors)
     {
-        $this->errors = $errors;
         $this->code = $code;
+        $this->success = $success;
+        $this->errors = $errors;
     }
 
     public function getApiResponse()
     {
-        return RespUtil::resp($this->errors, $this->code);
+
+        return ResponseUtil::makeResponse($this->code, $this->success, $this->errors);
     }
 }

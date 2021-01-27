@@ -21,7 +21,8 @@ var router = new VueRouter({
     routes: [
         {
             path: '/',
-            redirect: 'profile'
+            redirect: 'profile',
+            props: true,
         },
         {
             path: '/profile',

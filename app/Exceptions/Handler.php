@@ -65,6 +65,13 @@ class Handler extends ExceptionHandler
         if ($exception instanceof BaseException) {
             return $exception->getApiResponse();
         }
+        if ($exception instanceof WebServiceErroredException) {
+            return redirect()->back()->with('error', $exception->getExplanation());
+        }
+
+        if ($exception instanceof BaseException) {
+            return $exception->getApiResponse();
+        }
         return parent::render($request, $exception);
     }
 

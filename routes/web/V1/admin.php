@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Entities\Core\Role;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,8 +25,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Admin\Auth', 'verify' => true], function () {
 
-    Route::get('/login', ['as' => 'login', 'uses' => 'LoginController@showLoginForm']);
-    Route::post('/login', ['as' => 'login.post', 'uses' => 'LoginController@login']);
+    Route::get('/login', ['as' => 'admin.login', 'uses' => 'LoginController@showLoginForm']);
+    Route::post('/login', ['as' => 'admin.login.post', 'uses' => 'LoginController@login']);
     Route::group(['middleware' => 'auth'], function () {
         Route::post('logout', ['as' => 'logout', 'uses' => 'LoginController@logout']);
     });
@@ -34,7 +35,7 @@ Route::group(['namespace' => 'Admin\Auth', 'verify' => true], function () {
 
 Route::group(['namespace' => 'Admin\System\Course', 'verify' => true], function () {
 Route::group(['middleware' => 'auth'], function () {
-
+    Route::group(['middleware' => ['ROLE_OR:' . Role::ADMIN_ID]], function () {
     //Course Categories
     Route::get('/categories', ['uses' => 'CourseCategoryController@index', 'as' => 'category.index']);
     Route::post('/category/store', ['uses' => 'CourseCategoryController@store', 'as' => 'category.store']);
@@ -64,12 +65,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/course/lessons/delete', ['uses' => 'CourseLessonController@delete', 'as' => 'lesson.delete']);
     Route::post('/course/lesson/material/delete', ['uses' => 'CourseLessonController@deleteMaterial', 'as' => 'lesson.material.delete']);
 
-
+    });
 });
 });
 Route::group(['namespace' => 'Front', 'verify' => true], function () {
     Route::group(['middleware' => 'auth'], function () {
+        Route::group(['middleware' => ['ROLE_OR:' . Role::ADMIN_ID]], function () {
         Route::get('/home', ['uses' => 'PageController@home', 'as' => 'home']);
-
+        });
     });
 });

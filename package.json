@@ -29,6 +29,7 @@
         "mapbox-gl": "^1.12.0",
         "select2": "^4.0.13",
         "vue-clipboard2": "^0.3.1",
+        "vue-laravel-data": "^1.0.3",
         "vue-mapbox": "^0.4.1",
         "vue-photoswipe": "^1.0.3",
         "vue-picture-swipe": "^2.0.2",

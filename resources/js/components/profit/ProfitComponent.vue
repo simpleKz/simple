@@ -1,13 +1,13 @@
 <template>
-    <div v-if="withdrawal && activated && ref_link && copied" class="profit_content">
+    <div v-if="user.withdrawal_card_id  && user.ref_link  " class="profit_content">
         <div class="profit_header col-12 col-md-12 col-lg-12 mt-3 row">
             <div class="col-6 col-mg-6 col-lg-6 ">
                 <p>Моя реферальная ссылка</p>
                 <div class="ref_link_card col-12 d-flex align-items-center ">
                     <div class="d-flex align-items-center justify-content-center mr-3">
-                        <h2 class=" pt-2 " >Simple.com/ref?kairat</h2>
+                        <h2 class=" pt-2 " >{{user.ref_link}}</h2>
                     </div>
-                    <span class="copy-circle-around " @click="copyLink()" >
+                    <span class="copy-circle-around " v-clipboard="user.ref_link" >
                                         <i class="fal fa-copy"></i>
                     </span>
                 </div>
@@ -20,7 +20,7 @@
                             <img class="course_image" src="/modules/front/assets/img/mastercard.png" alt="">
                         </div>
                         <label>
-                            **** - **** - **** - 9823
+                            **** - **** - **** - {{user.withdrawal_card.last_four}}
                         </label>
                     </div>
                     <span class="copy-circle-around ">
@@ -160,7 +160,7 @@
                 <img class="course_image" src="/modules/front/assets/img/mastercard.png" alt="">
             </div>
             <label>
-                **** - **** - **** - 9823
+                **** - **** - **** - {{user.withdrawal_card.last_four}}
             </label>
         </div>
         <div class="form-group col-12 text-center">
@@ -220,12 +220,12 @@
             <div class="form-group credit_card col-12 d-flex align-items-center justify-content-center mt-5 mb-5">
                 <div class="form-group col-8 d-flex align-items-center justify-content-center">
                     <div class="d-flex align-items-center justify-content-center mr-3 ">
-                        <h2 class="link pt-2 pl-4 pr-4" id="link">Simple.com/ref?kairat</h2>
+                        <h2 class="link pt-2 pl-4 pr-4" id="link">{{user.ref_link}}</h2>
                     </div>
-                    <span class="copy-circle-around " @click="copyLink()" >
+                    <span class="copy-circle-around "  v-clipboard="user.ref_link" >
                                         <i class="fal fa-copy"></i>
                     </span>
-                    <input hidden type="text" value="Simple.com/ref?kairat" id="myInput">
+
                 </div>
             </div>
             <div class="form-group col-12 text-center">
@@ -245,9 +245,15 @@
                 ref_link:false,
                 copied:false,
                 activated:false,
-                link:''
+                link:'',
+                user:Object,
+                withdrawal_card: Object
             }
             },
+        mounted: function () {
+            this.loadProfile();
+        },
+
         computed: {
             isDisable: function () {
                 return this.link === ''
@@ -255,23 +261,74 @@
         },
 
         methods: {
-            copyLink: function () {
-                var copyText = document.getElementById("myInput");
-                copyText.select();
-                copyText.setSelectionRange(0, 99999); /* For mobile devices */
-                document.execCommand("copy");
+            loadProfile: function () {
+                const app = this;
+                axios('/profile')
+                    .then(function (resp) {
+                        app.loading = true;
+                        app.user = resp.data.user;
+                        app.withdrawal_card = resp.data.user.withdrawal_card;
+                        app.loading = false;
+                    }).catch(function (resp) {
+                });
             },
+
             activate: function () {
                 this.activated = true;
             },
             saveWithdrawal: function () {
+                this.makeCardWithdrawal();
+                this.loadProfile();
                 this.withdrawal = true;
             },
             saveLink: function () {
+                const app = this;
+                var bodyFormData = new FormData();
+                bodyFormData.append('link', this.link);
+                app.loading = true;
+                app.loading = false;
+                axios({
+                    method: 'post',
+                    url: '/profile/create/ref-link',
+                    data: bodyFormData,
+                    headers: {'Content-Type': 'multipart/form-data'}
+                })
+                    .then(function (resp) {
+                        app.loading = false;
+                        toastr.success('Реферальная ссылка успешно сохранена!');
+                    }).catch(function (resp) {
+                    app.loading = false;
+                });
                 this.ref_link = true;
+                this.loadProfile();
             },
             saveCopy: function () {
                 this.copied = true;
+            },
+            makeCardWithdrawal() {
+                const app = this;
+                var bodyFormData = new FormData();
+                // for (var key in this.updatedPassword) {
+                //     bodyFormData.append(key, this.updatedPassword[key]);
+                // }
+                bodyFormData.append('id', this.user.card.id);
+                app.loading = true;
+                app.loading = false;
+                axios({
+                    method: 'post',
+                    url: '/profile/create/withdrawal-card',
+                    data: bodyFormData,
+                    headers: {'Content-Type': 'multipart/form-data'}
+                })
+                    .then(function (resp) {
+                        app.loading = false;
+                        toastr.success('Карта успешно сохранена!');
+                        // setTimeout(function (app) {
+                        //     app.$router.go(app.$router.currentRoute);
+                        // }, 1500, app);
+                    }).catch(function (resp) {
+                    app.loading = false;
+                });
             }
 
         }

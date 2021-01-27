@@ -3,6 +3,9 @@
     line-height: 55px;
     font-weight: bold;
 }
+.profile-header a{
+    color:black;
+}
 .profile-header label{
     font-size: 20px;
     line-height: 24px;
@@ -14,7 +17,7 @@
     font-weight: normal;
 }
 .avatar{
-    cursor: pointer;
+    /*cursor: pointer;*/
     border-radius: 5px;
     display: flex;
     /*justify-content: center;*/
@@ -23,6 +26,8 @@
 .avatar img{
     flex-shrink: 0;
     object-fit: cover;
+    border-radius: 50%;
+
 }
 .profile-list{
     border:1px solid #E8E8E8;
@@ -62,6 +67,7 @@
     border-color:#F76321;
     font-size: 16px;
     line-height: 19px;
+
  }
 .btn-primary:hover{
     background: #F76321;
@@ -73,12 +79,19 @@
     border-color:#F76321;
 }
 .btn-primary:active{
-    background: #F76321;
+
     border-color:#F76321;
+    background-color: #F76321;
 }
 .btn-primary:focus{
-    box-shadow: 0 0 0 0.2rem rgba(255, 14, 29, 0.93);
-
+    background: #F76321;
+    box-shadow: 0 0 0 0.2rem #F76321;
+    border-color:#F76321;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle{
+    color: #fff;
+    background-color: #F76321;
+    border-color: #F76321;
 }
 .card{
     border: none !important;

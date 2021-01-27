@@ -15,6 +15,8 @@ use App\Models\Entities\Course\CourseAuthor;
 use App\Models\Entities\Course\CourseCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
+use Inertia\Inertia;
 
 class PageController extends WebBaseController
 {
@@ -75,7 +77,15 @@ class PageController extends WebBaseController
     }
     public function profile()
     {
-        return $this->frontView('pages.profile');
+        $exampleProp = Course::all();
+        $exampleProp = collect(['course' => ['name' => 'Item 1'], ['name' => 'Item 2']]);
+
+//        $course = $course->toJson();
+        $exampleProp = json_encode(['exampleProp' => $exampleProp]);
+//        $course = collect(Http::get('https://rickandmortyapi.com/api/character/')->json()['results']);
+
+//        dd($course);
+        return $this->frontView('pages.profile',compact('exampleProp'));
     }
 
 

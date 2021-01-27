@@ -37,7 +37,12 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto py-4 py-md-0">
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="#"><i class="fa fa-user"></i>&nbsp;Войти</a>
+
+                                    @if(auth()->user())
+                                        <a class="nav-link" href="{{route('login')}}"><i class="fa fa-user"></i>{{" ".auth()->user()->first_name ." ".substr(auth()->user()->last_name, 0, 1)."."}}</a>
+                                    @else
+                                        <a class="nav-link" href="{{route('login')}}"><i class="fa fa-user"></i>&nbsp;Войти</a>
+                                    @endif
                                 </li>
                                                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ru</a>

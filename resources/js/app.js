@@ -2,7 +2,8 @@ import vSelect from 'vue-select'
 import VuePictureSwipe from 'vue-picture-swipe';
 import KProgress from 'k-progress';
 import VueClipboard from 'vue-clipboard2'
-
+// import VueLaravelData from 'vue-laravel-data'
+// Vue.use(VueLaravelData);
 Vue.use(VueClipboard);
 
 Vue.component('vue-picture-swipe', VuePictureSwipe);
