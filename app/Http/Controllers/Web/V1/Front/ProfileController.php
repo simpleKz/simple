@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Web\V1\Front;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Http\Requests\Web\V1\ProfileUpdateWebRequest;
 use App\Models\Entities\Core\User;
+use App\Models\Entities\Course\CoursePassing;
 use App\Models\Entities\UserCard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,13 @@ class ProfileController extends WebBaseController
         $user->card = $card;
         $user->withdrawal_card = $withdrawal_card;
         return json_encode(['user' => $user]);
+    }
+
+    public function myCourses(){
+        $user = auth()->user();
+        $active = CoursePassing::where('user_id',$user->id)->where('is_passed', false)->with('course')->get();
+        $completed = CoursePassing::where('user_id',$user->id)->where('is_passed', true)->with('course')->get();
+        return json_encode(['active_courses' => $active ,'completed_courses' => $completed ]);
     }
 
     public function profileUpdate(ProfileUpdateWebRequest $request){

@@ -71,9 +71,14 @@ class PageController extends WebBaseController
     {
         return $this->frontView('pages.course');
     }
-    public function myCourse()
+    public function myCourse($slug)
     {
-        return $this->frontView('pages.my-course');
+        $user = auth()->user();
+        $course = Course::where('slug',$slug)->firstOrFail();
+        $course = Course::where('slug',$slug)->with('lessons')->get();
+        #ToDo Проверить купил ли этот чел курс или нет!
+
+        return $this->frontView('pages.my-course',compact('course'));
     }
     public function profile()
     {

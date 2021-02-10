@@ -36,7 +36,7 @@ class Course extends Model
     }
 
     public function lessons(){
-        return  $this->hasMany(CourseLesson::class,'course_id','id');
+        return  $this->hasMany(CourseLesson::class,'course_id','id')->with('docs');
     }
 
 
