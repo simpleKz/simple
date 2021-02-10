@@ -28,7 +28,7 @@
                         <div class="col-md-12 p-0">
                             <a class="course__card__content " :href="'/my-course/' + data.course.slug">
                                 <div class="course__card__image col-5 d-flex align-items-center justify-content-center ">
-                                    <img class="course_image" src="/modules/front/assets/img/course_img.png" alt="">
+                                    <img class="course_image" :src="data.course.image_path" alt="">
                                 </div>
                                 <div   class="course_card_info p-3 col-7">
                                     <h1>{{data.course.name}}</h1>
@@ -38,7 +38,7 @@
                                     <k-progress
                                         status="success"
                                         type="line"
-                                        :percent="35"
+                                        :percent="data.passed_lessons_count*100/data.overall_lessons_count"
                                         color="#F76321"
                                         width=200px
                                         :show-text="false">
@@ -48,28 +48,28 @@
                         </div>
                     </div>
                 </div>
-                <div v-if="completed" class="courses__content col-md-12 col-lg-12 col-12 row mt-3" >
-                    <div class="col-md-6 pr-0 mb-3 " v-for="(course,index) in completed_courses">
+                <div class="courses__content col-md-12 col-lg-12 col-12 row mt-3" v-else >
+                    <div class="col-md-6 pr-0 mb-3 " v-for="(data,index) in completed_courses">
                         <div class="col-md-12 p-0">
-                            <div class="course__card__content ">
+                            <a class="course__card__content " :href="'/my-course/' + data.course.slug">
                                 <div class="course__card__image col-5 d-flex align-items-center justify-content-center ">
-                                    <img class="course_image" src="/modules/front/assets/img/course_img.png" alt="">
+                                    <img class="course_image" :src="data.course.image_path" alt="">
                                 </div>
                                 <div   class="course_card_info p-3 col-7">
-                                    <h1>{{course.course.name}}</h1>
-                                    <p>{{course.author.first_name + " " + course.author.last_name}}</p>
-                                    <label>Пройдено {{course.passed_lessons_count}} уроков из {{course.overall_lessons_count}}
+                                    <h1>{{data.course.name}}</h1>
+                                    <p>{{data.course.author.first_name + " " + data.course.author.last_name}}</p>
+                                    <label>Пройдено {{data.passed_lessons_count}} уроков из {{data.overall_lessons_count}}
                                     </label>
                                     <k-progress
                                         status="success"
                                         type="line"
-                                        :percent="35"
+                                        :percent="data.passed_lessons_count*100/data.overall_lessons_count"
                                         color="#F76321"
                                         width=200px
                                         :show-text="false">
                                     </k-progress>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -164,10 +164,11 @@
     font-size: 11px;
 }
 .course_image{
-    min-height: 100px;
-    max-height: 300px;
+    height: 155.72px;
+    /*max-height: 300px;*/
     min-width: 100%;
     max-width: 100%;
+    object-fit: fill;
     background: #FAFAFA;
     border: 1px solid #E0E0E0;
     box-sizing: border-box;

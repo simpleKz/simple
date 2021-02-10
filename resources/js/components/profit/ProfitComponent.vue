@@ -535,7 +535,7 @@ select option {
 }
 
 .placeholder {
-    border-bottom: 4px solid;
+    border-bottom: 2px solid;
     cursor: pointer;
 }
 .placeholder:hover {
