@@ -48,7 +48,8 @@ class LoginController extends WebBaseController
     {
 
         $request->validate([
-            $this->username() => ['required','string',new IsAdmin()],
+//            $this->username() => ['required','string'],
+            'email' => ['required', 'string', new IsAdmin()],
             'password' => ['required','string'],
         ]);
 
