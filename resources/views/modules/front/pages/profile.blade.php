@@ -37,7 +37,7 @@
                 <div class="col-md-3">
                     <div class="profile-list ">
                         <div class="list-group list-group-flush">
-                            <router-link :to="{ name: 'profile', params: {exampleProp:{{$exampleProp}}} }"  class="list-group-item list-group-item-action p-4">
+                            <router-link :to="{ name: 'profile' }"  class="list-group-item list-group-item-action p-4">
                                 Мой профиль
                             </router-link>
                             <router-link :to="{ name: 'courses' }" class="list-group-item list-group-item-action p-4">

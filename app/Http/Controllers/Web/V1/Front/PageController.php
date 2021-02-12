@@ -83,6 +83,10 @@ class PageController extends WebBaseController
 
         return $this->frontView('pages.my-course',compact('course'));
     }
+    public function profile()
+    {
+        return $this->frontView('pages.profile');
+    }
 
     public function saveEmailForBulkMailing(EmailSendWebRequest $request){
         BulkMailing::create([
