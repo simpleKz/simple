@@ -10,6 +10,9 @@ namespace App\Http\Controllers\Web\V1\Front;
 
 
 use App\Http\Controllers\Web\WebBaseController;
+use App\Http\Requests\Web\V1\EmailSendWebRequest;
+use App\Jobs\SendEmailJob;
+use App\Models\Entities\Core\BulkMailing;
 use App\Models\Entities\Course\Course;
 use App\Models\Entities\Course\CourseAuthor;
 use App\Models\Entities\Course\CourseCategory;
@@ -80,19 +83,14 @@ class PageController extends WebBaseController
 
         return $this->frontView('pages.my-course',compact('course'));
     }
-    public function profile()
-    {
-        $exampleProp = Course::all();
-        $exampleProp = collect(['course' => ['name' => 'Item 1'], ['name' => 'Item 2']]);
 
-//        $course = $course->toJson();
-        $exampleProp = json_encode(['exampleProp' => $exampleProp]);
-//        $course = collect(Http::get('https://rickandmortyapi.com/api/character/')->json()['results']);
-
-//        dd($course);
-        return $this->frontView('pages.profile',compact('exampleProp'));
+    public function saveEmailForBulkMailing(EmailSendWebRequest $request){
+        BulkMailing::create([
+            'email'=> $request->email
+        ]);
+        $this->sent();
+        return redirect()->back();
     }
-
 
 //    public function files($relative_path)
 //    {

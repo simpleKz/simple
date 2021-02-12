@@ -203,11 +203,15 @@
                 </div>
                 <div class="col-12 col-md-4 col-lg-4 d-flex align-items-center">
                     <div class="subscription_form">
-                        <input type="text" class=" form-control email_text  pr-5 pl-3 pt-3 pb-3 mb-4" name="title" id="" placeholder="Твой e-mail" required>
-                        <div>
+                        <form action="{{route('send.email')}}" method="post">
+                            {{csrf_field()}}
 
-                            <a class="btn-orange pr-5 pl-4 pt-3 pb-3" href="#">Подписаться на рассылку</a>
-                        </div>
+                            <input type="text" class=" form-control email_text  pr-5 pl-3 pt-3 pb-3 mb-4" name="email"  placeholder="Твой e-mail" required>
+                            <div>
+
+                                <button type="submit"  class="btn-orange pr-5 pl-4 pt-3 pb-3" >Подписаться на рассылку</button>
+                            </div>
+                        </form>
                     </div>
 
                 </div>

@@ -23,6 +23,13 @@ class WebBaseController extends Controller implements WithUser
             ->flash('success', 'Добавлено!');
     }
 
+    public function sent()
+    {
+        request()
+            ->session()
+            ->flash('success', 'Отправлено!');
+    }
+
     public function inModeration()
     {
         request()

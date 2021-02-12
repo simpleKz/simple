@@ -29,7 +29,9 @@ class Sidebar extends BaseComponent
                     $this->navItem(route('category.index'), 'ti-layers-alt', 'Категории'),
                     $this->navItem(route('author.index'), 'ti-user', 'Авторы'),
 
-                ])
+                ]),
+                $this->navItem(route('bulk_mailing.index'), 'ti-email', 'Массовая рассылка'),
+
             ];
         } else {
             return [

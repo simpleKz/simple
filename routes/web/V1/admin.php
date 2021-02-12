@@ -64,9 +64,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/course/lessons/update', ['uses' => 'CourseLessonController@update', 'as' => 'lesson.update']);
     Route::post('/course/lessons/delete', ['uses' => 'CourseLessonController@delete', 'as' => 'lesson.delete']);
     Route::post('/course/lesson/material/delete', ['uses' => 'CourseLessonController@deleteMaterial', 'as' => 'lesson.material.delete']);
-
     });
 });
+});
+
+
+Route::group(['namespace' => 'Admin\System\BulkMailing', 'verify' => true], function () {
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/bulk-mailing', ['uses' => 'BulkMailingController@index', 'as' => 'bulk_mailing.index']);
+        Route::post('/bulk-mailing/send', ['uses' => 'BulkMailingController@send', 'as' => 'bulk_mailing.send']);
+    });
 });
 Route::group(['namespace' => 'Front', 'verify' => true], function () {
     Route::group(['middleware' => 'auth'], function () {
