@@ -137,9 +137,7 @@
 }
 /*Part1*/
 .start_course{
-    width: 100%;
-    height:70vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../../img/index_img.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     background-repeat: no-repeat, no-repeat;
     background-position: center, center;
     background-size:cover;

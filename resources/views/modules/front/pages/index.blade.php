@@ -3,18 +3,33 @@
 @section('styles')
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/swiper.min.css')}}">
     <style>
-
+        .slider-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
     </style>
 @endsection
 
 @section('content')
     <section class="start_course">
-        <div class="container">
-            <h1>Освой новую профессию
-                    <p>за 2 месяца</p></h1>
-            <h3 class="mb-5">Обучайся с любой точки планеты и в один клик</h3>
-            <a class="btn-orange " href="#">Начать обучение</a>
+        <div class="owl-carousel carousel-testimony">
+            <div class="item">
+                <img class="slider-img" src="{{asset('modules/front/assets/img/index_img.png')}}" alt="">
+                <div class="row col-6 offset-1">
+                    <h1>Освой новую профессию <br>за 2 месяца</h1>
+                    <h3>Обучайся с любой точки планеты и в один клик</h3>
+                    <a class="btn-orange " href="#">Начать обучение</a>
 
+                </div>
+            </div>
+            <div class="item">
+                <h1>Освой новую профессию
+                    <span>за 2 месяца</span></h1>
+                <h3 class="mb-5">Обучайся с любой точки планеты и в один клик</h3>
+                <a class="btn-orange " href="#">Начать обучение</a>
+            </div>
         </div>
     </section>
     <section class="recommendations ">
