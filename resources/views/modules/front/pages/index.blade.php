@@ -21,7 +21,6 @@
                     <h1>Освой новую профессию <br>за 2 месяца</h1>
                     <h3>Обучайся с любой точки планеты и в один клик</h3>
                     <a class="btn-orange " href="#">Начать обучение</a>
-
                 </div>
             </div>
             <div class="item">
@@ -372,6 +371,21 @@
     <script src="{{asset('modules/front/assets/js/purecounter.js')}}"></script>
     <script src="{{asset('modules/front/assets/js/swiper.min.js')}}"></script>
     <script type="text/javascript">
-
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                1000: {
+                    items: 1
+                }
+            }
+        })
     </script>
 @endsection
