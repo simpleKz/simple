@@ -2,32 +2,34 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/swiper.min.css')}}">
+    <link rel="stylesheet" href="{{asset('modules/front/assets/css/components/index_responsive.css')}}">
     <style>
-        .slider-img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
+
     </style>
 @endsection
 
 @section('content')
     <section class="start_course">
-        <div class="owl-carousel carousel-testimony">
+        <div class="owl-carousel">
             <div class="item">
                 <img class="slider-img" src="{{asset('modules/front/assets/img/index_img.png')}}" alt="">
-                <div class="row col-6 offset-1">
-                    <h1>Освой новую профессию <br>за 2 месяца</h1>
-                    <h3>Обучайся с любой точки планеты и в один клик</h3>
-                    <a class="btn-orange " href="#">Начать обучение</a>
+                <div class="row col-12 col-md-11 col-lg-9 col-xl-6 offset-0 offset-md-0 offset-lg-1 slider-body">
+                    <h1 class="col-12">Освой новую профессию <br>за 2 месяца</h1>
+                    <h3 class="col-12">Слайдер 2</h3>
+                    <div class="col-12">
+                        <a class="btn btn-orange mt-3" href="#">Начать обучение</a>
+                    </div>
                 </div>
             </div>
             <div class="item">
-                <h1>Освой новую профессию
-                    <span>за 2 месяца</span></h1>
-                <h3 class="mb-5">Обучайся с любой точки планеты и в один клик</h3>
-                <a class="btn-orange " href="#">Начать обучение</a>
+                <img class="slider-img" src="{{asset('modules/front/assets/img/index_img.png')}}" alt="">
+                <div class="row col-12 col-md-11 col-lg-9 col-xl-6 offset-0 offset-md-0 offset-lg-1 slider-body">
+                    <h1 class="col-12">Освой новую профессию <br>за 2 месяца</h1>
+                    <h3 class="col-12">Слайдер 1</h3>
+                    <div class="col-12">
+                        <a class="btn btn-orange mt-3" href="#">Начать обучение</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -132,7 +134,7 @@
                         - Правильно! Начать пробовать себя в том, что вам интересно!
                     </p>
                 </div>
-                <div class="col-12 col-md-4 col-lg-4">
+                <div class="col-12 col-md-4">
                     <div>
                         <img
                             src="{{asset('modules/front/assets/img/girl1.png')}}"
@@ -374,7 +376,7 @@
         $('.owl-carousel').owlCarousel({
             loop: true,
             margin: 10,
-            nav: true,
+            nav: false,
             responsive: {
                 0: {
                     items: 1
