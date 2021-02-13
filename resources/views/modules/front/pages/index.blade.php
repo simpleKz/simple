@@ -81,23 +81,24 @@
         <div class="container p-4">
             <h1>Изучай актуальные направления</h1>
             <h3 class="mb-5">То, что сейчас в тренде и имеет большой спрос на рынке.</h3>
-                <div class="directions__content row">
-                    @foreach($course_types as $course_type)
-                        <a class="directions__card  col-md-6 mb-2" href="{{route('courses',['slug' => $course_type->slug])}}">
-                            <div class="directions__card__content col-md-12">
-                                <div class="dir_text p-3 col-10">
-                                    <h1>{{$course_type->name}}</h1>
-                                    <p>Доступно {{$course_type->courses->count()}} курс(а)</p>
-                                </div>
-                                <div class="dir_circle pt-4 float-right">
+            <div class="directions__content row">
+                @foreach($course_types as $course_type)
+                    <a class="directions__card  col-md-6 mb-2"
+                       href="{{route('courses',['slug' => $course_type->slug])}}">
+                        <div class="directions__card__content col-md-12">
+                            <div class="dir_text p-3 col-10">
+                                <h1>{{$course_type->name}}</h1>
+                                <p>Доступно {{$course_type->courses->count()}} курс(а)</p>
+                            </div>
+                            <div class="dir_circle pt-4 float-right">
                                <span class="read-more-circle-around">
                                         <i class="fa fa-arrow-right"></i>
                                </span>
-                                </div>
                             </div>
-                        </a>
-                        @endforeach
-                </div>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
             <div class="all-directions">
                 <div class="all-directions-text pt-4">
                     <a href="{{route('courses')}}">Все направления</a>
@@ -111,7 +112,7 @@
 
             </div>
 
-            </div>
+        </div>
     </section>
     <section class="talents pt-5 pb-2">
         <div class="container p-4">
@@ -135,11 +136,11 @@
                     </p>
                 </div>
                 <div class="girl1_img col-12 col-md-4 col-lg-4">
-{{--                    <div class="">--}}
-{{--                        <img--}}
-{{--                            src="{{asset('modules/front/assets/img/girl1.png')}}"--}}
-{{--                            alt="" width="300" height="300">--}}
-{{--                    </div>--}}
+                    {{--                    <div class="">--}}
+                    {{--                        <img--}}
+                    {{--                            src="{{asset('modules/front/assets/img/girl1.png')}}"--}}
+                    {{--                            alt="" width="300" height="300">--}}
+                    {{--                    </div>--}}
                     &nbsp
                 </div>
             </div>
@@ -156,23 +157,23 @@
                 </div>
                 <div class="col-12 col-md-8 col-lg-8">
                     <div class="text-right">
-                    <h1>Развивай свои сильные стороны</h1>
+                        <h1>Развивай свои сильные стороны</h1>
                         <div class="pr-4 text-right">
-                    <p class="pt-2 pb-4"><span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                        <span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                        <span class="dots fas  fa-circle"></span>
-                    </p>
-                    <p>
-                        Ты уже нашел то, что тебе нравится?<br>
-                        Это очень и очень круто! Ведь у большинства его попросту нет
-                    </p>
-                    <p>
-                        Теперь пора развивать свои сильные стороны.<br>
-                        Учись у лучших экспертов в твоем деле и перенимай их опыт!
-                    </p>
-                    <div class="pt-5">
-                        <a class="btn-orange" href="#">Начну прямо сейчас</a>
-                    </div>
+                            <p class="pt-2 pb-4"><span class="dots fas  fa-circle"></span>&nbsp&nbsp
+                                <span class="dots fas  fa-circle"></span>&nbsp&nbsp
+                                <span class="dots fas  fa-circle"></span>
+                            </p>
+                            <p>
+                                Ты уже нашел то, что тебе нравится?<br>
+                                Это очень и очень круто! Ведь у большинства его попросту нет
+                            </p>
+                            <p>
+                                Теперь пора развивать свои сильные стороны.<br>
+                                Учись у лучших экспертов в твоем деле и перенимай их опыт!
+                            </p>
+                            <div class="pt-5">
+                                <a class="btn-orange" href="#">Начну прямо сейчас</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -181,7 +182,7 @@
         </div>
     </section>
     <section class="earn_money mt-5 pt-5 pb-5">
-        <div class="container p-4">
+        <div class="container">
             <div class="row">
                 <div class="col-12 col-md-8 col-lg-8 pr-0">
                     <h1 class="pb-2">Зарабатывай на своем обучении</h1>
@@ -202,11 +203,11 @@
                     </p>
                 </div>
                 <div class="col-12 col-md-4 col-lg-4 d-flex align-items-center pr-0 pl-0">
-                        <div class="earn_money_img">
+                    <div class="earn_money_img">
                         <img
                             src="{{asset('modules/front/assets/img/notebook1.png')}}"
-                            alt=""  >
-                        </div>
+                            alt="">
+                    </div>
                 </div>
             </div>
             <div class="pt-5">
@@ -215,111 +216,39 @@
         </div>
     </section>
     <section class="authors pt-5">
-        <div class="container p-4">
+        <div class="container">
             <h1 class="pb-2">Учись у лучших</h1>
-            <p class="pt-2 pb-4"><span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                <span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                <span class="dots fas  fa-circle"></span>
+            <p class="pt-2 pb-2">
+                <span class="dots fas fa-circle fa-xs"></span>
+                <span class="dots fas fa-circle fa-xs"></span>
+                <span class="dots fas fa-circle fa-xs"></span>
             </p>
             <p>Наши авторы - эксперты своего дела, потратившие тысячи часов<br>
                 на развитие своих навыков.
             </p>
-            <div class="authors__content pt-5 pb-5 row">
+            <div class="all-authors">
+                <a href="#">Все спикеры</a>
+            </div>
+            <div class="owl-carousel authors-carousel pt-5 pb-5">
                 @foreach($authors as $author)
-                <div class="authors__card  col-md-2 mb-2">
-                    <div class="authors__card__content col-md-12 row">
-                        <div class="authors_info justify-content-center">
-                            <div class="authors_img">
-                                <img src="{{asset('modules/front/assets/img/author.png')}}"
-                                     alt="" >
+                    <div class="item">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="authors_img">
+                                    <img src="{{asset('modules/front/assets/img/index_img.png')}}" alt="">
+                                </div>
+                                <div class="author-info">
+                                    <p class="name">{{$author->first_name." ".$author->last_name}}</p>
+                                    <span class="fas fa-circle fa-xs"></span>
+                                    <span class="fas fa-circle fa-xs"></span>
+                                    <span class="fas fa-circle fa-xs"></span>
+                                    <p class="description">gndsjnfjkds fdjs fjds fdjs fdsj fdjs fjds fjds fds fksd fjds fdjs </p>
+                                </div>
+
                             </div>
-                            <h1 class="pt-3 pb-2">{{$author->first_name." ".$author->last_name}}</h1>
-                            @foreach($author->course_categories() as $type)
-                                <h2>#{{$type->name}}</h2>
-{{--                                <h2>#Branding</h2>--}}
-                            @endforeach
                         </div>
                     </div>
-                </div>
                 @endforeach
-{{--                <div class="authors__card  col-md-2 mb-2">--}}
-{{--                    <div class="authors__card__content col-md-12 row">--}}
-{{--                        <div class="authors_info justify-content-center">--}}
-{{--                                <div class="authors_img">--}}
-{{--                                    <img src="{{asset('modules/front/assets/img/author.png')}}"--}}
-{{--                                        alt="" >--}}
-{{--                                </div>--}}
-{{--                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>--}}
-{{--                            <h2>#UX/UIDesign</h2>--}}
-{{--                            <h2>#Branding</h2>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="authors__card  col-md-2 mb-2">--}}
-{{--                    <div class="authors__card__content col-md-12 row">--}}
-{{--                        <div class="authors_info">--}}
-{{--                            <div class="authors_img">--}}
-{{--                                <img--}}
-{{--                                    src="{{asset('modules/front/assets/img/author.png')}}"--}}
-{{--                                    alt="" >--}}
-{{--                            </div>--}}
-{{--                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>--}}
-{{--                            <h2>#Маркетинг</h2>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="authors__card  col-md-2 mb-2">--}}
-{{--                    <div class="authors__card__content col-md-12 row">--}}
-{{--                        <div class="authors_info">--}}
-{{--                            <div class="authors_img">--}}
-{{--                                <img--}}
-{{--                                    src="{{asset('modules/front/assets/img/author.png')}}"--}}
-{{--                                    alt="" >--}}
-{{--                            </div>--}}
-{{--                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>--}}
-{{--                            <h2>#Видеография</h2>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="authors__card  col-md-2 mb-2">--}}
-{{--                    <div class="authors__card__content col-md-12 row">--}}
-{{--                        <div class="authors_info">--}}
-{{--                            <div class="authors_img">--}}
-{{--                                <img--}}
-{{--                                    src="{{asset('modules/front/assets/img/author.png')}}"--}}
-{{--                                    alt="" >--}}
-{{--                            </div>--}}
-{{--                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>--}}
-{{--                            <h2>#Финансы</h2>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="authors__card  col-md-2 mb-2">--}}
-{{--                    <div class="authors__card__content col-md-12 row">--}}
-{{--                        <div class="authors_info">--}}
-{{--                            <div class="authors_img">--}}
-{{--                                <img--}}
-{{--                                    src="{{asset('modules/front/assets/img/author.png')}}"--}}
-{{--                                    alt="" >--}}
-{{--                            </div>--}}
-{{--                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>--}}
-{{--                            <h2>#PR</h2>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="authors__card  col-md-2 mb-2">--}}
-{{--                    <div class="authors__card__content col-md-12 row">--}}
-{{--                        <div class="authors_info">--}}
-{{--                            <div class="authors_img">--}}
-{{--                                <img--}}
-{{--                                    src="{{asset('modules/front/assets/img/author.png')}}"--}}
-{{--                                    alt="" >--}}
-{{--                            </div>--}}
-{{--                            <h1 class="pt-3 pb-2">Кайрат Аскаров</h1>--}}
-{{--                            <h2>#Программирование</h2>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
             </div>
             <p>Все еще думаешь?
             </p>
@@ -327,7 +256,7 @@
                 <a class="btn-orange" href="#">Начну прямо сейчас</a>
             </div>
             <div class="its_simple col-md-12 col-sm-12 p-5">
-{{--                <img src="{{asset('modules/front/assets/img/itsSimple.png')}}" alt="" />--}}
+                {{--                <img src="{{asset('modules/front/assets/img/itsSimple.png')}}" alt="" />--}}
             </div>
         </div>
     </section>
@@ -356,11 +285,13 @@
                         <form action="{{route('send.email')}}" method="post">
                             {{csrf_field()}}
 
-                        <input type="text" class=" form-control email_text  pr-5 pl-3 pt-3 pb-3 mb-4" name="email"  placeholder="Твой e-mail" required>
-                        <div>
+                            <input type="text" class=" form-control email_text  pr-5 pl-3 pt-3 pb-3 mb-4" name="email"
+                                   placeholder="Твой e-mail" required>
+                            <div>
 
-                        <button type="submit"  class="btn-orange pr-5 pl-4 pt-3 pb-3" >Подписаться на рассылку</button>
-                        </div>
+                                <button type="submit" class="btn-orange pr-5 pl-4 pt-3 pb-3">Подписаться на рассылку
+                                </button>
+                            </div>
                         </form>
                     </div>
 
@@ -375,6 +306,23 @@
     <script src="{{asset('modules/front/assets/js/purecounter.js')}}"></script>
     <script src="{{asset('modules/front/assets/js/swiper.min.js')}}"></script>
     <script type="text/javascript">
+        $('.authors-carousel').owlCarousel({
+            loop: false,
+            margin: 40,
+            nav: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        });
+
         $('.owl-carousel').owlCarousel({
             loop: true,
             margin: 10,
@@ -390,6 +338,8 @@
                     items: 1
                 }
             }
-        })
+        });
+
+
     </script>
 @endsection

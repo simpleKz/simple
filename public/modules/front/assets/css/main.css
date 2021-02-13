@@ -86,6 +86,10 @@ li {
 
 }
 
+.dots{
+    color: #F76321;
+    margin-right: 8px;
+}
 
 .content {
     min-height: 80vh;
