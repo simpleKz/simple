@@ -13,7 +13,7 @@ class CourseAuthorWebRequest extends WebBaseRequest
         return [
             'first_name' => ['string', 'required'],
             'last_name' => ['string', 'required'],
-            'description' => ['numeric', 'required'],
+            'description' => ['string', 'required'],
             'image' => ['image', request()->get('id') ? 'nullable' : 'required'],
             'id' => ['numeric', 'exists:course_authors,id', 'nullable']
         ];

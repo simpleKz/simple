@@ -63,6 +63,10 @@ class CourseAuthorController extends WebBaseController
 
 
     public function delete($id) {
+        $author = CourseAuthor::find($id);
+        if($author) {
+           $this->fileService->remove($author->image_path);
+        }
         CourseAuthor::destroy($id);
         $this->deleted();
         return redirect()->route('author.index');
