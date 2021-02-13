@@ -235,16 +235,16 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="authors_img">
-                                    <img src="{{asset('modules/front/assets/img/index_img.png')}}" alt="">
+                                    <img src="{{asset($author->image_path)}}" alt="Фото автора"
+                                         onerror="this.src='{{asset('images/notfound.png')}}'">
                                 </div>
                                 <div class="author-info">
-                                    <p class="name">{{$author->first_name." ".$author->last_name}}</p>
+                                    <p class="name">{{$author->fullName()}}</p>
                                     <span class="fas fa-circle fa-xs"></span>
                                     <span class="fas fa-circle fa-xs"></span>
                                     <span class="fas fa-circle fa-xs"></span>
-                                    <p class="description">gndsjnfjkds fdjs fjds fdjs fdsj fdjs fjds fjds fds fksd fjds fdjs </p>
+                                    <p class="description">{{$author->description}}</p>
                                 </div>
-
                             </div>
                         </div>
                     </div>

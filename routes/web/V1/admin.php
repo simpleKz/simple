@@ -44,9 +44,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Course Authors
     Route::get('/authors', ['uses' => 'CourseAuthorController@index', 'as' => 'author.index']);
-    Route::post('/author/store', ['uses' => 'CourseAuthorController@store', 'as' => 'author.store']);
+    Route::get('/author/edit', ['uses' => 'CourseAuthorController@edit', 'as' => 'author.edit']);
     Route::post('/author/update', ['uses' => 'CourseAuthorController@update', 'as' => 'author.update']);
-    Route::post('/author/delete', ['uses' => 'CourseAuthorController@delete', 'as' => 'author.delete']);
+    Route::post('/author/delete/{id}', ['uses' => 'CourseAuthorController@delete', 'as' => 'author.delete']);
 
     //Courses
     Route::get('/courses', ['uses' => 'CourseController@index', 'as' => 'course.index']);

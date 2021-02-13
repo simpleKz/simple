@@ -12,8 +12,9 @@
             <div class="card h-100">
                 <header class="card-header">
                     <h2 class="h4 card-header-title">Авторы</h2>
-                    <button class="btn btn-outline-primary mt-3" data-toggle="modal"
-                            data-target="#addAuthor">Добавить <i class="ti ti-plus"></i></button>
+                    <a href="{{route('author.edit')}}" class="btn btn-outline-primary mt-3">
+                        Добавить <i class="ti ti-plus"></i>
+                    </a>
                 </header>
                 <div class="card-body pt-0">
                     @if($authors->items())
@@ -35,11 +36,12 @@
                                     <td>{{$author->last_name}}</td>
                                     <td>{{$author->created_at}}</td>
                                     <td class="d-inline-block">
-                                        <button class="btn btn-outline-primary btn-sm" data-toggle="modal"
-                                                data-target="#editAuthor{{$author->id}}"><i class="ti ti-pencil"></i>
-                                        </button>
+                                        <a href="{{route('author.edit', ['author_id' => $author->id])}}" class="btn btn-outline-primary btn-sm">
+                                            <i class="ti ti-pencil"></i>
+                                        </a>
                                         <button class="btn btn-outline-danger btn-sm" data-toggle="modal"
-                                                data-target="#delete{{$author->id}}"><i class="ti ti-trash"></i>
+                                                data-target="#delete{{$author->id}}">
+                                            <i class="ti ti-trash"></i>
                                         </button>
                                         <div class="modal modal-backdrop" id="delete{{$author->id}}" tabindex="-1"
                                              role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
@@ -68,68 +70,12 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <div class="modal modal-backdrop" id="editAuthor{{$author->id}}" tabindex="-1"
-                                     role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title w-100" id="myModalLabel">Редактировать автора</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-
-                                                <form action="{{route('author.update')}}" method="post">
-                                                    <x-admin.input-form-group-list
-                                                        :errors="$errors"
-                                                        :elements="\App\Http\Forms\Web\V1\CourseAuthorWebForm::inputGroups($author)"/>
-                                                    <button type="submit" class="offset-md-4 col-md-4 btn btn-block btn-wide btn-primary text-uppercase">
-                                                        Сохранить <i class="ti ti-check"></i>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger-soft btn-sm" data-dismiss="modal">
-                                                    <i class="ti ti-close"></i> Закрыть</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             @endforeach
                             </tbody>
                         </table>
                         {{$authors->links()}}
                     @else <h6>У вас пока нет авторов!</h6>
                     @endif
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal modal-backdrop" id="addAuthor" tabindex="-1"
-         role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title w-100" id="myModalLabel">Добавить автора</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{route('author.store')}}" method="post">
-                        <x-admin.input-form-group-list
-                            :errors="$errors"
-                            :elements="$author_web_form"/>
-                        <button type="submit" class="offset-md-4 col-md-4 btn btn-block btn-wide btn-primary text-uppercase">
-                            Сохранить <i class="ti ti-check"></i>
-                        </button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger-soft btn-sm" data-dismiss="modal">
-                        <i class="ti ti-close"></i> Закрыть</button>
                 </div>
             </div>
         </div>

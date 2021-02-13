@@ -20,9 +20,13 @@ class CourseAuthorWebForm implements WithForm
         return array_merge(
             $array,
             FormUtil::input('first_name', 'Кайрат', 'Имя',
-                'text', true, $value ? $value->first_name : ''),
+                'text', true, $value ? $value->first_name : null),
             FormUtil::input('last_name', 'Аскаров', 'Фамилия',
-                'text', true, $value ? $value->last_name : '')
+                'text', true, $value ? $value->last_name : null),
+            FormUtil::textArea('description', 'Положительный маг из Хогвартса', 'Описание',
+                true, $value ? $value->description : null),
+            FormUtil::input('image', '', 'Фото',
+                'file', !$value ? true : false, '')
         );
     }
 }

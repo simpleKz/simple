@@ -3,8 +3,7 @@
 /public/storage
 /storage/*.key
 /public/documents
-/public/images/categories
-/public/images/courses
+/public/images/*
 /vendor
 .env
 .env.backup

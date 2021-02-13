@@ -11,9 +11,11 @@ class CourseAuthorWebRequest extends WebBaseRequest
     public function injectedRules()
     {
         return [
-            'first_name' => ['string',!$this->isDelete() ? 'required' : ''],
-            'last_name' => ['string',!$this->isDelete() ? 'required' : ''],
-            'id' => ['numeric', 'exists:course_authors,id', !$this->isStore() ? 'required' : '']
+            'first_name' => ['string', 'required'],
+            'last_name' => ['string', 'required'],
+            'description' => ['numeric', 'required'],
+            'image' => ['image', request()->get('id') ? 'nullable' : 'required'],
+            'id' => ['numeric', 'exists:course_authors,id', 'nullable']
         ];
     }
 
