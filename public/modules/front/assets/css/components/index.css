@@ -338,6 +338,15 @@
 .talents a:hover{
     color: #FFFFFF;
 }
+
+.girl1_img{
+    background-image:url('../../img/girl1.png') ;
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, center;
+    background-size:contain;
+    height: 38.40304182509506vh;
+
+}
 /* Part4 Strengths */
 .strengths h1{
     font-size: 45px;
@@ -362,7 +371,8 @@
     background-image:url('../../img/girl2.png') ;
     background-repeat: no-repeat, no-repeat;
     background-position: center, center;
-    background-size:cover;
+    background-size:100%;
+    height: 49.556400506970846vh;
 
 }
 /* Part5 Earn Money */
@@ -454,13 +464,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden
+    /*overflow: hidden*/
 }
 .its_simple img {
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
+    /*flex-shrink: 0;*/
+    /*min-width: 100%;*/
+    /*min-height: 100%;*/
+
+    /*object-fit: cover;*/
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 /* Part7 Subscribe */
 .subscribe h1{
