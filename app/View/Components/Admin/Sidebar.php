@@ -28,6 +28,7 @@ class Sidebar extends BaseComponent
                 $this->navItem(route('home'), 'ti-settings', 'Настройки', [
                     $this->navItem(route('category.index'), 'ti-layers-alt', 'Категории'),
                     $this->navItem(route('author.index'), 'ti-user', 'Авторы'),
+                    $this->navItem(route('slider.index'), 'ti-image', 'Слайдер'),
 
                 ]),
                 $this->navItem(route('bulk_mailing.index'), 'ti-email', 'Массовая рассылка'),

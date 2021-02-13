@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Web\V1\Admin\System\Course;
 
 
+use App\Exceptions\Web\WebServiceExplainedException;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Http\Forms\Web\V1\CourseAuthorWebForm;
 use App\Http\Requests\Web\V1\CourseAuthorWebRequest;
@@ -31,7 +32,7 @@ class CourseAuthorController extends WebBaseController
     public function edit(Request $request) {
         $author = null;
         if($request->author_id) {
-            $author = CourseAuthor::find($request->author_id);
+            $author = $this->getAuthor($request->author_id);
         }
         $author_web_form = CourseAuthorWebForm::inputGroups($author);
         return $this->adminView('pages.author.update', compact('author', 'author_web_form'));
@@ -43,7 +44,7 @@ class CourseAuthorController extends WebBaseController
         $path = null;
         $old_path = '';
         if($request->id) {
-            $author = CourseAuthor::find($request->id);
+            $author = $this->getAuthor($request->id);
         }
         if($request->image) {
             $old_path = $author ? $author->image_path : '';
@@ -63,12 +64,18 @@ class CourseAuthorController extends WebBaseController
 
 
     public function delete($id) {
-        $author = CourseAuthor::find($id);
-        if($author) {
-           $this->fileService->remove($author->image_path);
-        }
-        CourseAuthor::destroy($id);
+        $author = $this->getAuthor($id);
+        $this->fileService->remove($author->image_path);
+        $author->delete();
         $this->deleted();
         return redirect()->route('author.index');
+    }
+
+    private function getAuthor($id) {
+        $author = CourseAuthor::find($id);
+        if(!$author) {
+            throw new WebServiceExplainedException('Такого автора не существует!');
+        }
+        return $author;
     }
 }

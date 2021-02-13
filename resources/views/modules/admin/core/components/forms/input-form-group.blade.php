@@ -8,6 +8,7 @@
            value="{{ isset($value) ? $value : old($name) }}" {{$required ? ' required' : ''}}
            type="{{$type}}"
            placeholder="{{$placeholder}}"
+           maxlength="{{$max}}"
            {{$hidden ? 'hidden' : ''}}
            {{--           @if($type == 'date') max='2050-01-01' @endif--}}
            @if($type == 'file') @if ($name == 'docs[]') accept="image/* , application/*" @else accept="image/*"  @endif {{$multiple ? ' multiple' : ''}}  @endif>

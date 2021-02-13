@@ -16,6 +16,7 @@ use App\Models\Entities\Core\BulkMailing;
 use App\Models\Entities\Course\Course;
 use App\Models\Entities\Course\CourseAuthor;
 use App\Models\Entities\Course\CourseCategory;
+use App\Models\Entities\Setting\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -26,8 +27,9 @@ class PageController extends WebBaseController
     public function welcome()
     {
         $course_types = CourseCategory::all();
-        $authors = CourseAuthor::all()->take(6);
-        return $this->frontView('pages.index',compact('course_types','authors'));
+        $authors = CourseAuthor::all();
+        $sliders = Slider::all();
+        return $this->frontView('pages.index',compact('course_types','authors', 'sliders'));
     }
 
     public function home()

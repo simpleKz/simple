@@ -11,26 +11,18 @@
 @section('content')
     <section class="start_course">
         <div class="owl-carousel">
-            <div class="item">
-                <img class="slider-img" src="{{asset('modules/front/assets/img/index_img.png')}}" alt="">
-                <div class="row col-12 col-md-11 col-lg-9 col-xl-6 offset-0 offset-md-0 offset-lg-1 slider-body">
-                    <h1 class="col-12">Освой новую профессию <br>за 2 месяца</h1>
-                    <h3 class="col-12">Слайдер 2</h3>
-                    <div class="col-12">
-                        <a class="btn btn-orange mt-3" href="#">Начать обучение</a>
+            @foreach($sliders as $slider)
+                <div class="item">
+                    <img class="slider-img" src="{{asset($slider->image_path)}}" alt="">
+                    <div class="row col-12 col-md-11 col-lg-9 col-xl-6 offset-0 offset-md-0 offset-lg-1 slider-body">
+                        <h1 class="col-12">{{$slider->title}}</h1>
+                        <h3 class="col-12">{{$slider->description}}</h3>
+                        <div class="col-12">
+                            <a class="btn btn-orange mt-3" href="{{$slider->redirect_url}}" target="_blank">Начать обучение</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="item">
-                <img class="slider-img" src="{{asset('modules/front/assets/img/index_img.png')}}" alt="">
-                <div class="row col-12 col-md-11 col-lg-9 col-xl-6 offset-0 offset-md-0 offset-lg-1 slider-body">
-                    <h1 class="col-12">Освой новую профессию <br>за 2 месяца</h1>
-                    <h3 class="col-12">Слайдер 1</h3>
-                    <div class="col-12">
-                        <a class="btn btn-orange mt-3" href="#">Начать обучение</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
     <section class="recommendations ">
@@ -324,7 +316,7 @@
         });
 
         $('.owl-carousel').owlCarousel({
-            loop: true,
+            loop: false,
             margin: 10,
             nav: false,
             responsive: {
