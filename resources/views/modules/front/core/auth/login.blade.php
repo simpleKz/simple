@@ -2,122 +2,121 @@
 @section('styles')
     <style>
 
-        .card {
-            border: 1px solid rgba(0, 0, 0, .125);
-            border-radius: 10px;
-        }
 
-        .card-header {
-            background-color: #00656D;
-            border-radius: 10px 10px 0px 0px !important;
-            border: 2px solid rgba(0, 0, 0, .125);
-            color: white;
-            padding: 20px 0;
-        }
-
-        .enter-btn {
-            color: #050606;
-            border-color: #F8A555;
-            background: #F8A555;
-            border-radius: 5px;
-            color: #FFFFFF;
-        }
-        a {
-            font-size: 14px;
+        /*@media (max-width: 767px) {*/
+        /*    .news__block.login{*/
+        /*        margin: 0 auto -70px;*/
+        /*    }*/
+        /*}*/
+        .btn-orange{
+            border-radius: 3px;
+            width: 100%;
+            font-size: 20px;
             line-height: 24px;
-            color: #00656D;
         }
-        a:hover {
-            color: #00656D;
-            text-decoration: underline;
+        .form-control:focus {
+            color: #495057;
+            background-color: #fff;
+            border: 1px solid #F76321;
+            outline: 0;
+            box-shadow: none
+        }
+        .field-icon {
+            float: right;
+            margin-right: 25px;
+            margin-top: -33px;
+            position: relative;
+            z-index: 3;
+
+        }
+        .field-icon-colored {
+            float: right;
+            margin-right: 25px;
+            margin-top: -33px;
+            position: relative;
+            z-index: 3;
+            color:#F76321;
         }
 
-        .btn-link {
-            font-weight: 400;
-            color: #00656D;
-            text-decoration: none;
-        }
-
-        .btn-link:hover {
-            font-weight: 400;
-            color: #00656D;
-            text-decoration: none;
-        }
-
-        .enter-btn:hover {
-            color: #FFFFFF;
-        }
-
-        .info__card {
-            margin: 0 auto;
-        }
-
-        .form span {
-            color: red;
-        }
-
-        .news__block.login{
-            min-height: 100%;
-            height: auto !important;
-            height: 100%;
-            margin: 0 auto -200px;
-        }
-
-        @media (max-width: 767px) {
-            .news__block.login{
-                margin: 0 auto -70px;
-            }
-        }
 
     </style>
 @endsection
 @section('content')
-    <section class="news__block login">
-        <div class="container">
-            <div class="news__block__inner">
-                <h1>Авторизация</h1>
-                <div class="mt-3">
-                    <a href="{{route('index')}}">← {{trans('front.go.back')}}</a>
-                </div>
-                <form action="{{route('login.post')}}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate >
-                    {{csrf_field()}}
-                    <div class="info__card col-12 col-lg-10 col-md-2 mt-5 ">
-                        <div class="card col-sm-12 col-md-8 p-0 mb-5">
-                            <div class="card-header">
-                            </div>
-                            <div class="card-body">
-                                <div class="form mb-3">
-                                    <label for="email">Логин <span>*</span></label>
-                                    <input type="text" class="form-control {{ isset($errors) && $errors->has('email') ? ' is-invalid' : '' }}" id="email"
-                                           placeholder="ЖСН немесе электронды пошта жазу:" name="email" required>
-                                    @if(isset($errors) && $errors->has('email'))
-                                        <div class="invalid-feedback">{{$errors->first('email')}}</div>
-                                    @endif
-                                </div>
+    <section class="login">
+        <div class="container mb-5">
+            <div class="routing mt-3">
+                <p class="pb-5"><a href="{{route('index')}}">Главная</a> – Авторизация</p>
+            </div>
+            <form action="{{route('login.post')}}" method="post" enctype="multipart/form-data">
+                {{csrf_field()}}
+                <div class="card col-12 d-flex justify-content-center align-items-center">
+                    <div class="card-body p-5 col-12 col-md-5 ">
+                        <div class="d-flex justify-content-center align-items-center  mb-5">
+                            <h1>Вход</h1>
+                        </div>
+                        <div class="form mb-3">
+                        <input type="tel" class="form-control pt-4 pb-4 {{ isset($errors) && $errors->has('phone') ? ' is-invalid' : '' }}"  id="phone" name = "phone"  value="{{old('phone')}}" required placeholder="Введи номер телефона" >
+                        @if(isset($errors) && $errors->has('phone'))
+                            <div class="invalid-feedback">{{$errors->first('phone')}}</div>
+                        @endif
+                        </div>
 
-                                <div class="form mb-3">
-                                    <label for="password">Құпия сөз <span>*</span></label>
-                                    <input type="password" class="form-control {{ isset($errors) && $errors->has('email') ? ' is-invalid' : '' }}" id="password" placeholder="Құпия сөз:"
-                                           name="password" required>
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <button type="submit" class="enter-btn btn pr-5 pl-5">Кіру</button>
-                                </div>
-                                <p class="text-center mb-0">
-                                    Аккаунтыңыз жоқ па?
-                                    <a class="font-weight-semi-bold" href="{{route('register')}}">Тіркелу</a>
-                                </p>
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Құпия сөзді ұмыттыңыз ба?') }}
-                                    </a>
-                                @endif
-                            </div>
+                        <div class="form mb-4">
+                        <input type="password" class="form-control pt-4 pb-4 {{ isset($errors) && $errors->has('phone') ? ' is-invalid' : '' }}" id="password" placeholder="Пароль"
+                               name="password" required>
+                            <span id = "icon" class="active fa fa-eye field-icon toggle-password"></span>
+                        </div>
+{{--                        <div class="tow">--}}
+{{--                            <input class="active" type="password" id="pass2">--}}
+{{--                            <div class="group2">--}}
+{{--                                <i id="icon" class="fa fa-eye-slash"></i>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+                        <div class="col-12 d-flex justify-content-center p-0 mb-3">
+                            <button type="submit" class="btn-orange pt-3 pb-3">Войти
+                            </button>
+                        </div>
+                        <div class="col-12">
+                            <h2 class="text-center mb-5">Еще нет аккаунта? <b><a href="#">Зарегистрируйся</a></b></h2>
+                            <p class="text-center">Входя в аккаунт или создавая новый,
+                                ты соглашаешься с нашими
+                                <a href="#">Правилами и условиямии
+                                    Положением о конфиденциальности</a></p>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </section>
 
 @endsection
+@section('scripts')
+    <script>
+
+        var inputPass2 = document.getElementById('password'),
+            icon = document.getElementById('icon');
+
+        icon.onclick = function () {
+
+            if(icon.className == 'active fa fa-eye field-icon toggle-password') {
+                inputPass2.setAttribute('type', 'text');
+                icon.className = 'fa fa-eye field-icon-colored toggle-password';
+
+
+            } else {
+                inputPass2.setAttribute('type', 'password');
+                icon.className = 'active fa fa-eye field-icon toggle-password';
+            }
+
+        };
+
+        $(function(){
+
+            $("#phone").mask("+7(999) 999-99-99");
+            // $("#phone").pattern("^(\\([0-9]{3}\\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$\n");
+        });
+
+
+    </script>
+@endsection
+

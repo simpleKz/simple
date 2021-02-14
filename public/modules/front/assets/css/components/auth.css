@@ -1,0 +1,39 @@
+
+.login{
+
+}
+.login .routing p{
+    font-size: 12px;
+    line-height: 14px;
+}
+.login .routing a{
+    color:black;
+}
+.login h1{
+    font-size: 30px;
+    line-height: 36px;
+}
+.login h2{
+    font-size: 16px;
+    line-height: 19px;
+}
+.login p{
+    font-size: 12px;
+    line-height: 16px;
+}
+.login a{
+    color: #F76321;
+}
+.login .card-body{
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0 1px 10px;
+}
+.login input
+{
+    line-height: 19px;
+    font-size:16px;!important;
+    color: black
+;
+}
+

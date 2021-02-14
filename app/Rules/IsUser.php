@@ -27,7 +27,9 @@ class IsUser implements Rule
      */
     public function passes($attribute, $value)
     {
-        $user = User::where('email', $value)->first();
+
+        $value = preg_replace('/\D/', '', $value);
+        $user = User::where('phone', $value)->first();
         return $user && $user->role_id != Role::ADMIN_ID;
     }
 
@@ -38,6 +40,6 @@ class IsUser implements Rule
      */
     public function message()
     {
-        return 'Неверное имя пользователя или пароль';
+        return 'Неверный номер телефона или пароль';
     }
 }

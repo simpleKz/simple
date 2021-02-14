@@ -38,7 +38,7 @@ class LoginController extends WebBaseController
 
     protected function credentials(Request $request)
     {
-        return $request->only('email', 'password', 'password');
+        return $request->only('phone', 'password');
     }
 
     protected function validateLogin(Request $request)
@@ -46,7 +46,7 @@ class LoginController extends WebBaseController
 
 
             $request->validate([
-                'email' => ['required', 'string', new IsUser()],
+                'phone' => ['required',  new IsUser()],
                 'password' => 'required|string',
             ]);
 
@@ -54,9 +54,10 @@ class LoginController extends WebBaseController
 
     protected function attemptLogin(Request $request)
     {
+        $value = preg_replace('/\D/', '', $request['phone']);
 
         if ( Auth::attempt([
-                'email' => $request['email'],
+                'phone' => $value,
                 'password' => $request['password']
             ], $request->has('remember'))) {
             return true;
@@ -68,15 +69,17 @@ class LoginController extends WebBaseController
 
     protected function sendFailedLoginResponse(Request $request)
     {
-        if (!(strpos($request->email, '@'))) {
+        if (!($request->phone)) {
             throw ValidationException::withMessages([
-                'email' => [trans('auth.failed')],
+                'phone' => [trans('auth.failed')],
             ]);
         } else {
             throw ValidationException::withMessages([
-                'email' => [trans('auth.failed')],
+                'phone' => [trans('auth.failed')],
             ]);
         }
+
+
     }
 
     protected function sendLoginResponse(Request $request)

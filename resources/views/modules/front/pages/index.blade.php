@@ -218,9 +218,6 @@
             <p>Наши авторы - эксперты своего дела, потратившие тысячи часов<br>
                 на развитие своих навыков.
             </p>
-            <div class="all-authors">
-                <a href="#">Все спикеры</a>
-            </div>
             <div class="owl-carousel authors-carousel pt-5 pb-5">
                 @foreach($authors as $author)
                     <div class="item">
