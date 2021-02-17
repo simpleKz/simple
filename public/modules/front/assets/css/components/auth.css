@@ -2,16 +2,21 @@
 .login{
 
 }
-.login .routing p{
+.login a{
+    color: #F76321;
+}
+ .routing p{
     font-size: 12px;
     line-height: 14px;
+     color: black;
 }
-.login .routing a{
+ .routing a{
     color:black;
 }
 .login h1{
     font-size: 30px;
     line-height: 36px;
+    font-weight: 500;
 }
 .login h2{
     font-size: 16px;
@@ -21,9 +26,7 @@
     font-size: 12px;
     line-height: 16px;
 }
-.login a{
-    color: #F76321;
-}
+
 .login .card-body{
     border: 1px solid #FFFFFF;
     border-radius: 5px;
@@ -35,5 +38,16 @@
     font-size:16px;!important;
     color: black
 ;
+}
+.step-header{
+    line-height: 20px;
+    font-size:14px;
+    font-weight:normal;
+    /*color: black*/
+}
+.step-text{
+    line-height: 20px;
+    font-size:16px;
+    color: black
 }
 

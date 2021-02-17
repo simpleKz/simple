@@ -42,7 +42,7 @@
     </style>
 @endsection
 @section('content')
-    <section class="login">
+    <section class="login pb-5">
         <div class="container mb-5">
             <div class="routing mt-3">
                 <p class="pb-5"><a href="{{route('index')}}">Главная</a> – Авторизация</p>
@@ -55,7 +55,7 @@
                             <h1>Вход</h1>
                         </div>
                         <div class="form mb-3">
-                        <input type="tel" class="form-control pt-4 pb-4 {{ isset($errors) && $errors->has('phone') ? ' is-invalid' : '' }}"  id="phone" name = "phone"  value="{{old('phone')}}" required placeholder="Введи номер телефона" >
+                        <input type="tel" class="form-control pt-4 pb-4 {{ isset($errors) && $errors->has('phone') ? ' is-invalid' : '' }}"  id="phone" name = "phone"  value="{{old('phone')}}"  placeholder="Введи номер телефона" required >
                         @if(isset($errors) && $errors->has('phone'))
                             <div class="invalid-feedback">{{$errors->first('phone')}}</div>
                         @endif
@@ -66,18 +66,12 @@
                                name="password" required>
                             <span id = "icon" class="active fa fa-eye field-icon toggle-password"></span>
                         </div>
-{{--                        <div class="tow">--}}
-{{--                            <input class="active" type="password" id="pass2">--}}
-{{--                            <div class="group2">--}}
-{{--                                <i id="icon" class="fa fa-eye-slash"></i>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
                         <div class="col-12 d-flex justify-content-center p-0 mb-3">
                             <button type="submit" class="btn-orange pt-3 pb-3">Войти
                             </button>
                         </div>
                         <div class="col-12">
-                            <h2 class="text-center mb-5">Еще нет аккаунта? <b><a href="#">Зарегистрируйся</a></b></h2>
+                            <h2 class="text-center mb-5">Еще нет аккаунта? <b><a href="{{route('register')}}">Зарегистрируйся</a></b></h2>
                             <p class="text-center">Входя в аккаунт или создавая новый,
                                 ты соглашаешься с нашими
                                 <a href="#">Правилами и условиямии

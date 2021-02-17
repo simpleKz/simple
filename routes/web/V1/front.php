@@ -30,16 +30,23 @@ Route::group(['namespace' => 'Front\Auth'], function () {
     Route::get('login', ['as' => 'login', 'uses' => 'LoginController@showLoginForm']);
     Route::post('login', ['as' => 'login.post', 'uses' => 'LoginController@login']);
     Route::get('register', ['as' => 'register', 'uses' => 'RegisterController@showRegistrationForm']);
-    Route::post('register', ['as' => 'register.post', 'uses' => 'RegisterController@register']);
+//    Route::post('register', ['as' => 'register.post', 'uses' => 'RegisterController@register']);
 
-    Route::get('email/verify', 'VerificationController@show')->name('verification.notice');
-    Route::get('email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify');
-    Route::post('email/resend', 'VerificationController@resend')->name('verification.resend');
+    Route::get('send/phone', ['as' => 'send.phone.post', 'uses' => 'RegisterController@sendCode']);
+    Route::get('send/code', ['as' => 'send.code.post', 'uses' => 'RegisterController@checkCode']);
+    Route::get('set/password', ['as' => 'set.password.post', 'uses' => 'RegisterController@setPassword']);
 
-    Route::get('password/reset', ['as' => 'password.request', 'uses' => 'ForgotPasswordController@showLinkRequestForm']);
-    Route::post('password/email', ['as' => 'password.email', 'uses' => 'ForgotPasswordController@sendResetLinkEmail']);
-    Route::get('password/reset/{token}/{email}', ['as' => 'password.reset', 'uses' => 'ResetPasswordController@showResetForm']);
-    Route::post('password/reset', ['as' => 'password.update', 'uses' => 'ResetPasswordController@reset']);
+
+
+
+//    Route::get('email/verify', 'VerificationController@show')->name('verification.notice');
+//    Route::get('email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify');
+//    Route::post('email/resend', 'VerificationController@resend')->name('verification.resend');
+//
+//    Route::get('password/reset', ['as' => 'password.request', 'uses' => 'ForgotPasswordController@showLinkRequestForm']);
+//    Route::post('password/email', ['as' => 'password.email', 'uses' => 'ForgotPasswordController@sendResetLinkEmail']);
+//    Route::get('password/reset/{token}/{email}', ['as' => 'password.reset', 'uses' => 'ResetPasswordController@showResetForm']);
+//    Route::post('password/reset', ['as' => 'password.update', 'uses' => 'ResetPasswordController@reset']);
 
 });
 

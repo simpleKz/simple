@@ -274,7 +274,13 @@
             },
 
             activate: function () {
-                this.activated = true;
+                if(this.user.last_four){
+                    this.activated = true;
+                }else{
+                    toastr.error("Сначала купите курс");
+
+                }
+
             },
             saveWithdrawal: function () {
                 this.makeCardWithdrawal();
