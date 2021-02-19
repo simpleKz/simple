@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Web\V1\Front\Auth;
 
 use App\Http\Controllers\Web\WebBaseController;
 use App\Http\Forms\Web\V1\Auth\RegisterWebForm;
-use App\Http\Requests\Web\V1\Auth\SendPhoneAndCodeRequest;
 use App\Models\Entities\Core\Code;
 use App\Models\Entities\Core\Role;
 use App\Models\Entities\Core\User;
 use App\Rules\CheckUserExistanceByPhone;
+use App\Services\Common\V1\Support\SmsService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Http\JsonResponse;
@@ -31,10 +31,13 @@ class RegisterController extends WebBaseController
 
     use RedirectsUsers;
 
+    protected $SmsService;
 
-    public function __construct()
+
+    public function __construct(SmsService $SmsService)
     {
         $this->middleware('guest');
+        $this->SmsService = $SmsService;
     }
 
     public function register(Request $request)
@@ -111,9 +114,7 @@ class RegisterController extends WebBaseController
             $min = pow(10, $x);
             $max = pow(10, $x + 1) - 1;
             $code = rand($min, $max);
-            #ToDo make SMS service
-//        $sms = new SmsService($code, $phone);
-//        $sms->sendSMS();
+            $this->SmsService->sendSms($phone,$code);
             $model = new Code();
             $model->code = $code;
             $model->phone = $phone;
