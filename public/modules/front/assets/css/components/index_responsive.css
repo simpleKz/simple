@@ -8,6 +8,10 @@
         padding-top: 10vh;
         padding-bottom: 10vh;
     }
+
+    .start_course .owl-item {
+        min-height: 40vh;
+    }
 }
 @media (max-width: 992px) and (min-width: 767px) {
     .start_course h1 {
@@ -18,6 +22,10 @@
     .slider-body {
         padding-top: 8vh;
         padding-bottom: 8vh;
+    }
+
+    .start_course .owl-item {
+        min-height: 40vh;
     }
 }
 
@@ -34,6 +42,10 @@
 
     .start_course a {
         padding: 0.8rem 2.0rem 0.8em 2.0rem;
+    }
+
+    .start_course .owl-item {
+        min-height: 40vh;
     }
 }
 
