@@ -114,7 +114,7 @@ class RegisterController extends WebBaseController
             $min = pow(10, $x);
             $max = pow(10, $x + 1) - 1;
             $code = rand($min, $max);
-            $this->SmsService->sendSms($phone,$code);
+//            $this->SmsService->sendSms($phone,$code);
             $model = new Code();
             $model->code = $code;
             $model->phone = $phone;
