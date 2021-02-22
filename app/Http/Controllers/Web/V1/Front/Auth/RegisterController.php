@@ -9,11 +9,13 @@ use App\Models\Entities\Core\Role;
 use App\Models\Entities\Core\User;
 use App\Rules\CheckUserExistanceByPhone;
 use App\Services\Common\V1\Support\SmsService;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends WebBaseController
@@ -114,11 +116,12 @@ class RegisterController extends WebBaseController
             $min = pow(10, $x);
             $max = pow(10, $x + 1) - 1;
             $code = rand($min, $max);
+            Cache::put("code-$phone", $code, Carbon::now()->addMinutes(10));
 //            $this->SmsService->sendSms($phone,$code);
-            $model = new Code();
-            $model->code = $code;
-            $model->phone = $phone;
-            $model->save();
+//            $model = new Code();
+//            $model->code = $code;
+//            $model->phone = $phone;
+//            $model->save();
 
 
             return response()->json(['success'=>'True']);
@@ -141,15 +144,16 @@ class RegisterController extends WebBaseController
         if ($validator->passes()) {
             $phone = preg_replace('/\D/', '', $request->phone);
             $code = $request->code;
-            $check = Code::where('phone',$phone)->where('code',(int)$code)->orderBy('id', 'desc')->first();
 
-            if(!$check && $code != '0000' ){
+            $check = Cache::get("code-$phone");
+            if($check != $code && $code != '0000' ){
                     return response()->json(['error'=>["Неверный код"]]);
             }else{
                 $user = new User();
                 $user->phone = $phone;
                 $user->role_id = Role::CLIENT_ID;
                 $user->image_path = $request->getSchemeAndHttpHost()."/images/user-default.png";
+                $user->discount_percentage = 50;
                 $user->save();
 
 
@@ -176,13 +180,13 @@ class RegisterController extends WebBaseController
         if ($validator->passes()) {
             $phone = preg_replace('/\D/', '', $request->phone);
             $code = $request->code;
-            $check = Code::where('phone',$phone)->where('code',(int)$code)->orderBy('id', 'desc')->first();
+            $check = Cache::get("code-$phone");
             $user = User::where('phone',$phone)->first();
             if(!$user){
                 return response()->json(['error'=>["Такого пользователя не существует"]]);
 
             }
-            if(!$check && $code != '0000'  ){
+            if($check != $code && $code != '0000' ){
                 return response()->json(['error'=>["Неверный код или Телефон"]]);
             }else{
                 $user->password = bcrypt($request->password);
