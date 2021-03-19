@@ -8,7 +8,6 @@
 
 namespace App\Exceptions\Api;
 
-use App\Core\Utils\RespUtil;
 use App\Exceptions\BaseException;
 use App\Http\Utils\ResponseUtil;
 

@@ -17,6 +17,8 @@ use App\Models\Entities\Course\Course;
 use App\Models\Entities\Course\CourseAuthor;
 use App\Models\Entities\Course\CourseCategory;
 use App\Models\Entities\Setting\Slider;
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -70,6 +72,10 @@ class PageController extends WebBaseController
         }
         $course_types = CourseCategory::all();
 
+        foreach ($courses as $course) {
+            $duration = $course->lessons->sum('duration_in_minutes');
+            $course->duration = (int) ceil(CarbonInterval::minutes($duration)->totalHours);
+        }
         return $this->frontView('pages.courses',compact('course_types','courses','slug'));
     }
     public function course()

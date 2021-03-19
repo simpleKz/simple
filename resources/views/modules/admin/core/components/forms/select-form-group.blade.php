@@ -1,7 +1,7 @@
 <div class="form-group {{$required ? ' required' : ''}}">
     <label class="control-label">{{$label}}</label>
     <select class="custom-select" {{$required ? ' required' : ''}} name="{{$name}}" id="custom">
-        <option value="" disabled>{{$placeholder}}</option>
+        <option value="">Не выбрано</option>
         @foreach($options as $option)
             <option value="{{$option['value']}}" {{$option['selected']}}>{{$option['title']}}</option>
         @endforeach

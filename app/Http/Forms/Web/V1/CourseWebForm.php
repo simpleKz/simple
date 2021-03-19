@@ -16,7 +16,6 @@ class CourseWebForm implements WithForm
         $array = [];
         $authors_array = [];
         $authors = CourseAuthor::all();
-        $authors_array[] = array('title' => null, 'value' => null, 'selected' => '');
         foreach ($authors as $author) {
             $selected = $value ? $value->author_id == $author->id ? 'selected' : '' : '';
             $authors_array[] = array('title' => $author->first_name." ".$author->last_name, 'value' => $author->id, 'selected' => $selected);
@@ -24,7 +23,6 @@ class CourseWebForm implements WithForm
 
         $categories_array = [];
         $categories = CourseCategory::all();
-        $categories_array[] = array('title' => null, 'value' => null, 'selected' => '');
         foreach ($categories as $category) {
             $selected = $value ? $value->category_id == $category->id ? 'selected' : '' : '';
             $categories_array[] = array('title' => $category->name, 'value' => $category->id, 'selected' => $selected);

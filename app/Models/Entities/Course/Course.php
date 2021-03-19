@@ -27,7 +27,8 @@ class Course extends Model
 
     public function author()
     {
-        return $this->belongsTo(CourseAuthor::class, 'author_id', 'id')->select(['id','first_name','last_name']);
+        return $this->belongsTo(CourseAuthor::class, 'author_id', 'id')
+            ->select(['id','first_name','last_name'])->withTrashed();
     }
 
     public function category()

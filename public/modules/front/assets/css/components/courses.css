@@ -101,7 +101,7 @@
 .courses__card_inner{
     border: 1px solid #D1D1D1;
     border-radius: 5px;
-    height: 227px;
+    height: 250px;
 
 }
 .course__card__head{
@@ -142,6 +142,7 @@
     line-height: 26px;
     font-weight:bold;
 }
+
 .course__card__content p{
     font-size: 12px;
     line-height: 14px;
@@ -186,7 +187,8 @@
 }
 .course__card__content .star{
     color:#FFC107;
-    font-size: 10px;
+    width: 1em;
+    font-size: 12px;
 }
 
 .load_more a:hover{
