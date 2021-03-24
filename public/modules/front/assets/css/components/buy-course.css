@@ -1,0 +1,26 @@
+.course-to-buy{
+    border: 1px solid #F5F5F5;
+    border-radius: 5px;
+
+
+}
+.course-to-buy p{
+    font-size: 18px;
+    line-height: 22px;
+}
+.course-to-buy h1{
+    font-size: 30px;
+    line-height: 36px;
+}
+.dotted-border{
+    border-bottom: 1px dashed #DEDEDE;
+
+}
+.video-part p{
+    font-size: 16px;
+    line-height: 22px;
+}
+.course_video{
+    height: 30vh;
+    width: 100%;
+}

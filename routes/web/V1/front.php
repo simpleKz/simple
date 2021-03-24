@@ -18,6 +18,8 @@ Route::group(['namespace' => 'Front'], function () {
             Route::post('/profile/create/withdrawal-card', ['uses' => 'ProfileController@makeCardWithdrawal', 'as' => 'profile.create.withdrawal']);
             Route::post('/profile/create/ref-link', ['uses' => 'ProfileController@createRefLink', 'as' => 'profile.create.ref-link']);
             Route::get('/my-course/{slug}', ['uses' => 'PageController@myCourse','as' => 'my-course']);
+            Route::get('/buy-course/{slug}', ['uses' => 'PageController@buyCourse','as' => 'buy-course']);
+
 
         });
 
