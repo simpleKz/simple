@@ -14,7 +14,7 @@ class AddColumnDiscountPercentageToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->double('discount_percentage');
+            $table->double('discount_percentage')->nullable();
         });
     }
 
