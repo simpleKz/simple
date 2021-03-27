@@ -2,7 +2,6 @@
 
 namespace App\View\Components\Front;
 
-use App\Models\Entities\Jastar\AboutProject;
 use App\View\BaseComponent;
 
 class FrontHeader extends BaseComponent

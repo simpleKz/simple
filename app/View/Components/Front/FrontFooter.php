@@ -3,7 +3,6 @@
 namespace App\View\Components\Front;
 
 use App\View\BaseComponent;
-use Illuminate\View\Component;
 
 class FrontFooter extends BaseComponent
 {

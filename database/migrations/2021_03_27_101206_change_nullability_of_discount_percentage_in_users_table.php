@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnDiscountPercentageToUsersTable extends Migration
+class ChangeNullabilityOfDiscountPercentageInUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,9 @@ class AddColumnDiscountPercentageToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->double('discount_percentage');
+            $table->double('discount_percentage')
+                ->nullable()
+                ->change();
         });
     }
 
@@ -26,7 +28,9 @@ class AddColumnDiscountPercentageToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('discount_percentage');
+            $table->double('discount_percentage')
+                ->nullable(false)
+                ->change();
         });
     }
 }
