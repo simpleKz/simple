@@ -7,6 +7,7 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/courses/{slug?}', ['uses' => 'PageController@courses', 'as' => 'courses']);
     Route::get('/course', ['uses' => 'PageController@course']);
     Route::post('/send/email', ['uses' => 'PageController@saveEmailForBulkMailing', 'as' => 'send.email']);
+    Route::get('legal', ['as' => 'legal', 'uses' => 'PageController@legal']);
 
 
     Route::group(['middleware' => 'auth'], function () {
@@ -30,6 +31,7 @@ Route::group(['namespace' => 'Front'], function () {
 Route::group(['namespace' => 'Front\Auth'], function () {
 
     Route::get('login', ['as' => 'login', 'uses' => 'LoginController@showLoginForm']);
+
     Route::post('login', ['as' => 'login.post', 'uses' => 'LoginController@login']);
     Route::get('register', ['as' => 'register', 'uses' => 'RegisterController@showRegistrationForm']);
 //    Route::post('register', ['as' => 'register.post', 'uses' => 'RegisterController@register']);

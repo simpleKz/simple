@@ -26,7 +26,7 @@
                                     <a class="nav-link" href="#">FAQ</a>
                                 </li>
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="{{asset('p_o.pdf')}}">Публичная оферта</a>
+                                    <a class="nav-link" href="{{route('legal')}}">Публичная оферта</a>
                                 </li>
 
 

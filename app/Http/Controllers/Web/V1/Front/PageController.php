@@ -82,6 +82,11 @@ class PageController extends WebBaseController
     {
         return $this->frontView('pages.course');
     }
+
+    public function legal()
+    {
+        return response()->file(public_path('p_o.pdf'));
+    }
     public function myCourse($slug)
     {
         $user = auth()->user();
