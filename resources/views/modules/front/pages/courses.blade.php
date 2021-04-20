@@ -225,7 +225,7 @@
                                                     <a class="btn-orange pt-2 pb-2 pr-3 pl-3 " href="#">Подробнее</a>
                                                 </div>
                                                 <div class="button-buy col-md-5">
-                                                    <a class="btn-orange pt-2 pb-2 pr-3 pl-3 " href="#">Купить курс</a>
+                                                    <a class="btn-orange pt-2 pb-2 pr-3 pl-3 " href="{{route('buy-course',['slug' => $course->slug])}}">Купить курс</a>
                                                 </div>
                                             </div>
                                         </div>

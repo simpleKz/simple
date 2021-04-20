@@ -17,41 +17,38 @@
                     <div class="d-flex justify-content-between  col-12 col-md-12 col-lg-12 mb-3">
                         <div class="col-12 col-md-5 pb-2 ">
                             <p>Курс</p>
-                            <h1>Основы маркетинга</h1>
+                            <h1>{{$course->name}}</h1>
                         </div>
                         <div class="col-12 col-md-5 pb-2">
                             <p>Спикер</p>
-                            <h1>Аскаров Кайрат</h1>
+                            <h1>{{$course->author->first_name." ".$course->author->last_name}}</h1>
                         </div>
                     </div>
                     <div class="dotted-border d-flex justify-content-between col-12 col-md-12 col-lg-12 ">
                         <div class="col-12 col-md-5  pb-2">
                             <p>Количество уроков</p>
-                            <h1>20</h1>
+                            <h1>{{$course->lessons->count()}}</h1>
                         </div>
                         <div class="col-12 col-md-5  pb-2">
-                            <p>Общее время уроков</p>
-                            <h1>15 часов 20 минут</h1>
+                            <p>Общее время уроков(часы)</p>
+                            <h1>{{$course->duration}}</h1>
                         </div>
                     </div>
                     <div class="video-part d-flex justify-content-between  col-12 col-md-12 col-lg-12 mt-3">
                         <div class="col-12 col-md-5 pb-2 ">
-                            <p>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру
-                                сгенерировать несколько абзацев более менее осмысленного
-                                текста рыбы на русском языке, а начинающему оратору отточить
-                                навык публичных выступлений в домашних условиях.</p>
+                            <p>{{$course->description}}</p>
                         </div>
                         <div class="col-12 col-md-5 pb-2">
-                            <iframe class="course_video"  src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen>
+                            <iframe class="course_video"  src="{{$course->video_path}}" allowfullscreen>
                             </iframe>
                         </div>
                     </div>
                     <div class="col-12 col-md-12 col-lg-12 ">
                         <div class="col-12 col-md-5  pb-2">
                             <p>Стоимость</p>
-                            <h1 class="mb-5">20 000 KZT</h1>
+                            <h1 class="mb-5">{{$course->price}} тг</h1>
 
-                            <button type="submit"  class="btn-orange pr-5 pl-5 pt-3 pb-3" >Перейти к оплате</button>
+                            <a href="{{route('pay',['course_id' => $course->id])}}"   class="btn-orange pr-5 pl-5 pt-3 pb-3" >Перейти к оплате</a>
 
                         </div>
 
