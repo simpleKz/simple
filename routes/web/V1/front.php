@@ -21,7 +21,7 @@ Route::group(['namespace' => 'Front'], function () {
             Route::get('/my-course/{slug}', ['uses' => 'PageController@myCourse','as' => 'my-course']);
             Route::get('/buy-course/{slug}', ['uses' => 'PageController@buyCourse','as' => 'buy-course']);
             Route::get('/pay/{course_id?}', ['uses' => 'PageController@pay','as' => 'pay']);
-            Route::get('/accept/order', ['uses' => 'PageController@acceptOrder','as' => 'acceptOrder']);
+            Route::post('/accept/order', ['uses' => 'PageController@acceptOrder','as' => 'acceptOrder']);
 
 
 
