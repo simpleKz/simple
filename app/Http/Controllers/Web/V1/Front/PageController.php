@@ -134,7 +134,7 @@ class PageController extends WebBaseController
             'pg_success_url_method' => 'AUTOGET',
             'pg_order_id' => $order->id,
             'pg_description' => 'Описание заказа',
-            'pg_result_url' => 'https://simple-study.com/accept/paybox/order',
+            'pg_result_url' => 'https://simple-study.com/accept/order',
             'pg_testing_mode' => 1
         ];
 
