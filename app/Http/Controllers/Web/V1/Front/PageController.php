@@ -134,8 +134,8 @@ class PageController extends WebBaseController
             'pg_success_url_method' => 'AUTOGET',
             'pg_order_id' => $order->id,
             'pg_description' => 'Описание заказа',
-            'pg_result_url' => 'https://simple-study.com/accept/order',
-            'pg_testing_mode' => 1
+            'pg_result_url' => 'https://simple-study.com/accept/order'
+
         ];
 
 // $request['pg_testing_mode'] = 1; //add this parameter to request for testing payments
