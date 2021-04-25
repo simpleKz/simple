@@ -90,7 +90,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiVersionedRoutes($version)
     {
         Route::prefix("api/V$version")
-            ->middleware(['api', 'localization'])
+            ->middleware(['api'])
             ->namespace($this->getApiNamespace($version))
             ->group(base_path("routes/api/V$version/api.php"));
     }

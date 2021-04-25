@@ -135,7 +135,6 @@ class PageController extends WebBaseController
             'pg_order_id' => $order->id,
             'pg_description' => 'Описание заказа',
             'pg_result_url' => 'https://simple-study.com/accept/order'
-
         ];
 
 // $request['pg_testing_mode'] = 1; //add this parameter to request for testing payments
@@ -161,10 +160,11 @@ class PageController extends WebBaseController
     }
 
 
-    public function acceptOrder(Request $request){
-        Storage::disk('local')->put('order.txt', $request);
-        return $this->frontView('pages.course');
-    }
+//    public function acceptOrder(Request $request){
+//        Storage::disk('local')->put('order.txt', $request);
+//
+//        return $this->frontView('pages.course');
+//    }
 
 
     public function profile()
