@@ -54,7 +54,6 @@ class OrderController extends ApiBaseController
 
             $order->paybox_id = $request->pg_payment_id;
             $order->save();
-
             $history = History::create([
                 'order_id' => $order->id,
                 'user_id' => $order->user_id,
@@ -63,6 +62,7 @@ class OrderController extends ApiBaseController
 
             ]);
             dd($status);
+
             if($status == "ok"){
 
                 $order->is_payed = true;
