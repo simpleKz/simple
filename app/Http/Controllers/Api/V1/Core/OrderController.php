@@ -49,8 +49,8 @@ class OrderController extends ApiBaseController
 //        }
         $status = $this->getOrderStatus($order->id,$request->pg_payment_id);
 
-//        DB::beginTransaction();
-//        try {
+        DB::beginTransaction();
+        try {
 
             $order->paybox_id = $request->pg_payment_id;
             $order->save();
@@ -96,18 +96,18 @@ class OrderController extends ApiBaseController
 
 
 
-//            DB::commit();
-//        } catch (\Exception $e) {
-//
-//            DB::rollback();
-//
-//            throw new ApiServiceException(400, false, [
-//                'errorCode' => ErrorCode::SYSTEM_ERROR,
-//                'errors' => [
-//                    'Something went wrong.'
-//                ]
-//            ]);
-//        }
+            DB::commit();
+        } catch (\Exception $e) {
+
+            DB::rollback();
+
+            throw new ApiServiceException(400, false, [
+                'errorCode' => ErrorCode::SYSTEM_ERROR,
+                'errors' => [
+                    'Something went wrong.'
+                ]
+            ]);
+        }
         return response()->json(['success' => true, 'message' => 'Успешно'], 200);
     }
 
