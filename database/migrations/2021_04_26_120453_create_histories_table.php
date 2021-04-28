@@ -19,7 +19,7 @@ class CreateHistoriesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->double("amount");
             $table->unsignedBigInteger('order_id')->nullable(true);
-            $table->foreign('order_id')->references('id')->on('users');
+            $table->foreign('order_id')->references('id')->on('orders');
             $table->unsignedBigInteger('paybox_id')->nullable(true);
             $table->timestamps();
         });
