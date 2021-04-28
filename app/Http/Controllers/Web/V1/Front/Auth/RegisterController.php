@@ -154,6 +154,7 @@ class RegisterController extends WebBaseController
                 $user->role_id = Role::CLIENT_ID;
                 $user->image_path = $request->getSchemeAndHttpHost()."/images/user-default.png";
                 $user->discount_percentage = 50;
+                $user->balance = 0;
                 $user->save();
 
 

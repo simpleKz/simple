@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Web\V1\Front;
 
 
+use App\Exceptions\WebServiceErroredException;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Http\Requests\Web\V1\EmailSendWebRequest;
 use App\Jobs\SendEmailJob;
@@ -17,13 +18,12 @@ use App\Models\Entities\Core\Order;
 use App\Models\Entities\Course\Course;
 use App\Models\Entities\Course\CourseAuthor;
 use App\Models\Entities\Course\CourseCategory;
+use App\Models\Entities\Course\CoursePassing;
 use App\Models\Entities\Setting\Slider;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Storage;
+
 
 
 class PageController extends WebBaseController
@@ -104,8 +104,10 @@ class PageController extends WebBaseController
         $course = Course::where('slug',$slug)->firstOrFail();
         $duration = $course->lessons->sum('duration_in_minutes');
         $course->duration = (int) ceil(CarbonInterval::minutes($duration)->totalHours);
-
-        #ToDo Проверить купил ли этот чел курс или нет!
+        $user_course = CoursePassing::where('course_id',$course->id)->where('user_id',$user->id)->first();
+        if($user_course){
+            throw new WebServiceErroredException('Вы уже купили этот курс');
+        }
 
         return $this->frontView('pages.buy-course',compact('course'));
     }
@@ -134,14 +136,8 @@ class PageController extends WebBaseController
             'pg_success_url_method' => 'AUTOGET',
             'pg_order_id' => $order->id,
             'pg_description' => 'Описание заказа',
-            'pg_result_url' => 'https://simple-study.com/api/V1/accept/order'
+            'pg_result_url' => 'https://simple-study.com/api/V1/accept/order',
         ];
-
-// $request['pg_testing_mode'] = 1; //add this parameter to request for testing payments
-
-//if you pass any of your parameters, which you want to get back after the payment, then add them. For example:
-// $request['client_name'] = 'My Name';
-// $request['client_address'] = 'Earth Planet';
 
 //generate a signature and add it to the array
         ksort($request); //sort alphabetically

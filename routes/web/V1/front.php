@@ -8,7 +8,6 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/course', ['uses' => 'PageController@course']);
     Route::post('/send/email', ['uses' => 'PageController@saveEmailForBulkMailing', 'as' => 'send.email']);
     Route::get('legal', ['as' => 'legal', 'uses' => 'PageController@legal']);
-//    Route::post('/accept/order', ['uses' => 'PageController@acceptOrder','as' => 'acceptOrder']);
 
 
 

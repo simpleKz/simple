@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $fillable = ['sum','user_id','course_id'];
+    protected $fillable = ['sum','user_id','course_id','paybox_id','is_payed'];
 
     public function user()
     {
