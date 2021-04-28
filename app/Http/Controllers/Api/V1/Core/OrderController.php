@@ -43,12 +43,12 @@ class OrderController extends ApiBaseController
             return response()->json(['success' => false, 'message' => 'Неправильный order'], 400);
 
         }
-        if($order->is_payed == true){
-            return response()->json(['success' => false, 'message' => 'order уже оплачен'], 400);
-
-        }
+//        if($order->is_payed == true){
+//            return response()->json(['success' => false, 'message' => 'order уже оплачен'], 400);
+//
+//        }
         $status = $this->getOrderStatus($order->id,$request->pg_payment_id);
-
+        dd($status);
         DB::beginTransaction();
         try {
 
@@ -62,8 +62,8 @@ class OrderController extends ApiBaseController
                 'paybox_id' => $request->pg_payment_id,
 
             ]);
-
             if($status == "ok"){
+
                 $order->is_payed = true;
                 $order->save();
 
@@ -102,7 +102,7 @@ class OrderController extends ApiBaseController
             throw new ApiServiceException(400, false, [
                 'errorCode' => ErrorCode::SYSTEM_ERROR,
                 'errors' => [
-                    'Something went wrong'
+                    'Something went wrong.'
                 ]
             ]);
         }
