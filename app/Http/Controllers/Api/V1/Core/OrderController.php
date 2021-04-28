@@ -48,7 +48,7 @@ class OrderController extends ApiBaseController
 //
 //        }
         $status = $this->getOrderStatus($order->id,$request->pg_payment_id);
-        dd($status);
+
         DB::beginTransaction();
         try {
 
@@ -62,6 +62,7 @@ class OrderController extends ApiBaseController
                 'paybox_id' => $request->pg_payment_id,
 
             ]);
+            dd($status);
             if($status == "ok"){
 
                 $order->is_payed = true;
