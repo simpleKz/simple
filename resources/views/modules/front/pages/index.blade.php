@@ -4,7 +4,9 @@
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/swiper.min.css')}}">
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/components/index_responsive.css')}}">
     <style>
-
+        .rec-img {
+            margin: 10px;
+        }
     </style>
 @endsection
 
@@ -15,55 +17,41 @@
                 <div class="item">
                     <img class="slider-img" src="{{asset($slider->image_path)}}" alt="">
                     <div class="row col-12 col-md-11 col-lg-9 col-xl-6 offset-0 offset-md-0 offset-lg-1 slider-body">
-                        <h1 class="col-12">{{$slider->title}}</h1>
-                        <h3 class="col-12">{{$slider->description}}</h3>
+                        <h1 class="col-11 col-md-12">{{$slider->title}}</h1>
+                        <h3 class="col-9 col-md-12">{{$slider->description}}</h3>
                         <div class="col-12">
-                            <a class="btn btn-orange mt-3" href="{{$slider->redirect_url}}" target="_blank">Начать обучение</a>
+                            <a class="btn btn-orange mt-3" href="{{$slider->redirect_url}}" target="_blank">Начать
+                                обучение</a>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
     </section>
-    <section class="recommendations ">
-        <div class="container p-4 ">
-            <div class="col-12 col-lg-4 col-md-6 mt-4 pl-auto pl-md-0 d-flex ">
-                <div class="rec-img pr-3">
-                    <img
-                        src="{{asset('modules/front/assets/img/elipse.png')}}"
-                        alt="default-user">
-                </div>
-                <div class="pr-0 mt-2">
-                    <h5 class="mb-0"><b>Покупай курсы отдельно</b></h5>
-                    <div class="rec">
-                        <p>Выбирай только то, что тебе нужно</p>
-                    </div>
+    <section class="recommendations">
+        <div class="container-fluid">
+            <div class="col-12 col-lg-4 col-md-6 d-flex align-items-center recommendation">
+                <img src="{{asset('modules/front/assets/img/open-book.png')}}"
+                     alt="default-user">
+                <div>
+                    <h5>Покупай курсы отдельно</h5>
+                    <p>Выбирай только то, что тебе нужно</p>
                 </div>
             </div>
-            <div class="col-12 col-lg-4 col-md-6 mt-4 pl-auto pl-md-0 d-flex ">
-                <div class="rec-img pr-3">
-                    <img
-                        src="{{asset('modules/front/assets/img/elipse.png')}}"
-                        alt="default-user">
-                </div>
-                <div class=" pr-0 mt-2">
-                    <h5 class="mb-0"><b>Обучайся везде и всегда</b></h5>
-                    <div class="rec">
-                        <p>Между делом или же во время пробок</p>
-                    </div>
+            <div class="col-12 col-lg-4 col-md-6 d-flex align-items-center recommendation">
+                <img src="{{asset('modules/front/assets/img/outline.png')}}"
+                     alt="default-user">
+                <div>
+                    <h5>Обучайся везде и всегда</h5>
+                    <p>Между делом или же во время пробок</p>
                 </div>
             </div>
-            <div class="col-12 col-lg-4 col-md-6 mt-4 pl-auto pl-md-0 d-flex ">
-                <div class="rec-img pr-3">
-                    <img
-                        src="{{asset('modules/front/assets/img/elipse.png')}}"
-                        alt="default-user">
-                </div>
-                <div class=" pr-0 mt-2">
-                    <h5 class="mb-0"><b>Управляй курсами в один клик</b></h5>
-                    <div class="rec">
-                        <p>Находи все, что нужно в </p>
-                    </div>
+            <div class="col-12 col-lg-4 col-md-6 d-inline-flex align-items-center recommendation">
+                <img src="{{asset('modules/front/assets/img/button.png')}}"
+                     alt="default-user">
+                <div>
+                    <h5>Управляй курсами в один клик</h5>
+                    <p>Находи все, что нужно в личном кабинете</p>
                 </div>
             </div>
         </div>
