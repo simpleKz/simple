@@ -91,9 +91,13 @@ li {
 
 .dots{
     color: #F76321;
-    margin-right: 8px;
+    /*margin-right: 4px;*/
 }
 
 .content {
     min-height: 80vh;
+}
+
+.fa-xs {
+    font-size: .6em;
 }

@@ -30,7 +30,7 @@
     </section>
     <section class="recommendations">
         <div class="container-fluid">
-            <div class="col-12 col-lg-4 col-md-6 d-flex align-items-center recommendation">
+            <div class="col-12 col-lg-4 col-md-12 d-flex align-items-center justify-content-xl-center recommendation">
                 <img src="{{asset('modules/front/assets/img/open-book.png')}}"
                      alt="default-user">
                 <div>
@@ -38,7 +38,7 @@
                     <p>Выбирай только то, что тебе нужно</p>
                 </div>
             </div>
-            <div class="col-12 col-lg-4 col-md-6 d-flex align-items-center recommendation">
+            <div class="col-12 col-lg-4 col-md-12 d-flex align-items-center justify-content-xl-center recommendation">
                 <img src="{{asset('modules/front/assets/img/outline.png')}}"
                      alt="default-user">
                 <div>
@@ -46,7 +46,7 @@
                     <p>Между делом или же во время пробок</p>
                 </div>
             </div>
-            <div class="col-12 col-lg-4 col-md-6 d-inline-flex align-items-center recommendation">
+            <div class="col-12 col-lg-4 col-md-12 d-flex align-items-center justify-content-lg-center recommendation">
                 <img src="{{asset('modules/front/assets/img/button.png')}}"
                      alt="default-user">
                 <div>
@@ -57,41 +57,35 @@
         </div>
     </section>
 
-    <section class="directions pt-5">
-        <div class="container p-4">
+    <section class="directions">
+        <div class="container-fluid">
             <h1>Изучай актуальные направления</h1>
-            <h3 class="mb-5">То, что сейчас в тренде и имеет большой спрос на рынке.</h3>
+            <h3 class="mb-lg-5 mb-4 mt-3">То, что сейчас в тренде и имеет большой спрос на рынке.</h3>
             <div class="directions__content row">
                 @foreach($course_types as $course_type)
-                    <a class="directions__card  col-md-6 mb-2"
+                    <a class="directions__card  col-lg-6 mb-2"
                        href="{{route('courses',['slug' => $course_type->slug])}}">
-                        <div class="directions__card__content col-md-12">
-                            <div class="dir_text p-3 col-10">
+                        <div class="directions__card__content align-items-center d-flex col-12">
+                            <div class="dir_text col-10">
                                 <h1>{{$course_type->name}}</h1>
                                 <p>Доступно {{$course_type->courses->count()}} курс(а)</p>
                             </div>
-                            <div class="dir_circle pt-4 float-right">
+                            <div class="dir_circle col-2 text-right">
                                <span class="read-more-circle-around">
-                                        <i class="fa fa-arrow-right"></i>
+                                        <i class="fal fa-arrow-right"></i>
                                </span>
                             </div>
                         </div>
                     </a>
                 @endforeach
             </div>
-            <div class="all-directions">
-                <div class="all-directions-text pt-4">
-                    <a href="{{route('courses')}}">Все направления</a>
-                    <p class="text-center"><span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                        <span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                        <span class="dots fas  fa-circle"></span>
-                    </p>
-
-                </div>
-
-
+            <div class="all-directions pt-3 text-center">
+                <a href="{{route('courses')}}">Все направления</a>
+                <p class="pt-1"><span class="dots fas fa-circle fa-xs"></span>&nbsp&nbsp
+                    <span class="dots fas fa-circle fa-xs"></span>&nbsp&nbsp
+                    <span class="dots fas fa-circle fa-xs"></span>
+                </p>
             </div>
-
         </div>
     </section>
     <section class="talents pt-5 pb-2">

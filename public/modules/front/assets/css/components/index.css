@@ -199,6 +199,7 @@
     height: 100%;
     z-index: -1;
     object-fit: cover;
+    filter: brightness(50%);
 }
 
 .slider-body {
@@ -258,14 +259,18 @@
     width: 45px;
 }
 .recommendations h5 {
-    font-size: 17px;
-    margin-bottom: 5px;
+    font-size: 19px;
+    line-height: 23px;
     font-weight: bold;
     font-style: normal;
+    margin-bottom: 5px;
 }
 
 .recommendations p {
-    font-size: 11px;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 500;
+    font-style: normal;
     margin-bottom: 0;
 }
 
@@ -274,16 +279,22 @@
 /*    display: flex;*/
 /*    justify-content: center;*/
 /*}*/
+
+.directions .container-fluid {
+    padding: 100px;
+}
 .directions h1 {
     font-size: 45px;
     line-height: 55px;
     font-weight: bold;
+    font-style:normal;
 }
 
 .directions h3 {
-    font-size: 19px;
-    line-height: 23px;
+    font-size: 20px;
+    line-height: 24px;
     font-weight: normal;
+    font-style: normal;
     /*padding-bottom: 30px;*/
 }
 
@@ -315,28 +326,30 @@
 }
 
 .directions__card__content {
-    display: flex;
-    /*flex-direction: column;*/
-    /*align-items: center;*/
     border: 1px solid #DEDEDE;
     border-radius: 5px;
     background: #ffffff;
+    padding: 17px 0 17px 15px;
 }
 
 .directions__card__content h1 {
     font-size: 29px;
     line-height: 35px;
     font-weight: bold;
+    font-style: normal;
 }
 
 .directions__card__content p {
     line-height: 13px;
     font-size: 11px;
+    font-style: normal;
+    font-weight: normal;
+    margin-bottom: 5px;
 }
 
 .directions__card__content:hover h1 {
-
     color: #ffffff;
+
 }
 
 .directions__card__content:hover p {
@@ -344,11 +357,10 @@
 }
 
 .directions__card__content .read-more-circle-around {
-    margin-left: 5px;
     border-radius: 50%;
     border: 2px solid #F76321;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -361,23 +373,12 @@
     background: #ffffff;
 }
 
-.all-directions {
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-}
-
-.all-directions-text {
-    align-items: center;
-    justify-content: center;
-}
-
 .all-directions a {
     font-size: 18px;
     font-weight: normal;
+    font-style: normal;
     line-height: 22px;
     color: #000;
-
 }
 
 /* Part4 Talents */

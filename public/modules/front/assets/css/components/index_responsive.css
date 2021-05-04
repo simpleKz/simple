@@ -12,6 +12,11 @@
     .start_course .owl-item {
         min-height: 40vh;
     }
+
+    .directions__card__content h1 {
+        font-size: 23px;
+        line-height: 24px;
+    }
 }
 @media (max-width: 992px) and (min-width: 767px) {
     .start_course h1 {
@@ -26,6 +31,11 @@
 
     .start_course .owl-item {
         min-height: 40vh;
+    }
+
+    .directions__card__content h1 {
+        font-size: 21px;
+        line-height: 24px;
     }
 }
 
@@ -69,6 +79,44 @@
     .recommendations p {
         font-size: 12px;
         line-height: 14px;
+    }
+
+    .directions .container-fluid {
+        padding: 80px 10px 60px 10px;
+    }
+
+    .directions__card__content {
+        padding: 12px 0 12px 5px;
+    }
+
+    .directions h1 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .directions h3 {
+        font-size: 16px;
+        line-height: 19px;
+    }
+
+    .directions__card__content h1 {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .directions__card__content p {
+        line-height: 12px;
+        font-size: 10px;
+    }
+
+    .directions__card__content .read-more-circle-around {
+        width: 28px;
+        height: 28px;
+    }
+
+    .all-directions a {
+        font-size: 14px;
+        line-height: 17px;
     }
 }
 
