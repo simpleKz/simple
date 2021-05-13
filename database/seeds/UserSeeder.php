@@ -16,7 +16,8 @@ class UserSeeder extends Seeder
             'email' => 'admin@mail.ru',
             'image_path' => '',
             'password' => bcrypt('password'),
-            'role_id' => \App\Models\Entities\Core\Role::ADMIN_ID
+            'role_id' => \App\Models\Entities\Core\Role::ADMIN_ID,
+            'balance' => 0,
         ]);
     }
 }

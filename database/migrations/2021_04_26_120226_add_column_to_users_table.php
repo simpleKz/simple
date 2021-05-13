@@ -14,7 +14,7 @@ class AddColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->double("balance");
+            $table->double("balance")->default(0);
         });
     }
 

@@ -12,7 +12,6 @@ namespace App\Http\Controllers\Web\V1\Front;
 use App\Exceptions\WebServiceErroredException;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Http\Requests\Web\V1\EmailSendWebRequest;
-use App\Jobs\SendEmailJob;
 use App\Models\Entities\Core\BulkMailing;
 use App\Models\Entities\Core\Order;
 use App\Models\Entities\Course\Course;
@@ -20,10 +19,8 @@ use App\Models\Entities\Course\CourseAuthor;
 use App\Models\Entities\Course\CourseCategory;
 use App\Models\Entities\Course\CoursePassing;
 use App\Models\Entities\Setting\Slider;
-use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Illuminate\Http\Request;
-
 
 
 class PageController extends WebBaseController
@@ -33,7 +30,7 @@ class PageController extends WebBaseController
         $course_types = CourseCategory::all();
         $authors = CourseAuthor::all();
         $sliders = Slider::all();
-        return $this->frontView('pages.index',compact('course_types','authors', 'sliders'));
+        return $this->frontView('pages.index', compact('course_types', 'authors', 'sliders'));
     }
 
     public function home()
@@ -41,45 +38,44 @@ class PageController extends WebBaseController
         return $this->adminView('pages.home');
     }
 
-    public function courses(Request $request,$slug = null)
+    public function courses(Request $request, $slug = null)
     {
         $sort = null;
 
-        if($request->sort){
+        if ($request->sort) {
             $sort = $request->sort;
         }
-        $courses = Course::orderBy('rating','desc')->paginate(2);
-        if($sort){
-            if($sort == 'price'){
+        $courses = Course::orderBy('rating', 'desc')->paginate(2);
+        if ($sort) {
+            if ($sort == 'price') {
                 $courses = Course::orderBy('price', 'desc')->paginate(2);
-            }
-            else if($sort == 'created_at'){
+            } else if ($sort == 'created_at') {
                 $courses = Course::orderBy('created_at', 'desc')->paginate(2);
             }
         }
-        if($slug){
-            $course_type = CourseCategory::where('slug',$slug)->firstOrFail();
-            $courses = Course::where('category_id',$course_type->id);
+        if ($slug) {
+            $course_type = CourseCategory::where('slug', $slug)->firstOrFail();
+            $courses = Course::where('category_id', $course_type->id);
 
-            if($sort){
-                if($sort == 'price'){
-                    $courses = $courses->orderBy('price','desc')->paginate(2);
+            if ($sort) {
+                if ($sort == 'price') {
+                    $courses = $courses->orderBy('price', 'desc')->paginate(2);
+                } else if ($sort == 'created_at') {
+                    $courses = $courses->orderBy('created_at', 'desc')->paginate(2);
                 }
-                else if($sort == 'created_at'){
-                    $courses = $courses->orderBy('created_at','desc')->paginate(2);
-                }
-            }else{
-                $courses = $courses->orderBy('rating','desc')->paginate(2);
+            } else {
+                $courses = $courses->orderBy('rating', 'desc')->paginate(2);
             }
         }
         $course_types = CourseCategory::all();
 
         foreach ($courses as $course) {
             $duration = $course->lessons->sum('duration_in_minutes');
-            $course->duration = (int) ceil(CarbonInterval::minutes($duration)->totalHours);
+            $course->duration = (int)ceil(CarbonInterval::minutes($duration)->totalHours);
         }
-        return $this->frontView('pages.courses',compact('course_types','courses','slug'));
+        return $this->frontView('pages.courses', compact('course_types', 'courses', 'slug'));
     }
+
     public function course()
     {
         return $this->frontView('pages.course');
@@ -89,37 +85,39 @@ class PageController extends WebBaseController
     {
         return response()->file(public_path('p_o.pdf'));
     }
+
     public function myCourse($slug)
     {
         $user = auth()->user();
-        $course = Course::where('slug',$slug)->firstOrFail();
-        $course = Course::where('slug',$slug)->with('lessons')->get();
+        $course = Course::where('slug', $slug)->firstOrFail();
+        $course = Course::where('slug', $slug)->with('lessons')->get();
         #ToDo Проверить купил ли этот чел курс или нет!
 
-        return $this->frontView('pages.my-course',compact('course'));
+        return $this->frontView('pages.my-course', compact('course'));
     }
+
     public function buyCourse($slug)
     {
         $user = auth()->user();
-        $course = Course::where('slug',$slug)->firstOrFail();
+        $course = Course::where('slug', $slug)->firstOrFail();
         $duration = $course->lessons->sum('duration_in_minutes');
-        $course->duration = (int) ceil(CarbonInterval::minutes($duration)->totalHours);
-        $user_course = CoursePassing::where('course_id',$course->id)->where('user_id',$user->id)->first();
-        if($user_course){
+        $course->duration = (int)ceil(CarbonInterval::minutes($duration)->totalHours);
+        $user_course = CoursePassing::where('course_id', $course->id)->where('user_id', $user->id)->first();
+        if ($user_course) {
             throw new WebServiceErroredException('Вы уже купили этот курс');
         }
 
-        return $this->frontView('pages.buy-course',compact('course'));
+        return $this->frontView('pages.buy-course', compact('course'));
     }
 
-    public function pay(Request $request,$course_id = null)
+    public function pay(Request $request, $course_id = null)
     {
         #ToDo Check course or packet
         $price = 0;
-        if($course_id){
-            $course = Course::where('id',$request->course_id)->first();
+        if ($course_id) {
+            $course = Course::where('id', $request->course_id)->first();
             $price = $course->price;
-        }else{
+        } else {
             $price = 0;
         }
         $order = Order::create([
@@ -156,6 +154,8 @@ class PageController extends WebBaseController
     }
 
 
+
+
 //    public function acceptOrder(Request $request){
 //        Storage::disk('local')->put('order.txt', $request);
 //
@@ -168,14 +168,24 @@ class PageController extends WebBaseController
         return $this->frontView('pages.profile');
     }
 
-    public function saveEmailForBulkMailing(EmailSendWebRequest $request){
+    public function saveEmailForBulkMailing(EmailSendWebRequest $request)
+    {
         BulkMailing::create([
-            'email'=> $request->email
+            'email' => $request->email
         ]);
         $this->sent();
         return redirect()->back();
     }
 
+    public function ref()
+    {
+        $link = request()->link;
+        $redirect = redirect()->route('index');
+        if ($link) {
+            $redirect = $redirect->withCookie('ref_link', $link);
+        }
+        return $redirect;
+    }
 //    public function files($relative_path)
 //    {
 //        if (Storage::cloud()->exists($relative_path)) {
