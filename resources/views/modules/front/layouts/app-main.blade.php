@@ -3,7 +3,6 @@
 <head>
     @include('modules.front.parts.head')
     @include('modules.front.parts.styles')
-    <title>Simple</title>
     @yield('styles')
 </head>
 <body>

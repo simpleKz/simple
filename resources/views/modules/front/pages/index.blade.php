@@ -30,7 +30,7 @@
     </section>
     <section class="recommendations">
         <div class="container-fluid">
-            <div class="col-12 col-lg-4 col-md-12 d-flex align-items-center justify-content-xl-center recommendation">
+            <div class="col-12 col-lg-4 col-md-6 d-flex align-items-center justify-content-md-center recommendation">
                 <img src="{{asset('modules/front/assets/img/open-book.png')}}"
                      alt="default-user">
                 <div>
@@ -38,7 +38,7 @@
                     <p>Выбирай только то, что тебе нужно</p>
                 </div>
             </div>
-            <div class="col-12 col-lg-4 col-md-12 d-flex align-items-center justify-content-xl-center recommendation">
+            <div class="col-12 col-lg-4 col-md-6 d-flex align-items-center justify-content-md-center recommendation">
                 <img src="{{asset('modules/front/assets/img/outline.png')}}"
                      alt="default-user">
                 <div>
@@ -46,7 +46,7 @@
                     <p>Между делом или же во время пробок</p>
                 </div>
             </div>
-            <div class="col-12 col-lg-4 col-md-12 d-flex align-items-center justify-content-lg-center recommendation">
+            <div class="col-12 col-lg-4 col-md-12 d-flex align-items-center justify-content-md-center recommendation">
                 <img src="{{asset('modules/front/assets/img/button.png')}}"
                      alt="default-user">
                 <div>
@@ -81,44 +81,45 @@
             </div>
             <div class="all-directions pt-3 text-center">
                 <a href="{{route('courses')}}">Все направления</a>
-                <p class="pt-1"><span class="dots fas fa-circle fa-xs"></span>&nbsp&nbsp
-                    <span class="dots fas fa-circle fa-xs"></span>&nbsp&nbsp
+                <p class="pt-1">
+                    <span class="dots fas fa-circle fa-xs"></span>
+                    <span class="dots fas fa-circle fa-xs"></span>
                     <span class="dots fas fa-circle fa-xs"></span>
                 </p>
             </div>
         </div>
     </section>
-    <section class="talents pt-5 pb-2">
-        <div class="container p-4">
-            <div class="row">
+    <section class="talents">
+        <div class="container-fluid">
+            <div class="row align-items-center">
                 <div class="col-12 col-md-8 col-lg-8">
                     <h1>Раскрой свои таланты</h1>
-                    <p class="pt-2 pb-4"><span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                        <span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                        <span class="dots fas  fa-circle"></span>
+                    <p class="pt-1 pb-4">
+                        <span class="dots fas  fa-circle fa-xs"></span>
+                        <span class="dots fas  fa-circle fa-xs"></span>
+                        <span class="dots fas  fa-circle fa-xs"></span>
                     </p>
-                    <p>
-                        Каждый из нас талантлив в чем-либо.<br>
-                        Но многие проживают свою жизнь занимаясь другим делом :(
-                    </p>
-                    <p>
-                        <span>Наша миссия</span> - помочь каждом найти свое истинное предназначение.
-                    </p>
-                    <p>
-                        А что для этого необходимо сделать?<br>
-                        - Правильно! Начать пробовать себя в том, что вам интересно!
-                    </p>
+                    <div class="description-text">
+                        <p>
+                            Каждый из нас талантлив в чем-либо.<br>
+                            Но многие проживают свою жизнь занимаясь другим делом :(
+                        </p>
+                        <p>
+                            <span>Наша миссия</span> - помочь каждом найти свое истинное предназначение.
+                        </p>
+                        <p>
+                            А что для этого необходимо сделать?<br>
+                            - Правильно! Начать пробовать себя в том, что вам интересно!
+                        </p>
+                    </div>
                 </div>
-                <div class="girl1_img col-12 col-md-4 col-lg-4">
-                    {{--                    <div class="">--}}
-                    {{--                        <img--}}
-                    {{--                            src="{{asset('modules/front/assets/img/girl1.png')}}"--}}
-                    {{--                            alt="" width="300" height="300">--}}
-                    {{--                    </div>--}}
-                    &nbsp
-                </div>
+                {{--                <div class="girl1_img col-12 col-md-4 col-lg-4">--}}
+                {{--                    <img--}}
+                {{--                        src="{{asset('modules/front/assets/img/girl1.png')}}"--}}
+                {{--                        alt="" width="300" height="300">--}}
+                {{--                </div>--}}
             </div>
-            <div class="pt-5">
+            <div class="pt-5 d-flex align-items-center justify-content-center">
                 <a class="btn-orange" href="#">Самое время начать</a>
             </div>
         </div>

@@ -118,6 +118,35 @@
         font-size: 14px;
         line-height: 17px;
     }
+
+    /*Part 4*/
+    .talents .container-fluid {
+        background-position: 0 25%;
+        padding: 80px 10px 60px 10px;
+    }
+
+    .talents h1 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .talents p {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .talents .description-text {
+        margin-top: 200px;
+    }
+
+    .talents a {
+        padding: 0.9rem 2.5rem 0.9rem 2.5rem;
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: bold;
+        width: 100%;
+        text-align: center;
+    }
 }
 
 

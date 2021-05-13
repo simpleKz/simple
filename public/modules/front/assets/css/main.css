@@ -71,8 +71,6 @@ li {
     /*display: block;*/
     font-size: 20px;
     line-height: 24px;
-    justify-content: center;
-    align-items: center;
     border-radius: 3px;
     color: #FFFFFF;
     border:none !important;
@@ -91,7 +89,7 @@ li {
 
 .dots{
     color: #F76321;
-    /*margin-right: 4px;*/
+    margin-right: 5px;
 }
 
 .content {
