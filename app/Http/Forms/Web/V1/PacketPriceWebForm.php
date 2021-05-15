@@ -20,7 +20,7 @@ class PacketPriceWebForm implements WithForm
             FormUtil::select('currency', 'KZT', 'Валюта',
                 true, [
                     FormUtil::option(Currency::KZT, $value && $value->currency == Currency::KZT ? 'selected' : '', 'Тенге'),
-                    FormUtil::option(Currency::RUR, $value && $value->currency == Currency::RUR ? 'selected' : '', 'Рубли')
+                    FormUtil::option(Currency::RUB, $value && $value->currency == Currency::RUB ? 'selected' : '', 'Рубли')
                 ])
         );
     }
