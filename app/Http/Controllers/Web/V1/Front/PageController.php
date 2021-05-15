@@ -18,7 +18,10 @@ use App\Models\Entities\Course\Course;
 use App\Models\Entities\Course\CourseAuthor;
 use App\Models\Entities\Course\CourseCategory;
 use App\Models\Entities\Course\CoursePassing;
+use App\Models\Entities\Course\Packet;
+use App\Models\Entities\Course\PacketPrice;
 use App\Models\Entities\Setting\Slider;
+use App\Models\Enums\Currency;
 use Carbon\CarbonInterval;
 use Illuminate\Http\Request;
 
@@ -110,21 +113,70 @@ class PageController extends WebBaseController
         return $this->frontView('pages.buy-course', compact('course'));
     }
 
-    public function pay(Request $request, $course_id = null)
+    public function pay(Request $request)
     {
         #ToDo Check course or packet
-        $price = 0;
-        if ($course_id) {
-            $course = Course::where('id', $request->course_id)->first();
-            $price = $course->price;
-        } else {
-            $price = 0;
-        }
+
+        $course = Course::where('id', $request->course_id)->first();
+        $packet_price = PacketPrice::where('id',$request->packet_id)
+                                ->where('currency',$request->currency)
+                                ->first();
+
+
+
+
         $order = Order::create([
-            'course_id' => $request->course_id,
+            'packet_price_id' => $packet_price->id,
             'user_id' => auth()->user()->id,
-            'sum' => $price,
+            'sum' => $packet_price->price,
+            'currency' => $packet_price->currency
         ]);
+
+        $request = [
+            'pg_merchant_id' => 536680,
+            'pg_amount' => $order->sum,
+            'pg_salt' => 'Order',
+            'pg_success_url' => 'https://simple-study.com',
+            'pg_success_url_method' => 'AUTOGET',
+            'pg_order_id' => $order->id,
+            'pg_description' => 'Описание заказа',
+            'pg_currency' => $order->currency,
+            'pg_result_url' => 'https://simple-study.com/api/V1/accept/order',
+        ];
+
+//generate a signature and add it to the array
+        ksort($request); //sort alphabetically
+        array_unshift($request, 'payment.php');
+        array_push($request, 'pdajm24PW84OgxbP'); //add your secret key (you can take it in your personal cabinet on paybox system)
+
+        $request['pg_sig'] = md5(implode(';', $request));
+
+        unset($request[0], $request[1]);
+
+        $query = http_build_query($request);
+
+//redirect a customer to payment page
+        return redirect('https://api.paybox.money/payment.php?' . $query);
+
+    }
+
+
+
+    public function payCard(Request $request,$course_id = null)
+    {
+        #ToDo Check course or packet
+//        $price = 0;
+//        if($course_id){
+//            $course = Course::where('id',$request->course_id)->first();
+//            $price = $course->price;
+//        }else{
+//            $price = 0;
+//        }
+//        $order = Order::create([
+//            'course_id' => $request->course_id,
+//            'user_id' => auth()->user()->id,
+//            'sum' => $price,
+//        ]);
 
         $request = [
             'pg_merchant_id' => 536680,
@@ -152,9 +204,6 @@ class PageController extends WebBaseController
         return redirect('https://api.paybox.money/payment.php?' . $query);
 
     }
-
-
-
 
 //    public function acceptOrder(Request $request){
 //        Storage::disk('local')->put('order.txt', $request);
