@@ -10,7 +10,9 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
-
+html, body {
+    overflow-x: hidden;
+}
 html {
     height: 100%;
     scroll-behavior: smooth;

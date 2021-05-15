@@ -14,11 +14,11 @@
                         </button>
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ml-auto py-4 py-md-0">
-                                {{--                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">--}}
-                                {{--                                    <a class="nav-link" href="{{route('courses')}}">Курсы</a>--}}
-                                {{--                                </li>--}}
-                            </ul>
+{{--                            <ul class="navbar-nav ml-auto py-4 py-md-0">--}}
+{{--                                                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">--}}
+{{--                                                                    <a class="nav-link" href="{{route('courses')}}">Курсы</a>--}}
+{{--                                                                </li>--}}
+{{--                            </ul>--}}
                         </div>
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
