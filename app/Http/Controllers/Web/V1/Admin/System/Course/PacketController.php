@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Web\V1\Admin\System\Course;
 
 
 use App\Http\Controllers\Web\WebBaseController;
+use App\Http\Forms\Web\V1\PacketAttributeWebForm;
 use App\Http\Forms\Web\V1\PacketPriceWebForm;
 use App\Http\Forms\Web\V1\PacketWebForm;
 use App\Http\Requests\Web\V1\PacketWebRequest;
 use App\Models\Entities\Course\Course;
 use App\Models\Entities\Course\Packet;
+use App\Models\Entities\Course\PacketAttribute;
 
 class PacketController extends WebBaseController
 {
@@ -22,11 +24,12 @@ class PacketController extends WebBaseController
 
     public function edit($packet_id)
     {
-        $packet = Packet::with(['course', 'prices'])->findOrFail($packet_id);
+        $packet = Packet::with(['course', 'prices', 'attributes'])->findOrFail($packet_id);
         $course = $packet->course;
         $form = PacketWebForm::inputGroups($packet);
         $priceForm = PacketPriceWebForm::inputGroups();
-        return $this->adminView('pages.course.packet.edit', compact('form', 'packet', 'course', 'priceForm'));
+        $attributeForm = PacketAttributeWebForm::inputGroups();
+        return $this->adminView('pages.course.packet.edit', compact('form', 'packet', 'course', 'priceForm', 'attributeForm'));
     }
 
     public function index($course_id)

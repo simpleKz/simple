@@ -22,4 +22,9 @@ class Packet extends Model
     {
         return $this->belongsTo(Course::class, 'course_id');
     }
+
+    public function attributes()
+    {
+        return $this->hasMany(PacketAttribute::class, 'packet_id');
+    }
 }
