@@ -10,7 +10,9 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
-
+html, body {
+    overflow-x: hidden;
+}
 html {
     height: 100%;
     scroll-behavior: smooth;
@@ -80,7 +82,9 @@ li {
 }
 
 .btn-orange:hover {
-    color: #fffff5;
+    color: #f5f5f5;
+    text-decoration: none;
+    background-color: #e35d23;
     border:none !important;
 }
 .btn-orange:focus {

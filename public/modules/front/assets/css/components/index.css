@@ -12,12 +12,12 @@
 
 }
 
-.header_logo h1 {
+.header_logo a {
     font-size: 25px;
-    /*line-height: 28px;*/
+    line-height: 28px;
     color: #FFFFFF;
-    font-weight: normal;
-    /*padding-bottom: 30px;*/
+    font-weight: bold;
+    font-style: normal;
 }
 
 .start-header.scroll-on {
@@ -410,14 +410,10 @@
     color: #F76321;
 }
 
-.talents a:hover {
-    color: #f5f5f5;
-    text-decoration: none;
-    background-color: #e35d23;
-}
-
 /* Part4 Strengths */
-
+.strengths {
+    padding-bottom: 50px;
+}
 .strengths .container-fluid {
     padding: 100px 70px 70px;
     background-image: url('../../img/girl2.png');
@@ -451,44 +447,49 @@
 
 /* Part5 Earn Money */
 .earn_money {
-    /*background: #F76321;*/
     background: #F55C18;
     color: #ffffff;
 }
 
+.earn_money .container-fluid {
+    padding: 100px 70px 100px 70px;
+}
+
 .earn_money h1 {
-    font-size: 44px;
+    font-size: 45px;
     line-height: 55px;
     font-weight: bold;
+    font-style: normal;
 }
 
 .earn_money p {
     font-size: 20px;
     line-height: 24px;
     font-weight: normal;
+    font-style: normal;
 }
 
 .earn_money span {
     color: #ffffff;
 }
 
-.earn_money a {
-    padding: 1.25rem 3.2rem 1.25rem 3.2rem;
-    background: #FFFFFF;
-    color: #F76321;
+.earn_money img {
+    width: 100%;
+}
 
+.earn_money a {
+    background: #FFFFFF;
+    color: #000000;
+}
+
+.earn_money a:hover {
+    color: #220202;
+    text-decoration: none;
+    background-color: #fafafa;
 }
 
 .earn_money a:hover {
     color: #F76321;
-}
-
-.earn_money_img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /*overflow: hidden;*/
-    /*object-fit: cover;*/
 }
 
 .earn_money_img img {
@@ -499,24 +500,26 @@
 }
 
 /* Part6 Authors */
+
+.authors .container-fluid {
+    padding: 100px 70px 100px 70px;
+}
 .authors h1 {
     font-size: 45px;
     line-height: 55px;
     font-weight: bold;
+    font-style: normal;
 }
 
 .authors p {
     font-size: 20px;
     line-height: 24px;
     font-weight: normal;
+    font-style: normal;
 }
 
 .authors span {
     color: #F76321;
-}
-
-.authors a {
-    padding: 1.25rem 3.2rem 1.25rem 3.2rem;
 }
 
 .authors a:hover {
@@ -554,6 +557,7 @@
     font-size: 16px;
     line-height: 19px;
     font-weight: 500;
+    font-style: normal;
     padding: 0;
 }
 
@@ -643,16 +647,21 @@
 }
 
 /* Part7 Subscribe */
+.subscribe .container-fluid {
+    padding: 100px 70px 70px;
+}
 .subscribe h1 {
     font-size: 45px;
     line-height: 55px;
     font-weight: bold;
+    font-style: normal;
 }
 
 .subscribe p {
     font-size: 20px;
     line-height: 24px;
     font-weight: normal;
+    font-style: normal;
 }
 
 .subscribe span {
@@ -668,12 +677,17 @@
 }
 
 .subscription_form .email_text {
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 19px;
     font-weight: normal;
-    color: #DEDEDE;
+    color: #000000;
     border: 1px solid #DEDEDE;
     border-radius: 0;
+    padding: 20px;
+}
+
+.subscription_form .email_text:focus {
+    box-shadow: 0 0 0 0.2rem rgb(37 28 30 / 25%)
 }
 
 .subscription_form .email_text::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -683,29 +697,24 @@
 
 /* FOOTER */
 
-.footer {
+.page-footer {
     background: #F76321;
 }
 
-.footer__inner {
-    padding: 50px 0;
+.page-footer .container-fluid {
+    padding: 30px 70px 20px 70px;
 }
 
-.footer__image__logo {
-    width: 100px;
-    margin: 0 20px 50px 0;
-    height: auto;
-}
 
-.footer__inner h2 {
+.page-footer h2 {
     font-size: 18px;
     line-height: 28px;
     color: #FFFFFF;
     font-weight: normal;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
 }
 
-.footer__inner h1 {
+.page-footer h1 {
     font-size: 25px;
     line-height: 28px;
     color: #FFFFFF;
@@ -713,13 +722,13 @@
     padding-bottom: 30px;
 }
 
-.footer__inner p {
+.footer-copyright {
     font-size: 16px;
     line-height: 19px;
     color: #FFFFFF;
 }
 
-.footer__nav a {
+.page-footer a {
     font-size: 14px;
     text-decoration: none;
     color: #FFFFFF;

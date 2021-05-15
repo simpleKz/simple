@@ -7,9 +7,9 @@ namespace App\Models\Entities\Core;
 use App\Models\Entities\Course\Course;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class UserCard extends Model
 {
-    protected $fillable = ['sum','user_id','course_id','paybox_id','is_payed','currency','packet_price_id'];
+    protected $fillable = ['sum','user_id','course_id','paybox_id','is_payed'];
 
     public function user()
     {

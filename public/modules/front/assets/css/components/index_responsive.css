@@ -5,7 +5,7 @@
     }
 
     .slider-body {
-        padding-top: 10vh;
+        /*padding-top: 10vh;*/
         padding-bottom: 10vh;
     }
 
@@ -37,15 +37,57 @@
         padding: 20px 45px 45px;
         background-size: auto 70%;
     }
+
+    .earn_money .container-fluid {
+        padding: 50px 45px 60px 45px;
+    }
+
+    .earn_money h1 {
+        font-size: 39px;
+        line-height: 42px;
+    }
+
+    .earn_money p {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .authors .container-fluid {
+        padding: 50px 45px 60px 45px;
+    }
+
+    .authors h1 {
+        font-size: 39px;
+        line-height: 42px;
+    }
+
+    .authors p {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .subscribe .container-fluid {
+        padding: 50px 45px 60px 45px;
+    }
+
+    .subscribe h1 {
+        font-size: 39px;
+        line-height: 42px;
+    }
+
+    .subscribe p {
+        font-size: 18px;
+        line-height: 22px;
+    }
 }
 @media (max-width: 992px) and (min-width: 767px) {
     .start_course h1 {
         font-size: 33px;
-        line-height: 45px;
+        line-height: 37px;
     }
 
     .slider-body {
-        padding-top: 8vh;
+        /*padding-top: 8vh;*/
         padding-bottom: 8vh;
     }
 
@@ -63,13 +105,13 @@
     }
 
     .directions h3 {
-        font-size: 21px;
-        line-height: 24px;
+        font-size: 16px;
+        line-height: 20px;
     }
 
     .directions__card__content h1 {
-        font-size: 21px;
-        line-height: 24px;
+        font-size: 16px;
+        line-height: 20px;
     }
 
     .talents .container-fluid {
@@ -84,8 +126,8 @@
     }
 
     .talents p {
-        font-size: 21px;
-        line-height: 24px;
+        font-size: 16px;
+        line-height: 20px;
     }
 
     .strengths .container-fluid {
@@ -99,8 +141,68 @@
     }
 
     .strengths p {
-        font-size: 21px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .earn_money .container-fluid {
+        padding: 40px 35px 35px;
+    }
+
+    .earn_money h1 {
+        font-size: 33px;
+        line-height: 36px;
+    }
+
+    .earn_money p {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .earn_money img {
+        margin-top: 60px;
+    }
+
+    .authors .container-fluid {
+        padding: 40px 35px 35px;
+    }
+
+    .authors h1 {
+        font-size: 33px;
+        line-height: 36px;
+    }
+
+    .authors p {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .authors .still-thinking-text {
+        font-size: 20px;
         line-height: 24px;
+    }
+
+    .authors-carousel {
+        padding-top: 10px !important;
+        padding-bottom: 30px !important;
+    }
+
+    .subscribe .container-fluid {
+        padding: 40px 35px 35px;
+    }
+
+    .subscribe h1 {
+        font-size: 33px;
+        line-height: 36px;
+    }
+
+    .subscribe p {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .subscription_form .email_text {
+        margin-top: 40px;
     }
 }
 
@@ -120,7 +222,7 @@
     }
 
     .slider-body {
-        padding-top: 5vh;
+        /*padding-top: 5vh;*/
         padding-bottom: 5vh;
     }
 
@@ -222,6 +324,66 @@
 
     .strengths .description-text {
         margin-top: 250px;
+    }
+
+    .earn_money .container-fluid {
+        padding: 70px 10px 60px 10px;
+    }
+
+    .earn_money h1 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .earn_money p {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    .earn_money img {
+        margin-top: 60px;
+    }
+
+    .authors .container-fluid {
+        padding: 70px 10px 60px 10px;
+    }
+
+    .authors h1 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .authors p {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    .authors .still-thinking-text {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .authors-carousel {
+        padding-top: 10px !important;
+        padding-bottom: 30px !important;
+    }
+
+    .subscribe .container-fluid {
+        padding: 70px 10px 60px 10px;
+    }
+
+    .subscribe h1 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .subscribe p {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    .subscription_form .email_text {
+        margin-top: 40px;
     }
 
 }
