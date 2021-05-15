@@ -118,10 +118,9 @@ class PageController extends WebBaseController
         #ToDo Check course or packet
 
         $course = Course::where('id', $request->course_id)->first();
-        $packet_price = PacketPrice::where('id',$request->packet_id)
+        $packet_price = PacketPrice::where('packet_id',$request->packet_id)
                                 ->where('currency',$request->currency)
                                 ->first();
-
 
 
 
