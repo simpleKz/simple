@@ -19,7 +19,7 @@
                     <div class="row col-12 col-md-11 col-lg-9 col-xl-6 offset-0 offset-md-0 offset-lg-1 slider-body">
                         <h1 class="col-11 col-md-12">{{$slider->title}}</h1>
                         <h3 class="col-9 col-md-12">{{$slider->description}}</h3>
-                        <div class="col-10">
+                        <div class="col-11">
                             <a class="btn btn-orange mt-3" href="{{$slider->redirect_url}}" target="_blank">Начать
                                 обучение</a>
                         </div>
