@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <nav class="navbar navbar-expand-md">
+                    <nav class="navbar navbar-light navbar-expand-md">
                         <div class="header_logo">
                             <a href="{{url()->to('/')}}">Simple.</a>
                         </div>
