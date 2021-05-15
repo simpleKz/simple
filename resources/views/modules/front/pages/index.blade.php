@@ -178,17 +178,21 @@
 
         </div>
     </section>
-    <section class="authors pt-5">
-        <div class="container">
-            <h1 class="pb-2">Учись у лучших</h1>
-            <p class="pt-2 pb-2">
-                <span class="dots fas fa-circle fa-xs"></span>
-                <span class="dots fas fa-circle fa-xs"></span>
-                <span class="dots fas fa-circle fa-xs"></span>
-            </p>
-            <p>Наши авторы - эксперты своего дела, потратившие тысячи часов<br>
-                на развитие своих навыков.
-            </p>
+    <section class="authors">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-10">
+                    <h1 class="pb-2">Учись у лучших</h1>
+                    <p class="pt-2 pb-2">
+                        <span class="dots fas fa-circle fa-xs"></span>
+                        <span class="dots fas fa-circle fa-xs"></span>
+                        <span class="dots fas fa-circle fa-xs"></span>
+                    </p>
+                    <p>Наши авторы - эксперты своего дела, потратившие тысячи часов
+                        на развитие своих навыков.
+                    </p>
+                </div>
+            </div>
             <div class="owl-carousel authors-carousel pt-5 pb-5">
                 @foreach($authors as $author)
                     <div class="item">
@@ -210,14 +214,15 @@
                     </div>
                 @endforeach
             </div>
-            <p>Все еще думаешь?
-            </p>
-            <div class="pt-4">
-                <a class="btn-orange" href="#">Начну прямо сейчас</a>
+            <div class="row text-center text-md-left">
+                <p class="col-12 still-thinking-text">Все еще думаешь?</p>
+                <div class="pt-1 col-12 d-flex">
+                    <a class="btn-orange" href="#">Начну прямо сейчас</a>
+                </div>
             </div>
-            <div class="its_simple col-md-12 col-sm-12 p-5">
-                {{--                <img src="{{asset('modules/front/assets/img/itsSimple.png')}}" alt="" />--}}
-            </div>
+            {{--            <div class="its_simple col-md-12 col-sm-12 p-5">--}}
+            {{--                <img src="{{asset('modules/front/assets/img/itsSimple.png')}}" alt="" />--}}
+            {{--            </div>--}}
         </div>
     </section>
     <section class="subscribe pb-5">
@@ -267,17 +272,24 @@
     <script src="{{asset('modules/front/assets/js/swiper.min.js')}}"></script>
     <script type="text/javascript">
         $('.authors-carousel').owlCarousel({
-            loop: false,
             margin: 40,
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
             nav: false,
             responsive: {
                 0: {
-                    items: 1
+                    items: 2,
+                    margin: 240
                 },
                 600: {
                     items: 2
                 },
                 1000: {
+                    items: 3
+                },
+                1200: {
                     items: 4
                 }
             }
