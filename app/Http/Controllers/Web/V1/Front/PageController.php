@@ -140,6 +140,7 @@ class PageController extends WebBaseController
             'pg_order_id' => $order->id,
             'pg_description' => 'Описание заказа',
             'pg_currency' => $order->currency,
+            'pg_user_id' => auth()->user()->id,
             'pg_result_url' => 'https://simple-study.com/api/V1/accept/order',
         ];
 
@@ -161,7 +162,7 @@ class PageController extends WebBaseController
 
 
 
-    public function payCard(Request $request,$course_id = null)
+    public function payCard(Request $request)
     {
         #ToDo Check course or packet
 //        $price = 0;
@@ -176,14 +177,14 @@ class PageController extends WebBaseController
 //            'user_id' => auth()->user()->id,
 //            'sum' => $price,
 //        ]);
-
         $request = [
             'pg_merchant_id' => 536680,
-            'pg_amount' => $price,
-            'pg_salt' => 'Order',
+            'pg_amount' => 25,
+            'pg_salt' => 'CARD',
+            'pg_user_id' => auth()->user()->id,
             'pg_success_url' => 'https://simple-study.com',
             'pg_success_url_method' => 'AUTOGET',
-            'pg_order_id' => $order->id,
+            'pg_order_id' => 10001012,
             'pg_description' => 'Описание заказа',
             'pg_result_url' => 'https://simple-study.com/api/V1/accept/order',
         ];
@@ -200,7 +201,7 @@ class PageController extends WebBaseController
         $query = http_build_query($request);
 
 //redirect a customer to payment page
-        return redirect('https://api.paybox.money/payment.php?' . $query);
+        return redirect('https://api.paybox.money/v1/merchant/536680/cardstorage/add' . $query);
 
     }
 
