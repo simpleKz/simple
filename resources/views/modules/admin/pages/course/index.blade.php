@@ -100,6 +100,7 @@
                         </table>
                     @else <h6>У вас пока нет курсов!</h6>
                     @endif
+                    {{$courses->links()}}
                 </div>
             </div>
         </div>
