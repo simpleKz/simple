@@ -141,6 +141,7 @@ class PageController extends WebBaseController
             'pg_description' => 'Описание заказа',
             'pg_currency' => $order->currency,
             'pg_user_id' => auth()->user()->id,
+            'pg_testing_mode' => 1,
             'pg_result_url' => 'https://simple-study.com/api/V1/accept/order',
         ];
 
