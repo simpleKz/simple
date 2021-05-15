@@ -13,10 +13,15 @@
             <div class="card h-100">
                 <header class="card-header">
                     <h2 class="h4 card-header-title">Пакеты</h2>
-                    <a href="{{route('packet.create',['course_id' => $course->id])}}"
-                       class="btn btn-outline-primary mt-3">
-                        Добавить <i class="ti ti-plus"></i>
-                    </a>
+                    <div class="d-flex align-items-center justify-content-start">
+                        <a href="{{route('course.index')}}"
+                           class="btn btn-outline-primary mt-3"><i class="ti ti-arrow-left"></i> Назад</a>
+                        &nbsp
+                        <a href="{{route('packet.create',['course_id' => $course->id])}}"
+                           class="btn btn-outline-primary mt-3">
+                            Добавить <i class="ti ti-plus"></i>
+                        </a>
+                    </div>
                 </header>
                 <div class="card-body pt-0">
                     @if(!$course->packets->isEmpty())
