@@ -13,6 +13,8 @@ use App\Models\Entities\Core\Order;
 use App\Models\Entities\Core\User;
 use App\Models\Entities\Course\Course;
 use App\Models\Entities\Course\CoursePassing;
+use App\Models\Entities\Course\Packet;
+use App\Models\Entities\Course\PacketPrice;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,7 +26,6 @@ class OrderController extends ApiBaseController
 
 
     public function acceptOrder(Request $request) {
-        Storage::disk('local')->put('testSimpe.txt', $request);
         $request_array = $request->except('pg_sig');
         ksort($request_array);
         array_unshift($request_array, 'order');
@@ -64,8 +65,9 @@ class OrderController extends ApiBaseController
 
                 $order->is_payed = true;
                 $order->save();
-
-                $course = Course::where('id',$order->course_id)->first();
+                $packet_price = PacketPrice::where('id',$order->packet_price_id)->first();
+                $packet = Packet::where('id',$packet_price->packet_id)->first();
+                $course = Course::where('id',$packet->course_id)->first();
 
                 CoursePassing::create([
                     'course_id' => $order->course_id,
