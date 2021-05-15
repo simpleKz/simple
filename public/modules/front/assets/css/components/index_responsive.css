@@ -51,6 +51,20 @@
         font-size: 18px;
         line-height: 22px;
     }
+
+    .authors .container-fluid {
+        padding: 50px 45px 60px 45px;
+    }
+
+    .authors h1 {
+        font-size: 39px;
+        line-height: 42px;
+    }
+
+    .authors p {
+        font-size: 18px;
+        line-height: 22px;
+    }
 }
 @media (max-width: 992px) and (min-width: 767px) {
     .start_course h1 {
@@ -133,6 +147,30 @@
 
     .earn_money img {
         margin-top: 60px;
+    }
+
+    .authors .container-fluid {
+        padding: 40px 35px 35px;
+    }
+
+    .authors h1 {
+        font-size: 33px;
+        line-height: 36px;
+    }
+
+    .authors p {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .authors .still-thinking-text {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .authors-carousel {
+        padding-top: 10px !important;
+        padding-bottom: 30px !important;
     }
 }
 
@@ -272,6 +310,30 @@
 
     .earn_money img {
         margin-top: 60px;
+    }
+
+    .authors .container-fluid {
+        padding: 70px 10px 60px 10px;
+    }
+
+    .authors h1 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .authors p {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    .authors .still-thinking-text {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .authors-carousel {
+        padding-top: 10px !important;
+        padding-bottom: 30px !important;
     }
 
 }

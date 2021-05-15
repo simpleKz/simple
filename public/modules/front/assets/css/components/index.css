@@ -12,12 +12,12 @@
 
 }
 
-.header_logo h1 {
+.header_logo a {
     font-size: 25px;
-    /*line-height: 28px;*/
+    line-height: 28px;
     color: #FFFFFF;
-    font-weight: normal;
-    /*padding-bottom: 30px;*/
+    font-weight: bold;
+    font-style: normal;
 }
 
 .start-header.scroll-on {
@@ -410,12 +410,6 @@
     color: #F76321;
 }
 
-.talents a:hover {
-    color: #f5f5f5;
-    text-decoration: none;
-    background-color: #e35d23;
-}
-
 /* Part4 Strengths */
 
 .strengths .container-fluid {
@@ -487,6 +481,12 @@
 }
 
 .earn_money a:hover {
+    color: #220202;
+    text-decoration: none;
+    background-color: #fafafa;
+}
+
+.earn_money a:hover {
     color: #F76321;
 }
 
@@ -498,24 +498,26 @@
 }
 
 /* Part6 Authors */
+
+.authors .container-fluid {
+    padding: 100px 70px 100px 70px;
+}
 .authors h1 {
     font-size: 45px;
     line-height: 55px;
     font-weight: bold;
+    font-style: normal;
 }
 
 .authors p {
     font-size: 20px;
     line-height: 24px;
     font-weight: normal;
+    font-style: normal;
 }
 
 .authors span {
     color: #F76321;
-}
-
-.authors a {
-    padding: 1.25rem 3.2rem 1.25rem 3.2rem;
 }
 
 .authors a:hover {
@@ -553,6 +555,7 @@
     font-size: 16px;
     line-height: 19px;
     font-weight: 500;
+    font-style: normal;
     padding: 0;
 }
 
