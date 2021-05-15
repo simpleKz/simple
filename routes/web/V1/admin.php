@@ -63,6 +63,8 @@ Route::group(['namespace' => 'Admin\System', 'verify' => true, 'middleware' => [
         Route::post('/course/lessons/update', ['uses' => 'CourseLessonController@update', 'as' => 'lesson.update']);
         Route::post('/course/lessons/delete', ['uses' => 'CourseLessonController@delete', 'as' => 'lesson.delete']);
         Route::post('/course/lesson/material/delete', ['uses' => 'CourseLessonController@deleteMaterial', 'as' => 'lesson.material.delete']);
+        Route::get('/course/{course_id}/packets', ['uses' => 'PacketController@index', 'as' => 'packet.index'])->where('course_id', '[0-9]+');;
+        Route::get('/course/{course_id}/packets/create', ['uses' => 'PacketController@create', 'as' => 'packet.create'])->where('course_id', '[0-9]+');;
     });
 
     Route::group(['namespace' => 'Setting'], function () {

@@ -48,11 +48,14 @@ class CourseWebForm implements WithForm
             FormUtil::input('video_path', 'https://www.youtube.com/watch?v=Jk7Ff9s2nkw', 'Ссылка на превью видео',
                 'text', true, $value ? $value->video_path : ''),
             FormUtil::input('image', 'Выберите фото', 'Фото',
-                'file', $value ? false : true),
-            FormUtil::checkbox('is_parent', 'Является ли курс пакетным', false,
-                [FormUtil::checkOption(1, $value && $value->is_parent ? 1 : 0, 'Да'),]
-            )
+                'file', $value ? false : true)
         );
+
+        if (!$value) {
+            $res = array_merge($res, FormUtil::checkbox('is_parent', 'Является ли курс пакетным', false,
+                [FormUtil::checkOption(1, $value && $value->is_parent ? 1 : 0, 'Да'),]
+            ));
+        }
 
         if ($value) {
             $res = array_merge($res, FormUtil::checkbox('is_visible', 'Виден ли курс всем', false,

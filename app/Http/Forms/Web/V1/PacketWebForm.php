@@ -14,8 +14,10 @@ class PacketWebForm implements WithForm
         return array_merge(
             FormUtil::input('name', 'Standard', 'Название',
                 'text', true, $value ? $value->name : ''),
-            FormUtil::input('name', 'Standard', 'Название',
-                'text', true, $value ? $value->name : '')
+            FormUtil::input('color', '#123123', 'Выбрите цвет',
+                'color', true, $value ? $value->color : '#808080'),
+            FormUtil::input('expiration_month', '0', 'Выбрите количество месяцев для доступа (0 если доступ вечный)',
+                'number', true, $value ? $value->expiration_month : '0')
         );
     }
 

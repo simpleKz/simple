@@ -58,4 +58,10 @@ class Course extends Model
         return $this->hasMany(Packet::class, 'course_id');
     }
 
+    public function detailsLink()
+    {
+        return $this->is_parent ? route('packet.index', ['course_id' => $this->id]) :
+            route('lesson.index', ['course_id' => $this->id]);
+    }
+
 }

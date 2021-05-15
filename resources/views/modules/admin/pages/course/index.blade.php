@@ -52,7 +52,7 @@
                                         <button class="btn btn-outline-danger btn-sm" data-toggle="modal"
                                                 data-target="#delete{{$course->id}}"><i class="ti ti-trash"></i>
                                         </button>
-                                        <a href="{{route('lesson.index', ['course_id' => $course->id])}}"
+                                        <a href="{{$course->detailsLink()}}"
                                            class="btn btn-outline-primary btn-sm">
                                             <i class="ti ti-bookmark"></i>
                                         </a>
