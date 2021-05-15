@@ -65,6 +65,13 @@ Route::group(['namespace' => 'Admin\System', 'verify' => true, 'middleware' => [
         Route::post('/course/lesson/material/delete', ['uses' => 'CourseLessonController@deleteMaterial', 'as' => 'lesson.material.delete']);
         Route::get('/course/{course_id}/packets', ['uses' => 'PacketController@index', 'as' => 'packet.index'])->where('course_id', '[0-9]+');;
         Route::get('/course/{course_id}/packets/create', ['uses' => 'PacketController@create', 'as' => 'packet.create'])->where('course_id', '[0-9]+');;
+        Route::post('/course/{course_id}/packets/store', ['uses' => 'PacketController@store', 'as' => 'packet.store'])->where('course_id', '[0-9]+');;
+        Route::post('/course/packets/update/{packet_id}', ['uses' => 'PacketController@update', 'as' => 'packet.update'])->where('packet_id', '[0-9]+');;
+        Route::get('/course/packets/edit/{packet_id}', ['uses' => 'PacketController@edit', 'as' => 'packet.edit'])->where('packet_id', '[0-9]+');;
+        Route::post('/course/packets/{packet_id}/prices/store', ['uses' => 'PacketPriceController@store', 'as' => 'packet_price.store'])->where('packet_id', '[0-9]+');;
+        Route::post('/course/packets/prices/{price_id}/update', ['uses' => 'PacketPriceController@update', 'as' => 'packet_price.update'])->where('price_id', '[0-9]+');;
+        Route::get('/course/packets/prices/{price_id}/edit', ['uses' => 'PacketPriceController@edit', 'as' => 'packet_price.edit'])->where('price_id', '[0-9]+');;
+
     });
 
     Route::group(['namespace' => 'Setting'], function () {

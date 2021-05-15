@@ -13,10 +13,15 @@
             <div class="card h-100">
                 <header class="card-header">
                     <h2 class="h4 card-header-title">Пакеты</h2>
-                    <a href="{{route('packet.create',['course_id' => $course->id])}}"
-                       class="btn btn-outline-primary mt-3">
-                        Добавить <i class="ti ti-plus"></i>
-                    </a>
+                    <div class="d-flex align-items-center justify-content-start">
+                        <a href="{{route('course.index')}}"
+                           class="btn btn-outline-primary mt-3"><i class="ti ti-arrow-left"></i> Назад</a>
+                        &nbsp
+                        <a href="{{route('packet.create',['course_id' => $course->id])}}"
+                           class="btn btn-outline-primary mt-3">
+                            Добавить <i class="ti ti-plus"></i>
+                        </a>
+                    </div>
                 </header>
                 <div class="card-body pt-0">
                     @if(!$course->packets->isEmpty())
@@ -26,6 +31,8 @@
                                 <th>ID</th>
                                 <th>Название</th>
                                 <th>Доступ в месяцах</th>
+                                <th>Цвет</th>
+                                <th>Действия</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -34,11 +41,20 @@
                                     <td>{{$packet->id}}</td>
                                     <td>{{$packet->name}}</td>
                                     <td>{{$packet->expiration_month == 0 ? 'Вечно' : $packet->expiration_month}}</td>
+                                    <td class="text-center">
+                                        <div style="width: 30px;height: 30px; display: inline-block; background-color: {{$packet->color}}"></div>
+                                    </td>
+                                    <td>
+                                        <a href="{{route('packet.edit', ['packet_id' => $packet->id])}}"
+                                           class="btn btn-outline-primary btn-sm">
+                                            <i class="ti ti-pencil"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-                    @else <h6>У курса пока нет занятий!</h6>
+                    @else <h6>У курса пока нет подписок!</h6>
                     @endif
                 </div>
             </div>

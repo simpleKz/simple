@@ -52,31 +52,43 @@
                                         <button class="btn btn-outline-danger btn-sm" data-toggle="modal"
                                                 data-target="#delete{{$course->id}}"><i class="ti ti-trash"></i>
                                         </button>
-                                        <a href="{{$course->detailsLink()}}"
+                                        @if(!$course->is_parent)
+                                            <a href="{{route('lesson.index', ['course_id' => $course->id])}}"
+                                               class="btn btn-outline-primary btn-sm">
+                                                <i class="ti ti-bookmark"></i>
+                                            </a>
+                                        @endif
+                                        <a href="{{route('packet.index', ['course_id' => $course->id])}}"
                                            class="btn btn-outline-primary btn-sm">
-                                            <i class="ti ti-bookmark"></i>
+                                            <i class="ti ti-money"></i>
                                         </a>
                                         <div class="modal modal-backdrop" id="delete{{$course->id}}" tabindex="-1"
-                                             role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+                                             role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+                                             data-backdrop="false">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h4 class="modal-title w-100" id="myModalLabel">Удаление</h4>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
                                                         <p>Вы действительно хотите удалить?</p>
-                                                        <form method="post" action="{{route('course.delete', ['id' => $course->id])}}">
+                                                        <form method="post"
+                                                              action="{{route('course.delete', ['id' => $course->id])}}">
                                                             {{csrf_field()}}
                                                             <input type="number" value="{{$course->id}}" hidden>
-                                                            <button type="submit" class="btn btn-outline-danger mt-3">Удалить безвозвратно<i class="ti ti-trash"></i></button>
+                                                            <button type="submit" class="btn btn-outline-danger mt-3">
+                                                                Удалить безвозвратно<i class="ti ti-trash"></i></button>
                                                         </form>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger-soft btn-sm" data-dismiss="modal">
-                                                            <i class="ti ti-close"></i> Закрыть</button>
+                                                        <button type="button" class="btn btn-danger-soft btn-sm"
+                                                                data-dismiss="modal">
+                                                            <i class="ti ti-close"></i> Закрыть
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>

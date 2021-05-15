@@ -4,6 +4,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('course.index')}}">Назад</a></li>
+            <li class="breadcrumb-item"><a href="{{route('course.index')}}">Курсы</a></li>
             <li class="breadcrumb-item active" aria-current="page">Занятия</li>
         </ol>
     </nav>
@@ -12,8 +13,13 @@
             <div class="card h-100">
                 <header class="card-header">
                     <h2 class="h4 card-header-title">Занятия</h2>
-                    <a href="{{route('lesson.create',['course_id' => $course_id])}}" class="btn btn-outline-primary mt-3">
-                        Добавить <i class="ti ti-plus"></i></a>
+                    <div class="d-flex align-items-center justify-content-start">
+                        <a href="{{route('course.index')}}"
+                           class="btn btn-outline-primary mt-3"><i class="ti ti-arrow-left"></i> Назад</a>
+                        &nbsp
+                        <a href="{{route('lesson.create',['course_id' => $course_id])}}" class="btn btn-outline-primary mt-3">
+                            Добавить <i class="ti ti-plus"></i></a>
+                    </div>
                 </header>
                 <div class="card-body pt-0">
                     @if(!$lessons->isEmpty())
