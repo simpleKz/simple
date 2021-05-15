@@ -96,4 +96,63 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h2 class="h4 card-header-title">Добавить атрибуты для пакета</h2>
+                </div>
+                <div class="card-body">
+                    <form action="{{route('attribute.store',['packet_id' => $packet->id])}}" method="post">
+                        <x-admin.input-form-group-list
+                            :errors="$errors"
+                            :elements="$attributeForm"/>
+                        <button type="submit"
+                                class="offset-md-4 col-md-4 btn btn-block btn-wide btn-primary text-uppercase">
+                            Добавить <i class="ti ti-check"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h2 class="h4 card-header-title">Атрибуты для пакета</h2>
+                </div>
+                <div class="card-body">
+                    @if(!$packet->attributes->isEmpty())
+                        <table class="table table-hover table-light text-center">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Атрибут</th>
+                                <th>Действия</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($packet->attributes as $attribute)
+                                <tr>
+                                    <td>{{$attribute->id}}</td>
+                                    <td>{{$attribute->attribute}}</td>
+                                    <td>
+                                        <form class="d-inline" method="post"
+                                              action="{{route('attribute.delete', ['attribute_id' => $attribute->id])}}">
+                                            {{csrf_field()}}
+                                            <button type="submit"
+                                                    class="btn btn-outline-danger btn-sm">
+                                                <i class="ti ti-trash"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    @else <h6>Пока нет атрибутов!</h6>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

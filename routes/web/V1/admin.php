@@ -71,6 +71,8 @@ Route::group(['namespace' => 'Admin\System', 'verify' => true, 'middleware' => [
         Route::post('/course/packets/{packet_id}/prices/store', ['uses' => 'PacketPriceController@store', 'as' => 'packet_price.store'])->where('packet_id', '[0-9]+');;
         Route::post('/course/packets/prices/{price_id}/update', ['uses' => 'PacketPriceController@update', 'as' => 'packet_price.update'])->where('price_id', '[0-9]+');;
         Route::get('/course/packets/prices/{price_id}/edit', ['uses' => 'PacketPriceController@edit', 'as' => 'packet_price.edit'])->where('price_id', '[0-9]+');;
+        Route::post('/course/packets/attribute/{attribute_id}/delete', ['uses' => 'PacketAttributeController@delete', 'as' => 'attribute.delete'])->where('attribute_id', '[0-9]+');;
+        Route::post('/course/packets/attribute/{packet_id}/store', ['uses' => 'PacketAttributeController@store', 'as' => 'attribute.store'])->where('packet_id', '[0-9]+');;
 
     });
 
