@@ -73,6 +73,11 @@ Route::group(['namespace' => 'Admin\System', 'verify' => true, 'middleware' => [
         Route::get('/course/packets/prices/{price_id}/edit', ['uses' => 'PacketPriceController@edit', 'as' => 'packet_price.edit'])->where('price_id', '[0-9]+');;
         Route::post('/course/packets/attribute/{attribute_id}/delete', ['uses' => 'PacketAttributeController@delete', 'as' => 'attribute.delete'])->where('attribute_id', '[0-9]+');;
         Route::post('/course/packets/attribute/{packet_id}/store', ['uses' => 'PacketAttributeController@store', 'as' => 'attribute.store'])->where('packet_id', '[0-9]+');;
+        Route::get('/course/packets/{packet_id}/connection', ['uses' => 'PacketCourseController@index', 'as' => 'packet_course.index'])->where('packet_id', '[0-9]+');;
+        Route::get('/course/packets/connect/{packet_id}/{course_id}', ['uses' => 'PacketCourseController@connect', 'as' => 'packet_course.connect'])
+            ->where('packet_id', '[0-9]+')->where('course_id', '[0-9]+');
+        Route::get('/course/packets/disconnect/{packet_id}/{course_id}', ['uses' => 'PacketCourseController@disconnect', 'as' => 'packet_course.disconnect'])
+            ->where('packet_id', '[0-9]+')->where('course_id', '[0-9]+');
 
     });
 

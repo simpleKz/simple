@@ -27,4 +27,5 @@ class Packet extends Model
     {
         return $this->hasMany(PacketAttribute::class, 'packet_id');
     }
+
 }

@@ -49,6 +49,10 @@
                                            class="btn btn-outline-primary btn-sm">
                                             <i class="ti ti-pencil"></i>
                                         </a>
+                                        <a href="{{route('packet_course.index', ['packet_id' => $packet->id])}}"
+                                           class="btn btn-outline-primary btn-sm">
+                                            <i class="ti ti-book"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
