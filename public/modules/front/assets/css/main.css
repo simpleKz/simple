@@ -66,6 +66,7 @@ li {
 }
 
 .btn-orange {
+    padding: 1.25rem 3.2rem 1.25rem 3.2rem;
     background: #F76321;
     /*padding: 5px 20px !important;*/
     /*display: block;*/
@@ -77,6 +78,7 @@ li {
     outline:none;
 
 }
+
 .btn-orange:hover {
     color: #fffff5;
     border:none !important;
@@ -98,4 +100,15 @@ li {
 
 .fa-xs {
     font-size: .6em;
+}
+
+@media (max-width: 767px) {
+    .btn-orange {
+        padding: 0.9rem 2.5rem 0.9rem 2.5rem;
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: bold;
+        width: 100%;
+        text-align: center;
+    }
 }

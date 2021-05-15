@@ -19,7 +19,7 @@
                     <div class="row col-12 col-md-11 col-lg-9 col-xl-6 offset-0 offset-md-0 offset-lg-1 slider-body">
                         <h1 class="col-11 col-md-12">{{$slider->title}}</h1>
                         <h3 class="col-9 col-md-12">{{$slider->description}}</h3>
-                        <div class="col-12">
+                        <div class="col-9 col-md-12">
                             <a class="btn btn-orange mt-3" href="{{$slider->redirect_url}}" target="_blank">Начать
                                 обучение</a>
                         </div>
@@ -92,8 +92,10 @@
     <section class="talents">
         <div class="container-fluid">
             <div class="row align-items-center">
-                <div class="col-12 col-md-8 col-lg-8">
+                <div class="col-12">
                     <h1>Раскрой свои таланты</h1>
+                </div>
+                <div class="col-11 col-md-8 col-lg-8">
                     <p class="pt-1 pb-4">
                         <span class="dots fas  fa-circle fa-xs"></span>
                         <span class="dots fas  fa-circle fa-xs"></span>
@@ -113,47 +115,38 @@
                         </p>
                     </div>
                 </div>
-                {{--                <div class="girl1_img col-12 col-md-4 col-lg-4">--}}
-                {{--                    <img--}}
-                {{--                        src="{{asset('modules/front/assets/img/girl1.png')}}"--}}
-                {{--                        alt="" width="300" height="300">--}}
-                {{--                </div>--}}
             </div>
-            <div class="pt-5 d-flex align-items-center justify-content-center">
+            <div class="pt-5 pt-md-3 d-flex">
                 <a class="btn-orange" href="#">Самое время начать</a>
             </div>
         </div>
     </section>
-    <section class="strengths pt-5 pb-5 mb-5">
-        <div class="container p-4">
-            <div class="row">
-                <div class="girl_img col-12 col-md-4 col-lg-4">
-                    &nbsp
-                </div>
-                <div class="col-12 col-md-8 col-lg-8">
-                    <div class="text-right">
-                        <h1>Развивай свои сильные стороны</h1>
-                        <div class="pr-4 text-right">
-                            <p class="pt-2 pb-4"><span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                                <span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                                <span class="dots fas  fa-circle"></span>
-                            </p>
-                            <p>
-                                Ты уже нашел то, что тебе нравится?<br>
-                                Это очень и очень круто! Ведь у большинства его попросту нет
-                            </p>
-                            <p>
-                                Теперь пора развивать свои сильные стороны.<br>
-                                Учись у лучших экспертов в твоем деле и перенимай их опыт!
-                            </p>
-                            <div class="pt-5">
-                                <a class="btn-orange" href="#">Начну прямо сейчас</a>
-                            </div>
-                        </div>
+    <section class="strengths">
+        <div class="container-fluid">
+            <div class="row justify-content-end">
+                <div class="col-10 col-md-8 text-right">
+                    <h1>Развивай свои сильные стороны</h1>
+                    <p class="pt-2 pb-4">
+                        <span class="dots fas fa-circle fa-xs"></span>
+                        <span class="dots fas fa-circle fa-xs"></span>
+                        <span class="dots fas fa-circle fa-xs"></span>
+                    </p>
+                    <div class="text-right description-text">
+                        <p>
+                            Ты уже нашел то, что тебе нравится?<br>
+                            Это очень и очень круто!
+                            Ведь у большинства его попросту нет
+                        </p>
+                        <p>
+                            Теперь пора развивать свои сильные стороны.<br>
+                            Учись у лучших экспертов в твоем деле и перенимай их опыт!
+                        </p>
                     </div>
                 </div>
+                <div class="pt-5 col-12 d-flex justify-content-end">
+                    <a class="btn-orange" href="#">Начну прямо сейчас</a>
+                </div>
             </div>
-
         </div>
     </section>
     <section class="earn_money mt-5 pt-5 pb-5">
