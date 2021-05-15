@@ -18,7 +18,7 @@ class CourseWebForm implements WithForm
         $authors = CourseAuthor::all();
         foreach ($authors as $author) {
             $selected = $value ? $value->author_id == $author->id ? 'selected' : '' : '';
-            $authors_array[] = array('title' => $author->first_name." ".$author->last_name, 'value' => $author->id, 'selected' => $selected);
+            $authors_array[] = array('title' => $author->first_name . " " . $author->last_name, 'value' => $author->id, 'selected' => $selected);
         }
 
         $categories_array = [];
@@ -27,12 +27,12 @@ class CourseWebForm implements WithForm
             $selected = $value ? $value->category_id == $category->id ? 'selected' : '' : '';
             $categories_array[] = array('title' => $category->name, 'value' => $category->id, 'selected' => $selected);
         }
-        if($value) {
+        if ($value) {
             $array = FormUtil::input('id', 1, null,
                 'numeric', true,
                 $value->id, null, null, true);
         }
-        return array_merge(
+        $res = array_merge(
             $array,
             FormUtil::input('name', 'Основы маркетинга', 'Название',
                 'text', true, $value ? $value->name : ''),
@@ -40,17 +40,25 @@ class CourseWebForm implements WithForm
                 true, $authors_array),
             FormUtil::select('category_id', '', 'Категория',
                 true, $categories_array),
-            FormUtil::textArea('description', 'Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать 
-несколько абзацев более менее осмысленного текста рыбы на русском языке, 
-а начинающему оратору отточить навык публичных выступлений 
+            FormUtil::textArea('description', 'Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать
+несколько абзацев более менее осмысленного текста рыбы на русском языке,
+а начинающему оратору отточить навык публичных выступлений
 в домашних условиях.', 'Описание',
                 true, $value ? $value->description : ''),
-            FormUtil::input('price', 20000, 'Цена',
-                'number', true, $value ? $value->price : ''),
             FormUtil::input('video_path', 'https://www.youtube.com/watch?v=Jk7Ff9s2nkw', 'Ссылка на превью видео',
                 'text', true, $value ? $value->video_path : ''),
             FormUtil::input('image', 'Выберите фото', 'Фото',
-                'file', $value ? false : true)
+                'file', $value ? false : true),
+            FormUtil::checkbox('is_parent', 'Является ли курс пакетным', false,
+                [FormUtil::checkOption(1, $value && $value->is_parent ? 1 : 0, 'Да'),]
+            )
         );
+
+        if ($value) {
+            $res = array_merge($res, FormUtil::checkbox('is_visible', 'Виден ли курс всем', false,
+                [FormUtil::checkOption(1, $value && $value->is_visible ? 1 : 0, 'Да'),]
+            ));
+        }
+        return $res;
     }
 }

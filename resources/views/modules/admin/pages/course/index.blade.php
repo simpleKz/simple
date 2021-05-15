@@ -22,7 +22,8 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Название</th>
-                                <th>Цена</th>
+                                <th>Пакетный курс</th>
+                                <th>Видимый</th>
                                 <th>Рейтинг</th>
                                 <th>Категория</th>
                                 <th>Занятий</th>
@@ -36,7 +37,8 @@
                                 <tr>
                                     <td>{{$course->id}}</td>
                                     <td>{{$course->name}}</td>
-                                    <td>{{$course->price}}</td>
+                                    <td>{{$course->is_parent ? 'Да' : 'Нет'}}</td>
+                                    <td>{{$course->is_visible ? 'Да' : 'Нет'}}</td>
                                     <td>{{$course->rating}}</td>
                                     <td>{{$course->category ? $course->category->name : ''}}</td>
                                     <td>{{$course->lessons ? $course->lessons->count() : '0'}}</td>

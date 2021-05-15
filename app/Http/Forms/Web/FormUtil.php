@@ -35,6 +35,11 @@ class FormUtil
         return compact('value', 'selected', 'title');
     }
 
+    public static function checkOption($value, $checked, $title): array
+    {
+        return compact('value', 'checked', 'title');
+    }
+
     public static function textArea($name, $placeholder, $label, $required, $value = null): array
     {
         $type = 'textarea';

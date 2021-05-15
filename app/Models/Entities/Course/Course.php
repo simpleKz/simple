@@ -19,13 +19,13 @@ class Course extends Model
     protected $fillable = [
         'name',
         'description',
-        'price',
         'image_path',
         'video_path',
         'category_id',
         'author_id',
         'rating',
         'is_parent',
+        'is_visible',
     ];
 
     use HasSlug;

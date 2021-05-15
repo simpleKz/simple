@@ -14,22 +14,26 @@ use App\Services\Common\V1\Support\FileService;
 class CourseController extends WebBaseController
 {
     protected $fileService;
+
     function __construct(FileService $fileService)
     {
         $this->fileService = $fileService;
     }
-    public function index() {
+
+    public function index()
+    {
         $courses = Course::orderBy('created_at', 'desc')->paginate(10);
         return $this->adminView('pages.course.index', compact('courses'));
     }
 
-    public function create() {
+    public function create()
+    {
         $course_web_form = CourseWebForm::inputGroups(null);
         return $this->adminView('pages.course.create', compact('course_web_form'));
     }
 
-    public function store(CourseWebRequest $request) {
-
+    public function store(CourseWebRequest $request)
+    {
         try {
             $path = $this->fileService->store($request->image, Course::DEFAULT_RESOURCE_DIRECTORY);
             Course::create([
@@ -38,31 +42,33 @@ class CourseController extends WebBaseController
                 'category_id' => $request->category_id,
                 'author_id' => $request->author_id,
                 'description' => $request->description,
-                'price' => $request->price,
                 'video_path' => $request->video_path,
-                'rating' =>0
-
+                'rating' => 0,
+                'is_parent' => $request->is_parent ? 1 : 0,
+                'is_visible' => $request->is_visible ? 1 : 0,
             ]);
             $this->added();
         } catch (\Exception $exception) {
 
-            if($path) $this->fileService->remove($path);
+            if ($path) $this->fileService->remove($path);
             throw new WebServiceExplainedException($exception->getMessage());
         }
         return redirect()->route('course.index');
     }
 
-    public function edit(CourseWebRequest $request) {
+    public function edit(CourseWebRequest $request)
+    {
         $course = Course::find($request->id);
         $course_web_form = CourseWebForm::inputGroups($course);
         return $this->adminView('pages.course.edit', compact('course', 'course_web_form'));
     }
 
-    public function update(CourseWebRequest $request) {
+    public function update(CourseWebRequest $request)
+    {
         $course = Course::find($request->id);
         $old_path = $course->image_path;
         try {
-            if($request->image) {
+            if ($request->image) {
                 $path = $this->fileService->updateWithRemoveOrStore($request->image, Course::DEFAULT_RESOURCE_DIRECTORY, $old_path);
                 $old_path = $path;
             }
@@ -71,24 +77,32 @@ class CourseController extends WebBaseController
                 'category_id' => $request->category_id,
                 'author_id' => $request->author_id,
                 'description' => $request->description,
-                'price' => $request->price,
                 'video_path' => $request->video_path,
-                'image_path' => $old_path
+                'image_path' => $old_path,
+                'is_parent' => $request->is_parent ? 1 : 0,
+                'is_visible' => $request->is_visible ? 1 : 0,
             ]);
             $this->edited();
         } catch (\Exception $exception) {
-            if($path) $this->fileService->remove($path);
+            if ($path) $this->fileService->remove($path);
             throw new WebServiceExplainedException($exception->getMessage());
         }
 
         return redirect()->route('course.index');
     }
 
-    public function delete(CourseWebRequest $request) {
+    public function delete(CourseWebRequest $request)
+    {
         $course = Course::find($request->id);
         $course->delete();
         $this->fileService->remove($course->image_path);
         $this->deleted();
         return redirect()->route('course.index');
+    }
+
+    public function courseDetail($id)
+    {
+        $course = Course::findOrFail($id);
+        return $course;
     }
 }
