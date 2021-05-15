@@ -13,9 +13,29 @@
         min-height: 40vh;
     }
 
+    .recommendations {
+        padding: 30px;
+    }
+
     .directions__card__content h1 {
         font-size: 23px;
         line-height: 24px;
+    }
+
+    .directions .container-fluid {
+        padding: 80px 45px 45px;
+    }
+
+    .talents .container-fluid {
+        padding: 20px 45px 45px;
+        background-position: 90% 30%;
+        background-size: 40%;
+    }
+
+    .strengths .container-fluid {
+        background-position: left 40%;
+        padding: 20px 45px 45px;
+        background-size: auto 70%;
     }
 }
 @media (max-width: 992px) and (min-width: 767px) {
@@ -33,7 +53,52 @@
         min-height: 40vh;
     }
 
+    .directions .container-fluid {
+        padding: 80px 35px 35px;
+    }
+
+    .directions h1 {
+        font-size: 33px;
+        line-height: 36px;
+    }
+
+    .directions h3 {
+        font-size: 21px;
+        line-height: 24px;
+    }
+
     .directions__card__content h1 {
+        font-size: 21px;
+        line-height: 24px;
+    }
+
+    .talents .container-fluid {
+        padding: 40px 35px 35px;
+        background-position: 90% center;
+        background-size: 40%;
+    }
+
+    .talents h1 {
+        font-size: 33px;
+        line-height: 36px;
+    }
+
+    .talents p {
+        font-size: 21px;
+        line-height: 24px;
+    }
+
+    .strengths .container-fluid {
+        background-position: left 50%;
+        padding: 40px 35px 35px;
+        background-size: auto 55%;
+    }
+    .strengths h1 {
+        font-size: 33px;
+        line-height: 36px;
+    }
+
+    .strengths p {
         font-size: 21px;
         line-height: 24px;
     }
@@ -121,8 +186,9 @@
 
     /*Part 4*/
     .talents .container-fluid {
-        background-position: 0 25%;
+        background-position: 30% 30%;
         padding: 80px 10px 60px 10px;
+        background-size: 70%;
     }
 
     .talents h1 {
@@ -139,14 +205,25 @@
         margin-top: 200px;
     }
 
-    .talents a {
-        padding: 0.9rem 2.5rem 0.9rem 2.5rem;
-        font-size: 16px;
-        line-height: 19px;
-        font-weight: bold;
-        width: 100%;
-        text-align: center;
+    .strengths .container-fluid {
+        background-position: center 30%;
+        padding: 10px 10px 60px 10px;
+        background-size: auto 42%;
     }
+    .strengths h1 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .strengths p {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    .strengths .description-text {
+        margin-top: 250px;
+    }
+
 }
 
 
