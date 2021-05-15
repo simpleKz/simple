@@ -3,11 +3,6 @@
 @section('styles')
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/swiper.min.css')}}">
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/components/index_responsive.css')}}">
-    <style>
-        .rec-img {
-            margin: 10px;
-        }
-    </style>
 @endsection
 
 @section('content')
@@ -149,15 +144,16 @@
             </div>
         </div>
     </section>
-    <section class="earn_money mt-5 pt-5 pb-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-8 col-lg-8 pr-0">
+    <section class="earn_money">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-8">
                     <h1 class="pb-2">Зарабатывай на своем обучении</h1>
                     <p>Учишься ты, а платим тебе мы! За что?</p>
-                    <p class="pt-2 pb-4"><span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                        <span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                        <span class="dots fas  fa-circle"></span>
+                    <p class="pt-2 pb-4">
+                        <span class="dots fas fa-circle fa-xs"></span>
+                        <span class="dots fas fa-circle fa-xs"></span>
+                        <span class="dots fas fa-circle fa-xs"></span>
                     </p>
                     <p>Все просто.
                     </p>
@@ -170,17 +166,16 @@
                         за твое благородное дело!
                     </p>
                 </div>
-                <div class="col-12 col-md-4 col-lg-4 d-flex align-items-center pr-0 pl-0">
-                    <div class="earn_money_img">
-                        <img
-                            src="{{asset('modules/front/assets/img/notebook1.png')}}"
-                            alt="">
-                    </div>
+                <div class="col-12 col-lg-4 justify-content-end order-2 order-lg-1">
+                    <img
+                        src="{{asset('modules/front/assets/img/notebook1.png')}}"
+                        alt="">
+                </div>
+                <div class="col-12 pt-5 order-1 order-lg-2 d-flex">
+                    <a class="btn-orange" href="#">Начни зарабатывать</a>
                 </div>
             </div>
-            <div class="pt-5">
-                <a class="btn-orange" href="#">Начни зарабатывать</a>
-            </div>
+
         </div>
     </section>
     <section class="authors pt-5">
@@ -289,7 +284,10 @@
         });
 
         $('.owl-carousel').owlCarousel({
-            loop: false,
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
             margin: 10,
             nav: false,
             responsive: {

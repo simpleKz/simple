@@ -451,44 +451,43 @@
 
 /* Part5 Earn Money */
 .earn_money {
-    /*background: #F76321;*/
     background: #F55C18;
     color: #ffffff;
 }
 
+.earn_money .container-fluid {
+    padding: 100px 70px 100px 70px;
+}
+
 .earn_money h1 {
-    font-size: 44px;
+    font-size: 45px;
     line-height: 55px;
     font-weight: bold;
+    font-style: normal;
 }
 
 .earn_money p {
     font-size: 20px;
     line-height: 24px;
     font-weight: normal;
+    font-style: normal;
 }
 
 .earn_money span {
     color: #ffffff;
 }
 
-.earn_money a {
-    padding: 1.25rem 3.2rem 1.25rem 3.2rem;
-    background: #FFFFFF;
-    color: #F76321;
+.earn_money img {
+    width: 100%;
+}
 
+.earn_money a {
+    background: #FFFFFF;
+    color: #000000;
 }
 
 .earn_money a:hover {
     color: #F76321;
-}
-
-.earn_money_img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /*overflow: hidden;*/
-    /*object-fit: cover;*/
 }
 
 .earn_money_img img {
