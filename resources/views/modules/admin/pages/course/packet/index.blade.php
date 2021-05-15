@@ -26,6 +26,8 @@
                                 <th>ID</th>
                                 <th>Название</th>
                                 <th>Доступ в месяцах</th>
+                                <th>Цвет</th>
+                                <th>Действия</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -34,11 +36,20 @@
                                     <td>{{$packet->id}}</td>
                                     <td>{{$packet->name}}</td>
                                     <td>{{$packet->expiration_month == 0 ? 'Вечно' : $packet->expiration_month}}</td>
+                                    <td class="text-center">
+                                        <div style="width: 30px;height: 30px; display: inline-block; background-color: {{$packet->color}}"></div>
+                                    </td>
+                                    <td>
+                                        <a href="{{route('packet.edit', ['packet_id' => $packet->id])}}"
+                                           class="btn btn-outline-primary btn-sm">
+                                            <i class="ti ti-pencil"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-                    @else <h6>У курса пока нет занятий!</h6>
+                    @else <h6>У курса пока нет подписок!</h6>
                     @endif
                 </div>
             </div>
