@@ -147,35 +147,29 @@
         </div>
     </section>
     <section class="price">
-        <div class="container">
+        <div class="container-fluid">
             <h1>Стоимость</h1>
-            <p class="pt-2 pb-4"><span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                <span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                <span class="dots fas  fa-circle"></span>
+            <p>
+                <span class="dots fas fa-circle fa-xs"></span>
+                <span class="dots fas fa-circle fa-xs"></span>
+                <span class="dots fas fa-circle fa-xs"></span>
             </p>
             <div class="row mt-3 mb-3">
-                <div class="price_card_1 col-md-3">
-                    <p>
-                        Стоимость курса
-                    </p>
-                    <h3>
-                        30 000 KZT
-                    </h3>
+                <div class="price_card_1 p-4">
+                    <p>Стоимость курса</p>
+                    <h3>30 000 KZT</h3>
                 </div>
-                <div class="price_card_2 col-md-3">
-                    <p>
-                        Что ты получишь
-                    </p>
-                    <h3>
-                        30 <label>уроков</label>
-                    </h3>
+                <div class="price_card_2 p-4">
+                    <p>Что ты получишь</p>
+                    <div class="d-flex align-items-md-baseline">
+                        <h3>30&nbsp</h3>
+                        <p>уроков</p>
+                    </div>
                 </div>
             </div>
-            <div class="pt-5">
-                <a class="btn-orange " href="#">Купить подписку</a>
+            <div class="pt-4 d-flex">
+                <a class="btn-orange" href="#">Купить подписку</a>
             </div>
-
-
         </div>
     </section>
     <section class="subscribe">

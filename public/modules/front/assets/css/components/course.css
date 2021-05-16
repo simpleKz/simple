@@ -111,49 +111,44 @@
 }
 
 /*Price*/
-.price{
-    width: 100%;
-    height:70vh;
+.price {
     background: #F4F4F4;
-    display: flex;
-    align-items: center;
+}
+
+.price .container-fluid {
+    padding: 50px 70px 100px 70px;
 }
 .price h1{
     font-size: 45px;
     line-height: 55px;
     color: #F76321;
     font-weight:bold;
-    /*padding-bottom: 30px;*/
+    font-style: normal;
 }
 .price h3{
     font-size: 40px;
     line-height: 48px;
     font-weight:bold;
-    /*padding-bottom: 30px;*/
+    font-style: normal;
 }
-.price label{
-    font-size: 20px;
-    line-height: 24px;
-    font-weight:normal;
-    /*padding-bottom: 30px;*/
-}
+
 .price p{
     font-size: 20px;
     line-height: 24px;
-    font-weight:normal;
-    /*padding-bottom: 30px;*/
+    font-weight: bold;
+    font-style: normal;
 }
 .price a{
-    padding: 1.25rem 3.2rem 1.25rem 3.2rem;
     background: #ffffff;
     color: #F76321;
 }
 .price a:hover{
-    color: #F76321;
+    color: #f15e1f;
+    background: #fffffa;
 }
 .price_card_1{
-    border-right: 2px solid #050606;
+    border-right: 1px solid #050606;
 }
 .price_card_2{
-    border-left: 2px solid #050606;
+    border-left: 1px solid #050606;
 }
