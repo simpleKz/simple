@@ -7,9 +7,10 @@
 <script src="{{asset('modules/admin/assets/vendor/chartjs-plugin-style/dist/chartjs-plugin-style.min.js')}}"></script>
 <script src="{{asset('modules/admin/assets/js/sidebar-nav.js')}}"></script>
 <script src="{{asset('modules/admin/assets/js/main.js')}}"></script>
-<script src="{{asset('modules/admin/assets/js/charts/area-chart.js')}}"></script>
-<script src="{{asset('modules/admin/assets/js/charts/area-chart-small.js')}}"></script>
-<script src="{{asset('modules/admin/assets/js/charts/doughnut-chart.js')}}"></script>
+<script src="{{asset('modules/front/assets/js/magnific-popup.min.js')}}"></script>
+{{--<script src="{{asset('modules/admin/assets/js/charts/area-chart.js')}}"></script>--}}
+{{--<script src="{{asset('modules/admin/assets/js/charts/area-chart-small.js')}}"></script>--}}
+{{--<script src="{{asset('modules/admin/assets/js/charts/doughnut-chart.js')}}"></script>--}}
 <script src="{{asset('modules/admin/assets/js/toastr.js')}}"></script>
 {{--<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>--}}
 <script>

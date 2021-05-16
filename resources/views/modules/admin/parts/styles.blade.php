@@ -4,3 +4,4 @@
 <link rel="stylesheet" href="{{asset('modules/admin/assets/css/theme.css')}}">
 <link rel="stylesheet" href="{{asset('modules/admin/assets/css/toastr.css')}}">
 <link rel="stylesheet" href="{{asset('modules/admin/assets/css/admin.css')}}">
+<link rel="stylesheet" href="{{asset('modules/front/assets/css/magnific-popup.css')}}">
