@@ -33,7 +33,7 @@ class AddColumnsToOrdersTable extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->dropColumn('currency');
-            $table->dropForeign('packet_price_id');
+            $table->dropForeign(['packet_price_id']);
             $table->dropColumn('packet_price_id');
             $table->foreignId('course_id')
                 ->references('id')->on('courses');

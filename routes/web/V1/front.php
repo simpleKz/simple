@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Front'], function () {
     Route::get('/', ['uses' => 'PageController@welcome', 'as' => 'index']);
     Route::get('/courses/{slug?}', ['uses' => 'PageController@courses', 'as' => 'courses']);
-    Route::get('/course', ['uses' => 'PageController@course']);
+    Route::get('/course', ['uses' => 'PageController@course', 'as' => 'course.single.detail']);
     Route::post('/send/email', ['uses' => 'PageController@saveEmailForBulkMailing', 'as' => 'send.email']);
     Route::get('legal', ['as' => 'legal', 'uses' => 'PageController@legal']);
     Route::get('/ref', ['as' => 'ref', 'uses' => 'PageController@ref']);

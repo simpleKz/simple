@@ -17,7 +17,7 @@
                 </header>
                 <div class="card-body pt-0">
                     @if(!$courses->isEmpty())
-                        <table class="table table-hover table-light text-center">
+                        <table class="table table-hover table-light text-center table-responsive">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -44,24 +44,29 @@
                                     <td>{{$course->lessons ? $course->lessons->count() : '0'}}</td>
                                     <td>{{$course->author ? ($course->author->first_name." ".$course->author->last_name) : ''}}</td>
                                     <td>{{$course->created_at}}</td>
-                                    <td class="d-inline-block">
+                                    <td class="d-flex justify-content-start">
                                         <a href="{{route('course.edit', ['id' => $course->id])}}"
-                                           class="btn btn-outline-primary btn-sm">
+                                           class="btn btn-outline-primary btn-sm m-1">
                                             <i class="ti ti-pencil"></i>
                                         </a>
-                                        <button class="btn btn-outline-danger btn-sm" data-toggle="modal"
+                                        <button class="btn btn-outline-danger btn-sm m-1" data-toggle="modal"
                                                 data-target="#delete{{$course->id}}"><i class="ti ti-trash"></i>
                                         </button>
+                                        <a href="{{route('packet.index', ['course_id' => $course->id])}}"
+                                           class="btn btn-outline-primary btn-sm m-1">
+                                            <i class="ti ti-money"></i>
+                                        </a>
+                                        <a href="{{route('course.detail', ['id' => $course->id])}}"
+                                           class="btn btn-outline-primary btn-sm m-1">
+                                            <i class="ti ti-desktop"></i>
+                                        </a>
+
                                         @if(!$course->is_parent)
                                             <a href="{{route('lesson.index', ['course_id' => $course->id])}}"
-                                               class="btn btn-outline-primary btn-sm">
+                                               class="btn btn-outline-primary btn-sm m-1">
                                                 <i class="ti ti-bookmark"></i>
                                             </a>
                                         @endif
-                                        <a href="{{route('packet.index', ['course_id' => $course->id])}}"
-                                           class="btn btn-outline-primary btn-sm">
-                                            <i class="ti ti-money"></i>
-                                        </a>
                                         <div class="modal modal-backdrop" id="delete{{$course->id}}" tabindex="-1"
                                              role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
                                              data-backdrop="false">

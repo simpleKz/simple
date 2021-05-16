@@ -26,6 +26,12 @@ class CourseController extends WebBaseController
         return $this->adminView('pages.course.index', compact('courses'));
     }
 
+    public function detail($id)
+    {
+        $course = Course::findOrFail($id);
+        return $this->adminView('pages.course.detail', compact('course'));
+    }
+
     public function create()
     {
         $course_web_form = CourseWebForm::inputGroups(null);
