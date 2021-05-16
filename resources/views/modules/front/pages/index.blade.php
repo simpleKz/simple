@@ -3,7 +3,7 @@
 @section('styles')
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/swiper.min.css')}}">
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/components/index.css')}}">
-    <link rel="stylesheet" href="{{asset('modules/front/assets/css/components/index_responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('modules/front/assets/css/components/index-responsive.css')}}">
 @endsection
 
 @section('content')
