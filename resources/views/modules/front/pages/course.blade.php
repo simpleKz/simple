@@ -2,14 +2,13 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/swiper.min.css')}}">
-    <style>
-    </style>
 @endsection
 
 @section('content')
     <section class="head_course d-block   pb-5 mb-5">
         <div class="container">
-            <p class="pt-4 pb-5">Главная – Каталог курсов  – Основы маркетинга</p>
+            <p class="pt-4 pb-5">Главная – <a href="{{route('courses')}}">Каталог курсов</a> –
+                Основы маркетинга</p>
 
             <h1 class="pb-5">Основы маркетинга</h1>
             <h3 class="pb-3">20 уроков |  15 часов</h3>
@@ -179,16 +178,15 @@
 
         </div>
     </section>
-
-
-    <section class="subscribe pb-5 pt-5">
-        <div class="container p-4">
-            <div class="row">
-                <div class="col-12 col-md-8 col-lg-8">
-                    <h1>Подпишись на нашу рассылку</h1>
-                    <p class="pt-2 pb-4"><span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                        <span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                        <span class="dots fas  fa-circle"></span>
+    <section class="subscribe">
+        <div class="container-fluid">
+            <h1>Подпишись на нашу рассылку</h1>
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-7 col-xl-8">
+                    <p class="pt-2 pb-4">
+                        <span class="dots fas fa-circle fa-xs"></span>
+                        <span class="dots fas fa-circle fa-xs"></span>
+                        <span class="dots fas fa-circle fa-xs"></span>
                     </p>
                     <p>
                         Раз в месяц мы делимся удивительными находками,<br>
@@ -201,23 +199,26 @@
                         к твоей головокружительной карьере
                     </p>
                 </div>
-                <div class="col-12 col-md-4 col-lg-4 d-flex align-items-center">
+                <div class="col-12 col-md-8 col-lg-5 col-xl-4">
                     <div class="subscription_form">
                         <form action="{{route('send.email')}}" method="post">
                             {{csrf_field()}}
-
-                            <input type="text" class=" form-control email_text  pr-5 pl-3 pt-3 pb-3 mb-4" name="email"  placeholder="Твой e-mail" required>
-                            <div>
-
-                                <button type="submit"  class="btn-orange pr-5 pl-4 pt-3 pb-3" >Подписаться на рассылку</button>
+                            <div class="form-group">
+                                <input type="text" class="form-control email_text" name="email"
+                                       placeholder="Твой e-mail" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn-orange btn-block">
+                                    Подписаться на рассылку
+                                </button>
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
+
 @endsection
 
 @section('scripts')
