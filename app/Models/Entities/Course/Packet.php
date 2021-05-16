@@ -28,4 +28,8 @@ class Packet extends Model
         return $this->hasMany(PacketAttribute::class, 'packet_id');
     }
 
+    public function packetCourses()
+    {
+        return $this->hasMany(PacketCourse::class, 'packet_id');
+    }
 }

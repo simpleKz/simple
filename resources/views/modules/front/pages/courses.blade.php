@@ -4,8 +4,6 @@
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/swiper.min.css')}}">
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/magnific-popup.css')}}">
     <style>
-
-
         .list {
             display: inline-block;
             position: relative;
@@ -17,12 +15,14 @@
             width: 100%;
             border-radius: 5px;
         }
+
         .play__video {
             position: absolute;
             left: 50%;
             top: 45%;
             transform: translateX(-50%) translateY(-45%);
         }
+
         .play__video__text {
             position: absolute;
             left: 50%;
@@ -119,11 +119,11 @@
                                 <ul class="list__ul">
                                     @if(!request()->route('slug'))
                                         <li><a href="{{route('courses')}}">популярности</a></li>
-                                        <li><a href="{{route('courses')."?sort=price"}}">цене</a></li>
+                                        {{--                                        <li><a href="{{route('courses')."?sort=price"}}">цене</a></li>--}}
                                         <li><a href="{{route('courses')."?sort=created_at"}}">новизне</a></li>
                                     @else
                                         <li><a href="{{route('courses',['slug' => $slug])}}">популярности</a></li>
-                                        <li><a href="{{route('courses',['slug' => $slug])."?sort=price"}}">цене</a></li>
+                                        {{--                                        <li><a href="{{route('courses',['slug' => $slug])."?sort=price"}}">цене</a></li>--}}
                                         <li>
                                             <a href="{{route('courses',['slug' => $slug])."?sort=created_at"}}">новизне</a>
                                         </li>
@@ -186,15 +186,15 @@
                                 <div class="courses__card col-md-12 mb-4" id="cc">
                                     <div class="courses__card_inner row pt-3 pb-3">
                                         <div class="course__card__video col-md-4">
-                                                <a class="popup lesson_video d-block" href="{{$course->video_path}}">
-                                                    <img class="course__image" src="{{asset($course->image_path)}}" alt="">
-                                                    <img class="play__video"
-                                                         src="{{asset('modules/front/assets/img/play.svg')}}"
-                                                         alt="">
-                                                    <span class="play__video__text">
+                                            <a class="popup lesson_video d-block" href="{{$course->video_path}}">
+                                                <img class="course__image" src="{{asset($course->image_path)}}" alt="">
+                                                <img class="play__video"
+                                                     src="{{asset('modules/front/assets/img/play.svg')}}"
+                                                     alt="">
+                                                <span class="play__video__text">
                                                     Посмотреть интервью
                                                     </span>
-                                                </a>
+                                            </a>
                                         </div>
                                         <div class="course__card__content col-md-8 row">
                                             <h1 class="col-md-9">{{$course->name}}</h1>
@@ -222,112 +222,26 @@
                                             </div>
                                             <div class="col-md-12 row">
                                                 <div class="button-more-info col-md-3">
-                                                    <a class="btn-orange pt-2 pb-2 pr-3 pl-3 " href="#">Подробнее</a>
+                                                    <a class="btn-orange pt-2 pb-2 pr-3 pl-3 "
+                                                       href="{{route('course.single.detail', ['slug' => $course->slug])}}">Подробнее</a>
                                                 </div>
                                                 <div class="button-buy col-md-5">
-                                                    <a class="btn-orange pt-2 pb-2 pr-3 pl-3 " href="{{route('buy-course',['slug' => $course->slug])}}">Купить курс</a>
+                                                    <a class="btn-orange pt-2 pb-2 pr-3 pl-3 "
+                                                       href="{{route('buy-course',['slug' => $course->slug])}}">Купить
+                                                        курс</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
-                            {{--                        <div class="courses__card col-md-12 mb-4">--}}
-                            {{--                            <div class="courses__card_inner row ">--}}
-                            {{--                                <div class="course__card__video col-md-4">--}}
-                            {{--                                    <div class="earn_money_img">--}}
-                            {{--                                        <img--}}
-                            {{--                                            src="{{asset('modules/front/assets/img/video.png')}}"--}}
-                            {{--                                            alt="" >--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                                <div class="course__card__content col-md-8 p-3 row">--}}
-                            {{--                                    <div class="col-md-12 row">--}}
-                            {{--                                        <div class="col-md-7 col-lg-7">--}}
-                            {{--                                            <h1>Основы маркетинга</h1>--}}
-                            {{--                                            <p>Аскаров Кайрат &nbsp&nbsp&nbsp&nbsp 20 уроков |  15 часов</p>--}}
-                            {{--                                        </div>--}}
-                            {{--                                        <div class="col-md-5 col-lg-5 text-right">--}}
-                            {{--                                            <h1>20 000 T</h1>--}}
-                            {{--                                            <div class="stars mb-4">--}}
-                            {{--                                                <i class="star fa fa-sm fa-star"></i>--}}
-                            {{--                                                <i class="star fa fa-sm fa-star"></i>--}}
-                            {{--                                                <i class="star fa fa-sm fa-star"></i>--}}
-                            {{--                                                <i class="star fa fa-sm fa-star"></i>--}}
-                            {{--                                                <i class="star fa fa-sm fa-star"></i>--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </div>--}}
-                            {{--                                    <div class="description col-md-12">--}}
-                            {{--                                        <p>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать--}}
-                            {{--                                            несколько абзацев более менее осмысленного текста рыбы на русском языке,--}}
-                            {{--                                            а начинающему оратору отточить навык публичных выступлений--}}
-                            {{--                                            в домашних условиях.</p>--}}
-                            {{--                                    </div>--}}
-                            {{--                                    <div class="col-md-12 row">--}}
-                            {{--                                        <div class="  button-more-info col-md-3">--}}
-                            {{--                                            <a class="btn-orange pt-2 pb-2 pr-3 pl-3 " href="#">Подробнее</a>--}}
-                            {{--                                        </div>--}}
-                            {{--                                        <div class="button-buy col-md-5">--}}
-                            {{--                                            <a class="btn-orange pt-2 pb-2 pr-3 pl-3 " href="#">Купить курс</a>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
-                            {{--                        </div>--}}
-                            {{--                        <div class="courses__card col-md-12 mb-4">--}}
-                            {{--                            <div class="courses__card_inner row ">--}}
-                            {{--                                <div class="course__card__video col-md-4">--}}
-                            {{--                                    <div class="earn_money_img">--}}
-                            {{--                                        <img--}}
-                            {{--                                            src="{{asset('modules/front/assets/img/video.png')}}"--}}
-                            {{--                                            alt="" >--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                                <div class="course__card__content col-md-8 p-3 row">--}}
-                            {{--                                    <div class="col-md-12 row">--}}
-                            {{--                                        <div class="col-md-7 col-lg-7">--}}
-                            {{--                                            <h1>Основы маркетинга</h1>--}}
-                            {{--                                            <p>Аскаров Кайрат &nbsp&nbsp&nbsp&nbsp 20 уроков |  15 часов</p>--}}
-                            {{--                                        </div>--}}
-                            {{--                                        <div class="col-md-5 col-lg-5 text-right">--}}
-                            {{--                                            <h1>20 000 T</h1>--}}
-                            {{--                                            <div class="stars mb-4">--}}
-                            {{--                                                <i class="star fa fa-sm fa-star"></i>--}}
-                            {{--                                                <i class="star fa fa-sm fa-star"></i>--}}
-                            {{--                                                <i class="star fa fa-sm fa-star"></i>--}}
-                            {{--                                                <i class="star fa fa-sm fa-star"></i>--}}
-                            {{--                                                <i class="star fa fa-sm fa-star"></i>--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </div>--}}
-                            {{--                                    <div class="description col-md-12">--}}
-                            {{--                                        <p>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать--}}
-                            {{--                                            несколько абзацев более менее осмысленного текста рыбы на русском языке,--}}
-                            {{--                                            а начинающему оратору отточить навык публичных выступлений--}}
-                            {{--                                            в домашних условиях.</p>--}}
-                            {{--                                    </div>--}}
-                            {{--                                    <div class="col-md-12 row">--}}
-                            {{--                                        <div class="  button-more-info col-md-3">--}}
-                            {{--                                            <a class="btn-orange pt-2 pb-2 pr-3 pl-3 " href="#">Подробнее</a>--}}
-                            {{--                                        </div>--}}
-                            {{--                                        <div class="button-buy col-md-5">--}}
-                            {{--                                            <a class="btn-orange pt-2 pb-2 pr-3 pl-3 " href="#">Купить курс</a>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
-                            {{--                        </div>--}}
                         </div>
-
                         @if($courses->count() < $courses->total())
                             <div class="load_more text-center mt-3">
                                 <a class="see-more btn-orange pt-2 pb-2 pr-5 pl-5" data-div="#courses_cards"
                                    data-page="2" data-link="page=" id="see-more">Загрузить еще</a>
                             </div>
                         @else
-
-
                         @endif
 
 

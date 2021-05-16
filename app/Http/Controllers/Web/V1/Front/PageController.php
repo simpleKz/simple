@@ -103,7 +103,9 @@ class PageController extends WebBaseController
     public function buyCourse($slug)
     {
         $user = auth()->user();
-        $course = Course::where('slug', $slug)->firstOrFail();
+        $course = Course::with(['packets.attributes', 'packets.prices', 'packets.packetCourses'])
+            ->where('slug', $slug)
+            ->firstOrFail();
         $duration = $course->lessons->sum('duration_in_minutes');
         $course->duration = (int)ceil(CarbonInterval::minutes($duration)->totalHours);
         $user_course = CoursePassing::where('course_id', $course->id)->where('user_id', $user->id)->first();
