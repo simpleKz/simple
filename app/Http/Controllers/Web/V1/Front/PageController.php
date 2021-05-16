@@ -121,7 +121,10 @@ class PageController extends WebBaseController
         $packet_price = PacketPrice::where('packet_id',$request->packet_id)
                                 ->where('currency',$request->currency)
                                 ->first();
-
+//        dd($packet_price);
+        if (!$packet_price) {
+            throw new WebServiceErroredException('Не существует');
+        }
 
 
         $order = Order::create([
@@ -155,7 +158,6 @@ class PageController extends WebBaseController
         unset($request[0], $request[1]);
 
         $query = http_build_query($request);
-
 //redirect a customer to payment page
         return redirect('https://api.paybox.money/payment.php?' . $query);
 

@@ -26,6 +26,7 @@ class OrderController extends ApiBaseController
 
 
     public function acceptOrder(Request $request) {
+        Storage::disk('local')->put('testSimpe.txt', $request);
         $request_array = $request->except('pg_sig');
         ksort($request_array);
         array_unshift($request_array, 'order');
@@ -69,14 +70,21 @@ class OrderController extends ApiBaseController
                 $packet = Packet::where('id',$packet_price->packet_id)->first();
                 $course = Course::where('id',$packet->course_id)->first();
 
-                CoursePassing::create([
-                    'course_id' => $order->course_id,
-                    'user_id' => $order->user_id,
-                    'overall_lessons_count' => $course->lessons()->count(),
-                    'passed_lessons_count' => 0,
-                    'is_passed' => false
+                if($course->is_parent){
 
-                ]);
+                }else{
+                    CoursePassing::create([
+                        'course_id' => $packet->course_id,
+                        'user_id' => $order->user_id,
+                        'overall_lessons_count' => $course->lessons()->count(),
+                        'passed_lessons_count' => 0,
+                        'is_passed' => false
+
+                    ]);
+
+                }
+
+
 
 
                 $user = User::where('id',$order->user_id)->first();
@@ -139,5 +147,33 @@ class OrderController extends ApiBaseController
         $array = json_decode($json,TRUE);
 
         return $array['pg_status'];
+    }
+    public function cards(){
+        $request = [
+            'pg_merchant_id' => 536680,
+            'pg_user_id' => 3,
+            'pg_salt' => 'Cards',
+        ];
+
+        ksort($request); //sort alphabetically
+
+//        array_unshift($request, 'get_status.php');
+
+        array_push($request, 'pdajm24PW84OgxbP'); //add your secret key (you can take it in your personal cabinet on paybox system)
+
+        $request['pg_sig'] = md5(implode(';', $request));
+
+        unset($request[0], $request[1]);
+
+        $query = http_build_query($request);
+        dd($query);
+        $response = Http::send('POST', 'https://api.paybox.money/v1/merchant/536680/cardstorage/list?'.$query, [
+
+        ]);
+        ;
+        $xml_file = simplexml_load_string($response);
+        $json = json_encode($xml_file );
+        $array = json_decode($json,TRUE);
+        return $array;
     }
 }

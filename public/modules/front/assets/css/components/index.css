@@ -510,7 +510,7 @@
 /* Part6 Authors */
 
 .authors .container-fluid {
-    padding: 100px 70px 100px 70px;
+    padding: 100px 70px 100px 40px;
 }
 .authors h1 {
     font-size: 45px;
@@ -656,7 +656,7 @@
 
 /* Part7 Subscribe */
 .subscribe .container-fluid {
-    padding: 100px 70px 70px;
+    padding: 50px 70px 70px;
 }
 .subscribe h1 {
     font-size: 45px;
