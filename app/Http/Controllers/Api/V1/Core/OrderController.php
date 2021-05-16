@@ -70,14 +70,14 @@ class OrderController extends ApiBaseController
                 $packet = Packet::where('id',$packet_price->packet_id)->first();
                 $course = Course::where('id',$packet->course_id)->first();
 
-                CoursePassing::create([
-                    'course_id' => $order->course_id,
-                    'user_id' => $order->user_id,
-                    'overall_lessons_count' => $course->lessons()->count(),
-                    'passed_lessons_count' => 0,
-                    'is_passed' => false
-
-                ]);
+//                CoursePassing::create([
+//                    'course_id' => $order->course_id,
+//                    'user_id' => $order->user_id,
+//                    'overall_lessons_count' => $course->lessons()->count(),
+//                    'passed_lessons_count' => 0,
+//                    'is_passed' => false
+//
+//                ]);
 
 
                 $user = User::where('id',$order->user_id)->first();
