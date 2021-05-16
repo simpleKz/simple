@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Web\V1\Admin\System\Course;
 use App\Exceptions\Web\WebServiceExplainedException;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Http\Forms\Web\V1\CourseWebForm;
+use App\Http\Requests\Web\V1\CourseDetailWebRequest;
 use App\Http\Requests\Web\V1\CourseWebRequest;
 use App\Models\Entities\Course\Course;
 use App\Services\Common\V1\Support\FileService;
@@ -30,6 +31,15 @@ class CourseController extends WebBaseController
     {
         $course = Course::findOrFail($id);
         return $this->adminView('pages.course.detail', compact('course'));
+    }
+
+    public function detailUpdate($id, CourseDetailWebRequest $request)
+    {
+        $course = Course::findOrFail($id);
+        $course->update([
+            'detail_page_content' => $request->detail_page_content
+        ]);
+        return redirect()->back();
     }
 
     public function create()

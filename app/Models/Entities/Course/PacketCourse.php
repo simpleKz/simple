@@ -18,6 +18,12 @@ class PacketCourse extends Model
 
     public function course()
     {
-        return $this->belongsTo(Course::class, 'course_id');
+        return $this->belongsTo(Course::class, 'course_id')->select(['id', 'name']);
+    }
+
+    public function courses()
+    {
+        return Course::where('courses.is_parent', false)->select('courses.*')->join('packet_courses', 'courses.id', 'packet_courses.course_id')
+            ->where('packet_courses.packet_id', $this->id)->get();
     }
 }

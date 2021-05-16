@@ -55,6 +55,7 @@ Route::group(['namespace' => 'Admin\System', 'verify' => true, 'middleware' => [
         Route::post('/course/update', ['uses' => 'CourseController@update', 'as' => 'course.update']);
         Route::post('/course/delete', ['uses' => 'CourseController@delete', 'as' => 'course.delete']);
         Route::get('/course/{id}/detail', ['uses' => 'CourseController@detail', 'as' => 'course.detail'])->where('id', '[0-9]+');;
+        Route::post('/course/{id}/detail', ['uses' => 'CourseController@detailUpdate', 'as' => 'course.detail.update'])->where('id', '[0-9]+');;
 
         Route::get('/course/lessons', ['uses' => 'CourseLessonController@index', 'as' => 'lesson.index']);
         Route::get('/course/lessons/create', ['uses' => 'CourseLessonController@create', 'as' => 'lesson.create']);
@@ -78,6 +79,14 @@ Route::group(['namespace' => 'Admin\System', 'verify' => true, 'middleware' => [
             ->where('packet_id', '[0-9]+')->where('course_id', '[0-9]+');
         Route::get('/course/packets/disconnect/{packet_id}/{course_id}', ['uses' => 'PacketCourseController@disconnect', 'as' => 'packet_course.disconnect'])
             ->where('packet_id', '[0-9]+')->where('course_id', '[0-9]+');
+
+    });
+
+    Route::group(['namespace' => 'User'], function () {
+        Route::get('/users', ['uses' => 'UserController@index', 'as' => 'user.index']);
+        Route::get('/user/edit', ['uses' => 'UserController@edit', 'as' => 'user.edit']);
+        Route::post('/user/update', ['uses' => 'UserController@update', 'as' => 'user.update']);
+
 
     });
 

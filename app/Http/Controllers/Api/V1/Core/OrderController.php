@@ -14,7 +14,9 @@ use App\Models\Entities\Core\User;
 use App\Models\Entities\Course\Course;
 use App\Models\Entities\Course\CoursePassing;
 use App\Models\Entities\Course\Packet;
+use App\Models\Entities\Course\PacketCourse;
 use App\Models\Entities\Course\PacketPrice;
+use App\Models\Entities\Course\UserPacket;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -41,11 +43,12 @@ class OrderController extends ApiBaseController
             return response()->json(['success' => false, 'message' => 'Неправильный order'], 400);
 
         }
-//        if($order->is_payed == true){
-//            return response()->json(['success' => false, 'message' => 'order уже оплачен'], 400);
-//
-//        }
-        $status = $this->getOrderStatus($order->id,$request->pg_payment_id);
+        if($order->is_payed == true){
+            return response()->json(['success' => false, 'message' => 'order уже оплачен'], 400);
+
+        }
+//        $status = $this->getOrderStatus($order->id,$request->pg_payment_id);
+        $status = "ok";
 
         DB::beginTransaction();
         try {
@@ -64,25 +67,43 @@ class OrderController extends ApiBaseController
 
             if($status == "ok"){
 
+                $due_date =
+                $user_packet = UserPacket::create([
+                    'packet_id' => $order->packet_id,
+                    'user_id' => $order->user_id,
+                    'due_date' => 123
+                ]);
                 $order->is_payed = true;
                 $order->save();
-                $packet_price = PacketPrice::where('id',$order->packet_price_id)->first();
+                $packet_price = PacketPrice::where('id',1)->first();
                 $packet = Packet::where('id',$packet_price->packet_id)->first();
                 $course = Course::where('id',$packet->course_id)->first();
 
-                if($course->is_parent){
 
-                }else{
-                    CoursePassing::create([
+                $courses = PacketCourse::where('packet_id',$packet->id)->with('course')->get();
+
+                foreach ($courses as $c){
+                        CoursePassing::create([
+                            'course_id' => $c->course->id,
+                            'user_id' => $order->user_id,
+                            'overall_lessons_count' => $course->lessons()->count(),
+                            'passed_lessons_count' => 0,
+                            'is_passed' => false
+
+                        ]);
+                    }
+
+                $parent_course = CoursePassing::create([
                         'course_id' => $packet->course_id,
                         'user_id' => $order->user_id,
-                        'overall_lessons_count' => $course->lessons()->count(),
+                        'overall_lessons_count' => $courses->count(),
                         'passed_lessons_count' => 0,
                         'is_passed' => false
 
                     ]);
 
-                }
+
+
 
 
 
