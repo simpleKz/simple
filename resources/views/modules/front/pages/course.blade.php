@@ -74,7 +74,7 @@
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-12">
-                    <h1>Раскрой свои таланты</h1>
+                    <h1>Чем занимается маркетолог?</h1>
                 </div>
                 <div class="col-11 col-md-8 col-lg-8">
                     <p class="pt-1 pb-4">
@@ -84,76 +84,62 @@
                     </p>
                     <div class="description-text">
                         <p>
-                            Каждый из нас талантлив в чем-либо.<br>
-                            Но многие проживают свою жизнь занимаясь другим делом :(
-                        </p>
-                        <p>
-                            <span>Наша миссия</span> - помочь каждом найти свое истинное предназначение.
-                        </p>
-                        <p>
-                            А что для этого необходимо сделать?<br>
-                            - Правильно! Начать пробовать себя в том, что вам интересно!
+                            Продакт-маркетолог помогает бизнесу формулировать ценность
+                            продукта. Главная задача специалиста — не продать, а донести
+                            эту ценность до коллег и пользователя.
+                            Для этого он изучает потребности и боли целевой аудитории,
+                            собирает инсайты и передаёт информацию всем участникам команды.
+                            На этом курсе мы дадим ключевые знания для работы в новой
+                            профессии и развития в карьере.
                         </p>
                     </div>
                 </div>
             </div>
             <div class="pt-5 pt-md-3 d-flex">
-                <a class="btn-orange" href="#">Самое время начать</a>
+                <a class="btn-orange" href="#">Начать обучение</a>
             </div>
         </div>
     </section>
-    <section class="skills pt-5 mb-5">
-        <div class="container p-4">
+    <section class="skills">
+        <div class="container-fluid">
             <h1>Чему научишься на курсе</h1>
-            <p class="pt-2 pb-4"><span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                <span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                <span class="dots fas  fa-circle"></span>
+            <p>
+                <span class="dots fas fa-circle fa-xs"></span>
+                <span class="dots fas fa-circle fa-xs"></span>
+                <span class="dots fas fa-circle fa-xs"></span>
             </p>
 
-            <div class="skills__content row">
-                <div class="skills__card mb-2 col-md-4 mb-4">
-                    <div class="skills__card__content col-md-12">
-                        <h1>Изучать и анализировать аудиторию</h1>
-                        <p>Понимать основы сегментирования ЦА,<br>
-                            составлять портреты клиентов и пр.</p>
-                    </div>
+            <div class="row justify-content-between">
+                <div class="skills__card__content mb-2 col-md-6 col-lg-4 mb-4">
+                    <h1>Изучать и анализировать аудиторию</h1>
+                    <p>Понимать основы сегментирования ЦА,<br>
+                        составлять портреты клиентов и пр.</p>
                 </div>
-                <div class="skills__card mb-2 col-md-4 mb-4">
-                    <div class="skills__card__content col-md-12">
-                        <h1>Изучать и анализировать аудиторию</h1>
-                        <p>Понимать основы сегментирования ЦА,<br>
-                            составлять портреты клиентов и пр.</p>
-                    </div>
+                <div class="skills__card__content mb-2 col-md-6 col-lg-4 mb-4">
+                    <h1>Изучать и анализировать аудиторию</h1>
+                    <p>Понимать основы сегментирования ЦА,<br>
+                        составлять портреты клиентов и пр.</p>
                 </div>
-                <div class="skills__card  mb-2 col-md-4 mb-4">
-                    <div class="skills__card__content col-md-12">
-                        <h1>Изучать и анализировать аудиторию</h1>
-                        <p>Понимать основы сегментирования ЦА,<br>
-                            составлять портреты клиентов и пр.</p>
-                    </div>
+                <div class="skills__card__content mb-2 col-md-6 col-lg-4 mb-4">
+                    <h1>Изучать и анализировать аудиторию</h1>
+                    <p>Понимать основы сегментирования ЦА,<br>
+                        составлять портреты клиентов и пр.</p>
                 </div>
-                <div class="skills__card  mb-2 col-md-4 mb-4">
-                    <div class="skills__card__content col-md-12">
-                        <h1>Изучать и анализировать аудиторию</h1>
-                        <p>Понимать основы сегментирования ЦА,<br>
-                            составлять портреты клиентов и пр.</p>
-                    </div>
+                <div class="skills__card__content mb-2 col-md-6 col-lg-4 mb-4">
+                    <h1>Изучать и анализировать аудиторию</h1>
+                    <p>Понимать основы сегментирования ЦА,<br>
+                        составлять портреты клиентов и пр.</p>
                 </div>
-                <div class="skills__card  mb-2 col-md-4 mb-4">
-                    <div class="skills__card__content col-md-12">
-                        <h1>Изучать и анализировать аудиторию</h1>
-                        <p>Понимать основы сегментирования ЦА,<br>
-                            составлять портреты клиентов и пр.</p>
-                    </div>
+                <div class="skills__card__content mb-2 col-md-6 col-lg-4 mb-4">
+                    <h1>Изучать и анализировать аудиторию</h1>
+                    <p>Понимать основы сегментирования ЦА,<br>
+                        составлять портреты клиентов и пр.</p>
                 </div>
-                <div class="skills__card  mb-2 col-md-4 mb-4">
-                    <div class="skills__card__content col-md-12">
-                        <h1>Изучать и анализировать аудиторию</h1>
-                        <p>Понимать основы сегментирования ЦА,<br>
-                            составлять портреты клиентов и пр.</p>
-                    </div>
+                <div class="skills__card__content mb-2 col-md-6 col-lg-4 mb-4">
+                    <h1>Изучать и анализировать аудиторию</h1>
+                    <p>Понимать основы сегментирования ЦА,<br>
+                        составлять портреты клиентов и пр.</p>
                 </div>
-
             </div>
             <div class="start_learning pt-4">
                 <a class="btn-orange" href="#">Начать обучение</a>

@@ -7,6 +7,14 @@
         font-size: 39px;
         line-height: 42px;
     }
+
+    .talents .description-text {
+        margin-top: 0;
+    }
+
+    .skills .container-fluid {
+        padding: 20px 45px 45px;
+    }
 }
 
 @media (max-width: 992px) and (min-width: 767px) {
@@ -17,6 +25,14 @@
     .auditory h1{
         font-size: 33px;
         line-height: 36px;
+    }
+
+    .talents .description-text {
+        margin-top: 0;
+    }
+
+    .skills .container-fluid {
+        padding: 40px 35px 35px;
     }
 }
 
@@ -48,6 +64,19 @@
     .auditory .card p {
         font-size: 14px;
         line-height: 18px;
+    }
+
+    .talents .description-text {
+        margin-top: 0;
+    }
+
+    .skills .container-fluid {
+        padding: 40px 10px 60px 10px;
+    }
+
+    .skills h1 {
+        font-size: 26px;
+        line-height: 30px;
     }
 }
 

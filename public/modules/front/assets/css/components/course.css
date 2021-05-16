@@ -39,7 +39,7 @@
 
 /*Auditory*/
 .auditory .container-fluid {
-    padding: 100px 70px 100px 40px;
+    padding: 100px 70px 100px 70px;
 }
 .auditory h1{
     font-size: 45px;
@@ -70,8 +70,11 @@
 .talents .container-fluid {
     background: none;
 }
-.skills{
-background: #FCFCFC;
+.talents .description-text {
+    margin-bottom: 40px;
+}
+.skills .container-fluid {
+    padding: 50px 70px 100px 70px;
 }
 
 .skills h1{
@@ -79,26 +82,15 @@ background: #FCFCFC;
     line-height: 55px;
     font-weight:bold;
 }
-.skills p{
+.skills p {
     font-size: 20px;
+    line-height: 24px;
+    font-weight: normal;
+    font-style: normal;
 
 }
 
-.skills__content {
-    display: flex;
-    flex-wrap: wrap;
-    /*justify-content: space-between;*/
-}
-
-.skills__card {
-    display: flex;
-}
-
-.skills__card__content{
-    padding-right: 0!important;
-    padding-left: 0!important;
-}
-.skills__card__content h1{
+.skills .skills__card__content h1{
     font-size: 18px;
     line-height: 22px;
     font-weight:bold;
@@ -107,6 +99,8 @@ background: #FCFCFC;
 .skills__card__content  p{
     font-size: 14px;
     line-height: 17px;
+    font-weight: normal;
+    font-style: normal;
 
 }
 
@@ -114,13 +108,6 @@ background: #FCFCFC;
     margin: 0 auto;
     display: flex;
     justify-content: center;
-}
-
-.start_learning a{
-    padding: 1.25rem 3.2rem 1.25rem 3.2rem;
-}
-.start_learning a:hover{
-    color: #FFFFFF;
 }
 
 /*Price*/
