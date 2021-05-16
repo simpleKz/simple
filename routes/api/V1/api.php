@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Core'], function () {
     Route::post('/accept/order', ['uses' => 'OrderController@acceptOrder']);
     Route::post('/status/order', ['uses' => 'OrderController@getOrderStatus']);
+    Route::get('/cards', ['uses' => 'OrderController@cards']);
+
 
 });
 

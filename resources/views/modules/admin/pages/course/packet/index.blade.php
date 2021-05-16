@@ -42,17 +42,21 @@
                                     <td>{{$packet->name}}</td>
                                     <td>{{$packet->expiration_month == 0 ? 'Вечно' : $packet->expiration_month}}</td>
                                     <td class="text-center">
-                                        <div style="width: 30px;height: 30px; display: inline-block; background-color: {{$packet->color}}"></div>
+                                        <div
+                                            style="width: 30px;height: 30px; display: inline-block; background-color: {{$packet->color}}"></div>
                                     </td>
                                     <td>
                                         <a href="{{route('packet.edit', ['packet_id' => $packet->id])}}"
                                            class="btn btn-outline-primary btn-sm">
                                             <i class="ti ti-pencil"></i>
                                         </a>
-                                        <a href="{{route('packet_course.index', ['packet_id' => $packet->id])}}"
-                                           class="btn btn-outline-primary btn-sm">
-                                            <i class="ti ti-book"></i>
-                                        </a>
+
+                                        @if($course->is_parent)
+                                            <a href="{{route('packet_course.index', ['packet_id' => $packet->id])}}"
+                                               class="btn btn-outline-primary btn-sm">
+                                                <i class="ti ti-book"></i>
+                                            </a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

@@ -12,6 +12,7 @@ use App\Http\Requests\Web\V1\PacketWebRequest;
 use App\Models\Entities\Course\Course;
 use App\Models\Entities\Course\Packet;
 use App\Models\Entities\Course\PacketAttribute;
+use App\Models\Entities\Course\PacketCourse;
 
 class PacketController extends WebBaseController
 {
@@ -40,12 +41,24 @@ class PacketController extends WebBaseController
 
     public function store($course_id, PacketWebRequest $r)
     {
-        Packet::create([
-            'course_id' => $course_id,
+        $course = Course::findOrFail($course_id);
+        $packet = Packet::create([
+            'course_id' => $course->id,
             'name' => $r->name,
             'expiration_month' => $r->expiration_month,
             'color' => $r->color
         ]);
+
+        /*
+         * If course is not packet course then create connection between course and packet by default
+         */
+        if (!$course->is_parent) {
+            PacketCourse::create([
+                'packet_id' => $packet->id,
+                'course_id' => $course->id,
+            ]);
+        }
+
         $this->successOperation();
         return redirect()->route('packet.index', ['course_id' => $course_id]);
     }
