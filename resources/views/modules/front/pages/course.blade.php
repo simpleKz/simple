@@ -17,7 +17,11 @@
         <div class="container-fluid">
             <div class="row">
                 <h1 class="col-8">{{$course->name}}</h1>
-                <p class="col-8">{{$course->lessons->count()}} уроков | {{$course->lessonTime()}} часов</p>
+                <p class="col-8">{{$course->lessons->count()}} уроков
+                    @if(!$course->is_parent)
+                        | {{$course->lessonTime()}} часов
+                    @endif
+                </p>
                 <p class="col-8">Спикер: {{$course->author->first_name.' '.$course->author->last_name}}</p>
                 <div class="col-9 col-md-12">
                     <a class="btn btn-orange mt-3" href="#">Начать
