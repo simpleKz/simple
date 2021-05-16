@@ -81,6 +81,14 @@ Route::group(['namespace' => 'Admin\System', 'verify' => true, 'middleware' => [
 
     });
 
+    Route::group(['namespace' => 'User'], function () {
+        Route::get('/users', ['uses' => 'UserController@index', 'as' => 'user.index']);
+        Route::get('/user/edit', ['uses' => 'UserController@edit', 'as' => 'user.edit']);
+        Route::post('/user/update', ['uses' => 'UserController@update', 'as' => 'user.update']);
+
+
+    });
+
     Route::group(['namespace' => 'Setting'], function () {
         Route::get('/sliders', ['uses' => 'SliderController@index', 'as' => 'slider.index']);
         Route::get('/slider/edit', ['uses' => 'SliderController@edit', 'as' => 'slider.edit']);

@@ -26,7 +26,7 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
      */
     protected $fillable = [
         'first_name', 'email', 'password', 'role_id', 'phone',
-        'last_name','withdrawal_card_id','ref_user_id','ref_link','discount_percentage','balance'
+        'last_name', 'withdrawal_card_id', 'ref_user_id', 'ref_link', 'discount_percentage', 'balance'
     ];
 
     /**
@@ -67,16 +67,24 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         return $this->role_id == Role::ADMIN_ID;
     }
 
-    public function devices() {
+    public function devices()
+    {
         return $this->hasMany(PushUser::class, 'user_id', 'id');
     }
 
-    public function cards(){
-        return $this->hasMany(UserCard::class,'user_id','id')->select(['last_four','id','user_id','type']);
+    public function cards()
+    {
+        return $this->hasMany(UserCard::class, 'user_id', 'id')->select(['last_four', 'id', 'user_id', 'type']);
     }
 
-    public function withdrawal_card(){
-        return $this->belongsTo(UserCard::class,'withdrawal_card_id','id')->select(['last_four','id','user_id','type']);
+    public function withdrawal_card()
+    {
+        return $this->belongsTo(UserCard::class, 'withdrawal_card_id', 'id')->select(['last_four', 'id', 'user_id', 'type']);
+    }
+
+    public function getRefLink()
+    {
+        return route('ref', ['link' => $this->ref_link]);
     }
 
 }
