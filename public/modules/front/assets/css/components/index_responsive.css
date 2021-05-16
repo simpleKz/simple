@@ -26,12 +26,6 @@
         padding: 80px 45px 45px;
     }
 
-    .talents .container-fluid {
-        padding: 20px 45px 45px;
-        background-position: 90% 30%;
-        background-size: 40%;
-    }
-
     .strengths .container-fluid {
         background-position: left 40%;
         padding: 20px 45px 45px;
@@ -100,21 +94,6 @@
         line-height: 20px;
     }
 
-    .talents .container-fluid {
-        padding: 40px 35px 35px;
-        background-position: 90% center;
-        background-size: 40%;
-    }
-
-    .talents h1 {
-        font-size: 33px;
-        line-height: 36px;
-    }
-
-    .talents p {
-        font-size: 16px;
-        line-height: 20px;
-    }
 
     .strengths .container-fluid {
         background-position: left 50%;
@@ -252,27 +231,6 @@
     .all-directions a {
         font-size: 14px;
         line-height: 17px;
-    }
-
-    /*Part 4*/
-    .talents .container-fluid {
-        background-position: 30% 30%;
-        padding: 80px 10px 60px 10px;
-        background-size: 70%;
-    }
-
-    .talents h1 {
-        font-size: 26px;
-        line-height: 30px;
-    }
-
-    .talents p {
-        font-size: 14px;
-        line-height: 18px;
-    }
-
-    .talents .description-text {
-        margin-top: 200px;
     }
 
     .strengths .container-fluid {

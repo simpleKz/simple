@@ -169,10 +169,6 @@
 
 /*Part1*/
 .start_course {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-    background-repeat: no-repeat, no-repeat;
-    background-position: center, center;
-    background-size: cover;
     display: flex;
     align-items: center;
 }
@@ -389,33 +385,6 @@
     font-style: normal;
     line-height: 22px;
     color: #000;
-}
-
-/* Part4 Talents */
-.talents .container-fluid {
-    padding: 70px;
-    background-image: url('../../img/girl1.png');
-    background-repeat: no-repeat;
-    background-position: 90%;
-    background-size: auto;
-}
-
-.talents h1 {
-    font-size: 45px;
-    line-height: 55px;
-    font-weight: bold;
-    font-style: normal;
-}
-
-.talents p {
-    font-size: 20px;
-    line-height: 24px;
-    font-weight: normal;
-    font-style: normal;
-}
-
-.talents span {
-    color: #F76321;
 }
 
 /* Part4 Strengths */

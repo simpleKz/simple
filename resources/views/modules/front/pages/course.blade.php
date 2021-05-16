@@ -2,89 +2,103 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/swiper.min.css')}}">
+    <link rel="stylesheet" href="{{asset('modules/front/assets/css/components/course.css')}}">
+    <link rel="stylesheet" href="{{asset('modules/front/assets/css/components/course_responsive.css')}}">
 @endsection
 
 @section('content')
-    <section class="head_course d-block   pb-5 mb-5">
-        <div class="container">
-            <p class="pt-4 pb-5">Главная – <a href="{{route('courses')}}">Каталог курсов</a> –
-                Основы маркетинга</p>
-
-            <h1 class="pb-5">Основы маркетинга</h1>
-            <h3 class="pb-3">20 уроков |  15 часов</h3>
-            <h3 class="pb-5">Спикер: Аскаров Кайрат</h3>
-            <a class="btn-orange " href="#">Начать обучение</a>
-
-        </div>
-    </section>
-    <section class="auditory pt-5">
-        <div class="container p-4">
-            <h1>Кому подойдет этот курс?</h1>
-            <p class="pt-2 pb-4"><span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                <span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                <span class="dots fas  fa-circle"></span>
-            </p>
-            <div class="auditory__content row">
-                <div class="auditory__card  col-md-6 mb-4">
-                    <div class="auditory__card__content col-md-12">
-                        <div class=" p-4 col-10">
-                            <h1>Начинающих маркетологов</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="auditory__card  col-md-6 mb-4">
-                    <div class="auditory__card__content col-md-12">
-                        <div class="dir_text p-4 col-10">
-                            <h1>Начинающих маркетологов</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="auditory__card  col-md-6 mb-4">
-                    <div class="auditory__card__content col-md-12">
-                        <div class="dir_text p-4 col-10">
-                            <h1>Для тех, кому это нужно</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="auditory__card  col-md-6 mb-4">
-                    <div class="auditory__card__content col-md-12">
-                        <div class="dir_text p-4 col-10">
-                            <h1>Для тех, кому это нужно</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="talents pt-5 pb-2">
-        <div class="container p-4">
+    <div class="back_links">
+        <a href="{{route('index')}}">Главная –</a>
+        <a href="{{route('courses')}}">Каталог курсов -</a>
+        <a href="{{route('courses')}}">Название курса</a>
+    </div>
+    <section class="head_course">
+        <img src="{{asset('modules/front/assets/img/girl2.png')}}" alt="">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-md-8 col-lg-8">
-                    <h1>Чем занимается маркетолог?</h1>
-                    <p class="pt-2 pb-4"><span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                        <span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                        <span class="dots fas  fa-circle"></span>
-                    </p>
-                    <p>
-                        Продакт-маркетолог помогает бизнесу формулировать ценность<br>
-                        продукта. Главная задача специалиста — не продать, а донести<br>
-                        эту ценность до коллег и пользователя.<br>
-                        Для этого он изучает потребности и боли целевой аудитории,<br>
-                        собирает инсайты и передаёт информацию всем участникам команды.<br>
-                        На этом курсе мы дадим ключевые знания для работы в новой<br>
-                        профессии и развития в карьере.
-                    </p>
+                <h1 class="col-8">Основы маркетинга</h1>
+                <p class="col-8">20 уроков | 15 часов</p>
+                <p class="col-8">Спикер: Аскаров Кайрат</p>
+                <div class="col-9 col-md-12">
+                    <a class="btn btn-orange mt-3" href="#">Начать
+                        обучение</a>
                 </div>
-                <div class="col-12 col-md-4 col-lg-4">
-                    <div>
-                        <img
-                            src="{{asset('modules/front/assets/img/girl1.png')}}"
-                            alt="" width="300" height="300">
+            </div>
+        </div>
+    </section>
+    <section class="auditory">
+        <div class="container-fluid">
+            <h1>Кому подойдет этот курс?</h1>
+            <p>
+                <span class="dots fas fa-circle fa-xs"></span>
+                <span class="dots fas fa-circle fa-xs"></span>
+                <span class="dots fas fa-circle fa-xs"></span>
+            </p>
+            <div class="row justify-content-between">
+                <div class="col-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1>Начинающих маркетологов</h1>
+                            <p>Если нужен текст</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1>Начинающих маркетологов</h1>
+                            <p>Если нужен текст</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1>Начинающих маркетологов</h1>
+                            <p>Если нужен текст</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1>Начинающих маркетологов</h1>
+                            <p>Если нужен текст</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="pt-5">
-                <a class="btn-orange" href="#">Начать обучение</a>
+        </div>
+    </section>
+    <section class="talents">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <h1>Раскрой свои таланты</h1>
+                </div>
+                <div class="col-11 col-md-8 col-lg-8">
+                    <p class="pt-1 pb-4">
+                        <span class="dots fas  fa-circle fa-xs"></span>
+                        <span class="dots fas  fa-circle fa-xs"></span>
+                        <span class="dots fas  fa-circle fa-xs"></span>
+                    </p>
+                    <div class="description-text">
+                        <p>
+                            Каждый из нас талантлив в чем-либо.<br>
+                            Но многие проживают свою жизнь занимаясь другим делом :(
+                        </p>
+                        <p>
+                            <span>Наша миссия</span> - помочь каждом найти свое истинное предназначение.
+                        </p>
+                        <p>
+                            А что для этого необходимо сделать?<br>
+                            - Правильно! Начать пробовать себя в том, что вам интересно!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-5 pt-md-3 d-flex">
+                <a class="btn-orange" href="#">Самое время начать</a>
             </div>
         </div>
     </section>
@@ -101,7 +115,7 @@
                     <div class="skills__card__content col-md-12">
                         <h1>Изучать и анализировать аудиторию</h1>
                         <p>Понимать основы сегментирования ЦА,<br>
-                                составлять портреты клиентов и пр.</p>
+                            составлять портреты клиентов и пр.</p>
                     </div>
                 </div>
                 <div class="skills__card mb-2 col-md-4 mb-4">
@@ -142,7 +156,7 @@
 
             </div>
             <div class="start_learning pt-4">
-                        <a class="btn-orange" href="#">Начать обучение</a>
+                <a class="btn-orange" href="#">Начать обучение</a>
             </div>
         </div>
     </section>
@@ -167,7 +181,7 @@
                         Что ты получишь
                     </p>
                     <h3>
-                        30  <label>уроков</label>
+                        30 <label>уроков</label>
                     </h3>
                 </div>
             </div>
