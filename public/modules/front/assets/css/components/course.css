@@ -70,6 +70,10 @@
 .talents .container-fluid {
     background: none;
 }
+
+.talents img {
+    width: 100%;
+}
 .talents .description-text {
     margin-bottom: 40px;
 }

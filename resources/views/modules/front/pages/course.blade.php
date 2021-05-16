@@ -94,6 +94,9 @@
                         </p>
                     </div>
                 </div>
+                <div class="col-12 col-md-4">
+                    <img src="{{asset('modules/front/assets/img/girl2.png')}}" alt="">
+                </div>
             </div>
             <div class="pt-5 pt-md-3 d-flex">
                 <a class="btn-orange" href="#">Начать обучение</a>
