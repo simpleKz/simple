@@ -3,6 +3,8 @@
 @section('styles')
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/swiper.min.css')}}">
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('modules/front/assets/css/components/courses.css')}}">
+    <link rel="stylesheet" href="{{asset('modules/front/assets/css/components/courses-responsive.css')}}">
     <style>
 
 
@@ -53,7 +55,8 @@
 
         .list a {
             transition: all 0.4s;
-            color: #050606;
+            color: #
+            050606;
             position: relative;
         }
 
@@ -93,10 +96,13 @@
 @endsection
 
 @section('content')
-    <section class="courses pb-5 mb-5">
-        <div class="container p-4">
-            <div class="course-header pt-5">
-                <p class="pb-5"><a href="{{route('index')}}">Главная</a> – Каталог курсов</p>
+    <div class="back_links">
+        <a href="{{route('index')}}">Главная –</a>
+        <a href="{{route('courses')}}">Каталог курсов </a>
+    </div>
+    <section class="courses">
+        <div class="container-fluid">
+            <div class="course-header">
                 <h1>Курсы</h1>
                 <div class="row pt-2">
                     <div class="col-md-6 col-lg-6">
@@ -342,14 +348,15 @@
         </div>
     </section>
 
-    <section class="subscribe pb-5 pt-5">
-        <div class="container p-4">
-            <div class="row">
-                <div class="col-12 col-md-8 col-lg-8">
-                    <h1>Подпишись на нашу рассылку</h1>
-                    <p class="pt-2 pb-4"><span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                        <span class="dots fas  fa-circle"></span>&nbsp&nbsp
-                        <span class="dots fas  fa-circle"></span>
+    <section class="subscribe">
+        <div class="container-fluid">
+            <h1>Подпишись на нашу рассылку</h1>
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-7 col-xl-8">
+                    <p class="pt-2 pb-4">
+                        <span class="dots fas fa-circle fa-xs"></span>
+                        <span class="dots fas fa-circle fa-xs"></span>
+                        <span class="dots fas fa-circle fa-xs"></span>
                     </p>
                     <p>
                         Раз в месяц мы делимся удивительными находками,<br>
@@ -362,21 +369,21 @@
                         к твоей головокружительной карьере
                     </p>
                 </div>
-                <div class="col-12 col-md-4 col-lg-4 d-flex align-items-center">
+                <div class="col-12 col-md-8 col-lg-5 col-xl-4">
                     <div class="subscription_form">
                         <form action="{{route('send.email')}}" method="post">
                             {{csrf_field()}}
-
-                            <input type="text" class=" form-control email_text  pr-5 pl-3 pt-3 pb-3 mb-4" name="email"
-                                   placeholder="Твой e-mail" required>
-                            <div>
-
-                                <button type="submit" class="btn-orange pr-5 pl-4 pt-3 pb-3">Подписаться на рассылку
+                            <div class="form-group">
+                                <input type="text" class="form-control email_text" name="email"
+                                       placeholder="Твой e-mail" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn-orange btn-block">
+                                    Подписаться на рассылку
                                 </button>
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
