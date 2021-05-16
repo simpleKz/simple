@@ -1,8 +1,6 @@
-@import url("components/index.css");
 @import url("common.css");
 @import url("common_responsive.css");
 @import url("components/courses.css");
-@import url("components/course.css");
 @import url("components/my-course.css");
 @import url("components/profile.css");
 @import url("components/auth.css");
@@ -101,7 +99,23 @@ li {
 }
 
 .content {
+    position: relative;
     min-height: 80vh;
+}
+
+.back_links {
+    position: absolute;
+    margin: 10px 70px 10px 20px;
+    z-index: 1;
+}
+
+.back_links a {
+    color: #ffffff;
+}
+
+.back_links a:hover {
+    color: #f8f8f8;
+    font-weight: 600;
 }
 
 .fa-xs {

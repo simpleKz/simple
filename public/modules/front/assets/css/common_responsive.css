@@ -1,4 +1,10 @@
 @media (max-width: 1200px) and (min-width: 992px) {
+    .talents .container-fluid {
+        padding: 20px 45px 45px;
+        background-position: 90% 30%;
+        background-size: 40%;
+    }
+
     .subscribe .container-fluid {
         padding: 50px 45px 60px 45px;
     }
@@ -18,6 +24,23 @@
     }
 }
 @media (max-width: 992px) and (min-width: 767px) {
+
+    .talents .container-fluid {
+        padding: 40px 35px 35px;
+        background-position: 90% center;
+        background-size: 40%;
+    }
+
+    .talents h1 {
+        font-size: 33px;
+        line-height: 36px;
+    }
+
+    .talents p {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
     .subscribe .container-fluid {
         padding: 40px 35px 35px;
     }
@@ -42,6 +65,28 @@
 
 }
 @media (max-width: 767px) {
+
+    /*Part 4*/
+    .talents .container-fluid {
+        background-position: 30% 30%;
+        padding: 80px 10px 60px 10px;
+        background-size: 70%;
+    }
+
+    .talents h1 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .talents p {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .talents .description-text {
+        margin-top: 200px;
+    }
+
     .subscribe .container-fluid {
         padding: 40px 10px 60px 10px;
     }

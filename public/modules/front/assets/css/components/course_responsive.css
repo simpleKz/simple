@@ -1,0 +1,124 @@
+@media (max-width: 1200px) and (min-width: 992px) {
+    .auditory .container-fluid {
+        padding: 20px 45px 45px;
+    }
+
+    .auditory h1 {
+        font-size: 39px;
+        line-height: 42px;
+    }
+
+    .talents .description-text {
+        margin-top: 0;
+    }
+
+    .skills .container-fluid {
+        padding: 20px 45px 45px;
+    }
+
+    .price .container-fluid {
+        padding: 20px 45px 45px;
+    }
+
+    .price h1 {
+        font-size: 39px;
+        line-height: 42px;
+    }
+}
+
+@media (max-width: 992px) and (min-width: 767px) {
+    .auditory .container-fluid {
+        padding: 40px 35px 35px;
+    }
+
+    .auditory h1{
+        font-size: 33px;
+        line-height: 36px;
+    }
+
+    .talents .description-text {
+        margin-top: 0;
+    }
+
+    .skills .container-fluid {
+        padding: 40px 35px 35px;
+    }
+
+    .price .container-fluid {
+        padding: 40px 35px 35px;
+    }
+
+    .price h1 {
+        font-size: 33px;
+        line-height: 36px;
+    }
+}
+
+@media (max-width: 767px) {
+    .head_course .container-fluid {
+        padding-left: 10px;
+    }
+    .head_course h1{
+        font-size: 35px;
+        line-height: 40px;
+    }
+    .head_course p{
+        font-size: 17px;
+        line-height: 20px;
+    }
+    .auditory .container-fluid {
+        padding: 70px 10px 60px 10px;
+    }
+    .auditory h1{
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .auditory .card h1 {
+        font-size: 23px;
+        line-height: 27px;
+    }
+
+    .auditory .card p {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .talents .description-text {
+        margin-top: 0;
+    }
+
+    .skills .container-fluid {
+        padding: 40px 10px 60px 10px;
+    }
+
+    .skills h1 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .price .container-fluid {
+        padding: 40px 10px 60px 10px;
+    }
+
+    .price h1 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .price h3{
+        font-size: 30px;
+        line-height: 34px;
+    }
+
+    .price p{
+        font-size: 17px;
+        line-height: 23px;
+        margin-bottom: 6px;
+    }
+
+    .price_card_1 {
+        border-right: none;
+    }
+}
+

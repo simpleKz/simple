@@ -79,9 +79,10 @@ class PageController extends WebBaseController
         return $this->frontView('pages.courses', compact('course_types', 'courses', 'slug'));
     }
 
-    public function course()
+    public function course($slug)
     {
-        return $this->frontView('pages.course');
+        $course = Course::with(['lessons', 'author'])->where('slug', $slug)->first();
+        return $this->frontView('pages.course', compact('course'));
     }
 
     public function legal()
@@ -118,9 +119,9 @@ class PageController extends WebBaseController
         #ToDo Check course or packet
 
         $course = Course::where('id', $request->course_id)->first();
-        $packet_price = PacketPrice::where('packet_id',$request->packet_id)
-                                ->where('currency',$request->currency)
-                                ->first();
+        $packet_price = PacketPrice::where('packet_id', $request->packet_id)
+            ->where('currency', $request->currency)
+            ->first();
 //        dd($packet_price);
         if (!$packet_price) {
             throw new WebServiceErroredException('Не существует');
@@ -162,7 +163,6 @@ class PageController extends WebBaseController
         return redirect('https://api.paybox.money/payment.php?' . $query);
 
     }
-
 
 
     public function payCard(Request $request)
