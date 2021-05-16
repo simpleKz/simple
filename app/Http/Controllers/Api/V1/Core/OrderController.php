@@ -74,7 +74,7 @@ class OrderController extends ApiBaseController
 
                 }else{
                     CoursePassing::create([
-                        'course_id' => $order->course_id,
+                        'course_id' => $packet->course_id,
                         'user_id' => $order->user_id,
                         'overall_lessons_count' => $course->lessons()->count(),
                         'passed_lessons_count' => 0,
