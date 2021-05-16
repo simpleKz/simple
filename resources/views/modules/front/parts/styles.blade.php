@@ -5,3 +5,4 @@
 <link rel="stylesheet" href="{{asset('css/toastr.css')}}">
 <link rel="stylesheet" href="{{asset('modules/front/assets/css/main.css')}}">
 
+

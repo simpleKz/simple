@@ -1,0 +1,67 @@
+@media (max-width: 1200px) and (min-width: 992px) {
+    .subscribe .container-fluid {
+        padding: 50px 45px 60px 45px;
+    }
+
+    .subscribe h1 {
+        font-size: 39px;
+        line-height: 42px;
+    }
+
+    .subscribe p {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .page-footer .container-fluid {
+        padding: 50px 45px 60px 45px;
+    }
+}
+@media (max-width: 992px) and (min-width: 767px) {
+    .subscribe .container-fluid {
+        padding: 40px 35px 35px;
+    }
+
+    .subscribe h1 {
+        font-size: 33px;
+        line-height: 36px;
+    }
+
+    .subscribe p {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .subscription_form .email_text {
+        margin-top: 40px;
+    }
+
+    .page-footer .container-fluid {
+        padding: 40px 35px 35px;
+    }
+
+}
+@media (max-width: 767px) {
+    .subscribe .container-fluid {
+        padding: 40px 10px 60px 10px;
+    }
+
+    .subscribe h1 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .subscribe p {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    .subscription_form .email_text {
+        margin-top: 40px;
+    }
+
+    .page-footer .container-fluid {
+        padding: 40px 10px 60px 10px;
+    }
+}
+
