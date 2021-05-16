@@ -26,6 +26,7 @@ class OrderController extends ApiBaseController
 
 
     public function acceptOrder(Request $request) {
+        Storage::disk('local')->put('testSimpe.txt', $request);
         $request_array = $request->except('pg_sig');
         ksort($request_array);
         array_unshift($request_array, 'order');
