@@ -1,114 +1,229 @@
-.back-links a {
+.back_links {
+    margin-left: 70px;
+}
+
+.back_links a {
     color: #000000;
 }
 
-.course-header p{
+.list {
+    display: inline-block;
+    position: relative;
+    margin-left: 6px;
+    margin-bottom: .4rem;
+}
+
+.course__image {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.play__video {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translateX(-50%) translateY(-45%);
+}
+
+.play__video__text {
+    position: absolute;
+    left: 50%;
+    top: 65%;
+    transform: translateX(-50%) translateY(-65%);
+    font-size: 10px;
+    color: #FFFFFF;
+    font-weight: normal;
+    line-height: 12px;
+}
+
+.list ul {
+    text-align: left;
+    position: absolute;
+    padding: 0;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.list ul .active {
+    display: block;
+}
+
+.list li {
+    list-style: none;
+}
+
+.list a {
+    transition: all 0.4s;
+    color: #050606;
+    position: relative;
+}
+
+select {
+    display: inline;
+    border: 0;
+    width: auto;
+    margin-left: 10px;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-bottom: 2px solid #555;
+    transition: all 0.4s ease-in-out;
+}
+
+select:hover {
+    cursor: pointer;
+}
+
+select option {
+    border: 0;
+    border-bottom: 1px #555;
+    padding: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.placeholder {
+    border-bottom: 2px solid;
+    cursor: pointer;
+}
+
+.placeholder:hover {
+    color: #888888;
+}
+
+.courses .container-fluid {
+    padding: 100px 70px 100px 70px;
+}
+
+.course-header p {
     font-size: 12px;
     line-height: 14px;
 }
-.course-header a{
-    color:black;
+
+.course-header a {
+    color: black;
 }
-.course-header h1{
+
+.course-header h1 {
     font-size: 45px;
     line-height: 55px;
     font-weight: bold;
+    font-style: normal;
 }
-.course-header h2{
+
+.course-header h2 {
     font-size: 20px;
     line-height: 24px;
     font-weight: normal;
+    font-style: normal;
 }
 
-.course-header h3{
+.course-header h3 {
     font-size: 16px;
     line-height: 19px;
     font-weight: normal;
+    font-style: normal;
 
 }
-.cc{
-    color: rgba(5,6,6,0.93);
+
+.cc {
+    color: rgba(5, 6, 6, 0.93);
 }
-.cc:hover{
+
+.cc:hover {
     text-decoration: none !important;
 }
-.course_category{
+
+.course_category {
     cursor: pointer;
     border: 1px solid #F2F2F2;
     border-radius: 0;
 }
-.course_category h1{
+
+.course_category h1 {
     font-size: 18px;
     line-height: 22px;
-    font-weight:normal;
+    font-weight: normal;
 }
 
 .course_category:hover {
-    background:#F76321 ;
+    background: #F76321;
 }
-.course_category:hover h1{
+
+.course_category:hover h1 {
     color: #ffffff;
 }
 
-.course_category_active{
+.course_category_active {
     cursor: pointer;
     border: 1px solid #F2F2F2;
     border-radius: 0;
-    background:#F76321 ;
+    background: #F76321;
     color: #ffffff;
 
 
 }
-.course_category_active h1{
+
+.course_category_active h1 {
     font-size: 18px;
     line-height: 22px;
-    font-weight:normal;
+    font-weight: normal;
 }
 
 
-.banner{
+.banner {
     background-color: #FAFAFA;
     border: 1px solid transparent;
     border-radius: 3px;
     height: 142px;
 }
-.banner a{
+
+.banner a {
     font-size: 12px;
     line-height: 17px;
     font-weight: normal;
     border-radius: 2px;
 }
-.banner a:hover{
+
+.banner a:hover {
     color: #ffffff;
 }
-.banner h1{
+
+.banner h1 {
     font-size: 22px;
     line-height: 22px;
     font-weight: bold;
-    color:#F76321;
+    color: #F76321;
 }
-.banner h2{
+
+.banner h2 {
     font-size: 32px;
     line-height: 38px;
     font-weight: bold;
-    color:#F76321;
+    color: #F76321;
 }
-.banner p{
+
+.banner p {
     font-size: 16px;
     line-height: 22px;
     font-weight: normal;
 }
-.courses__card{
+
+.courses__card {
 
 
 }
-.courses__card_inner{
+
+.courses__card_inner {
     border: 1px solid #D1D1D1;
     border-radius: 5px;
     height: 250px;
 
 }
-.course__card__head{
+
+.course__card__head {
 
     /*border-bottom: 1px solid #C9C9C9;*/
     /*border-right: 1px  solid #C9C9C9;*/
@@ -118,7 +233,8 @@
     height: 178px;
 
 }
-.course__card__video{
+
+.course__card__video {
     cursor: pointer;
     border-radius: 5px;
     display: flex;
@@ -127,75 +243,85 @@
     overflow: hidden;
 
 }
-.course__card__video img{
+
+.course__card__video img {
     flex-shrink: 0;
 
     object-fit: cover;
 }
-.course__card__video iframe{
+
+.course__card__video iframe {
     flex-shrink: 0;
 
     object-fit: cover;
 }
-.course__card__content{
+
+.course__card__content {
     height: 149px;
 
 }
-.course__card__content h1{
+
+.course__card__content h1 {
     font-size: 22px;
     line-height: 26px;
-    font-weight:bold;
+    font-weight: bold;
 }
 
-.course__card__content p{
+.course__card__content p {
     font-size: 12px;
     line-height: 14px;
-    font-weight:normal;
+    font-weight: normal;
 }
-.button-more-info a{
+
+.button-more-info a {
     font-size: 14px;
     line-height: 17px;
-    font-weight:normal;
+    font-weight: normal;
     background: #F76321;
     border-radius: 2px;
     color: #ffffff;
 }
-.button-buy a{
+
+.button-buy a {
     font-size: 14px;
     line-height: 17px;
-    font-weight:normal;
-    background:#ffffff;
+    font-weight: normal;
+    background: #ffffff;
     border: 1px solid #F76321;
     border-radius: 2px;
     color: #F76321;
 }
-.button-buy a:hover{
+
+.button-buy a:hover {
     color: #F76321;
 }
-.load_more a{
+
+.load_more a {
     font-size: 12px;
     line-height: 14px;
-    font-weight:normal;
-    background:#ffffff;
+    font-weight: normal;
+    background: #ffffff;
     border: 1px solid #F76321;
     border-radius: 62px;
     color: #F76321;
-    cursor:pointer;
+    cursor: pointer;
 }
-.course__card__content .description p{
+
+.course__card__content .description p {
     font-size: 14px;
     line-height: 16px;
-    font-weight:normal;
+    font-weight: normal;
     min-height: 65px;
     max-height: 65px;
 }
-.course__card__content .star{
-    color:#FFC107;
+
+.course__card__content .star {
+    color: #FFC107;
     width: 1em;
     font-size: 12px;
 }
 
-.load_more a:hover{
+.load_more a:hover {
     color: #F76321;
 }
 
