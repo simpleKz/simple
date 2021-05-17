@@ -24,6 +24,7 @@ use App\Models\Entities\Setting\Slider;
 use App\Models\Enums\Currency;
 use Carbon\CarbonInterval;
 use Illuminate\Http\Request;
+use Stevebauman\Location\Facades\Location;
 
 
 class PageController extends WebBaseController
@@ -120,6 +121,8 @@ class PageController extends WebBaseController
     {
         #ToDo Check course or packet
 
+        $position = Location::get(request()->ip());
+        dd($position->countryName);
         $course = Course::where('id', $request->course_id)->first();
         $packet_price = PacketPrice::where('packet_id', $request->packet_id)
             ->where('currency', $request->currency)
@@ -147,7 +150,7 @@ class PageController extends WebBaseController
             'pg_description' => 'Описание заказа',
             'pg_currency' => $order->currency,
             'pg_user_id' => auth()->user()->id,
-            'pg_testing_mode' => 1,
+//            'pg_testing_mode' => 1,
             'pg_result_url' => 'https://simple-study.com/api/V1/accept/order',
         ];
 
