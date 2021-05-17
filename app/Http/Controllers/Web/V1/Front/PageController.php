@@ -20,6 +20,7 @@ use App\Models\Entities\Course\CourseCategory;
 use App\Models\Entities\Course\CoursePassing;
 use App\Models\Entities\Course\Packet;
 use App\Models\Entities\Course\PacketPrice;
+use App\Models\Entities\Course\UserPacket;
 use App\Models\Entities\Setting\Slider;
 use App\Models\Enums\Currency;
 use Carbon\CarbonInterval;
@@ -110,10 +111,13 @@ class PageController extends WebBaseController
             ->firstOrFail();
         $duration = $course->lessons->sum('duration_in_minutes');
         $course->duration = (int)ceil(CarbonInterval::minutes($duration)->totalHours);
-        $user_course = CoursePassing::where('course_id', $course->id)->where('user_id', $user->id)->first();
-        if ($user_course) {
-            throw new WebServiceErroredException('Вы уже купили этот курс');
+        foreach ($course->packets as $packet){
+            $user_course = UserPacket::where('user_id',$user->id)->where('packet_id',$packet->id)->first();
+            if ($user_course) {
+                throw new WebServiceErroredException('Вы уже купили этот курс');
+            }
         }
+
 
         return $this->frontView('pages.buy-course', compact('course'));
     }
