@@ -122,12 +122,15 @@ class PageController extends WebBaseController
         #ToDo Check course or packet
 
         $position = Location::get(request()->ip());
-        dd($position->countryName);
+
+        $currency = "KZT";
+        if($position->countryName == "Russia"){
+            $currency = "RUB";
+        }
         $course = Course::where('id', $request->course_id)->first();
         $packet_price = PacketPrice::where('packet_id', $request->packet_id)
-            ->where('currency', $request->currency)
+            ->where('currency', $currency)
             ->first();
-//        dd($packet_price);
         if (!$packet_price) {
             throw new WebServiceErroredException('Не существует');
         }
