@@ -29,11 +29,10 @@
                             @elseif(request('sort') == 'created_at')
                                 <span class="placeholder">новизне</span>
                             @else
-                            <span class="placeholder">популярности</span>
+                                <span class="placeholder">популярности</span>
                             @endif()
                             <ul class="list__ul">
                                 <li><a href="{{route('courses',['slug' => $slug, 'sort' => ''])}}">популярности</a></li>
-                                <li><a href="{{route('courses',['slug' => $slug, 'sort' => 'price'])}}">цене</a></li>
                                 <li>
                                     <a href="{{route('courses',['slug' => $slug, 'sort' => 'created_at'])}}">новизне</a>
                                 </li>
@@ -42,26 +41,27 @@
                     </div>
                 </div>
             </div>
-            <div class="courses__content row pt-5 ">
-                <div class="course_categories col-12 col-md-3 col-lg-3">
-                    <a class="cc" href="{{route('courses')}}">
-                        <div @if(!request()->route('slug'))  class="course_category_active p-3"
-                             @else class="course_category p-3"
-                            @endif>
-                            <h1>Все категории</h1>
-                        </div>
-                    </a>
-                    @foreach($course_types as $course_type)
-                        <a class="cc" href="{{route('courses',['slug' => $course_type->slug])}}">
-                            <div @if($course_type->slug == request()->route('slug'))  class="course_category_active p-3"
-                                 @else class="course_category p-3"
-                                @endif>
-                                <h1>{{$course_type->name}}</h1>
-                            </div>
-                        </a>
-                    @endforeach
+            <div class="row pt-lg-5 pt-2">
+                <div class="course_categories col-12 col-lg-3">
+                    <button class="btn btn-block dropdown-toggle d-block d-lg-none text-left" type="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{$course_type_name ?? 'Все категории'}}
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item {{request('slug') != '' ? '' : 'disabled active'}}"
+                               href="{{route('courses', ['slug' => ''])}}">Все категории</a>
+                        </li>
+                        @foreach($course_types as $type)
+                            <li>
+                                <a class="dropdown-item {{request('slug') == $type->slug ? 'disabled active' : ''}}"
+                                   href="{{route('courses', ['slug' => $type->slug])}}">
+                                    {{$type->name}}</a>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
-                <div class="col-12 col-md-9 col-lg-9  ">
+                <div class="col-12 col-lg-9">
                     <div class="banner row ">
                         <div class="col-12 col-md-5 d-flex align-items-center">
                             <div>
@@ -299,7 +299,7 @@
         console.clear();
 
         var el = {};
-        $(document).click(function() {
+        $(document).click(function () {
             $(".placeholder").css("opacity", "1");
             $(".list__ul").hide();
         });

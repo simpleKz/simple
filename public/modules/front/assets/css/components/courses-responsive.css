@@ -3,7 +3,10 @@
 }
 
 @media (max-width: 992px) and (min-width: 767px) {
-
+    .dropdown-menu {
+        display: none;
+        width: 95%;
+    }
 }
 
 @media (max-width: 767px) {
@@ -23,5 +26,10 @@
     .course-header h2 {
         font-size: 16px;
         line-height: 19px;
+    }
+
+    .dropdown-menu {
+        display: none;
+        width: 95%;
     }
 }

@@ -44,7 +44,7 @@ class PageController extends WebBaseController
     public function courses(Request $request, $slug = null)
     {
         $sort = null;
-
+        $course_type_name = null;
         if ($request->sort) {
             $sort = $request->sort;
         }
@@ -59,7 +59,7 @@ class PageController extends WebBaseController
         if ($slug) {
             $course_type = CourseCategory::where('slug', $slug)->firstOrFail();
             $courses = Course::where('category_id', $course_type->id);
-
+            $course_type_name = $course_type->name;
             if ($sort) {
                 if ($sort == 'price') {
                     $courses = $courses->orderBy('price', 'desc')->paginate(2);
@@ -76,7 +76,8 @@ class PageController extends WebBaseController
             $duration = $course->lessons->sum('duration_in_minutes');
             $course->duration = (int)ceil(CarbonInterval::minutes($duration)->totalHours);
         }
-        return $this->frontView('pages.courses', compact('course_types', 'courses', 'slug'));
+        return $this->frontView('pages.courses', compact('course_types', 'courses',
+            'slug', 'course_type_name'));
     }
 
     public function course($slug)

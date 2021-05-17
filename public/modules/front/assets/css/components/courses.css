@@ -127,49 +127,45 @@ select option {
     font-style: normal;
 
 }
-
-.cc {
-    color: rgba(5, 6, 6, 0.93);
+.dropdown-toggle {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 19px;
+    padding: 22px 10px 17px 20px;
+    border: 2px #F2F2F2 solid;
+    align-items: center;
 }
-
-.cc:hover {
-    text-decoration: none !important;
+.dropdown-toggle::after {
+    float: right;
 }
-
-.course_category {
-    cursor: pointer;
-    border: 1px solid #F2F2F2;
-    border-radius: 0;
+.dropdown-toggle:focus {
+    box-shadow: none;
 }
-
-.course_category h1 {
+.dropdown-menu {
+    width: 100%;
+    border: none;
+    display: block;
+    position: static;
+}
+.dropdown-menu li {
+    margin-top: 1.5px;
+    border: 2px #F2F2F2 solid;
+    border-radius: 3px;
+}
+.dropdown-item {
     font-size: 18px;
     line-height: 22px;
+    color: #000000;
+    font-style: normal;
     font-weight: normal;
+    padding: 22px 10px 17px 20px;
 }
 
-.course_category:hover {
-    background: #F76321;
-}
-
-.course_category:hover h1 {
-    color: #ffffff;
-}
-
-.course_category_active {
-    cursor: pointer;
-    border: 1px solid #F2F2F2;
-    border-radius: 0;
-    background: #F76321;
-    color: #ffffff;
-
-
-}
-
-.course_category_active h1 {
-    font-size: 18px;
-    line-height: 22px;
-    font-weight: normal;
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #F76321;
+    color: #FFFFFF;
 }
 
 
