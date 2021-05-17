@@ -20,7 +20,7 @@ Route::group(['namespace' => 'Front'], function () {
             Route::post('/profile/create/ref-link', ['uses' => 'ProfileController@createRefLink', 'as' => 'profile.create.ref-link']);
             Route::get('/my-course/{slug}', ['uses' => 'PageController@myCourse','as' => 'my-course']);
             Route::get('/buy-course/{slug}', ['uses' => 'PageController@buyCourse','as' => 'buy-course']);
-            Route::get('/pay/{course_id?}', ['uses' => 'PageController@pay','as' => 'pay']);
+            Route::get('/pay', ['uses' => 'PageController@pay','as' => 'pay']);
             Route::get('/payCard', ['uses' => 'PageController@payCard','as' => 'payCard']);
 
 
