@@ -72,7 +72,7 @@ class OrderController extends ApiBaseController
                 $packet = Packet::where('id',$packet_price->packet_id)->first();
                 $course = Course::where('id',$packet->course_id)->first();
                 $user_packet = UserPacket::create([
-                    'packet_id' => $order->packet_id,
+                    'packet_id' => $packet->id,
                     'user_id' => $order->user_id,
                     'due_date' => Carbon::now()->addMonths($packet->expiration_month)
                 ]);
