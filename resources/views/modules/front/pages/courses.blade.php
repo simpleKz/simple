@@ -5,6 +5,94 @@
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/magnific-popup.css')}}">
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/components/courses.css')}}">
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/components/courses-responsive.css')}}">
+    <style>
+
+
+        .list {
+            display: inline-block;
+            position: relative;
+            margin-left: 6px;
+        }
+
+        .course__image {
+            height: 100%;
+            width: 100%;
+            border-radius: 5px;
+        }
+        .play__video {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translateX(-50%) translateY(-45%);
+        }
+        .play__video__text {
+            position: absolute;
+            left: 50%;
+            top: 65%;
+            transform: translateX(-50%) translateY(-65%);
+            font-size: 10px;
+            color: #FFFFFF;
+            font-weight: normal;
+            line-height: 12px;
+        }
+
+        .list ul {
+            text-align: left;
+            position: absolute;
+            padding: 0;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        .list ul .active {
+            display: block;
+        }
+
+        .list li {
+            list-style: none;
+        }
+
+        .list a {
+            transition: all 0.4s;
+            color: #
+            050606;
+            position: relative;
+        }
+
+        select {
+            display: inline;
+            border: 0;
+            width: auto;
+            margin-left: 10px;
+            outline: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            border-bottom: 2px solid #555;
+            transition: all 0.4s ease-in-out;
+        }
+
+        select:hover {
+            cursor: pointer;
+        }
+
+        select option {
+            border: 0;
+            border-bottom: 1px #555;
+            padding: 10px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        .placeholder {
+            border-bottom: 2px solid;
+            cursor: pointer;
+        }
+
+        .placeholder:hover {
+            color: #888888;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -128,7 +216,8 @@
                                             </div>
                                             <div class="col-md-12 row">
                                                 <div class="button-more-info col-md-3">
-                                                    <a class="btn-orange pt-2 pb-2 pr-3 pl-3 " href="#">Подробнее</a>
+                                                    <a class="btn-orange pt-2 pb-2 pr-3 pl-3 "
+                                                       href="{{route('course.single.detail', ['slug' => $course->slug])}}">Подробнее</a>
                                                 </div>
                                                 <div class="button-buy col-md-5">
                                                     <a class="btn-orange pt-2 pb-2 pr-3 pl-3 "
