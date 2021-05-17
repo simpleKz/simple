@@ -29,7 +29,7 @@ class OrderController extends ApiBaseController
 
 
     public function acceptOrder(Request $request) {
-//        Storage::disk('local')->put('testSimpe.txt', $request);
+        Storage::disk('local')->put('testSimpe.txt', $request);
         $request_array = $request->except('pg_sig');
         ksort($request_array);
         array_unshift($request_array, 'order');
@@ -67,12 +67,11 @@ class OrderController extends ApiBaseController
 
 
             if($status == "ok"){
-
                 $packet_price = PacketPrice::where('id',$order->packet_price_id)->first();
                 $packet = Packet::where('id',$packet_price->packet_id)->first();
                 $course = Course::where('id',$packet->course_id)->first();
                 $user_packet = UserPacket::create([
-                    'packet_id' => $order->packet_id,
+                    'packet_id' => $packet->id,
                     'user_id' => $order->user_id,
                     'due_date' => Carbon::now()->addMonths($packet->expiration_month)
                 ]);
@@ -80,14 +79,18 @@ class OrderController extends ApiBaseController
                 $packet_courses = PacketCourse::where('packet_id',$packet->id)->get();
                 foreach ($packet_courses as $pc){
                     $course  = Course::where('id',$pc->course_id)->first();
-                    CoursePassing::create([
-                        'course_id' => $pc->course->id,
-                        'user_id' => $order->user_id,
-                        'overall_lessons_count' => $course->lessons()->count(),
-                        'passed_lessons_count' => 0,
-                        'is_passed' => false
+                    $course_passing = CoursePassing::where('user_id',$order->user_id)->where('course_id',$pc->course->id)->first();
+                    if(!$course_passing){
+                        CoursePassing::create([
+                            'course_id' => $pc->course->id,
+                            'user_id' => $order->user_id,
+                            'overall_lessons_count' => $course->lessons()->count(),
+                            'passed_lessons_count' => 0,
+                            'is_passed' => false
 
-                    ]);
+                        ]);
+                    }
+
                 }
                 $order->is_payed = true;
                 $order->save();
