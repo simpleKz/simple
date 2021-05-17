@@ -134,8 +134,8 @@
     </div>
     <section class="login">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 col-md-7 col-lg-6 col-xl-5 justify-content-center">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-7 col-lg-6 col-xl-5">
                         {{--            <form id="regForm" action="/action_page.php">--}}
                         <div class="tab">
                             {{--                    <form action=" " method="post" enctype="multipart/form-data">--}}
