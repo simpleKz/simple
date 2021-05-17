@@ -9,8 +9,7 @@
 
 @section('content')
     <div class="back_links">
-        <a href="{{route('index')}}">Главная</a>
-        -
+        <a href="{{route('index')}}">Главная &#8594;</a>
         <a href="{{route('courses')}}">Каталог курсов </a>
     </div>
     <section class="courses">
