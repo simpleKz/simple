@@ -8,8 +8,8 @@
 
 @section('content')
     <div class="back_links">
-        <a href="{{route('index')}}">Главная –</a>
-        <a href="{{route('courses')}}">Каталог курсов -</a>
+        <a href="{{route('index')}}">Главная </a> -
+        <a href="{{route('courses')}}">Каталог курсов </a> -
         <a href="{{route('courses')}}">{{$course->name}}</a>
     </div>
     <section class="head_course">

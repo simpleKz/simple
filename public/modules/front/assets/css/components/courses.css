@@ -6,6 +6,11 @@
     color: #000000;
 }
 
+.back_links a:hover {
+    color: #111111;
+    font-weight: 600;
+}
+
 .list {
     display: inline-block;
     position: relative;
