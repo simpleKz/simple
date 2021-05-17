@@ -62,30 +62,6 @@
                     </ul>
                 </div>
                 <div class="col-12 col-lg-9">
-                    <div class="banner row ">
-                        <div class="col-12 col-md-5 d-flex align-items-center">
-                            <div>
-                                <h1>Все курсы по маркетингу
-                                    за единую подписку</h1>
-                                <p>
-                                    Экономия 125 000 Т
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4 d-flex align-items-center">
-                            <div>
-                                <a class="btn-orange pr-4 pl-4 pt-3 pb-3" href="#">Купить подписку прямо сейчас</a>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-3  d-flex align-items-center">
-                            <div class=" pt-4 pl-4">
-                                <h2>20 000 T</h2>
-                                <p>
-                                    <strike>Вместо 145 000 Т</strike>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                     @if(!empty($courses->items()))
                         <div class="courses_cards row mt-4" id="courses_cards">
                             @foreach($courses as $course)
