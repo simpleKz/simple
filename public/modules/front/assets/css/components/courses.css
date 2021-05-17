@@ -148,6 +148,7 @@ select option {
     border: none;
     display: block;
     position: static;
+    padding-top: 0;
 }
 .dropdown-menu li {
     margin-top: 1.5px;
@@ -207,30 +208,17 @@ select option {
     font-weight: normal;
 }
 
-.courses__card {
-
-
-}
-
-.courses__card_inner {
-    border: 1px solid #D1D1D1;
-    border-radius: 5px;
-    height: 250px;
+.card-body {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    border-radius: 8px;
 
 }
 
-.course__card__head {
 
-    /*border-bottom: 1px solid #C9C9C9;*/
-    /*border-right: 1px  solid #C9C9C9;*/
-    /*border-left: 1px solid #C9C9C9;*/
-    border: 1px solid #C9C9C9;
-    border-radius: 5px 5px 5px 5px;
-    height: 178px;
-
-}
 
 .course__card__video {
+    height: 100%;
     cursor: pointer;
     border-radius: 5px;
     display: flex;
@@ -257,39 +245,35 @@ select option {
 
 }
 
-.course__card__content h1 {
+.card-body h1 {
     font-size: 22px;
     line-height: 26px;
     font-weight: bold;
 }
 
-.course__card__content p {
+.card-body p {
     font-size: 12px;
     line-height: 14px;
     font-weight: normal;
 }
-
-.button-more-info a {
+.btn-orange {
     font-size: 14px;
     line-height: 17px;
     font-weight: normal;
-    background: #F76321;
-    border-radius: 2px;
-    color: #ffffff;
+    padding: 10px;
+    text-align: center;
 }
 
 .button-buy a {
-    font-size: 14px;
-    line-height: 17px;
-    font-weight: normal;
-    background: #ffffff;
-    border: 1px solid #F76321;
-    border-radius: 2px;
+    background: #FFFFFF;
     color: #F76321;
+    border: 1px #F76321 solid !important;
 }
 
 .button-buy a:hover {
-    color: #F76321;
+    color: #220202;
+    text-decoration: none;
+    background-color: #fafafa;
 }
 
 .load_more a {
@@ -303,15 +287,15 @@ select option {
     cursor: pointer;
 }
 
-.course__card__content .description p {
+.card-body .description p {
     font-size: 14px;
     line-height: 16px;
     font-weight: normal;
     min-height: 65px;
-    max-height: 65px;
+    max-height: 150px;
 }
 
-.course__card__content .star {
+.card-body .star {
     color: #FFC107;
     width: 1em;
     font-size: 12px;
