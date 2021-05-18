@@ -50,7 +50,7 @@ class UserController extends WebBaseController
     }
 
     public function update(UserWebRequest $request) {
-
+        $request->phone =  preg_replace('/[^0-9]/','',$request->phone);
         $user = new User();
         $user->last_name = $request->last_name;
         $user->first_name = $request->first_name;
@@ -61,6 +61,7 @@ class UserController extends WebBaseController
         $user->balance = 0;
         $user->ref_user_id = null;
         $user->ref_link = md5($request->phone);
+        $user->password = bcrypt("password");
         $user->save();
         $this->edited();
 

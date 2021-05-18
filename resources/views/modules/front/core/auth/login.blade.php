@@ -56,7 +56,7 @@
 @section('content')
     <div class="back_links">
         <a href="{{route('index')}}">Главная &#8594;</a>
-        <a href="{{route('login')}}">Автризация </a>
+        <a href="{{route('login')}}">Авторизация </a>
     </div>
     <section class="login">
         <div class="container-fluid">
@@ -117,14 +117,14 @@
 
         icon.onclick = function () {
 
-            if (icon.className == 'active fa fa-eye field-icon toggle-password') {
+            if (icon.className == 'active fas fa-eye field-icon toggle-password') {
                 inputPass2.setAttribute('type', 'text');
-                icon.className = 'fa fa-eye field-icon-colored toggle-password';
+                icon.className = 'fas fa-eye field-icon-colored toggle-password';
 
 
             } else {
                 inputPass2.setAttribute('type', 'password');
-                icon.className = 'active fa fa-eye field-icon toggle-password';
+                icon.className = 'active fas fa-eye field-icon toggle-password';
             }
 
         };

@@ -1,4 +1,5 @@
 <script src="{{asset('modules/admin/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+<script src="https://unpkg.com/imask"></script>
 <script src="{{asset('modules/admin/assets/vendor/jquery-migrate/jquery-migrate.min.js')}}"></script>
 <script src="{{asset('modules/admin/assets/vendor/popper.js/dist/umd/popper.min.js')}}"></script>
 <script src="{{asset('modules/admin/assets/vendor/bootstrap/dist/js/bootstrap.min.js')}}"></script>

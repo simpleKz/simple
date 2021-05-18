@@ -9,7 +9,6 @@
 namespace App\Http\Controllers\Web\V1\Front;
 
 
-use App\Exceptions\Web\WebServiceExplainedException;
 use App\Exceptions\WebServiceErroredException;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Http\Requests\Web\V1\EmailSendWebRequest;
@@ -51,17 +50,17 @@ class PageController extends WebBaseController
         if ($request->sort) {
             $sort = $request->sort;
         }
-        $courses = Course::orderBy('rating', 'desc')->paginate(2);
+        $courses = Course::where('is_visible',true)->orderBy('rating', 'desc')->paginate(2);
         if ($sort) {
             if ($sort == 'price') {
-                $courses = Course::orderBy('price', 'desc')->paginate(2);
+                $courses = Course::where('is_visible',true)->orderBy('price', 'desc')->paginate(2);
             } else if ($sort == 'created_at') {
-                $courses = Course::orderBy('created_at', 'desc')->paginate(2);
+                $courses = Course::where('is_visible',true)->orderBy('created_at', 'desc')->paginate(2);
             }
         }
         if ($slug) {
             $course_type = CourseCategory::where('slug', $slug)->firstOrFail();
-            $courses = Course::where('category_id', $course_type->id);
+            $courses = Course::where('is_visible',true)->where('category_id', $course_type->id);
             $course_type_name = $course_type->name;
             if ($sort) {
                 if ($sort == 'price') {
@@ -97,11 +96,12 @@ class PageController extends WebBaseController
     public function myCourse($slug)
     {
         $user = auth()->user();
-        $course = Course::where('slug', $slug)->with(['lessons', 'author'])->first();
-        if(!$course) {
-            throw new WebServiceExplainedException('Курс не найден!');
+        $course = Course::where('slug', $slug)->firstOrFail();
+        $course_passing = CoursePassing::where('user_id',$user->id)->where('course_id',$course->id)->first();
+        if (!$course_passing) {
+            throw new WebServiceErroredException('Нет доступа');
         }
-        #ToDo Проверить купил ли этот чел курс или нет!
+        $course = Course::where('slug', $slug)->with('lessons')->get();
         return $this->frontView('pages.my-course', compact('course'));
     }
 

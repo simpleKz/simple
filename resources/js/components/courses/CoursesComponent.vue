@@ -33,7 +33,8 @@
                                 <div   class="course_card_info p-3 col-7">
                                     <h1>{{data.course.name}}</h1>
                                     <p>{{data.course.author.first_name + " " + data.course.author.last_name}}</p>
-                                    <label>Пройдено {{data.passed_lessons_count}} уроков из {{data.overall_lessons_count}}
+                                    <p>{{data.main_course_name}}</p>
+                                    <label> Пройдено {{data.passed_lessons_count}} уроков из {{data.overall_lessons_count}}
                                        </label>
                                     <k-progress
                                         status="success"
@@ -58,6 +59,7 @@
                                 <div   class="course_card_info p-3 col-7">
                                     <h1>{{data.course.name}}</h1>
                                     <p>{{data.course.author.first_name + " " + data.course.author.last_name}}</p>
+                                    <p>{{data.main_course_name}}</p>
                                     <label>Пройдено {{data.passed_lessons_count}} уроков из {{data.overall_lessons_count}}
                                     </label>
                                     <k-progress
