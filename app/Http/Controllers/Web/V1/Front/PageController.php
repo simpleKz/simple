@@ -50,17 +50,17 @@ class PageController extends WebBaseController
         if ($request->sort) {
             $sort = $request->sort;
         }
-        $courses = Course::orderBy('rating', 'desc')->paginate(2);
+        $courses = Course::where('is_visible',true)->orderBy('rating', 'desc')->paginate(2);
         if ($sort) {
             if ($sort == 'price') {
-                $courses = Course::orderBy('price', 'desc')->paginate(2);
+                $courses = Course::where('is_visible',true)->orderBy('price', 'desc')->paginate(2);
             } else if ($sort == 'created_at') {
-                $courses = Course::orderBy('created_at', 'desc')->paginate(2);
+                $courses = Course::where('is_visible',true)->orderBy('created_at', 'desc')->paginate(2);
             }
         }
         if ($slug) {
             $course_type = CourseCategory::where('slug', $slug)->firstOrFail();
-            $courses = Course::where('category_id', $course_type->id);
+            $courses = Course::where('is_visible',true)->where('category_id', $course_type->id);
             $course_type_name = $course_type->name;
             if ($sort) {
                 if ($sort == 'price') {
