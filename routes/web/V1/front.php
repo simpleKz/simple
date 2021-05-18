@@ -10,6 +10,7 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('legal', ['as' => 'legal', 'uses' => 'PageController@legal']);
     Route::get('/ref', ['as' => 'ref', 'uses' => 'PageController@ref']);
 
+
     Route::group(['middleware' => 'auth'], function () {
         Route::group(['middleware' => ['ROLE_OR:' . Role::CLIENT_ID]], function () {
             Route::get('/personal-account', ['uses' => 'PageController@profile']);

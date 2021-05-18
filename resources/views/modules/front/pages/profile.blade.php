@@ -43,18 +43,18 @@
                             <router-link :to="{ name: 'courses' }" class="list-group-item list-group-item-action p-4">
                                 Мои курсы
                             </router-link>
-                            <router-link :to="{ name: 'profit' }" class="list-group-item list-group-item-action p-4">
-                                Заработок
-                            </router-link>
-                            <router-link :to="{ name: 'withdrawal' }" class="list-group-item list-group-item-action p-4">
-                                Вывод средств
-                            </router-link>
-                            <router-link :to="{ name: 'settings' }" class="list-group-item list-group-item-action p-4">
-                                Настройки
-                            </router-link>
-                            <router-link :to="{ name: 'support' }" class="list-group-item list-group-item-action p-4">
-                                Помощь
-                            </router-link>
+{{--                            <router-link :to="{ name: 'profit' }" class="list-group-item list-group-item-action p-4">--}}
+{{--                                Заработок--}}
+{{--                            </router-link>--}}
+{{--                            <router-link :to="{ name: 'withdrawal' }" class="list-group-item list-group-item-action p-4">--}}
+{{--                                Вывод средств--}}
+{{--                            </router-link>--}}
+{{--                            <router-link :to="{ name: 'settings' }" class="list-group-item list-group-item-action p-4">--}}
+{{--                                Настройки--}}
+{{--                            </router-link>--}}
+{{--                            <router-link :to="{ name: 'support' }" class="list-group-item list-group-item-action p-4">--}}
+{{--                                Помощь--}}
+{{--                            </router-link>--}}
                         </div>
                 </div>
 
