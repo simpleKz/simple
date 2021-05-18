@@ -17,6 +17,7 @@ use App\Models\Entities\Core\Order;
 use App\Models\Entities\Course\Course;
 use App\Models\Entities\Course\CourseAuthor;
 use App\Models\Entities\Course\CourseCategory;
+use App\Models\Entities\Course\CourseLessonPassing;
 use App\Models\Entities\Course\CoursePassing;
 use App\Models\Entities\Course\Packet;
 use App\Models\Entities\Course\PacketPrice;
@@ -96,7 +97,7 @@ class PageController extends WebBaseController
     public function myCourse($slug)
     {
         $user = auth()->user();
-        $course = Course::where('slug', $slug)->with(['lessons', 'author'])->first();
+        $course = Course::where('slug', $slug)->with(['lessons.docs', 'author'])->first();
         if(!$course) {
             throw new WebServiceErroredException('Курс не найден!');
 
@@ -105,7 +106,23 @@ class PageController extends WebBaseController
         if (!$course_passing) {
             throw new WebServiceErroredException('Нет доступа');
         }
-        return $this->frontView('pages.my-course', compact('course'));
+        $i = 1;
+        $overall_minutes = 0;
+        $lesson_passings = CourseLessonPassing::where('user_id',$user->id)->get();
+
+        $last_lesson = null;
+
+        foreach ($course->lessons as $lesson) {
+            $lesson->order = $i.' занятие';
+            $lesson->passed = $lesson_passings->contains('lesson_id', $lesson->id);
+            $overall_minutes += $lesson->duration_in_minutes;
+            $i++;
+            if($lesson->passed != true && !$last_lesson) {
+                $last_lesson = $lesson;
+            }
+        }
+        return $this->frontView('pages.my-course', compact('course',
+            'overall_minutes', 'last_lesson'));
     }
 
     public function buyCourse($slug)

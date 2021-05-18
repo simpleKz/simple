@@ -21,7 +21,6 @@ class CourseLesson extends Model
 
     }
 
-
     public function docs(){
        return  $this->hasMany(CourseLessonMaterial::class,'lesson_id','id');
     }

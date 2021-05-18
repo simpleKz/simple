@@ -21,77 +21,64 @@
                 <h1>{{$course->name}}</h1>
                 <div class="row align-items-center mt-3">
                     <h2 class="col-12 col-md-6 col-lg-3">Спикер: {{$course->author->fullName()}}</h2>
-                    <h2 class="col-12 col-md-6 col-lg-3">Продолжительность: 15 минут</h2>
+                    <h2 class="col-12 col-md-6 col-lg-3">Продолжительность: {{$overall_minutes}} минут</h2>
                 </div>
             </div>
             <div class="course__content row mt-3 mt-lg-5 order-0">
                 <div class="lesson_video_card col-12 col-lg-8">
-                    <iframe class="lesson_video" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                    <iframe id="player" class="lesson_video"
+                            src="{{$last_lesson->video_path}}?enablejsapi=1" allowfullscreen>
                     </iframe>
                 </div>
                 <div class="lessons_content col-12 col-lg-4 mt-3 mt-lg-0 order-2 order-lg-1">
                     <h1>Следующие занятия</h1>
                     <div class="lessons mt-4">
-                        <div class="lesson__card__content mb-3 p-3 col-md-12 align-items-center">
-                            <div class="dir_text col-10">
-                                <p>1 занятие</p>
-                                <h1>Введение в маркетинг</h1>
+                        @foreach($course->lessons as $lesson)
+                            <div class="lesson__card__content {{!$lesson->passed ? 'lesson__status' : ''}}
+                            {{$lesson == $last_lesson ? 'lesson__playing' : ''}}
+                                mb-3 p-3 col-md-12 align-items-center" id="lesson{{$lesson->id}}"
+                                 onclick="changeLesson({{$lesson}})">
+                                <div class="dir_text col-10">
+                                    <p>{{$lesson->order}}</p>
+                                    <h1>{{$lesson->name}}</h1>
+                                    @if(!$lesson->passed)
+                                        <h2><i class="far fa-clock"></i>
+                                            {{$lesson->duration_in_minutes}} минут</h2>
+                                    @endif
+                                </div>
+                                <div class="dir_circle" id="lessonIcon{{$lesson->id}}">
+                                    @if($lesson->passed || $lesson == $last_lesson)
+                                        <span class="read-more-circle-around ">
+                                                <i class="fas {{$lesson->passed ? 'fa-check' : ''}}
+                                                {{$lesson == $last_lesson ? 'fa-play' : ''}}"></i>
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="dir_circle">
-                               <span class="read-more-circle-around ">
-                                        <i class="far fa-check"></i>
-                               </span>
-                            </div>
-                        </div>
-                        <div
-                            class="lesson__card__content lesson__status lesson__playing mb-3 p-3 col-md-12 align-items-center">
-                            <div class="dir_text col-10">
-                                <p>2 занятие</p>
-                                <h1>Целевая аудитория и …</h1>
-                            </div>
-                            <div class="dir_circle">
-                               <span class="read-more-circle-around">
-                                        <i class="fas fa-play fa-xs"></i>
-                               </span>
-                            </div>
-                        </div>
-                        <div class="lesson__card__content lesson__status p-3 mb-3 col-md-12 align-items-center">
-                            <div class="dir_text col-10">
-                                <p>3 занятие</p>
-                                <h1>Продуктовая матрица</h1>
-                                <h2><i class="far fa-clock"></i>
-                                    25 минут</h2>
-                            </div>
-                        </div>
-                        <div class="lesson__card__content lesson__status p-3 mb-3 col-md-12 align-items-center">
-                            <div class="dir_text col-10">
-                                <p>3 занятие</p>
-                                <h1>Продуктовая матрица</h1>
-                                <h2><i class="far fa-clock"></i>
-                                    25 минут</h2>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="lesson mt-3 col-12 col-lg-8 order-1 order-lg-2">
                     <div class="lesson_info">
-                        <h2>1 занятие</h2>
-                        <h1>Введение в маркетинг</h1>
-                        <p>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать<br>
-                            несколько абзацев более менее осмысленного текста рыбы на русском языке,<br>
-                            а начинающему оратору отточить навык публичных выступлений в домашних условиях.</p>
+                        <h2 id="lessonOrder">{{$last_lesson->order}}</h2>
+                        <h1 id="lessonName">{{$last_lesson->name}}</h1>
+                        <p id="lessonDescription">{{$last_lesson->description}}</p>
                     </div>
                     <div class="lesson_materials col-12 col-md-8 col-lg-8 mt-4 mt-lg-5">
                         <h1>Прикрепленные материалы</h1>
                         <div class="row">
-                            <div class="col-12 mt-2 justify-content-start">
-                                <a class="material">domashka.pdf</a>
-                                <a class="material">check-list.pdf</a>
+                            <div class="col-12 mt-2 justify-content-start" id="lessonMaterials">
+                                @foreach($last_lesson->docs as $material)
+                                    <a class="material" href="{{asset($material->material_path)}}"
+                                       download="{{$last_lesson->name.'-'.$material->id.'.'.$material->type}}"
+                                       target="_blank">{{$last_lesson->name.'-'.$material->id.'.'.$material->type}}
+                                    </a>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                     <div class="d-flex col-12 pt-5">
-                        <a class="btn-orange" href="#">Следующее занятие
+                        <a class="btn-orange" href="#" onclick="nextLesson(this)">Следующее занятие
                             <i class="fas fa-arrow-right pl-4"></i>
                         </a>
                     </div>
@@ -118,8 +105,76 @@
 @endsection
 
 @section('scripts')
+    <script src="http://www.youtube.com/iframe_api"></script>
 
     <script type="text/javascript">
+        var lastLesson = {!! $last_lesson !!};
+        var lessons = {!! $course->lessons !!};
+        var nextLessonExist = true;
+            window.onYouTubeIframeAPIReady = function () {
+            new YT.Player('player', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        };
 
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.ENDED) {
+                console.log('fdf');
+            }
+        }
+
+        function changeLesson(lesson) {
+
+            if (lesson.id === lastLesson.id) {
+                return false;
+            }
+            var player = document.getElementById('player');
+            var order = document.getElementById('lessonOrder');
+            var name = document.getElementById('lessonName');
+            var description = document.getElementById('lessonDescription');
+            var materials = document.getElementById('lessonMaterials');
+            var lessonContent = document.getElementById('lesson' + lesson.id);
+            var lessonIcon = document.getElementById('lessonIcon' + lesson.id);
+            player.src = lesson.video_path + '?enablejsapi=1';
+            name.innerText = lesson.name;
+            order.innerText = lesson.order;
+            description.innerText = lesson.description;
+            materials.innerHTML = "";
+            lesson.docs.forEach(function (e) {
+                let a = document.createElement('a');
+                a.href = '{!! asset('/') !!}' + e.material_path;
+                a.target = '_blank';
+                a.className = 'material';
+                a.download = lesson.name + '-' + e.id + '.' + e.type;
+                a.text = lesson.name + '-' + e.id + '.' + e.type;
+                materials.appendChild(a);
+            });
+
+            lessonContent.classList.add('lesson__playing');
+            lessonIcon.innerHTML = `<span class="read-more-circle-around ">
+                                                <i class="fas fa-play"></i>
+                                        </span>`;
+            var lastLessonContent = document.getElementById('lesson' + lastLesson.id);
+            var lastLessonIcon = document.getElementById('lessonIcon' + lastLesson.id);
+            lastLessonContent.classList.remove('lesson__playing');
+            lastLessonIcon.innerHTML = "";
+            lastLesson = lesson;
+        }
+
+        function nextLesson(event) {
+            var lastIndex = 0;
+            for (var i = 0; i < lessons.length; i++) {
+                if (lessons[i].id == lastLesson.id) {
+                    lastIndex = i;
+                    break;
+                }
+            }
+            if(lessons[lastIndex + 1] === undefined) {
+                return false;
+            }
+            changeLesson(lessons[lastIndex + 1])
+        }
     </script>
 @endsection
