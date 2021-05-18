@@ -56,7 +56,7 @@
 @section('content')
     <div class="back_links">
         <a href="{{route('index')}}">Главная &#8594;</a>
-        <a href="{{route('login')}}">Автризация </a>
+        <a href="{{route('login')}}">Авторизация </a>
     </div>
     <section class="login">
         <div class="container-fluid">
