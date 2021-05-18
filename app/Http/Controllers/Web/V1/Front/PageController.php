@@ -102,8 +102,6 @@ class PageController extends WebBaseController
             throw new WebServiceErroredException('Нет доступа');
         }
         $course = Course::where('slug', $slug)->with('lessons')->get();
-        #ToDo Проверить купил ли этот чел курс или нет!
-
         return $this->frontView('pages.my-course', compact('course'));
     }
 
