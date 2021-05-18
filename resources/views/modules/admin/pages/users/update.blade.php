@@ -37,3 +37,26 @@
 
     </div>
 @endsection
+@section('scripts')
+
+    <script>
+
+        // $(function () {
+        //
+        //     $("#phone").mask("+7(999) 999-99-99");
+        //     // $("#phone").pattern("^(\\([0-9]{3}\\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$\n");
+        // });
+
+        // $(document).ready(function($){
+        //
+        //     $("#phone").mask("+7(999) 999-99-99");
+        // });
+
+        var phoneMask = IMask(
+            document.getElementById('phone'), {
+                mask: '+{7}(000)000-00-00'
+            });
+
+
+    </script>
+@endsection
