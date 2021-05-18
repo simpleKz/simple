@@ -117,14 +117,14 @@
 
         icon.onclick = function () {
 
-            if (icon.className == 'active fa fa-eye field-icon toggle-password') {
+            if (icon.className == 'active fas fa-eye field-icon toggle-password') {
                 inputPass2.setAttribute('type', 'text');
-                icon.className = 'fa fa-eye field-icon-colored toggle-password';
+                icon.className = 'fas fa-eye field-icon-colored toggle-password';
 
 
             } else {
                 inputPass2.setAttribute('type', 'password');
-                icon.className = 'active fa fa-eye field-icon toggle-password';
+                icon.className = 'active fas fa-eye field-icon toggle-password';
             }
 
         };

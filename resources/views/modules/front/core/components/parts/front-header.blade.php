@@ -27,7 +27,7 @@
 
                                     @if(auth()->user() && auth()->user()->role_id == 2 )
                                         <a class="nav-link" href="{{route('login')}}"><i
-                                                class="fa fa-user"></i>{{" ".auth()->user()->first_name ." ".substr(auth()->user()->last_name, 0, 1)."."}}
+                                                class="fas fa-user"></i>{{" ".auth()->user()->first_name ." ".substr(auth()->user()->last_name, 0, 1)."."}}
                                         </a>
                                     @else
                                         <a class="nav-link" href="{{route('login')}}"><i class="fas fa-user"></i> Войти</a>
