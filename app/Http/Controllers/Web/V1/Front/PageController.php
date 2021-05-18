@@ -98,7 +98,7 @@ class PageController extends WebBaseController
         $user = auth()->user();
         $course = Course::where('slug', $slug)->firstOrFail();
         $course_passing = CoursePassing::where('user_id',$user->id)->where('course_id',$course->id)->first();
-        if ($course_passing) {
+        if (!$course_passing) {
             throw new WebServiceErroredException('Нет доступа');
         }
         $course = Course::where('slug', $slug)->with('lessons')->get();
