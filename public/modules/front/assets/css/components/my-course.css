@@ -1,3 +1,19 @@
+.back_links {
+    margin-left: 70px;
+}
+
+.back_links a {
+    color: #000000;
+}
+
+.back_links a:hover {
+    color: #111111;
+    font-weight: 600;
+}
+.my-course .container-fluid {
+    padding: 100px 70px 100px 70px;
+}
+
 .course-header p{
     font-size: 12px;
     line-height: 14px;
@@ -19,8 +35,35 @@
     cursor: pointer;
 }
 .course__content{
-    height: 500px;
+    min-height: 500px;
 }
+
+.lessons {
+    overflow-y: scroll;
+    height: 470px;
+}
+.lessons::-webkit-scrollbar {
+    width: 20px;
+}
+
+.lessons::-webkit-scrollbar-track {
+    background: #F2F2F2;
+    border-radius: 20px;
+    border-left: 9px solid white;
+    border-right: 9px solid white;
+}
+
+.lessons::-webkit-scrollbar-thumb {
+    background: #F76321;
+    border-radius: 30px;
+    border-left: 6.5px solid white;
+    border-right: 6.5px solid white;
+}
+
+.lessons::-webkit-scrollbar-thumb:hover {
+    background: rgb(242, 242, 242);
+}
+
 .lesson_video{
     width: 100%;
     height: 100%;
@@ -43,7 +86,7 @@
 .lesson__card__content h1{
     font-size: 18px;
     line-height: 22px;
-    font-weight: bolder;
+    font-weight: normal;
     color:#FFFFFF;
 }
 .lesson__card__content  p{
@@ -54,9 +97,8 @@
 .lesson__card__content .read-more-circle-around {
     margin-left: 5px;
     border-radius: 50%;
-    border: 2px solid #F76321;
-    width: 50px;
-    height: 50px;
+    width: 32px;
+    height: 32px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -66,38 +108,28 @@
 
 
 
-.lesson__card__content_locked{
+.lesson__status {
     display: flex;
     border-radius: 5px;
     background:#F2F2F2 ;
     cursor: pointer;
 }
-.lesson__card__content_locked h1{
-    font-size: 18px;
-    line-height: 22px;
-    font-weight: bolder;
+.lesson__status h1 {
+    color: #000000;
 }
-.lesson__card__content_locked h2{
+.lesson__status h2 {
     font-size: 13px;
     line-height: 16px;
+    font-weight: normal;
+    font-style: normal;
     color:#666666
 }
-.lesson__card__content_locked  p{
-    font-size: 16px;
-    line-height: 19px;
+.lesson__status  p {
     color:#666666;
 }
-.lesson__card__content_locked .read-more-circle-around {
-    margin-left: 5px;
-    /*border-radius: 50%;*/
-    /*border: 2px solid #F76321;*/
-    width: 50px;
-    height: 50px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    color:#666666;
-    /*background:  #ffffff;*/
+
+.lesson__playing {
+    background-color: #FFDAC9;
 }
 
 .lesson_info{

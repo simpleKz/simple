@@ -1,0 +1,24 @@
+@media (max-width: 1200px) and (min-width: 992px) {
+    .back_links {
+        margin-left: 45px;
+    }
+    .my-course .container-fluid {
+        padding: 20px 45px 45px;
+    }
+}
+@media (max-width: 992px) and (min-width: 767px) {
+    .back_links {
+        margin-left: 35px;
+    }
+    .my-course .container-fluid {
+        padding: 40px 35px 35px;
+    }
+}
+@media (max-width: 767px) {
+    .back_links {
+        margin-left: 10px;
+    }
+    .my-course .container-fluid {
+        padding: 70px 10px 60px 10px;
+    }
+}

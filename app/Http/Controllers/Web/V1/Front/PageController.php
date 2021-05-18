@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Web\V1\Front;
 
 
+use App\Exceptions\Web\WebServiceExplainedException;
 use App\Exceptions\WebServiceErroredException;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Http\Requests\Web\V1\EmailSendWebRequest;
@@ -96,10 +97,11 @@ class PageController extends WebBaseController
     public function myCourse($slug)
     {
         $user = auth()->user();
-        $course = Course::where('slug', $slug)->firstOrFail();
-        $course = Course::where('slug', $slug)->with('lessons')->get();
+        $course = Course::where('slug', $slug)->with(['lessons', 'author'])->first();
+        if(!$course) {
+            throw new WebServiceExplainedException('Курс не найден!');
+        }
         #ToDo Проверить купил ли этот чел курс или нет!
-
         return $this->frontView('pages.my-course', compact('course'));
     }
 

@@ -2,110 +2,78 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{asset('modules/front/assets/css/swiper.min.css')}}">
+    <link rel="stylesheet" href="{{asset('modules/front/assets/css/components/my-course.css')}}">
+    <link rel="stylesheet" href="{{asset('modules/front/assets/css/components/my-course-responsive.css')}}">
     <style>
 
     </style>
 @endsection
 
 @section('content')
-    <section class="my-course pb-5 mb-5">
-        <div class="container p-4">
-            <div class="course-header pt-5">
-                <p class="pb-5">Главная – Каталог курсов - Основы маркетинга</p>
-                <h1>Основы маркетинга</h1>
-                <div class="d-flex align-items-center">
-                    <h2>Спикер: Аскаров Кайрат</h2>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    <h2>Продолжительность: 15 минут</h2>
+    <div class="back_links">
+        <a href="{{route('index')}}">Главная &#8594;</a>
+        <a href="{{route('courses')}}">Каталог курсов </a>
+        <a href="{{route('my-course', ['slug' => $course->slug])}}">{{$course->name}} </a>
+    </div>
+    <section class="my-course">
+        <div class="container-fluid">
+            <div class="course-header">
+                <h1>{{$course->name}}</h1>
+                <div class="row align-items-center mt-3">
+                    <h2 class="col-12 col-md-6 col-lg-3">Спикер: {{$course->author->fullName()}}</h2>
+                    <h2 class="col-12 col-md-6 col-lg-3">Продолжительность: 15 минут</h2>
                 </div>
             </div>
-            <div class="course__content row pt-5 ">
-                <div class="lesson_video_card col-md-8 col-lg-8">
-                    <iframe class="lesson_video"  src="https://www.youtube.com/embed/tgbNymZ7vqY">
+            <div class="course__content row mt-3 mt-lg-5">
+                <div class="lesson_video_card col-12 col-lg-8">
+                    <iframe class="lesson_video" src="https://www.youtube.com/embed/tgbNymZ7vqY">
                     </iframe>
-{{--                    <div class="finish_course  d-flex align-items-center justify-content-center">--}}
-{{--                        <div class="text-center">--}}
-{{--                            <h1>Поздравляем!</h1>--}}
-{{--                            <h2 class="mb-5">Вы завершили курс «Основы маркетинга»</h2>--}}
-{{--                            <p>Оцените, пожалуйста, пройденный курс:</p>--}}
-{{--                            <div class="rating mb-4">--}}
-{{--                                <span><i class="far fa-star"></i></span>--}}
-{{--                                <span><i class="far fa-star"></i></span>--}}
-{{--                                <span><i class="far fa-star"></i></span>--}}
-{{--                                <span><i class="far fa-star"></i></span>--}}
-{{--                                <span><i class="far fa-star"></i></span>--}}
-{{--                            </div>--}}
-
-{{--                        </div>--}}
-{{--                    </div>--}}
                 </div>
-                <div class="lessons_content col-md-4 col-lg-4">
+                <div class="lessons_content col-12 col-lg-4 mt-3 mt-lg-0">
                     <h1>Следующие занятия</h1>
-                    <div class="lessons" style="overflow-y: scroll; height:470px;">
-                        <div class="lesson__card__content mb-3 col-md-12">
-                            <div class="dir_text p-3 col-10">
+                    <div class="lessons mt-4">
+                        <div class="lesson__card__content mb-3 p-3 col-md-12 align-items-center">
+                            <div class="dir_text col-10">
                                 <p>1 занятие</p>
                                 <h1>Введение в маркетинг</h1>
                             </div>
-                            <div class="dir_circle pt-4 float-right">
+                            <div class="dir_circle">
                                <span class="read-more-circle-around ">
-                                        <i class="far fa-2x fa-check"></i>
+                                        <i class="far fa-check"></i>
                                </span>
                             </div>
                         </div>
-                        <div class="lesson__card__content mb-3 col-md-12">
-                            <div class="dir_text p-3 col-10">
+                        <div class="lesson__card__content lesson__status lesson__playing mb-3 p-3 col-md-12 align-items-center">
+                            <div class="dir_text col-10">
                                 <p>2 занятие</p>
                                 <h1>Целевая аудитория и …</h1>
                             </div>
-                            <div class="dir_circle pt-4 float-right">
-                               <span class="read-more-circle-around ">
-                                        <i class="fa fa-play"></i>
+                            <div class="dir_circle">
+                               <span class="read-more-circle-around">
+                                        <i class="fas fa-play fa-xs"></i>
                                </span>
                             </div>
                         </div>
-                        <div class="lesson__card__content_locked mb-3 col-md-12">
-                            <div class="dir_text p-3 col-10">
+                        <div class="lesson__card__content lesson__status p-3 mb-3 col-md-12 align-items-center">
+                            <div class="dir_text col-10">
                                 <p>3 занятие</p>
                                 <h1>Продуктовая матрица</h1>
                                 <h2> <i class="far fa-clock"></i>
                                     25 минут</h2>
                             </div>
-                            <div class="dir_circle pt-4 float-right">
-                               <span class="read-more-circle-around ">
-                                        <i class="far fa-2x fa-lock"></i>
-                               </span>
-                            </div>
                         </div>
-                        <div class="lesson__card__content_locked mb-3 col-md-12">
-                            <div class="dir_text p-3 col-10">
-                                <p>4 занятие</p>
-                                <h1>Сегменты аудиторий</h1>
+                        <div class="lesson__card__content lesson__status p-3 mb-3 col-md-12 align-items-center">
+                            <div class="dir_text col-10">
+                                <p>3 занятие</p>
+                                <h1>Продуктовая матрица</h1>
                                 <h2> <i class="far fa-clock"></i>
-                                    10 минут</h2>
-                            </div>
-                            <div class="dir_circle pt-4 float-right">
-                               <span class="read-more-circle-around ">
-                                        <i class="far fa-2x fa-lock"></i>
-                               </span>
-                            </div>
-                        </div>
-                        <div class="lesson__card__content_locked mb-3 col-md-12">
-                            <div class="dir_text p-3 col-10">
-                                <p>4 занятие</p>
-                                <h1>Сегменты аудиторий</h1>
-                                <h2> <i class="far fa-clock"></i>
-                                    10 минут</h2>
-                            </div>
-                            <div class="dir_circle pt-4 float-right">
-                               <span class="read-more-circle-around ">
-                                        <i class="far fa-2x fa-lock"></i>
-                               </span>
+                                    25 минут</h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="lesson pt-5 mt-5">
+            <div class="lesson mt-3">
                 <div class="lesson_info col-12 col-md-8 col-lg-8">
                     <h2>1 занятие</h2>
                     <h1>Введение в маркетинг</h1>
@@ -120,10 +88,9 @@
                         <a class="material  mr-2 pt-2 pb-2 pl-4 pr-4">check-list.pdf</a>
                     </div>
                 </div>
-                <div class="pt-5">
-                    <a class="btn-orange col-md-5 pt-3 pb-3 pl-5 pr-5 d-flex align-items-center justify-content-between" href="#">
-                        <label>Следующее занятие </label>
-                        <i class="fa fa-arrow-right"></i>
+                <div class="d-flex pt-5">
+                    <a class="btn-orange col-md-5" href="#">Следующее занятие
+                        <i class="fas fa-arrow-right pl-4"></i>
                     </a>
                 </div>
 {{--                <div class="course_finish col-12 col-md-8 col-lg-8">--}}
