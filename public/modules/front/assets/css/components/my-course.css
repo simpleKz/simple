@@ -14,24 +14,24 @@
     padding: 100px 70px 100px 70px;
 }
 
-.course-header p{
-    font-size: 12px;
-    line-height: 14px;
-}
 .course-header h1{
     font-size: 45px;
     line-height: 55px;
     font-weight: bold;
+    font-style: normal;
 }
 .course-header h2{
     font-size: 16px;
+    line-height: 20px;
     font-weight: normal;
+    font-style: normal;
 }
 
 .course-header h3{
     font-size: 16px;
     line-height: 19px;
     font-weight: normal;
+    font-style: normal;
     cursor: pointer;
 }
 .course__content{
@@ -141,15 +141,21 @@
 .lesson_info h1{
     font-size: 30px;
     line-height: 36px;
+    font-style: normal;
+    font-weight: normal;
 }
 .lesson_info h2{
     font-size: 20px;
     line-height: 24px;
+    font-weight: normal;
+    font-style: normal;
     color:#666666;
 }
 .lesson_info p{
     font-size: 16px;
     line-height: 19px;
+    font-style: normal;
+    font-weight: normal;
 }
 .lesson_materials{
     padding-left: 0 !important;
@@ -164,6 +170,7 @@
     font-size: 14px;
     line-height: 17px;
     color: #050606;
+    padding: 10px;
 }
 .material:hover{
     color: #050606;
