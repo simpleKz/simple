@@ -149,6 +149,11 @@
             var lastLessonIcon = document.getElementById('lessonIcon' + lastLesson.id);
             lastLessonContent.classList.remove('lesson__playing');
             lastLessonIcon.innerHTML = "";
+            if(lastLesson.passed === true) {
+                lastLessonIcon.innerHTML = `<span class="read-more-circle-around ">
+                                                <i class="fas fa-check"></i>
+                                        </span>`
+            }
             lastLesson = lesson;
         }
 
