@@ -27,6 +27,7 @@ use App\Models\Enums\Currency;
 use Carbon\CarbonInterval;
 use Illuminate\Http\Request;
 use Stevebauman\Location\Facades\Location;
+use Illuminate\Support\Facades\Session;
 
 
 class PageController extends WebBaseController
@@ -46,6 +47,8 @@ class PageController extends WebBaseController
 
     public function courses(Request $request, $slug = null)
     {
+        Session::put('prevPage', url()->current());
+
         $sort = null;
         $course_type_name = null;
         if ($request->sort) {
@@ -85,6 +88,7 @@ class PageController extends WebBaseController
 
     public function course($slug)
     {
+        Session::put('prevPage', url()->current());
         $course = Course::with(['lessons', 'author'])->where('slug', $slug)->first();
         return $this->frontView('pages.course', compact('course'));
     }

@@ -13,7 +13,7 @@ Route::group(['namespace' => 'Front'], function () {
 
     Route::group(['middleware' => 'auth'], function () {
         Route::group(['middleware' => ['ROLE_OR:' . Role::CLIENT_ID]], function () {
-            Route::get('/personal-account', ['uses' => 'PageController@profile']);
+            Route::get('/personal-account', ['uses' => 'PageController@profile', 'as' => 'personal-account']);
             Route::get('/profile', ['uses' => 'ProfileController@profile', 'as' => 'profile']);
             Route::get('/my/courses', ['uses' => 'ProfileController@myCourses', 'as' => 'my-courses']);
             Route::post('/profile/update', ['uses' => 'ProfileController@profileUpdate', 'as' => 'profile.update']);
@@ -23,10 +23,6 @@ Route::group(['namespace' => 'Front'], function () {
             Route::get('/buy-course/{slug}', ['uses' => 'PageController@buyCourse','as' => 'buy-course']);
             Route::get('/pay', ['uses' => 'PageController@pay','as' => 'pay']);
             Route::get('/payCard', ['uses' => 'PageController@payCard','as' => 'payCard']);
-
-
-
-
 
         });
 
@@ -38,7 +34,7 @@ Route::group(['namespace' => 'Front\Auth'], function () {
 
     Route::get('login', ['as' => 'login', 'uses' => 'LoginController@showLoginForm']);
 
-    Route::post('login', ['as' => 'login.post', 'uses' => 'LoginController@login']);
+    Route::post('login/post', ['as' => 'login.post', 'uses' => 'LoginController@login']);
     Route::get('register', ['as' => 'register', 'uses' => 'RegisterController@showRegistrationForm']);
 //    Route::post('register', ['as' => 'register.post', 'uses' => 'RegisterController@register']);
 
