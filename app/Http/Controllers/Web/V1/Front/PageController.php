@@ -17,6 +17,7 @@ use App\Models\Entities\Core\Order;
 use App\Models\Entities\Course\Course;
 use App\Models\Entities\Course\CourseAuthor;
 use App\Models\Entities\Course\CourseCategory;
+use App\Models\Entities\Course\CourseLesson;
 use App\Models\Entities\Course\CourseLessonPassing;
 use App\Models\Entities\Course\CoursePassing;
 use App\Models\Entities\Course\Packet;
@@ -54,17 +55,17 @@ class PageController extends WebBaseController
         if ($request->sort) {
             $sort = $request->sort;
         }
-        $courses = Course::where('is_visible',true)->orderBy('rating', 'desc')->paginate(2);
+        $courses = Course::where('is_visible', true)->orderBy('rating', 'desc')->paginate(2);
         if ($sort) {
             if ($sort == 'price') {
-                $courses = Course::where('is_visible',true)->orderBy('price', 'desc')->paginate(2);
+                $courses = Course::where('is_visible', true)->orderBy('price', 'desc')->paginate(2);
             } else if ($sort == 'created_at') {
-                $courses = Course::where('is_visible',true)->orderBy('created_at', 'desc')->paginate(2);
+                $courses = Course::where('is_visible', true)->orderBy('created_at', 'desc')->paginate(2);
             }
         }
         if ($slug) {
             $course_type = CourseCategory::where('slug', $slug)->firstOrFail();
-            $courses = Course::where('is_visible',true)->where('category_id', $course_type->id);
+            $courses = Course::where('is_visible', true)->where('category_id', $course_type->id);
             $course_type_name = $course_type->name;
             if ($sort) {
                 if ($sort == 'price') {
@@ -102,31 +103,85 @@ class PageController extends WebBaseController
     {
         $user = auth()->user();
         $course = Course::where('slug', $slug)->with(['lessons.docs', 'author'])->first();
-        if(!$course) {
+        if (!$course) {
             throw new WebServiceErroredException('Курс не найден!');
 
         }
-        $course_passing = CoursePassing::where('user_id',$user->id)->where('course_id',$course->id)->first();
+        $course_passing = CoursePassing::where('user_id', $user->id)->where('course_id', $course->id)->first();
         if (!$course_passing) {
             throw new WebServiceErroredException('Нет доступа');
         }
         $i = 1;
         $overall_minutes = 0;
-        $lesson_passings = CourseLessonPassing::where('user_id',$user->id)->get();
+        $lesson_passings = CourseLessonPassing::where('user_id', $user->id)->get();
 
         $last_lesson = null;
 
         foreach ($course->lessons as $lesson) {
-            $lesson->order = $i.' занятие';
+            $lesson->order = $i . ' занятие';
             $lesson->passed = $lesson_passings->contains('lesson_id', $lesson->id);
             $overall_minutes += $lesson->duration_in_minutes;
             $i++;
-            if($lesson->passed != true && !$last_lesson) {
+            if ($lesson->passed != true && !$last_lesson) {
                 $last_lesson = $lesson;
             }
         }
+        if(!$last_lesson) {
+            $last_lesson = $course->lessons->last();
+        }
         return $this->frontView('pages.my-course', compact('course',
             'overall_minutes', 'last_lesson'));
+    }
+
+    public function passLesson($lesson_id)
+    {
+        $user = auth()->user();
+        $lesson = CourseLesson::where('id', $lesson_id)->first();
+        if (!$lesson) {
+            throw new WebServiceErroredException('Урок не найден!!');
+        }
+        $course_passing = CoursePassing::where('user_id', $user->id)
+            ->where('course_id', $lesson->course_id)->first();
+        if (!$course_passing) {
+            throw new WebServiceErroredException('Нет доступа');
+        }
+
+
+        $lesson_passed = CourseLessonPassing::where('user_id', $user->id)
+            ->where('lesson_id', $lesson->id)
+            ->exists();
+        if (!$lesson_passed) {
+            CourseLessonPassing::create([
+                'lesson_id' => $lesson->id,
+                'user_id' => $user->id
+            ]);
+            $course_passing->passed_lessons_count = $course_passing->passed_lessons_count + 1;
+            if($course_passing->passed_lessons_count == $course_passing->overall_lessons_count) {
+                $course_passing->is_passed = true;
+            }
+            $course_passing->save();
+        }
+        $course = Course::where('id', $lesson->course_id)->with(['lessons.docs'])->first();
+
+        $lesson_passings = CourseLessonPassing::where('user_id', $user->id)->get();
+
+        $last_lesson = null;
+        $i = 1;
+
+        foreach ($course->lessons as $lesson) {
+            $lesson->order = $i . ' занятие';
+            $lesson->passed = $lesson_passings->contains('lesson_id', $lesson->id);
+            $i++;
+            if ($lesson->passed != true && !$last_lesson) {
+                $last_lesson = $lesson;
+            }
+        }
+        if(!$last_lesson) {
+            $last_lesson = $course->lessons->last();
+        }
+
+        return $this->frontView('pages.parts.all_lessons', compact('course',
+            'last_lesson'));
     }
 
     public function buyCourse($slug)
@@ -137,8 +192,8 @@ class PageController extends WebBaseController
             ->firstOrFail();
         $duration = $course->lessons->sum('duration_in_minutes');
         $course->duration = (int)ceil(CarbonInterval::minutes($duration)->totalHours);
-        foreach ($course->packets as $packet){
-            $user_course = UserPacket::where('user_id',$user->id)->where('packet_id',$packet->id)->first();
+        foreach ($course->packets as $packet) {
+            $user_course = UserPacket::where('user_id', $user->id)->where('packet_id', $packet->id)->first();
             if ($user_course) {
                 throw new WebServiceErroredException('Вы уже купили этот курс');
             }
@@ -155,7 +210,7 @@ class PageController extends WebBaseController
         $position = Location::get(request()->ip());
 
         $currency = "KZT";
-        if($position->countryName == "Russia"){
+        if ($position->countryName == "Russia") {
             $currency = "RUB";
         }
         $course = Course::where('id', $request->course_id)->first();

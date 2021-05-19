@@ -30,33 +30,8 @@
                             src="{{$last_lesson->video_path}}?enablejsapi=1" allowfullscreen>
                     </iframe>
                 </div>
-                <div class="lessons_content col-12 col-lg-4 mt-3 mt-lg-0 order-2 order-lg-1">
-                    <h1>Следующие занятия</h1>
-                    <div class="lessons mt-4">
-                        @foreach($course->lessons as $lesson)
-                            <div class="lesson__card__content {{!$lesson->passed ? 'lesson__status' : ''}}
-                            {{$lesson == $last_lesson ? 'lesson__playing' : ''}}
-                                mb-3 p-3 col-md-12 align-items-center" id="lesson{{$lesson->id}}"
-                                 onclick="changeLesson({{$lesson}})">
-                                <div class="dir_text col-10">
-                                    <p>{{$lesson->order}}</p>
-                                    <h1>{{$lesson->name}}</h1>
-                                    @if(!$lesson->passed)
-                                        <h2><i class="far fa-clock"></i>
-                                            {{$lesson->duration_in_minutes}} минут</h2>
-                                    @endif
-                                </div>
-                                <div class="dir_circle" id="lessonIcon{{$lesson->id}}">
-                                    @if($lesson->passed || $lesson == $last_lesson)
-                                        <span class="read-more-circle-around ">
-                                                <i class="fas {{$lesson->passed ? 'fa-check' : ''}}
-                                                {{$lesson == $last_lesson ? 'fa-play' : ''}}"></i>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
+                <div class="lessons_content col-12 col-lg-4 mt-3 mt-lg-0 order-2 order-lg-1" id="all_lessons_content">
+                   @include('modules.front.pages.parts.all_lessons')
                 </div>
                 <div class="lesson mt-3 col-12 col-lg-8 order-1 order-lg-2">
                     <div class="lesson_info">
@@ -108,6 +83,7 @@
     <script src="http://www.youtube.com/iframe_api"></script>
 
     <script type="text/javascript">
+        var url = '{!! route('pass.lesson') !!}';
         var lastLesson = {!! $last_lesson !!};
         var lessons = {!! $course->lessons !!};
         var nextLessonExist = true;
@@ -121,7 +97,20 @@
 
         function onPlayerStateChange(event) {
             if (event.data === YT.PlayerState.ENDED) {
-                console.log('fdf');
+                fetch(url + '/' + lastLesson.id, {
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    method: 'POST',
+                })
+                    .then(response => response.text())
+                    .then(result => {
+                        document.getElementById('all_lessons_content').innerHTML = result;
+
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
             }
         }
 
@@ -160,6 +149,11 @@
             var lastLessonIcon = document.getElementById('lessonIcon' + lastLesson.id);
             lastLessonContent.classList.remove('lesson__playing');
             lastLessonIcon.innerHTML = "";
+            if(lastLesson.passed === true) {
+                lastLessonIcon.innerHTML = `<span class="read-more-circle-around ">
+                                                <i class="fas fa-check"></i>
+                                        </span>`
+            }
             lastLesson = lesson;
         }
 
