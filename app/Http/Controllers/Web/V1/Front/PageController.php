@@ -195,7 +195,7 @@ class PageController extends WebBaseController
         foreach ($course->packets as $packet) {
             $user_course = UserPacket::where('user_id', $user->id)->where('packet_id', $packet->id)->first();
             if ($user_course) {
-                throw new WebServiceErroredException('Вы уже купили этот курс');
+                return redirect()->route('personal-account');
             }
         }
 
