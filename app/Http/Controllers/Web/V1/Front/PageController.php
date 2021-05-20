@@ -110,7 +110,7 @@ class PageController extends WebBaseController
         $course->duration = (int)ceil(CarbonInterval::minutes($duration)->totalHours);
         $user_course = CoursePassing::where('course_id', $course->id)->where('user_id', $user->id)->first();
         if ($user_course) {
-            throw new WebServiceErroredException('Вы уже купили этот курс');
+            return redirect()->route('personal.account');
         }
 
         return $this->frontView('pages.buy-course', compact('course'));

@@ -12,7 +12,7 @@ Route::group(['namespace' => 'Front'], function () {
 
     Route::group(['middleware' => 'auth'], function () {
         Route::group(['middleware' => ['ROLE_OR:' . Role::CLIENT_ID]], function () {
-            Route::get('/personal-account', ['uses' => 'PageController@profile']);
+            Route::get('/personal-account', ['uses' => 'PageController@profile', 'personal.account']);
             Route::get('/profile', ['uses' => 'ProfileController@profile', 'as' => 'profile']);
             Route::get('/my/courses', ['uses' => 'ProfileController@myCourses', 'as' => 'my-courses']);
             Route::post('/profile/update', ['uses' => 'ProfileController@profileUpdate', 'as' => 'profile.update']);
