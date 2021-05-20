@@ -15,6 +15,7 @@ use App\Http\Requests\Web\V1\LessonMaterialCheckWebRequest;
 use App\Models\Entities\Course\Course;
 use App\Models\Entities\Course\CourseLesson;
 use App\Models\Entities\Course\CourseLessonMaterial;
+use App\Models\Entities\Course\CoursePassing;
 use App\Services\Common\V1\Support\FileService;
 use Illuminate\Support\Facades\DB;
 use SebastianBergmann\CodeCoverage\Report\Xml\Project;
@@ -63,6 +64,12 @@ class CourseLessonController extends WebBaseController
                     }
                     CourseLessonMaterial::insert($docs);
                 }
+            }
+
+            $course_passings = CoursePassing::where('course_id',$lesson->course_id)->get();
+            foreach ($course_passings as $course_passing){
+                $course_passing->overall_lessons_count = $course_passing->overall_lessons_count +1;
+                $course_passing->save();
             }
             DB::commit();
             $this->added();
@@ -138,6 +145,11 @@ class CourseLessonController extends WebBaseController
         $lesson = CourseLesson::find($request->id);
         try{
             DB::beginTransaction();
+            $course_passings = CoursePassing::where('course_id',$lesson->course_id)->get();
+            foreach ($course_passings as $course_passing){
+                $course_passing->overall_lessons_count = $course_passing->overall_lessons_count -1;
+                $course_passing->save();
+            }
             $lesson->docs()->delete();
             $lesson->delete();
             foreach ($lesson->docs as $material){
