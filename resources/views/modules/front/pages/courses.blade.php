@@ -87,10 +87,12 @@
                                                     {{--                                                    <h1 class="col-lg-3 d-none d-lg-block text-right">{{$course->price}}0T</h1>--}}
                                                     <p class="col-6 col-lg-5 order-2 order-lg-1">{{$course->author->first_name." ".$course->author->last_name}}
                                                     </p>
-                                                    <p class="col-6 col-lg-4 order-3 order-lg-2">{{$course->lessons->count()}}
-                                                        уроков
-                                                        | {{$course->duration}}
-                                                        часов</p>
+                                                    <p class="col-6 col-lg-4 order-3 order-lg-2">
+{{--                                                        {{$course->lessons->count()}}--}}
+{{--                                                        уроков--}}
+{{--                                                        | {{$course->duration}}--}}
+{{--                                                        часов--}}
+                                                    </p>
                                                     <div class="stars col-5 col-lg-3 order-1 order-lg-3 text-right">
                                                         @foreach(range(1,5) as $i)
                                                             <i class="star {{$i > $course->rating ? $i - $course->rating < 1 ?
