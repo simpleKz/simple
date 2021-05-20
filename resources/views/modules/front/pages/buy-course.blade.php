@@ -55,7 +55,9 @@
                                 </p>
 
                                 <p class="text-center my-5 ">
+{{--                                    <a class="btn-orange" href="{{route('pay',['course_id' => $course->id, 'packet_id' => $packet->id])}}">Выбрать пакет</a>--}}
                                     <a class="btn-orange" href="#">Выбрать пакет</a>
+
                                 </p>
                             </div>
                         </div>

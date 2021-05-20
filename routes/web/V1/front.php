@@ -10,22 +10,20 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('legal', ['as' => 'legal', 'uses' => 'PageController@legal']);
     Route::get('/ref', ['as' => 'ref', 'uses' => 'PageController@ref']);
 
+
     Route::group(['middleware' => 'auth'], function () {
         Route::group(['middleware' => ['ROLE_OR:' . Role::CLIENT_ID]], function () {
-            Route::get('/personal-account', ['uses' => 'PageController@profile', 'personal.account']);
+            Route::get('/personal-account', ['uses' => 'PageController@profile', 'as' => 'personal-account']);
             Route::get('/profile', ['uses' => 'ProfileController@profile', 'as' => 'profile']);
             Route::get('/my/courses', ['uses' => 'ProfileController@myCourses', 'as' => 'my-courses']);
             Route::post('/profile/update', ['uses' => 'ProfileController@profileUpdate', 'as' => 'profile.update']);
             Route::post('/profile/create/withdrawal-card', ['uses' => 'ProfileController@makeCardWithdrawal', 'as' => 'profile.create.withdrawal']);
             Route::post('/profile/create/ref-link', ['uses' => 'ProfileController@createRefLink', 'as' => 'profile.create.ref-link']);
             Route::get('/my-course/{slug}', ['uses' => 'PageController@myCourse','as' => 'my-course']);
+            Route::post('/pass/lesson/{lesson_id?}', ['uses' => 'PageController@passLesson','as' => 'pass.lesson']);
             Route::get('/buy-course/{slug}', ['uses' => 'PageController@buyCourse','as' => 'buy-course']);
-            Route::get('/pay/{course_id?}', ['uses' => 'PageController@pay','as' => 'pay']);
+            Route::get('/pay', ['uses' => 'PageController@pay','as' => 'pay']);
             Route::get('/payCard', ['uses' => 'PageController@payCard','as' => 'payCard']);
-
-
-
-
 
         });
 
@@ -37,7 +35,7 @@ Route::group(['namespace' => 'Front\Auth'], function () {
 
     Route::get('login', ['as' => 'login', 'uses' => 'LoginController@showLoginForm']);
 
-    Route::post('login', ['as' => 'login.post', 'uses' => 'LoginController@login']);
+    Route::post('login/post', ['as' => 'login.post', 'uses' => 'LoginController@login']);
     Route::get('register', ['as' => 'register', 'uses' => 'RegisterController@showRegistrationForm']);
 //    Route::post('register', ['as' => 'register.post', 'uses' => 'RegisterController@register']);
 

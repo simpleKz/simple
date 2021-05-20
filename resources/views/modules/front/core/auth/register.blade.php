@@ -1,6 +1,21 @@
 @extends('modules.front.layouts.app-main')
 @section('styles')
     <style>
+
+        .login {
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+
+        .back_links a {
+            color: #000000;
+        }
+
+        .back_links a:hover {
+            color: #111111;
+            font-weight: 600;
+        }
+
         /** {*/
         /*    box-sizing: border-box;*/
         /*}*/
@@ -79,12 +94,6 @@
             background-color: #4CAF50;
         }
 
-        .btn-orange {
-            border-radius: 3px;
-            width: 100%;
-            font-size: 20px;
-            line-height: 24px;
-        }
         .form-control:focus {
             color: #495057;
             background-color: #fff;
@@ -92,6 +101,7 @@
             outline: 0;
             box-shadow: none
         }
+
         .field-icon {
             float: right;
             margin-right: 25px;
@@ -100,15 +110,17 @@
             z-index: 3;
 
         }
+
         .field-icon-colored {
             float: right;
             margin-right: 25px;
             margin-top: -33px;
             position: relative;
             z-index: 3;
-            color:#F76321;
+            color: #F76321;
         }
-        .message{
+
+        .message {
             font-size: 12px;
             /*line-height: 16px;*/
         }
@@ -116,125 +128,144 @@
     </style>
 @endsection
 @section('content')
-    <section class="login pb-5">
-        <div class="container mb-5">
-            <div class="routing mt-3">
-                <p class="pb-5"><a href="{{route('index')}}">Главная</a> – Регистрация</p>
-            </div>
-{{--            <form id="regForm" action="/action_page.php">--}}
-                <div class="tab">
-{{--                    <form action=" " method="post" enctype="multipart/form-data">--}}
-{{--                        {{csrf_field()}}--}}
-                        <div class="card col-12 d-flex justify-content-center align-items-center">
-                            <div class="card-body p-5 col-12 col-md-6 ">
-                                <div class="text-center  mt-3 mb-4">
-                                    <h1 class="mb-4">Регистрация</h1>
-                                    <h2 class="step-header text-muted">Шаг 1.</h2>
-                                    <h4 class="step-text">Введи свой номер телефона,
+    <div class="back_links">
+        <a href="{{route('index')}}">Главная &#8594;</a>
+        <a href="{{route('register')}}">Регистрация </a>
+    </div>
+    <section class="login">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-7 col-lg-6 col-xl-5">
+                        {{--            <form id="regForm" action="/action_page.php">--}}
+                        <div class="tab">
+                            {{--                    <form action=" " method="post" enctype="multipart/form-data">--}}
+                            {{--                        {{csrf_field()}}--}}
+                            <div class="card justify-content-center align-items-center">
+                                <div class="card-body p-lg-5 p-2">
+                                    <div class="text-center mt-3 mb-4">
+                                        <h1 class="mb-4">Регистрация</h1>
+                                        <h2 class="step-header text-muted">Шаг 1.</h2>
+                                        <h4 class="step-text">Введи свой номер телефона,
                                             на который мы отправим проверочный код.</h4>
-                                </div>
-                                <div class="form mb-3">
-                                    <input type="tel" class="form-control pt-4 pb-4 {{ isset($errors) && $errors->has('phone') ? ' is-invalid' : '' }}"  id="phone" name = "phone"   required placeholder="Введи номер телефона" >
-                                    @if(isset($errors) && $errors->has('phone'))
-                                        <div class="invalid-feedback">{{$errors->first('phone')}}</div>
-                                    @endif
-                                </div>
-                                <div class="col-12 d-flex justify-content-center p-0 mb-3">
-                                    <button type="submit" class="btn-orange pt-3 pb-3" id="sendPhone" onclick="nextPrev(1)">Продолжить
-                                    </button>
-                                </div>
-                                <div class="col-12">
-                                    <h2 class="text-center mb-5">Уже есть аккаунт? <b><a href="{{route('login')}}">Авторизуйся</a></b></h2>
-                                    <p class="text-center">Входя в аккаунт или создавая новый,
-                                        ты соглашаешься с нашими
-                                        <a href="#">Правилами и условиямии
-                                            Положением о конфиденциальности</a></p>
-                                </div>
-                            </div>
-                        </div>
-{{--                    </form>--}}
-                </div>
-                <div class="tab">
-{{--                    <form action=" " method="post" enctype="multipart/form-data">--}}
-                        {{csrf_field()}}
-                        <div class="card col-12 d-flex justify-content-center align-items-center">
-                            <div class="card-body p-5 col-12 col-md-6 ">
-                                <div class="text-center  mt-3 mb-4">
-                                    <h1 class="mb-4">Регистрация</h1>
-                                    <h2 class="step-header text-muted">Шаг 2.</h2>
-                                    <h4 class="step-text">Введи код, отправленный на
-                                        указанный номер.</h4>
-                                </div>
-                                <div class="form mb-3">
-                                    <input type="tel" class="form-control pt-4 pb-4 {{ isset($errors) && $errors->has('phone') ? ' is-invalid' : '' }}"  id="phone-1" name = "phone-1"  value="{{old('phone-1')}}" disabled placeholder="Введи номер телефона" >
-                                    @if(isset($errors) && $errors->has('phone'))
-                                        <div class="invalid-feedback">{{$errors->first('phone')}}</div>
-                                    @endif
-                                </div>
-                                <div class="form mb-3">
-                                    <input type="tel"  class="form-control pt-4 pb-4 {{ isset($errors) && $errors->has('phone') ? ' is-invalid' : '' }}" id="code"  placeholder="Введи проверочный код"
-                                           name="code" required>
-                                </div>
-                                <div class="col-12 d-flex justify-content-center p-0 mb-3">
-                                    <button type="submit" class="btn-orange pt-3 pb-3" onclick="nextPrev(1)">Продолжить
-                                    </button>
-                                </div>
-                                <div class="col-12">
-                                    <h2 class="text-center mb-5">Уже есть аккаунт? <b><a href="{{route('login')}}">Авторизуйся</a></b></h2>
-                                    <p class="text-center">Входя в аккаунт или создавая новый,
-                                        ты соглашаешься с нашими
-                                        <a href="#">Правилами и условиямии
-                                            Положением о конфиденциальности</a></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="tel"
+                                               class="form-control pt-4 pb-4 {{ isset($errors) && $errors->has('phone') ? ' is-invalid' : '' }}"
+                                               id="phone" name="phone" required placeholder="Введи номер телефона">
+                                        @if(isset($errors) && $errors->has('phone'))
+                                            <div class="invalid-feedback">{{$errors->first('phone')}}</div>
+                                        @endif
+                                    </div>
+                                    <div class="col-12 d-flex form-group justify-content-center p-0 mb-3">
+                                        <button type="submit" class="btn-orange btn-block" id="sendPhone"
+                                                onclick="nextPrev(1)">Продолжить
+                                        </button>
+                                    </div>
+                                    <div class="col-12">
+                                        <h2 class="text-center mb-5">Уже есть аккаунт? <b><a href="{{route('login')}}">Авторизуйся</a></b>
+                                        </h2>
+                                        <p class="text-center">Входя в аккаунт или создавая новый,
+                                            ты соглашаешься с нашими
+                                            <a href="#">Правилами и условиямии
+                                                Положением о конфиденциальности</a></p>
+                                    </div>
                                 </div>
                             </div>
+                            {{--                    </form>--}}
                         </div>
-{{--                    </form>--}}
-                </div>
-                <div class="tab">
-                        <div class="card col-12 d-flex justify-content-center align-items-center">
-                            <div class="card-body p-5 col-12 col-md-6 ">
-                                <div class="text-center  mt-3 mb-4">
-                                    <h1 class="mb-4">Регистрация</h1>
-                                    <h2 class="step-header text-muted">Шаг 3.</h2>
-                                    <h4 class="step-text text-center">Установите надежный пароль.
-                                        Пароль должен быть не менее
-                                        8 символов</h4>
+                        <div class="tab">
+                            {{--                    <form action=" " method="post" enctype="multipart/form-data">--}}
+                            {{csrf_field()}}
+                            <div class="card col-12 d-flex justify-content-center align-items-center">
+                                <div class="card-body p-lg-5 p-2">
+                                    <div class="text-center  mt-3 mb-4">
+                                        <h1 class="mb-4">Регистрация</h1>
+                                        <h2 class="step-header text-muted">Шаг 2.</h2>
+                                        <h4 class="step-text">Введи код, отправленный на
+                                            указанный номер.</h4>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="tel"
+                                               class="form-control pt-4 pb-4 {{ isset($errors) && $errors->has('phone') ? ' is-invalid' : '' }}"
+                                               id="phone-1" name="phone-1" value="{{old('phone-1')}}" disabled
+                                               placeholder="Введи номер телефона">
+                                        @if(isset($errors) && $errors->has('phone'))
+                                            <div class="invalid-feedback">{{$errors->first('phone')}}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="tel"
+                                               class="form-control pt-4 pb-4 {{ isset($errors) && $errors->has('phone') ? ' is-invalid' : '' }}"
+                                               id="code" placeholder="Введи проверочный код"
+                                               name="code" required>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-center p-0 mb-3">
+                                        <button type="submit" class="btn-orange btn-block" onclick="nextPrev(1)">
+                                            Продолжить
+                                        </button>
+                                    </div>
+                                    <div class="col-12">
+                                        <h2 class="text-center mb-5">Уже есть аккаунт? <b><a href="{{route('login')}}">Авторизуйся</a></b>
+                                        </h2>
+                                        <p class="text-center">Входя в аккаунт или создавая новый,
+                                            ты соглашаешься с нашими
+                                            <a href="#">Правилами и условиямии
+                                                Положением о конфиденциальности</a></p>
+                                    </div>
                                 </div>
-                                <div class="form mb-4">
-                                    <input type="password" class="form-control pt-4 pb-4 {{ isset($errors) && $errors->has('phone') ? ' is-invalid' : '' }}" id="password" placeholder="Введите пароль"
-                                           name="password" required>
-                                </div>
-                                <div class="form mb-4">
-                                    <input type="password" class="form-control pt-4 pb-4 {{ isset($errors) && $errors->has('phone') ? ' is-invalid' : '' }}" id="check-password" placeholder="Повтори введеный пароль"
-                                           name="check-password" required>
-                                    <span id = "icon" class="active fa fa-eye field-icon toggle-password"></span>
+                            </div>
+                            {{--                    </form>--}}
+                        </div>
+                        <div class="tab">
+                            <div class="card col-12 d-flex justify-content-center align-items-center">
+                                <div class="card-body p-lg-5 p-2">
+                                    <div class="text-center  mt-3 mb-4">
+                                        <h1 class="mb-4">Регистрация</h1>
+                                        <h2 class="step-header text-muted">Шаг 3.</h2>
+                                        <h4 class="step-text text-center">Установите надежный пароль.
+                                            Пароль должен быть не менее
+                                            8 символов</h4>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password"
+                                               class="form-control pt-4 pb-4 {{ isset($errors) && $errors->has('phone') ? ' is-invalid' : '' }}"
+                                               id="password" placeholder="Введите пароль"
+                                               name="password" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password"
+                                               class="form-control pt-4 pb-4 {{ isset($errors) && $errors->has('phone') ? ' is-invalid' : '' }}"
+                                               id="check-password" placeholder="Повтори введеный пароль"
+                                               name="check-password" required>
+                                        <span id="icon" class="active far fa-eye field-icon toggle-password"></span>
 
                                         <label class="message" id='message'></label><br>
                                         <label class="message" id='message1'></label>
 
 
-
-                                </div>
-                                <div class="col-12 d-flex justify-content-center p-0 mb-3">
-                                    <button type="submit" class="btn-orange pt-3 pb-3" id="send-button" onclick="setPassword()" disabled>Завершить регистрацию
-                                    </button>
-                                </div>
-                                <div class="col-12">
-                                    <h2 class="text-center mb-5">Уже есть аккаунт? <b><a href="{{route('login')}}">Авторизуйся</a></b></h2>
-                                    <p class="text-center">Входя в аккаунт или создавая новый,
-                                        ты соглашаешься с нашими
-                                        <a href="#">Правилами и условиямии
-                                            Положением о конфиденциальности</a></p>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-center p-0 mb-3">
+                                        <button type="submit" class="btn-orange btn-block pt-3 pb-3" id="send-button"
+                                                onclick="setPassword()" disabled>Завершить регистрацию
+                                        </button>
+                                    </div>
+                                    <div class="col-12">
+                                        <h2 class="text-center mb-5">Уже есть аккаунт? <b><a href="{{route('login')}}">Авторизуйся</a></b>
+                                        </h2>
+                                        <p class="text-center">Входя в аккаунт или создавая новый,
+                                            ты соглашаешься с нашими
+                                            <a href="#">Правилами и условиямии
+                                                Положением о конфиденциальности</a></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+
+                        {{--            </form>--}}
+                    </div>
                 </div>
-
-
-
-
-{{--            </form>--}}
-        </div>
+            </div>
     </section>
 
 @endsection
@@ -242,8 +273,8 @@
     <script>
 
         var currentTab = 0;
-        var currentCode ;
-        var currentPhone ;
+        var currentCode;
+        var currentPhone;
         showTab(currentTab);
 
         function showTab(n) {
@@ -264,11 +295,11 @@
             if (!validateForm(currentTab)) return false;
 
 
-            if(currentTab == 0){
+            if (currentTab == 0) {
                 var phone = document.getElementById("phone").value;
                 document.getElementById("phone-1").value = phone;
                 if (!sendPhone()) return false;
-            }else if(currentTab == 1){
+            } else if (currentTab == 1) {
                 if (!sendCode()) return false;
             }
 
@@ -280,26 +311,23 @@
 
         function validateForm(n) {
             var x, y, i, valid = true;
-            if(n == 0){
+            if (n == 0) {
                 y = document.getElementById('phone');
                 x = document.getElementById('phone').value;
-                if (x  == "") {
+                if (x == "") {
 
                     y.className += " invalid";
                     valid = false;
                 }
-            }else if(n == 1){
+            } else if (n == 1) {
                 y = document.getElementById('code');
                 x = document.getElementById('code').value;
-                if (x  == "") {
+                if (x == "") {
 
                     y.className += " invalid";
                     valid = false;
                 }
             }
-
-
-
 
 
             return valid;
@@ -319,20 +347,20 @@
             var code = document.getElementById("code").value;
             var valid;
 
-            valid =   $.ajax(
+            valid = $.ajax(
                 {
                     method: "get",
                     url: "{{route('send.code.post')}}",
                     async: false,
                     data: {
                         phone: phone,
-                        code:code
+                        code: code
                     },
-                    success: function(data) {
-                        if($.isEmptyObject(data.error)){
+                    success: function (data) {
+                        if ($.isEmptyObject(data.error)) {
 
-                        }else{
-                            $.each(data.error, function(key,value) {
+                        } else {
+                            $.each(data.error, function (key, value) {
                                 toastr.error(value);
 
                             });
@@ -341,11 +369,11 @@
                     }
 
                 });
-            if(valid.responseJSON.success){
+            if (valid.responseJSON.success) {
                 currentPhone = phone;
-                currentCode  = code;
+                currentCode = code;
                 return true;
-            }else{
+            } else {
                 return false;
             }
         }
@@ -353,7 +381,7 @@
     </script>
 
     <script>
-        $(function(){
+        $(function () {
 
             $("#phone").mask("+7(999) 999-99-99");
             $("#phone-1").mask("+7(999) 999-99-99");
@@ -369,21 +397,20 @@
 
         icon.onclick = function () {
 
-            if(icon.className == 'active fa fa-eye field-icon toggle-password') {
+            if (icon.className == 'active far fa-eye field-icon toggle-password') {
                 inputPass2.setAttribute('type', 'text');
-                icon.className = 'fa fa-eye field-icon-colored toggle-password';
+                icon.className = 'far fa-eye field-icon-colored toggle-password';
 
 
             } else {
                 inputPass2.setAttribute('type', 'password');
-                icon.className = 'active fa fa-eye field-icon toggle-password';
+                icon.className = 'active far fa-eye field-icon toggle-password';
             }
 
         };
     </script>
     <script>
         $('#password, #check-password').on('keyup', function () {
-
 
 
             if ($('#password').val().length < 8) {
@@ -415,22 +442,22 @@
         function sendPhone() {
 
             var phone = document.getElementById("phone").value;
-             var valid;
+            var valid;
             document.getElementById("phone-1").value = phone;
 
-           valid =   $.ajax(
-               {
+            valid = $.ajax(
+                {
                     method: "get",
                     url: "{{route('send.phone.post')}}",
                     async: false,
                     data: {
                         phone: phone
                     },
-                    success: function(data) {
-                        if($.isEmptyObject(data.error)){
+                    success: function (data) {
+                        if ($.isEmptyObject(data.error)) {
 
-                        }else{
-                            $.each(data.error, function(key,value) {
+                        } else {
+                            $.each(data.error, function (key, value) {
                                 toastr.error(value);
 
                             });
@@ -439,11 +466,11 @@
                     }
 
                 });
-           if(valid.responseJSON.success){
-               return true;
-           }else{
-               return false;
-           }
+            if (valid.responseJSON.success) {
+                return true;
+            } else {
+                return false;
+            }
         }
     </script>
 
@@ -461,23 +488,23 @@
 
             var valid;
 
-            valid =   $.ajax(
+            valid = $.ajax(
                 {
                     method: "get",
                     url: "{{route('set.password.post')}}",
                     async: false,
                     data: {
                         phone: phone,
-                        code:code,
-                        password:pswd,
-                        password_confirmation:cpwsd
+                        code: code,
+                        password: pswd,
+                        password_confirmation: cpwsd
 
                     },
-                    success: function(data) {
-                        if($.isEmptyObject(data.error)){
+                    success: function (data) {
+                        if ($.isEmptyObject(data.error)) {
 
-                        }else{
-                            $.each(data.error, function(key,value) {
+                        } else {
+                            $.each(data.error, function (key, value) {
                                 toastr.error(value);
 
                             });
@@ -486,7 +513,7 @@
                     }
 
                 });
-            if(valid.responseJSON.success){
+            if (valid.responseJSON.success) {
                 window.location.href = "{{route('profile')}}"
             }
         }

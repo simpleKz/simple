@@ -1,0 +1,134 @@
+@media (max-width: 1200px) and (min-width: 992px) {
+    .back_links {
+        margin-left: 45px;
+    }
+    .my-course .container-fluid {
+        padding: 100px 45px 45px;
+    }
+
+    .course-header h1{
+        font-size: 30px;
+        line-height: 55px;
+        font-weight: bold;
+    }
+    .course-header h2{
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: normal;
+    }
+
+    .lesson_info h1 {
+        font-size: 22px;
+        line-height: 26px;
+    }
+
+    .lesson_info h2{
+        font-size: 16px;
+        line-height: 19px;
+    }
+    .lesson_info p{
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .lesson_materials h1{
+        font-size: 16px;
+        line-height: 19px;
+    }
+
+    .lessons_content h1{
+        font-weight: normal;
+    }
+}
+@media (max-width: 992px) and (min-width: 767px) {
+    .back_links {
+        margin-left: 35px;
+    }
+    .my-course .container-fluid {
+        padding: 70px 35px 35px;
+    }
+
+    .course-header h1{
+        font-size: 33px;
+        line-height: 55px;
+        font-weight: bold;
+    }
+    .course-header h2{
+        font-size: 15px;
+        line-height: 18px;
+        font-weight: normal;
+    }
+
+    .lesson_info h1 {
+        font-size: 23px;
+        line-height: 26px;
+    }
+
+    .lesson_info h2{
+        font-size: 17px;
+        line-height: 19px;
+    }
+    .lesson_info p{
+        font-size: 15px;
+        line-height: 18px;
+    }
+
+    .lesson_materials h1{
+        font-size: 17px;
+        line-height: 19px;
+    }
+
+    .lessons_content h1{
+        font-weight: normal;
+    }
+
+    .lesson_video {
+        height: 40vh;
+    }
+}
+@media (max-width: 767px) {
+    .back_links {
+        margin-left: 10px;
+    }
+    .my-course .container-fluid {
+        padding: 70px 10px 60px 10px;
+    }
+
+    .course-header h1{
+        font-size: 30px;
+        line-height: 55px;
+        font-weight: bold;
+    }
+    .course-header h2{
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: normal;
+    }
+
+    .lesson_info h1 {
+        font-size: 22px;
+        line-height: 26px;
+    }
+
+    .lesson_info h2{
+        font-size: 16px;
+        line-height: 19px;
+    }
+    .lesson_info p{
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .lesson_materials h1{
+        font-size: 16px;
+        line-height: 19px;
+    }
+
+    .lessons_content h1{
+        font-weight: normal;
+    }
+
+    .lesson_video {
+        height: 30vh;
+    }
+}

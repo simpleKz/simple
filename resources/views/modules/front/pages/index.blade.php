@@ -113,7 +113,7 @@
                 </div>
             </div>
             <div class="pt-5 pt-md-3 d-flex">
-                <a class="btn-orange" href="#">Самое время начать</a>
+                <a class="btn-orange" href="https://simple-study.com/courses">Самое время начать</a>
             </div>
         </div>
     </section>
@@ -140,7 +140,7 @@
                     </div>
                 </div>
                 <div class="pt-5 col-12 d-flex justify-content-end">
-                    <a class="btn-orange" href="#">Начну прямо сейчас</a>
+                    <a class="btn-orange" href="https://simple-study.com/courses">Начну прямо сейчас</a>
                 </div>
             </div>
         </div>
@@ -173,7 +173,7 @@
                         alt="">
                 </div>
                 <div class="col-12 pt-5 order-1 order-lg-2 d-flex">
-                    <a class="btn-orange" href="#">Начни зарабатывать</a>
+                    <a class="btn-orange" href="https://simple-study.com/courses">Начни зарабатывать</a>
                 </div>
             </div>
 
@@ -218,7 +218,7 @@
             <div class="row text-center text-md-left">
                 <p class="col-12 still-thinking-text">Все еще думаешь?</p>
                 <div class="pt-1 col-12 d-flex">
-                    <a class="btn-orange" href="#">Начну прямо сейчас</a>
+                    <a class="btn-orange" href="https://simple-study.com/courses">Начну прямо сейчас</a>
                 </div>
             </div>
             {{--            <div class="its_simple col-md-12 col-sm-12 p-5">--}}

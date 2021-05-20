@@ -9,6 +9,7 @@ use App\Providers\RouteServiceProvider;
 use App\Rules\IsUser;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +22,7 @@ class LoginController extends WebBaseController
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::PROFILE;
+//    protected $redirectTo = RouteServiceProvider::PROFILE;
 
     /**
      * Create a new controller instance.
@@ -30,10 +31,14 @@ class LoginController extends WebBaseController
      */
     public function __construct()
     {
-        session(['url.intended' => url()->previous()]);
-        $this->redirectTo = session()->get('url.intended');
+//        session(['url.intended' => url()->previous()]);
+//        $this->redirectTo = session()->get('url.intended');
 
-        $this->middleware('guest')->except('logout');
+//        $this->middleware('guest')->except('logout');
+//        $this->redirectTo = url()->previous();
+//        $this->redirectTo = url()->previous();
+
+
     }
 
     protected function credentials(Request $request)
@@ -43,7 +48,7 @@ class LoginController extends WebBaseController
 
     protected function validateLogin(Request $request)
     {
-
+//        dd(url()->previous());
 
             $request->validate([
                 'phone' => ['required',  new IsUser()],
@@ -90,8 +95,19 @@ class LoginController extends WebBaseController
         $this->clearLoginAttempts($request);
 
 
-        return ($this->guard()->user()->role_id == Role::ADMIN_ID)
-            ? redirect('/admin/home') : redirect('/personal-account');
+
+//        return ($this->guard()->user()->role_id == Role::ADMIN_ID)
+//            ? redirect('/admin/home') : Session::get('prevPage');
+
+        if($this->guard()->user()->role_id == Role::ADMIN_ID){
+            return  redirect('/admin/home');
+        }else{
+            if(Session::has('prevPage')){
+                return  redirect(Session::get('prevPage'));
+            }else{
+                return redirect('personal-account');
+            }
+        }
 
     }
 
@@ -121,9 +137,9 @@ class LoginController extends WebBaseController
     public function showLoginForm()
     {
         $loginInputs = UserLoginWebForm::inputGroups(null);
-        if (!session()->has('url.intended')) {
-
-            redirect()->setIntendedUrl(session()->previousUrl());
+        if(!session()->has('url.intended'))
+        {
+            session(['url.intended' => url()->previous()]);
         }
 
         return $this->frontView('core.auth.login', compact('loginInputs'));

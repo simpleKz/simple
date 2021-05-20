@@ -8,8 +8,8 @@
 
 @section('content')
     <div class="back_links">
-        <a href="{{route('index')}}">Главная –</a>
-        <a href="{{route('courses')}}">Каталог курсов -</a>
+        <a href="{{route('index')}}">Главная &#8594;</a>
+        <a href="{{route('courses')}}">Каталог курсов &#8594;</a>
         <a href="{{route('courses')}}">{{$course->name}}</a>
     </div>
     <section class="head_course">
@@ -24,7 +24,7 @@
                 </p>
                 <p class="col-8">Спикер: {{$course->author->first_name.' '.$course->author->last_name}}</p>
                 <div class="col-9 col-md-12">
-                    <a class="btn btn-orange mt-3" href="#">Начать
+                    <a class="btn btn-orange mt-3" href="{{route('buy-course',['slug' => $course->slug])}}">Начать
                         обучение</a>
                 </div>
             </div>
@@ -34,7 +34,7 @@
     <section class="price">
         <div class="container-fluid">
             <div class="pt-4 d-flex">
-                <a class="btn-orange" href="#">Купить подписку</a>
+                <a class="btn-orange" href="{{route('buy-course',['slug' => $course->slug])}}">Купить подписку</a>
             </div>
         </div>
     </section>

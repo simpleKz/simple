@@ -7,7 +7,9 @@ namespace App\Http\Controllers\Web\V1\Front;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Http\Requests\Web\V1\ProfileUpdateWebRequest;
 use App\Models\Entities\Core\User;
+use App\Models\Entities\Course\Course;
 use App\Models\Entities\Course\CoursePassing;
+use App\Models\Entities\Course\UserPacket;
 use App\Models\Entities\UserCard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,8 +31,33 @@ class ProfileController extends WebBaseController
 
     public function myCourses(){
         $user = auth()->user();
-        $active = CoursePassing::where('user_id',$user->id)->where('is_passed', false)->with('course')->get();
-        $completed = CoursePassing::where('user_id',$user->id)->where('is_passed', true)->with('course')->get();
+        $user_packets  = UserPacket::with(['packet.course','packet.packetCourses'])->where('user_id',$user->id)->get();
+
+        $active = [];
+        $completed =[];
+        foreach ($user_packets as $us){
+            foreach ($us->packet->packetCourses as $course){
+                $course_passing_active = CoursePassing::where('user_id',$user->id)
+                    ->where('course_id',$course->course_id)
+                    ->where('is_passed', false)
+                    ->with('course')->first();
+                if($course_passing_active){
+                    $course_passing_active->main_course_name = $us->packet->course->name;
+                    array_push($active,$course_passing_active);
+                }
+                $course_passing_completed = CoursePassing::where('user_id',$user->id)
+                    ->where('course_id',$course->course_id)
+                    ->where('is_passed', true)
+                    ->with('course')->first();
+                if($course_passing_completed){
+                    $course_passing_completed->main_course_name = $us->packet->course->name;
+                    array_push($completed,$course_passing_completed);
+                }
+            }
+
+        }
+//        $active = CoursePassing::where('user_id',$user->id)->where('is_passed', false)->with('course')->get();
+//        $completed = CoursePassing::where('user_id',$user->id)->where('is_passed', true)->with('course')->get();
         return json_encode(['active_courses' => $active ,'completed_courses' => $completed ]);
     }
 

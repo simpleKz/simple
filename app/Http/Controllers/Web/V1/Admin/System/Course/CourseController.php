@@ -95,7 +95,6 @@ class CourseController extends WebBaseController
                 'description' => $request->description,
                 'video_path' => $request->video_path,
                 'image_path' => $old_path,
-                'is_parent' => $request->is_parent ? 1 : 0,
                 'is_visible' => $request->is_visible ? 1 : 0,
             ]);
             $this->edited();

@@ -24,4 +24,5 @@ class UserPacket extends Model
     }
 
 
+
 }
