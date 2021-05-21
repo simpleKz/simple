@@ -103,9 +103,13 @@ class PageController extends WebBaseController
     {
         $user = auth()->user();
         $course = Course::where('slug', $slug)->with(['lessons.docs', 'author'])->first();
+
         if (!$course) {
             throw new WebServiceErroredException('Курс не найден!');
 
+        }
+        if ($course->lessons()->count()== 0){
+            throw new WebServiceErroredException('Пока нет уроков в курсе');
         }
         $course_passing = CoursePassing::where('user_id', $user->id)->where('course_id', $course->id)->first();
         if (!$course_passing) {

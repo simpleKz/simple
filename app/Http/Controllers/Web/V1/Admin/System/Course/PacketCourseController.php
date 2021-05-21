@@ -7,8 +7,10 @@ namespace App\Http\Controllers\Web\V1\Admin\System\Course;
 use App\Exceptions\WebServiceErroredException;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Models\Entities\Course\Course;
+use App\Models\Entities\Course\CoursePassing;
 use App\Models\Entities\Course\Packet;
 use App\Models\Entities\Course\PacketCourse;
+use App\Models\Entities\Course\UserPacket;
 
 class PacketCourseController extends WebBaseController
 {
@@ -37,8 +39,29 @@ class PacketCourseController extends WebBaseController
                 'packet_id' => $packet_id,
                 'course_id' => $course_id
             ]);
+
+            $user_packets = UserPacket::where('packet_id',$packet->id)->get();
+            foreach ($user_packets as $user_packet){
+
+                $course  = Course::where('id',$course_id)->first();
+                $passing = CoursePassing::where('course_id',$course->id)->where('user_id',$user_packet->user_id)->first();
+                if(!$passing){
+                    CoursePassing::create([
+                        'course_id' => $course_id,
+                        'user_id' => $user_packet->user_id,
+                        'passed_lessons_count' => 0,
+                        'overall_lessons_count' => $course->lessons()->count(),
+                        'is_passed' => false
+
+                    ]);
+                }
+
+            }
         }
+
+
         return redirect()->back();
+
     }
 
     public function disconnect($packet_id, $course_id)
