@@ -70,7 +70,18 @@
                                 <div class="d-flex justify-content-center align-items-center mb-5 mt-4">
                                     <h1>Вход</h1>
                                 </div>
-                                <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Страна
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" onclick="kz()">Казахстан</a>
+                                            <a class="dropdown-item" onclick="kg()">Киргизия</a>
+                                            <a class="dropdown-item" onclick="ru()">Россия</a>
+                                        </div>
+                                    </div>
                                     <input type="tel"
                                            class="form-control pt-4 pb-4 {{ isset($errors) && $errors->has('phone') ? ' is-invalid' : '' }}"
                                            id="phone" name="phone" value="{{old('phone')}}"
@@ -129,11 +140,23 @@
 
         };
 
-        $(function () {
+        function kz() {
+            mask('+7(999) 999-99-99')
+        }
 
-            $("#phone").mask("+7(999) 999-99-99");
-            // $("#phone").pattern("^(\\([0-9]{3}\\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$\n");
-        });
+        function kg() {
+            mask("+996(999)999-999")
+        }
+
+        function ru() {
+            mask("+7(999) 999-99-99")
+        }
+
+        function mask(mask) {
+            $(function () {
+                $("#phone").mask(mask);
+            });
+        }
 
 
     </script>
