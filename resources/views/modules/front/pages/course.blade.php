@@ -17,7 +17,13 @@
         <div class="container-fluid">
             <div class="row">
                 <h1 class="col-8">{{$course->name}}</h1>
-                <p class="col-8">{{$course->lessons->count()}} уроков
+                <p class="col-8">
+                    @if($course->is_parent)
+                        {{$course->packets->count()}} пакетов
+                    @else
+                        {{$course->lessons->count()}} уроков
+                    @endif
+
                     @if(!$course->is_parent)
                         | {{$course->lessonTime()}} часов
                     @endif
