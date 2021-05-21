@@ -61,7 +61,7 @@ class UserController extends WebBaseController
         $user->balance = 0;
         $user->ref_user_id = null;
         $user->ref_link = md5($request->phone);
-        $user->password = bcrypt("password");
+        $user->password = bcrypt("123456");
         $user->save();
         $this->edited();
 
