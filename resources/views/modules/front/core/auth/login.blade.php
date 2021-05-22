@@ -80,6 +80,15 @@
                                             <a class="dropdown-item" onclick="kz()">Казахстан</a>
                                             <a class="dropdown-item" onclick="kg()">Киргизия</a>
                                             <a class="dropdown-item" onclick="ru()">Россия</a>
+                                            <a class="dropdown-item" onclick="pl()">Польша</a>
+                                            <a class="dropdown-item" onclick="tur()">Турция</a>
+                                            <a class="dropdown-item" onclick="usa()">США и Канада</a>
+                                            <a class="dropdown-item" onclick="md()">Молдова</a>
+                                            <a class="dropdown-item" onclick="uz()">Узбекистан</a>
+                                            <a class="dropdown-item" onclick="ukr()">Украина</a>
+                                            <a class="dropdown-item" onclick="ger()">Германия</a>
+
+
                                         </div>
                                     </div>
                                     <input type="tel"
@@ -151,6 +160,38 @@
         function ru() {
             mask("+7(999) 999-99-99")
         }
+
+        function pl() {
+            mask("+48(999) 999-999")
+        }
+
+        function tur() {
+            mask("+99(999) 999-9999")
+        }
+
+        function usa() {
+            mask("+1(999) 999-9999")
+        }
+
+        function md() {
+            mask("+373(9999) 9999")
+        }
+
+        function uz() {
+            mask("+999(99) 999-9999")
+        }
+        function ukr() {
+            mask("+380(99) 999-99-99")
+
+        }
+        function ger() {
+            mask("+99(9999) 999-9999")
+        }
+
+
+
+
+
 
         function mask(mask) {
             $(function () {
