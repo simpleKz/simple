@@ -87,6 +87,8 @@
                                             <a class="dropdown-item" onclick="uz()">Узбекистан</a>
                                             <a class="dropdown-item" onclick="ukr()">Украина</a>
                                             <a class="dropdown-item" onclick="ger()">Германия</a>
+                                            <a class="dropdown-item" onclick="greece()">Греция</a>
+
 
 
                                         </div>
@@ -186,6 +188,11 @@
         }
         function ger() {
             mask("+99(9999) 999-9999")
+        }
+
+        function greece() {
+            mask("+30(9999) 999-9999")
+
         }
 
 
