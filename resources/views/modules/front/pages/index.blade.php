@@ -203,7 +203,7 @@
                                     <img src="{{asset($author->image_path)}}" alt="Фото автора"
                                          onerror="this.src='{{asset('images/notfound.png')}}'">
                                 </div>
-                                <div class="author-info">
+                                <div class="author-info" style="overflow:scroll;">
                                     <p class="name">{{$author->fullName()}}</p>
                                     <span class="fas fa-circle fa-xs"></span>
                                     <span class="fas fa-circle fa-xs"></span>
