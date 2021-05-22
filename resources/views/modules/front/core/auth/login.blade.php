@@ -88,7 +88,10 @@
                                             <a class="dropdown-item" onclick="ukr()">Украина</a>
                                             <a class="dropdown-item" onclick="ger()">Германия</a>
                                             <a class="dropdown-item" onclick="greece()">Греция</a>
-
+                                            <a class="dropdown-item" onclick="azb()">Азербайжан</a>
+                                            <a class="dropdown-item" onclick="gr()">Грузия</a>
+                                            <a class="dropdown-item" onclick="arm()">Армения</a>
+                                            <a class="dropdown-item" onclick="grb()">Великобритания</a>
 
 
                                         </div>
@@ -192,6 +195,26 @@
 
         function greece() {
             mask("+30(9999) 999-9999")
+
+        }
+
+        function azb() {
+            mask("+999(99) 999-99-99")
+
+        }
+
+
+        function gr() {
+            mask("+999(999) 999-999")
+        }
+
+        function arm() {
+            mask("+374(99) 999-999")
+        }
+
+
+        function grb() {
+            mask("+44(99) 9999-9999")
 
         }
 
