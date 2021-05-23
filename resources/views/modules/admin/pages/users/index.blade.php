@@ -15,6 +15,15 @@
                     <a href="{{route('user.edit')}}" class="btn btn-outline-primary mt-3">
                         Добавить <i class="ti ti-plus"></i>
                     </a>
+                    <div class="pt-3">
+                        <form action="{{ route('user.search') }}" method="GET">
+                            <div class="d-flex">
+                                <input class="form-control col-6 pr-3" type="text" name="search" required/>
+                                <button class="btn btn-outline-primary" type="submit">Найти</button>
+                            </div>
+                        </form>
+                    </div>
+
                 </header>
                 <div class="card-body pt-0">
                     @if($users->items())
@@ -36,7 +45,7 @@
                                     <td>{{$user->last_name}}</td>
                                     <td>{{$user->phone}}</td>
 {{--                                    <td class="d-inline-block">--}}
-{{--                                        <a href="{{route('author.edit', ['user_id' => $user->id])}}" class="btn btn-outline-primary btn-sm">--}}
+{{--                                        <a href="{{route('user.edit', ['user_id' => $user->id])}}" class="btn btn-outline-primary btn-sm">--}}
 {{--                                            <i class="ti ti-pencil"></i>--}}
 {{--                                        </a>--}}
 {{--                                    </td>--}}
