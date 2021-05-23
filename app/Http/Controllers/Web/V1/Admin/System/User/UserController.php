@@ -21,6 +21,7 @@ use App\Models\Entities\Course\UserPacket;
 use App\Services\Common\V1\Support\FileService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends WebBaseController
 {
@@ -37,6 +38,22 @@ class UserController extends WebBaseController
         $user_web_form = UserWebForm::inputGroups();
 
         return $this->adminView('pages.users.index', compact('users','user_web_form'));
+    }
+
+    public function search(Request $request){
+        $search = $request->input('search');
+        $user_web_form = UserWebForm::inputGroups();
+        $users = User::query()
+            ->where('first_name', 'LIKE', "%{$search}%")
+            ->orWhere('last_name', 'LIKE', "%{$search}%")
+            ->orWhere('phone', 'LIKE', "%{$search}%")
+            ->orWhere('email', 'LIKE', "%{$search}%")
+            ->orWhere('id', 'LIKE', "%{$search}%")
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+
+        return $this->adminView('pages.users.index', compact('users','user_web_form'));
+
     }
 
     public function edit(Request $request) {
@@ -84,7 +101,6 @@ class UserController extends WebBaseController
                 'overall_lessons_count' => $course->lessons()->count(),
                 'passed_lessons_count' => 0,
                 'is_passed' => false
-
             ]);
         }
         $this->edited();

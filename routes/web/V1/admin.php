@@ -86,8 +86,7 @@ Route::group(['namespace' => 'Admin\System', 'verify' => true, 'middleware' => [
         Route::get('/users', ['uses' => 'UserController@index', 'as' => 'user.index']);
         Route::get('/user/edit', ['uses' => 'UserController@edit', 'as' => 'user.edit']);
         Route::post('/user/update', ['uses' => 'UserController@update', 'as' => 'user.update']);
-
-
+        Route::get('/user/search/', ['uses' => 'UserController@search', 'as' => 'user.search']);
     });
 
     Route::group(['namespace' => 'Setting'], function () {
