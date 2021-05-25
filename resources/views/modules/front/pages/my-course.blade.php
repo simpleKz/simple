@@ -45,8 +45,8 @@
                             <div class="col-12 mt-2 justify-content-start" id="lessonMaterials">
                                 @foreach($last_lesson->docs as $material)
                                     <a class="material" href="{{asset($material->material_path)}}"
-                                       download="{{$last_lesson->name.'-'.$material->id.'.'.$material->type}}"
-                                       target="_blank">{{$last_lesson->name.'-'.$material->id.'.'.$material->type}}
+                                       download="{{str_replace("documents/lessons/", "",$material->material_path)}}"
+                                       target="_blank">{{str_replace("documents/lessons/", "",$material->material_path)}}
                                     </a>
                                 @endforeach
                             </div>
