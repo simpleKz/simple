@@ -34,8 +34,8 @@
                     </div>
                     <div class="form-group">
                         <label class="form-control-plaintext">E-mail</label>
-                        <input type="email" placeholder="kairataskaov@gmail.com" class="form-control p-4"
-                               required v-model="updatedProfile.email" disabled>
+                        <input type="email" id="email" name="email" placeholder="example@gmail.com" class="form-control p-4 "
+                               required v-model="updatedProfile.email" >
                     </div>
                     <div class="form-group">
                         <label class="form-control-plaintext">Подтверждение пароля</label>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="form-group col-12 text-right">
-                    <button class="btn btn-primary pr-5 pl-5 pt-3 pb-3" @click="updateProfile()" :disabled="isDisable || isDisablePassword" >Сохранить изменения
+                    <button class="btn btn-primary pr-5 pl-5 pt-3 pb-3" @click="updateProfile()" :disabled="isDisable || isDisablePassword ||isDisableEmail" >Сохранить изменения
                     </button>
                 </div>
             </div>
@@ -81,6 +81,7 @@
                     new_password: '',
                     new_password_confirmation: ''
                 },
+                reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/
 
             };
         },
@@ -105,6 +106,7 @@
                 return this.updatedProfile.first_name === ''
                     || this.updatedProfile.last_name === ''
                     || this.updatedProfile.phone === ''
+
             },
             isDisablePassword: function () {
                 var a = true;
@@ -121,6 +123,15 @@
 
 
             },
+
+            isDisableEmail: function(){
+                var a = true;
+                    if (this.reg.test(this.updatedProfile.email)) {
+                        a = false
+                    }
+
+                return a
+            }
         },
 
         methods: {
@@ -190,10 +201,16 @@
                 })
                     .then(function (resp) {
                         app.loading = false;
-                        toastr.success('Профиль успешно изменен!');
-                        setTimeout(function (app) {
-                            app.$router.go(app.$router.currentRoute);
-                        }, 1500, app);
+                        console.log(resp.data.success);
+                        if(resp.data.success === true){
+                            toastr.success('Профиль успешно изменен!');
+                            setTimeout(function (app) {
+                                app.$router.go(app.$router.currentRoute);
+                            }, 1500, app);
+                        }else {
+                            toastr.error('Пользователь с таким email загрегестрирован');
+                        }
+
                     }).catch(function (resp) {
                     app.loading = false;
                 });

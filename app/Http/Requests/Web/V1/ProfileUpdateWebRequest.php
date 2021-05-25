@@ -11,6 +11,7 @@ class ProfileUpdateWebRequest extends WebBaseRequest
         return [
             'first_name' => ['required', 'string'],
             'last_name' => ['required', 'string'],
+            'email' => [ 'nullable','string', 'email', 'max:255'],
             'new_password' => ['required_with:new_password_confirmation', 'nullable:true','same:new_password_confirmation','string','min:8'],
             'new_password_confirmation' => ['required_with:new_password', 'nullable:true', 'string' , 'min:8']
         ];

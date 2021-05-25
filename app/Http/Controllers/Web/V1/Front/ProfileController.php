@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Web\V1\Front;
 
 
+use App\Exceptions\WebServiceErroredException;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Http\Requests\Web\V1\ProfileUpdateWebRequest;
 use App\Models\Entities\Core\User;
@@ -64,19 +65,33 @@ class ProfileController extends WebBaseController
     public function profileUpdate(ProfileUpdateWebRequest $request){
 
         $user = auth()->user();
-        if($request->new_password){
-            $user->update([
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'password' => Hash::make($request->new_password)
-            ]);
-        }else{
-            $user->update([
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-            ]);
+        if($request->email){
+            $unknown_user = User::where('email',$request->email)->first();
+            if ($unknown_user){
+                if($unknown_user->id != $user->id){
+                    return json_encode(['success' => false]);
+                }
+            }else{
+                if($request->new_password){
+                    $user->update([
+                        'first_name' => $request->first_name,
+                        'last_name' => $request->last_name,
+                        'email' => $request->email?$request->email:$user->email,
+                        'password' => Hash::make($request->new_password)
+                    ]);
+                }else{
+                    $user->update([
+                        'first_name' => $request->first_name,
+                        'last_name' => $request->last_name,
+                        'email' => $request->email,
+
+                    ]);
+                }
+            }
         }
+
         return json_encode(['success' => true]);
+
     }
 
     public function makeCardWithdrawal(Request $request){
