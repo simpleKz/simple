@@ -69,6 +69,7 @@ class CourseLessonController extends WebBaseController
             $course_passings = CoursePassing::where('course_id',$lesson->course_id)->get();
             foreach ($course_passings as $course_passing){
                 $course_passing->overall_lessons_count = $course_passing->overall_lessons_count +1;
+                $course_passing->is_passed = false;
                 $course_passing->save();
             }
             DB::commit();
@@ -148,6 +149,9 @@ class CourseLessonController extends WebBaseController
             $course_passings = CoursePassing::where('course_id',$lesson->course_id)->get();
             foreach ($course_passings as $course_passing){
                 $course_passing->overall_lessons_count = $course_passing->overall_lessons_count -1;
+                if($course_passing->overall_lessons_count == $course_passing->passed_lessons_count){
+                    $course_passing->is_passed = true;
+                }
                 $course_passing->save();
             }
             $lesson->docs()->delete();
