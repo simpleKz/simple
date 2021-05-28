@@ -17,7 +17,6 @@ class UserWebForm implements WithForm
     {
         $array = [];
 
-
         $packets_array = [];
         $packets = Packet::all();
         foreach ($packets as $packet) {
@@ -26,12 +25,18 @@ class UserWebForm implements WithForm
         }
 
 
-
+        $array1 = FormUtil::select('packet_id', '', 'Курс/Пакет',
+            true, $packets_array);
+        $phone =  FormUtil::input('phone', '', 'Телефон',
+            'text', true, $value ? $value->phone : null);
 
         if($value) {
             $array = FormUtil::input('id', 1, null,
                 'numeric', true,
                 $value->id, null, null, true);
+
+            $array1 = [];
+            $phone = [];
         }
         return array_merge(
             $array,
@@ -39,10 +44,10 @@ class UserWebForm implements WithForm
                 'text', true, $value ? $value->first_name : null),
             FormUtil::input('last_name', 'Аскаров', 'Фамилия',
                 'text', true, $value ? $value->last_name : null),
-            FormUtil::input('phone', '', 'Телефон',
-                'text', true, $value ? $value->phone : null),
-            FormUtil::select('packet_id', '', 'Курс/Пакет',
-                true, $packets_array)
+            $phone,
+            FormUtil::input('email', '', 'E-mail',
+                'email', false, $value ? $value->email : null),
+            $array1
         );
     }
 }

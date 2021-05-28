@@ -71,24 +71,17 @@ class ProfileController extends WebBaseController
                 if($unknown_user->id != $user->id){
                     return json_encode(['success' => false]);
                 }
-            }else{
-                if($request->new_password){
-                    $user->update([
-                        'first_name' => $request->first_name,
-                        'last_name' => $request->last_name,
-                        'email' => $request->email?$request->email:$user->email,
-                        'password' => Hash::make($request->new_password)
-                    ]);
-                }else{
-                    $user->update([
-                        'first_name' => $request->first_name,
-                        'last_name' => $request->last_name,
-                        'email' => $request->email,
 
-                    ]);
-                }
             }
+            $user->email = $request->email;
         }
+        if($request->new_password) {
+            $user->password = Hash::make($request->new_password);
+        }
+
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->save();
 
         return json_encode(['success' => true]);
 

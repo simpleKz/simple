@@ -67,41 +67,56 @@ class UserController extends WebBaseController
     }
 
     public function update(UserWebRequest $request) {
-        $request->phone =  preg_replace('/[^0-9]/','',$request->phone);
-        $user = new User();
-        $user->last_name = $request->last_name;
-        $user->first_name = $request->first_name;
-        $user->phone = $request->phone;
-        $user->role_id = Role::CLIENT_ID;
-        $user->image_path = $request->getSchemeAndHttpHost() . "/images/user-default.png";
-        $user->discount_percentage = 50;
-        $user->balance = 0;
-        $user->ref_user_id = null;
-        $user->ref_link = md5($request->phone);
-        $user->password = bcrypt("123456");
-        $user->save();
-        $this->edited();
+        if($request->id){
+            $user= $this->getUser($request->id);
+            $unknown_user = User::where('email',$request->email)->first();
+            if ($unknown_user) {
+                if ($unknown_user->id != $user->id) {
+                    throw new WebServiceExplainedException('Пользователь с таким email  существует!');
+                }
+            }
 
-        $user_packet = new UserPacket();
-        $user_packet->packet_id = $request->packet_id;
-        $user_packet->user_id = $user->id;
-        $packet = Packet::where('id',$request->packet_id)->first();
-        if($packet->expiration_month != 0){
-            $user_packet->due_date = Carbon::now()->addMonths($packet->expiration_month);
-        }
+            $user->last_name = $request->last_name;
+            $user->first_name = $request->first_name;
+            $user->email = $request->email;
+            $user->save();
 
-        $user_packet->save();
+        }else {
+            $request->phone = preg_replace('/[^0-9]/', '', $request->phone);
+            $user = new User();
+            $user->last_name = $request->last_name;
+            $user->first_name = $request->first_name;
+            $user->phone = $request->phone;
+            $user->email = $request->email;
+            $user->role_id = Role::CLIENT_ID;
+            $user->image_path = $request->getSchemeAndHttpHost() . "/images/user-default.png";
+            $user->discount_percentage = 50;
+            $user->balance = 0;
+            $user->ref_user_id = null;
+            $user->ref_link = md5($request->phone);
+            $user->password = bcrypt("123456");
+            $user->save();
+            $user_packet = new UserPacket();
+            $user_packet->packet_id = $request->packet_id;
+            $user_packet->user_id = $user->id;
+            $packet = Packet::where('id', $request->packet_id)->first();
+            if ($packet->expiration_month != 0) {
+                $user_packet->due_date = Carbon::now()->addMonths($packet->expiration_month);
+            }
 
-        $packet_courses = PacketCourse::where('packet_id',$request->packet_id)->get();
-        foreach ($packet_courses as $pc){
-            $course  = Course::where('id',$pc->course_id)->first();
-            CoursePassing::create([
-                'course_id' => $pc->course->id,
-                'user_id' => $user->id,
-                'overall_lessons_count' => $course->lessons()->count(),
-                'passed_lessons_count' => 0,
-                'is_passed' => false
-            ]);
+            $user_packet->save();
+
+            $packet_courses = PacketCourse::where('packet_id', $request->packet_id)->get();
+            foreach ($packet_courses as $pc) {
+                $course = Course::where('id', $pc->course_id)->first();
+                CoursePassing::create([
+                    'course_id' => $pc->course->id,
+                    'user_id' => $user->id,
+                    'overall_lessons_count' => $course->lessons()->count(),
+                    'passed_lessons_count' => 0,
+                    'is_passed' => false
+                ]);
+            }
         }
         $this->edited();
 
@@ -117,12 +132,32 @@ class UserController extends WebBaseController
 //        return redirect()->route('author.index');
 //    }
 
+
+
+
+
     private function getUser($id) {
         $user = User::find($id);
         if(!$user) {
             throw new WebServiceExplainedException('Такого пользователя не существует!');
+
+
         }
         return $user;
     }
+
+    public function resetPassword(Request $request){
+        $user = $this->getUser($request->user_id);
+        $user->password = bcrypt("123456");
+        $user->save();
+        $this->successOperation();
+
+        return redirect()->route('user.index');
+
+    }
+
+
+
+
 }
 

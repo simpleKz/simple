@@ -34,7 +34,8 @@
                                 <th>Имя</th>
                                 <th>Фамилия</th>
                                 <th>Телефон</th>
-{{--                                <th>Действия</th>--}}
+                                <th>Email</th>
+                                <th>Действия</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -44,11 +45,46 @@
                                     <td>{{$user->first_name}}</td>
                                     <td>{{$user->last_name}}</td>
                                     <td>{{$user->phone}}</td>
-{{--                                    <td class="d-inline-block">--}}
-{{--                                        <a href="{{route('user.edit', ['user_id' => $user->id])}}" class="btn btn-outline-primary btn-sm">--}}
-{{--                                            <i class="ti ti-pencil"></i>--}}
-{{--                                        </a>--}}
-{{--                                    </td>--}}
+                                    <td>{{$user->email}}</td>
+                                    <td class="d-flex justify-content-center">
+                                        <a href="{{route('user.edit', ['user_id' => $user->id])}}" class="btn btn-outline-primary btn-sm m-1">
+                                            <i class="ti ti-pencil"></i>
+                                        </a>
+                                        <button class="btn btn-outline-danger btn-sm m-1" data-toggle="modal"
+                                                data-target="#reset{{$user->id}}"><i class="ti ti-key"></i>
+                                        </button>
+                                        <div class="modal modal-backdrop" id="reset{{$user->id}}" tabindex="-1"
+                                             role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+                                             data-backdrop="false">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title w-100" id="myModalLabel">Сброс</h4>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Вы действительно хотите сбросить пароль?</p>
+                                                        <form method="post"
+                                                              action="{{route('user.password.reset', ['user_id' => $user->id])}}">
+                                                            {{csrf_field()}}
+                                                            <input type="number" value="{{$user->id}}" hidden>
+                                                            <button type="submit" class="btn btn-outline-danger mt-3">
+                                                                Сбросить безвозвратно<i class="ti ti-trash"></i></button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger-soft btn-sm"
+                                                                data-dismiss="modal">
+                                                            <i class="ti ti-close"></i> Закрыть
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

@@ -15,13 +15,13 @@
                         <i class="ti ti-arrow-left"></i> Назад
                     </a>
                 </header>
-                @if($user)
-                    <div class="card-header  border-dark">
-                        <img src="{{asset($user->image_path)}}" style="max-height: 500px; max-width: 500px"
-                             alt="user image" onerror="this.src='{{asset('images/notfound.png')}}'">
-                    </div>
+{{--                @if($user)--}}
+{{--                    <div class="card-header  border-dark">--}}
+{{--                        <img src="{{asset($user->image_path)}}" style="max-height: 500px; max-width: 500px"--}}
+{{--                             alt="user image" onerror="this.src='{{asset('images/notfound.png')}}'">--}}
+{{--                    </div>--}}
 
-                @endif
+{{--                @endif--}}
                 <div class="card-body pt-0">
                     <form action="{{route('user.update')}}" method="post" enctype="multipart/form-data">
                         <x-admin.input-form-group-list

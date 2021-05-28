@@ -94,8 +94,8 @@
         },
         mounted: function () {
             // this.loadProfile();
-            var im = new Inputmask("+7 (999) 999 99 99");
-            im.mask(document.getElementById('phone'));
+            // var im = new Inputmask("+7 (999) 999 99 99");
+            // im.mask(document.getElementById('phone'));
 
             this.loadProfile();
         },
